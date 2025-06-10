@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'RupeeForadian';
+    src: url('rupee_foradian.eot');
+    src: url('rupee_foradian.eot?#iefix') format('embedded-opentype'),
+	url('rupee_foradian.woff') format('woff'),
+	url('rupee_foradian.ttf') format('truetype'),
+	url('rupee_foradian.svg#rupee_foradian') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}

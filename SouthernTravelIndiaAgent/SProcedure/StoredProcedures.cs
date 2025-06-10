@@ -1,0 +1,83 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace SouthernTravelIndiaAgent.SProcedure
+{
+    public class StoredProcedures
+    {
+        public const string ValidateAgent_sp = "ValidateAgent_sp";
+        public const string agent_session_details = "agent_session_details";
+        public const string SaveAgentLogInInfo_sp = "SaveAgentLogInInfo_sp";
+        public const string GetAgentdetails_sp = "GetAgentdetails_sp";
+        public const string Agent_Profile = "Agent_Profile";
+        public const string Agent_changepassword = "Agent_changepassword";
+        public const string Agent_UpdateProfile = "Agent_UpdateProfile";
+        public const string Agent_ForgotPassword = "Agent_ForgotPassword";
+        public const string AgentTransaction_RPT_SP = "AgentTransaction_RPT_SP";
+        public const string Agent_Transactiontypes = "Agent_Transactiontypes";
+        public const string GetAgentCommission_sp = "GetAgentCommission_sp";
+        public const string sp_InsertEmailLog = "sp_InsertEmailLog";
+        public const string Agent_Availablebalance = "Agent_Availablebalance";
+        public const string ins_Enq_tbl = "ins_Enq_tbl";
+        public const string Get_EnqueryCode = "Get_EnqueryCode";
+        public const string Fixedtours_Active = "Fixedtours_Active";
+        public const string Fixed_OriginBranches = "Fixed_OriginBranches";
+        public const string Fixed_DatewiseTours_Vacantseats = "Fixed_DatewiseTours_Vacantseats";
+        public const string BranchWiseTour_Sp = "BranchWiseTour_Sp";
+        public const string GetSubLedgerHead_SP = "GetSubLedgerHead_SP";
+        public const string SaveAgentLogoutInfo_sp = "SaveAgentLogoutInfo_sp";
+        public const string GetHotelInfoValid_sp = "GetHotelInfoValid_sp";
+        public const string GetActive_Cat_City_sp = "GetActive_Cat_City_sp";
+        public const string Car_TransferTypes_CityWise = "Car_TransferTypes_CityWise";
+        public const string SpecialTours_Zonewise = "SpecialTours_Zonewise";
+        public const string GetSPLticketCode_sp = "GetSPLticketCode_sp";
+        public const string GetSPLpnr_sp = "GetSPLpnr_sp";
+        public const string Fixed_RecentBookings = "Fixed_RecentBookings";
+        public const string Car_FixedTourDetails_sp = "Car_FixedTourDetails_sp";
+        public const string Get_SpecialTour_FarePanel_NEW_sp = "Get_SpecialTour_FarePanel_NEW_sp";
+        public const string sp_GetTAXValue = "sp_GetTAXValue";
+        public const string GetSPLTourMaster_sp = "GetSPLTourMaster_sp";
+        public const string GetInstentBooking_sp = "GetInstentBooking_sp";
+        public const string GetAgentPayDetail_sp = "GetAgentPayDetail_sp";
+        public const string AgentLavelComm_sp = "AgentLavelComm_sp";
+        public const string GST_GetCityListByStateIdAndSearchedCityText = "GST_GetCityListByStateIdAndSearchedCityText";
+        public const string GST_InsertFinalSPLTourInfoAgent_sp = "GST_InsertFinalSPLTourInfoAgent_sp";
+        public const string GetChildPaxCount_sp = "GetChildPaxCount_sp";
+        public const string GetDiscount_sp = "GetDiscount_sp";
+        public const string GetSpecialTourFare_sp = "GetSpecialTourFare_sp";
+        public const string GetInternational_Country_SP = "GetInternational_Country_SP";
+        public const string GetServiceTaxIsAcc_sp = "GetServiceTaxIsAcc_sp";
+        public const string GetServiceTaxValue_sp = "GetServiceTaxValue_sp";
+        public const string GetLTCCharges_sp = "GetLTCCharges_sp";
+        public const string GetOrderID_sp = "GetOrderID_sp";
+        public const string sp_GetSeatArrangement = "sp_GetSeatArrangement";
+        public const string GetPickupDetail_sp = "GetPickupDetail_sp";
+        public const string sp_GetSeatArrangements = "sp_GetSeatArrangements";
+        public const string Get_FixedTour_Fare = "Get_FixedTour_Fare";
+        public const string jdates_vacantseats = "jdates_vacantseats";
+        public const string Fixed_PickupAddr_DeptTime = "Fixed_PickupAddr_DeptTime";
+        public const string Fixed_Default_PickupAddress = "Fixed_Default_PickupAddress";
+        public const string dispup_sp = "dispup_sp";
+        public const string GetMultiplePickupPoint_sp = "GetMultiplePickupPoint_sp";
+        public const string SeatArrangement_sp = "SeatArrangement_sp";
+        public const string BlockUnBlockSeats_sp = "BlockUnBlockSeats_sp";
+        public const string GetPickUpMAsterRowID_sp = "GetPickUpMAsterRowID_sp";
+        public const string GetBusAllot_Detail_sp = "GetBusAllot_Detail_sp";
+        public const string sp_NoOfSeats = "sp_NoOfSeats";
+        public const string ChkBusTypeAgent_sp = "ChkBusTypeAgent_sp";
+        public const string ValidateDiscountAgent_sp = "ValidateDiscountAgent_sp";
+        public const string Fixed_TourSerial = "Fixed_TourSerial";
+        public const string InsertBookingAgent_sp = "InsertBookingAgent_sp";
+        public const string UpdateBookingAgent_sp = "UpdateBookingAgent_sp";
+        public const string GetCountryName_SP = "GetCountryName_SP";
+        public const string sp_GetCar_Local = "sp_GetCar_Local";
+        public const string sp_GetCar_fixed = "sp_GetCar_fixed";
+        public const string GetFind_City__sp = "GetFind_City__sp";
+        public const string CabBookingAgent = "CabBookingAgent";
+        public const string sp_Car_LocalTransfer = "sp_Car_LocalTransfer";
+        public const string sp_Car_GetFixedTour = "sp_Car_GetFixedTour";
+        public const string sp_Car_LocalSubTransfer = "sp_Car_LocalSubTransfer";
+    }
+}

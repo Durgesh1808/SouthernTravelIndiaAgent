@@ -1,0 +1,413 @@
+/*body
+{
+	margin:0px
+}
+*/
+
+
+.txtBox
+{
+	width:100px
+}
+
+.y {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y A {
+	COLOR: #ff7200; TEXT-DECORATION: none
+}
+.y B {
+	COLOR: #ff7200
+}
+.y A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.y1 {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y1 A {
+	COLOR: #ff7200; TEXT-DECORATION: none
+}
+.y1 B {
+	COLOR: #25476a
+}
+.y1 A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.y2 {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y2 A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.y2 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.heading {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.heading A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.heading A:hover {
+	COLOR: #666666; TEXT-DECORATION: underline
+}
+.heading B.e {
+	COLOR: #610404
+}
+.heads {
+	FONT-SIZE: 12px; COLOR: #800000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.heads A {
+	COLOR: #800000; TEXT-DECORATION: none
+}
+.heads A:hover {
+	COLOR: #666666; TEXT-DECORATION: underline
+}
+.marquee {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Arial,Ms sans serif,
+}
+.details {
+	FONT-SIZE: 12px; COLOR: #25476a; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.details A {
+	COLOR: #25476a; TEXT-DECORATION: none
+}
+.details A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.botlinks {
+	FONT-SIZE: 12px; COLOR: #25476a; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.botlinks A {
+	COLOR: #25476a; TEXT-DECORATION: none
+}
+.botlinks A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.hlinks {
+	FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.splcls {
+	FONT-SIZE: 12px; COLOR:#0077FF; LINE-HEIGHT: 17px; FONT-FAMILY:arial
+}
+.hlinks A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.hlinks A:hover {
+	COLOR: #25476a; TEXT-DECORATION: underline
+}
+.footer {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.footer A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.footer A:hover {
+	COLOR: #666666; TEXT-DECORATION: underline
+}
+.cgi {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #800000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.cgi1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: arial, verdana, ms sans serif;
+    }
+.cgi2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.cgi A {
+	COLOR: #800000; TEXT-DECORATION: none
+}
+.cgi A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.txt {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #000000; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.txt B {
+	COLOR: #3d5e75
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #146ac2; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y3 {
+	PADDING-RIGHT: 15px; FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y3 A {
+	COLOR: #ff7200; TEXT-DECORATION: none
+}
+.y3 B {
+	COLOR: #ff7200
+}
+.y3 A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.y4 {
+	PADDING-RIGHT: 15px; FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y4 A {
+	COLOR: #990000; TEXT-DECORATION: none
+}
+.y4 B {
+	COLOR: #990000
+}
+.y4 A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.y5 {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y5 A {
+	TEXT-DECORATION: none
+}
+.y5 A:hover {
+	COLOR: #4c4c2e; TEXT-DECORATION: underline
+}
+H1 {
+	PADDING-LEFT: 15px; FONT-SIZE: 22px; COLOR: #146ac2; FONT-FAMILY: arial, verdana, ms sans serif
+}
+H1 A {
+	COLOR: #146ac2; TEXT-DECORATION: none
+}
+H1 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+H3 {
+	PADDING-LEFT: 15px; FONT-SIZE: 16px; COLOR: #cc6600; FONT-FAMILY: arial, verdana, ms sans serif
+}
+H3 A {
+	COLOR: #cc6600; TEXT-DECORATION: none
+}
+H3 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.sublinks {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #4c4c2e; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.sublinks A {
+	COLOR: #4c4c2e; TEXT-DECORATION: none
+}
+.sublinks A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.y6 {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 12px; COLOR: #333333; LINE-HEIGHT: 17px; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.y6 A {
+	COLOR: #000; TEXT-DECORATION: none
+}
+.y6 B {
+	COLOR: #fff
+}
+.y6 A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.td {
+	PADDING-LEFT: 3px; FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.txt2 {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.space {
+	MARGIN-LEFT: 15px
+}
+.intdtxth {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: Arial; BACKGROUND-COLOR: #ff9c00
+}
+.intdtxth B {
+	FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Arial; BACKGROUND-COLOR: #ff9c00
+}
+.intdtxth B A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.intdtxth B A:hover {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.intdtxt {
+	MARGIN-TOP: 5px; FONT-SIZE: 12px; COLOR: #3d3d3d; FONT-FAMILY: Arial
+}
+.intdtxt A {
+	FONT-WEIGHT: bold; COLOR: #ff6600; TEXT-DECORATION: underline
+}
+.intdtxt A:hover {
+	COLOR: #444444; TEXT-DECORATION: none
+}
+.intdtxt B {
+	COLOR: #ff6600
+}
+.intdtext {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: Arial; BACKGROUND-COLOR: #eeeeee
+}
+.intdtext1 {
+	FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: Arial; BACKGROUND-COLOR: #badcf7; TEXT-ALIGN: right
+}
+.intdtext11 {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Arial
+}
+.indes {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: Arial
+}
+.indes A {
+	COLOR: #1073b9; TEXT-DECORATION: none
+}
+.indes A:hover {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+.req {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: Arial; TEXT-ALIGN: center
+}
+.req A {
+	COLOR: #9c2100; TEXT-DECORATION: none
+}
+.req A:hover {
+	COLOR: #333333; TEXT-DECORATION: underline
+}
+.bot-nxt {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #4c4c2e; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.bot-nxt A {
+	FONT-WEIGHT: bold; COLOR: #4c4c2e; TEXT-DECORATION: none
+}
+.bot-nxt A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.sub-head {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.tab-txt {
+	PADDING-LEFT: 3px; FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.txt-tble {
+	FONT-SIZE: 12px; COLOR: #333333; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.btn
+{
+	BORDER-RIGHT: #ffffff 1px solid;
+	 BORDER-TOP: #ffffff 1px solid;
+	  FONT-WEIGHT: bold;
+	   BORDER-LEFT: #CC6600 1px solid;  
+	   COLOR: #ffffff; 
+	   BORDER-BOTTOM: #ffffff 1px solid; 
+	   BACKGROUND-COLOR: #CC6600
+}
+.btn1
+{
+	BORDER-RIGHT: #5aa1ea 1px solid;
+	 BORDER-TOP: #5aa1ea 1px solid;
+	  FONT-WEIGHT: bold;
+	   BORDER-LEFT: #5aa1ea 1px solid;  
+	   COLOR: #ffffff; 
+	   BORDER-BOTTOM: #5aa1ea 1px solid; 
+	   BACKGROUND-COLOR: #5aa1ea;
+}
+
+.style1 {
+font-size:12px; font-family:Verdana, Arial, Helvetica, sans-serif
+}
+
+.msg
+{
+	color:Red;
+	font-family:Verdana;
+	font-size:14;
+}
+
+.tdLeftVerySmall
+{
+    width:13%;
+    vertical-align:top;
+}
+.tdRightVLarge
+{
+    width:87%;
+    vertical-align:top;
+}
+.tdLeftSmall
+{
+    width:20%;
+    vertical-align:top;
+}
+.tdLeftLarge
+{
+    width:80%;
+    vertical-align:top;
+}
+.tdLeft4Small
+{
+	width:20%;
+	vertical-align:top;
+}
+.tdRight4Large
+{
+	width:30%;
+	vertical-align:top;
+	margin-left: 40px;
+}
+.tdMailerLeft
+{
+    border-left-width:0;
+    border-left-color:White;
+    border-right-width:0;
+    border-right-color:White;
+    border-bottom-width:0;
+    border-bottom-color:White;
+    vertical-align:top;
+    text-align:left;
+}
+.tdMailerMiddle
+{
+    border-left-width:0;
+    border-left-color:White;
+    border-right-width:0;
+    border-right-color:White;
+    border-bottom-width:0;
+    border-bottom-color:White;
+    vertical-align:top;
+    text-align:left;
+}
+.tdMailerRight
+{
+    border-left-width:0;
+    border-left-color:White;
+    border-bottom-width:0;
+    border-bottom-color:White;
+    vertical-align:top;
+    text-align:left;
+}
+.tdMailerNoBorder
+{
+    border-left-width:0;
+    border-left-color:White;
+    border-right-width:0;
+    border-right-color:White;
+    border-top-width:0;
+    border-top-color:White;
+    border-bottom-width:0;
+    border-bottom-color:White;
+}
+.tdMailerBorderRB
+{
+    border-left-width:0;
+    border-left-color:White;
+    border-top-width:0;
+    border-top-color:White;
+}
+.tdMailerBorderB
+{
+    border-left-width:0;
+    border-left-color:White;
+    border-right-width:0;
+    border-right-color:White;
+    border-top-width:1;
+    border-top-color:White;
+}
+.tblBorder
+{
+	border-style:solid;
+	border-width:1;
+	border-color:#B2B2B2;
+}
+.Bdr_nO
+{
+	border:none;
+}
