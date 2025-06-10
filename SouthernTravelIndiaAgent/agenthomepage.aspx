@@ -89,11 +89,11 @@
                         <table width="372" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td align="left">
-                                    <img src="Assets/images/left_corner.gif" width="8" height="8" alt="image" /></td>
+                                    <img  loading="lazy" src="Assets/images/left_corner.gif" width="8" height="8" alt="left_corner" /></td>
                                 <td bgcolor="#E7E7E7">
-                                    <img src="Assets/images/trans.gif" width="280" height="1" alt="image" /></td>
+                                    <img  loading="lazy" src="Assets/images/trans.gif" width="280" height="1" alt="trans" /></td>
                                 <td align="right">
-                                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" alt="image" /></td>
+                                    <img  loading="lazy" src="Assets/images/rgt_corner.gif" width="8" height="8" alt="rgt_corner" /></td>
                             </tr>
                             <tr>
                                 <td align="left" bgcolor="#E7E7E7">
@@ -102,15 +102,15 @@
                                     <table width="355" border="0" cellspacing="0" cellpadding="0">
                                         <tr>
                                             <td width="100%" colspan="2">
-                                                <img src="Assets/images/agent_summry.gif" width="355" height="41" alt="image"/></td>
+                                                <img  loading="lazy"  src="Assets/images/agent_summry.gif" width="355" height="41" alt="agent_summry"/></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2" align="right">
-                                                <img src="Assets/images/trans.gif" width="1" height="1" alt="image" /></td>
+                                                <img  loading="lazy"  src="Assets/images/trans.gif" width="1" height="1" alt="trans" /></td>
                                         </tr>
                                         <tr>
                                             <td width="227" align="right" valign="top">
-                                                <img src="Assets/images/kerala_tour.jpg" width="226" height="165" alt="image" /></td>
+                                                <img  loading="lazy" src="Assets/images/kerala_tour.jpg" width="226" height="165" alt="kerala_tour" /></td>
                                             <td width="127" valign="top">
                                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
@@ -141,7 +141,7 @@
                                         </tr>
                                         <tr>
                                             <td colspan="2" align="left">
-                                                <img src="Assets/images/trans.gif" width="1" height="1" alt="image" /></td>
+                                                <img  loading="lazy"  src="Assets/images/trans.gif" width="1" height="1" alt="trans" /></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -150,36 +150,36 @@
                             </tr>
                             <tr>
                                 <td align="left">
-                                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" alt="image" /></td>
+                                    <img  loading="lazy" src="Assets/images/left_d_corner.gif" width="8" height="8" alt="left_d_corner" /></td>
                                 <td bgcolor="#E7E7E7">
-                                    <img src="Assets/images/trans.gif" width="1" height="1" alt="image" /></td>
+                                    <img  loading="lazy" src="Assets/images/trans.gif" width="1" height="1" alt="trans" /></td>
                                 <td align="right">
-                                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="image"/></td>
+                                    <img  loading="lazy" src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="rgt_d_corner"/></td>
                             </tr>
                         </table>
                         <table width="372" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td>
-                                    <img src="Assets/images/trans.gif" width="1" height="11"alt="image" /></td>
+                                    <img  loading="lazy" src="Assets/images/trans.gif" width="1" height="11"alt="trans" /></td>
                             </tr>
                             <tr>
                                 <td>
                                     <a href="#">
-                                        <img src="Assets/images/kashmir.jpg" width="372" height="51" border="0" alt="image"/></a></td>
+                                        <img  loading="lazy" src="Assets/images/kashmir.jpg" width="372" height="51" border="0" alt="kashmir"/></a></td>
                             </tr>
                             <tr>
                                 <td>
-                                    <img src="Assets/images/trans.gif" width="1" height="14" alt="image" /></td>
+                                    <img  loading="lazy"src="Assets/images/trans.gif" width="1" height="14" alt="trans" /></td>
                             </tr>
                         </table>
                         <table width="372" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td align="left">
                                     <a href="#">
-                                        <img src="Assets/images/wild.jpg" width="180" height="147" border="0" alt="image"/></a></td>
+                                        <img  loading="lazy"  src="Assets/images/wild.jpg" width="180" height="147" border="0" alt="wild"/></a></td>
                                 <td align="right">
                                     <a href="#">
-                                        <img src="Assets/images/goa.jpg" width="180" height="147" border="0" alt="image"/></a></td>
+                                        <img  loading="lazy" src="Assets/images/goa.jpg" width="180" height="147" border="0" alt="goa"/></a></td>
                             </tr>
                         </table>
                     </td>

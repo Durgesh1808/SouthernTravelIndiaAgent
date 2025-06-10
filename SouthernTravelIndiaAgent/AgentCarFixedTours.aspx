@@ -29,11 +29,11 @@
         <table width="95%" border="0" align="center" cellpadding="0" cellspacing="0">
            <tr>
                 <td width="8" align="left">
-                    <img src="Assets/images/left_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" /></td>
                 <td width="799" bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                 <td width="8" align="right">
-                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
             </tr>
             <tr>
                 <td bgcolor="#E7E7E7">
@@ -47,12 +47,12 @@
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                                         <td width="8" align="left">
-                                            <img src="Assets/images/left_.gif" width="13" height="42" /></td>
+                                            <img  loading="lazy" alt="left_" src="Assets/images/left_.gif" width="13" height="42" /></td>
                                         <td width="98%" align="center" background="Assets/images/bg1.gif" class="verdana14w">
                                             Car Fixed Tours
                                         </td>
                                         <td width="8" align="right">
-                                            <img src="Assets/images/right_.gif" width="13" height="42" /></td>
+                                            <img  loading="lazy" alt="right_" src="Assets/images/right_.gif" width="13" height="42" /></td>
                                     </tr>
                                     <tr style="border: 0; border-color: White; background-color: White;">
                                         <td align="center" colspan="3">
@@ -95,7 +95,7 @@
                                                             </tr>
                                                             <tr>
                                                                 <td align="right" class="style2">
-                                                                    &nbsp;&nbsp;&nbsp;<a href="agentCarMultiple.aspx?tourno=<%#DataBinder.Eval(Container.DataItem,"TourNo")%>&strs=<%=sfixed %>"><img
+                                                                    &nbsp;&nbsp;&nbsp;<a href="agentCarMultiple.aspx?tourno=<%#DataBinder.Eval(Container.DataItem,"TourNo")%>&strs=<%=sfixed %>"><img  loading="lazy" alt="book_now"
                                                                         src="Assets/images/book_now.gif" style="border: 0;" /></a>
                                                                 </td>
                                                             </tr>
@@ -118,11 +118,11 @@
             </tr>
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
             </tr>
             <tr>
                 <td colspan="3" valign="bottom">

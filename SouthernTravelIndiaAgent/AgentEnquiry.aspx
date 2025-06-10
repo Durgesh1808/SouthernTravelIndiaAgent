@@ -227,11 +227,11 @@
                                                 &nbsp;Date of Birth</td>
                                             <td style="width: 181px">
                                                 <%--<asp:TextBox ID="txtdob" runat="server" MaxLength="0" ReadOnly="True" Width="152px"></asp:TextBox>
-                                                <img id="btn1" style="cursor: hand" onclick="javascript:cbfshowcalendar('form1', 'txtdob', 'btn1');event.cancelBubble=true;"
+                                                <img  loading="lazy" alt="" id="btn1" style="cursor: hand" onclick="javascript:cbfshowcalendar('form1', 'txtdob', 'btn1');event.cancelBubble=true;"
                                                     alt="View calendar" src="images/calendar.gif" value="Calendar" />--%>
                                                 
                                                 <input id="txtdob" type="text" size="8" name="txtdob" runat="server" maxlength="10" readonly="readonly" onclick="showCalendarControl(this);" />                                  
-                                                <img id="Img1" style="cursor: hand" onclick="showCalendarControl(document.getElementById('txtdob'));" alt="View calendar" src="Assets/images/calendar.gif" value="Calendar" />
+                                                <img  loading="lazy" id="Img1" style="cursor: hand" onclick="showCalendarControl(document.getElementById('txtdob'));" alt="View calendar" src="Assets/images/calendar.gif" value="Calendar" />
                                                     
                                             </td>
                                             <td align="right" style="width: 107px">

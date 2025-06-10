@@ -776,14 +776,14 @@ namespace SouthernTravelIndiaAgent.DAL
                     // Optionally log the exception
                     return null;
                 }
-                finally
-                {
-                    if (dtResult != null)
-                    {
-                        dtResult.Dispose();
-                        dtResult = null;
-                    }
-                }
+                //finally
+                //{
+                //    if (dtResult != null)
+                //    {
+                //        dtResult.Dispose();
+                //        dtResult = null;
+                //    }
+                //}
             }
 
             return dtResult;
@@ -2393,6 +2393,416 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
             }
 
             return ldtUserRoles;
+        }
+        public DataTable fnGetState()
+        {
+            DataTable dtState = new DataTable();
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            SqlDataAdapter da = null;
+
+            try
+            {
+                string connStr = DataLib.getConnectionString(); // Your connection string
+                con = new SqlConnection(connStr);
+                cmd = new SqlCommand(StoredProcedures.sp_GetState, con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                da = new SqlDataAdapter(cmd);
+                da.Fill(dtState);
+
+                return dtState;
+            }
+            catch (Exception ex)
+            {
+                // Optional: log exception
+                return null;
+            }
+            finally
+            {
+                if (da != null)
+                    da.Dispose();
+                if (cmd != null)
+                    cmd.Dispose();
+                if (con != null)
+                {
+                    if (con.State != ConnectionState.Closed)
+                        con.Close();
+                    con.Dispose();
+                }
+                if (dtState != null)
+                    dtState.Dispose(); // Optional: only if you don’t return it
+            }
+        }
+        public int fnInsertGroup_GroupBookingRequest(Group_GroupBookingRequest request)
+        {
+            int status = 0;
+
+            try
+            {
+                using (SqlConnection con = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.insert_Group_GroupBookingRequest, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add input parameters
+                    cmd.Parameters.AddWithValue("@TourName", (object)request.TourName ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TourId", (object)request.TourId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@GroupLeaderName", (object)request.GroupLeaderName ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@NoofAdults", (object)request.NoofAdults ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@NoofChilds", (object)request.NoofChilds ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@BusType", (object)request.BusType ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DepartureDate", (object)request.DepartureDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ArrivalDate", (object)request.ArrivalDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Accommodation", (object)request.Accommodation ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Food", (object)request.Food ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Address", (object)request.Address ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@City", (object)request.City ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@State", (object)request.State ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PinCode", (object)request.PinCode ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PhoneNo", (object)request.PhoneNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@MobileNo", (object)request.MobileNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Emailid", (object)request.Emailid ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AgentId", (object)request.AgentId ?? DBNull.Value);
+
+                    // Add output parameter
+                    SqlParameter outputParam = new SqlParameter("@O_Id", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    // Open and execute
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    // Read the output parameter
+                    status = Convert.ToInt32(outputParam.Value);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle/log the exception as needed
+                status = -1; // You can define custom error codes
+            }
+
+            return status;
+        }
+        public int fnInsertPaymentHDFCPG(
+ string lPaymentID, string lOrderID, string lEmailId, string lAuth,
+ decimal lAmount, string lRef, string lTranID, string lTrackID, string lPostDate,
+ string lResult, string lErrorText, string lUDF1, string lUDF2, string lUDF3,
+ string lUDF4, string lUDF5, string lUDF6, string lSectionName)
+        {
+            int returnValue = 0;
+
+            string connStr = DataLib.getConnectionString(); // Your method for connection string
+
+            using (SqlConnection conn = new SqlConnection(connStr))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.InsertPaymentHDFCPG_SP, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Input Parameters
+                cmd.Parameters.AddWithValue("@I_PaymentID", lPaymentID);
+                cmd.Parameters.AddWithValue("@I_OrderID", lOrderID);
+                cmd.Parameters.AddWithValue("@I_EmailID", lEmailId);
+                cmd.Parameters.AddWithValue("@I_Auth", lAuth);
+                cmd.Parameters.AddWithValue("@I_Amount", lAmount);
+                cmd.Parameters.AddWithValue("@I_Ref", lRef);
+                cmd.Parameters.AddWithValue("@I_TranID", lTranID);
+                cmd.Parameters.AddWithValue("@I_TrackID", lTrackID);
+                cmd.Parameters.AddWithValue("@I_PostDate", lPostDate);
+                cmd.Parameters.AddWithValue("@I_Result", lResult);
+                cmd.Parameters.AddWithValue("@I_ErrorText", lErrorText);
+                cmd.Parameters.AddWithValue("@I_Udf1", lUDF1);
+                cmd.Parameters.AddWithValue("@I_Udf2", lUDF2);
+                cmd.Parameters.AddWithValue("@I_Udf3", lUDF3);
+                cmd.Parameters.AddWithValue("@I_Udf4", lUDF4);
+                cmd.Parameters.AddWithValue("@I_Udf5", lUDF5);
+                cmd.Parameters.AddWithValue("@I_Udf6", lUDF6);
+                cmd.Parameters.AddWithValue("@I_SectionName", lSectionName);
+
+                // Output parameter
+                SqlParameter outputParam = new SqlParameter("@I_RetrunValue", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputParam);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    returnValue = Convert.ToInt32(outputParam.Value);
+                }
+                catch (Exception ex)
+                {
+                    // Optionally log the error
+                    returnValue = -2;
+                }
+            }
+
+            return returnValue;
+        }
+        public int fninsert_tbl_PaymentDetails(string lOrderID, string lItemCode, decimal? lAmount, string lBankName, char? lIsPaid, string lGatewayBID,
+  string lOrderDetail, string lCurrency, string lPayMode, decimal lCcChargeAmt, bool? lIsHDFC, string lIP, decimal? lTotalAmt, string EMIMonth, string SectionName)
+        {
+            int result = -1;
+
+            using (SqlConnection con = new SqlConnection(DataLib.getConnectionString()))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.insert_tbl_PaymentDetails, con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@orderId", string.IsNullOrEmpty(lOrderID) ? (object)DBNull.Value : lOrderID);
+                        cmd.Parameters.AddWithValue("@itemCode", string.IsNullOrEmpty(lItemCode) ? (object)DBNull.Value : lItemCode);
+                        cmd.Parameters.AddWithValue("@Amount", lAmount.HasValue ? (object)lAmount.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@BankName", string.IsNullOrEmpty(lBankName) ? (object)DBNull.Value : lBankName);
+                        cmd.Parameters.AddWithValue("@IsPaid", lIsPaid.HasValue ? (object)lIsPaid.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@gatewayBID", string.IsNullOrEmpty(lGatewayBID) ? (object)DBNull.Value : lGatewayBID);
+                        cmd.Parameters.AddWithValue("@orderDetails", string.IsNullOrEmpty(lOrderDetail) ? (object)DBNull.Value : lOrderDetail);
+                        cmd.Parameters.AddWithValue("@currency", string.IsNullOrEmpty(lCurrency) ? (object)DBNull.Value : lCurrency);
+                        cmd.Parameters.AddWithValue("@payMode", string.IsNullOrEmpty(lPayMode) ? (object)DBNull.Value : lPayMode);
+                        cmd.Parameters.AddWithValue("@ccChargeAmt", lCcChargeAmt); // assuming always passed
+                        cmd.Parameters.AddWithValue("@isHDFC", lIsHDFC.HasValue ? (object)lIsHDFC.Value : DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ip", string.IsNullOrEmpty(lIP) ? (object)DBNull.Value : lIP);
+                        cmd.Parameters.AddWithValue("@EMIMonth", string.IsNullOrEmpty(EMIMonth) ? (object)DBNull.Value : EMIMonth);
+                        cmd.Parameters.AddWithValue("@SectionName", string.IsNullOrEmpty(SectionName) ? (object)DBNull.Value : SectionName);
+                        cmd.Parameters.AddWithValue("@TotalAmount", lTotalAmt.HasValue ? (object)lTotalAmt.Value : DBNull.Value);
+
+                        con.Open();
+                        result = cmd.ExecuteNonQuery();
+                    }
+                }
+                catch (Exception)
+                {
+                    result = -1;
+                }
+            }
+
+            return result;
+        }
+        public string fnGetCABpnr()
+        {
+            string lReturnValue = "";
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCABpnr_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Output parameter
+                        SqlParameter outputParam = new SqlParameter("@ReturnValue", SqlDbType.VarChar, 50)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        // Execute
+                        cmd.ExecuteNonQuery();
+
+                        // Read output
+                        lReturnValue = outputParam.Value != DBNull.Value ? outputParam.Value.ToString() : "0";
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lReturnValue = "0"; // or log ex
+                }
+            }
+
+            return lReturnValue;
+        }
+        //public DataTable fncar_perkm_display_IsAC(int? lCarID)
+        //{
+        //    DataTable ldtRecSet = new DataTable();
+
+        //    using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+        //    {
+        //        try
+        //        {
+        //            conn.Open();
+
+        //            using (SqlCommand cmd = new SqlCommand(StoredProcedures.car_perkm_display_IsAC, conn))
+        //            {
+        //                cmd.CommandType = CommandType.StoredProcedure;
+
+        //                // Input parameter
+        //                cmd.Parameters.AddWithValue("@CarId", (object)lCarID ?? DBNull.Value);
+
+        //                // Use SqlDataAdapter to fill DataTable
+        //                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+        //                {
+        //                    da.Fill(ldtRecSet);
+        //                }
+        //            }
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            return null;
+        //        }
+        //    }
+
+        //    return ldtRecSet;
+        //}
+        public DataTable fncar_perkm_display(int? lCityID, int lCompanyID)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.car_perkm_display, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Add input parameters
+                        cmd.Parameters.AddWithValue("@cityid", (object)lCityID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@I_CompanyID", lCompanyID);
+
+                        // Fill DataTable with results
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Optionally log error
+                    return null;
+                }
+            }
+
+            return ldtRecSet;
+        }
+        public DataTable fnGetCarPerKMFareMaster(int? lCityID, int? lCarID, int lCompanyID)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCarPerKMFareMaster_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Add parameters
+                        cmd.Parameters.AddWithValue("@CityID", (object)lCityID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@CarID", (object)lCarID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@I_CompanyID", lCompanyID);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Optionally log exception
+                    return null;
+                }
+            }
+
+            return ldtRecSet;
+        }
+        public int fnInsertCarTailermade_perkm_log(tbl_CarTailermade_log pclsCarTailermade_log_tbl)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                try
+                {
+                    conn.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.insert_tbl_CarTailermade_perkm_log, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Add parameters with null checks
+                        cmd.Parameters.AddWithValue("@CabId", (object)pclsCarTailermade_log_tbl.CabId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@CityId", (object)pclsCarTailermade_log_tbl.CityId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Tourname", (object)pclsCarTailermade_log_tbl.Tourname ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@VehicleId", (object)pclsCarTailermade_log_tbl.VehicleId ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Noofpax", (object)pclsCarTailermade_log_tbl.Noofpax ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Ac", (object)pclsCarTailermade_log_tbl.Ac ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@StartDate", (object)pclsCarTailermade_log_tbl.StartDate ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@EndDate", (object)pclsCarTailermade_log_tbl.EndDate ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PickupAddress", (object)pclsCarTailermade_log_tbl.PickupAddress ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@DropAddress", (object)pclsCarTailermade_log_tbl.DropAddress ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PlacesCovered", (object)pclsCarTailermade_log_tbl.PlacesCovered ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Islumpsum", (object)pclsCarTailermade_log_tbl.Islumpsum ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Amount", (object)pclsCarTailermade_log_tbl.Amount ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@STax", (object)pclsCarTailermade_log_tbl.STax ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PerKmFare", (object)pclsCarTailermade_log_tbl.PerKmFare ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ApproxKm", (object)pclsCarTailermade_log_tbl.ApproxKm ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@ApproxDays", (object)pclsCarTailermade_log_tbl.ApproxDays ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@NightHalt", (object)pclsCarTailermade_log_tbl.NightHalt ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@DriverReward", (object)pclsCarTailermade_log_tbl.DriverReward ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Advance", (object)pclsCarTailermade_log_tbl.Advance ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@UserName", (object)pclsCarTailermade_log_tbl.UserName ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@BranchCode", (object)pclsCarTailermade_log_tbl.BranchCode ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@isdiscount", (object)pclsCarTailermade_log_tbl.isdiscount ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@noofnighthalts", (object)pclsCarTailermade_log_tbl.noofnighthalts ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@noofdriverrewards", (object)pclsCarTailermade_log_tbl.noofdriverrewards ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@MinKmPerDay", (object)pclsCarTailermade_log_tbl.MinKmPerDay ?? DBNull.Value);
+
+                        lStatus = Convert.ToInt32(cmd.ExecuteNonQuery());
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lStatus = -2; // error
+                }
+            }
+
+            return lStatus;
+        }
+        public DataTable fnCar_SubTransfertypes(int? pTransferID)
+        {
+            DataTable dtSubTransferTypes = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.Car_SubTransfertypes, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@transferid", (object)pTransferID ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        try
+                        {
+                            conn.Open();
+                            da.Fill(dtSubTransferTypes);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Log or handle the error as needed
+                            return null;
+                        }
+                    }
+                }
+            }
+
+            return dtSubTransferTypes;
         }
 
     }

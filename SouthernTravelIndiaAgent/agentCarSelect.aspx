@@ -291,13 +291,13 @@
                             <table border="0" cellpadding="0" cellspacing="0">
                                 <tr>
                                     <td align="left">
-                                        <img src="Assets/images/left_corner.gif" width="8" height="8" alt="image" />
+                                        <img  loading="lazy"  src="Assets/images/left_corner.gif" width="8" height="8" alt="left_corner" />
                                     </td>
                                     <td bgcolor="#E7E7E7">
-                                        <img src="Assets/images/trans.gif" width="280" height="1" alt="image" />
+                                        <img  loading="lazy"  src="Assets/images/trans.gif" width="280" height="1" alt="trans" />
                                     </td>
                                     <td align="right">
-                                        <img src="Assets/images/rgt_corner.gif" width="8" height="8" alt="image" />
+                                        <img  loading="lazy"  src="Assets/images/rgt_corner.gif" width="8" height="8" alt="rgt_corner" />
                                     </td>
                                 </tr>
                                 <tr>
@@ -310,7 +310,7 @@
                                             <tr>
                                                 <td align="Left" width="100%" style="vertical-align: top">
                                                     <div align="Left" style="background-color: Transparent">
-                                                        <img src="Assets/images/rentacar.jpg" />
+                                                        <img  loading="lazy" alt="rentacar" src="Assets/images/rentacar.jpg" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -320,7 +320,7 @@
                                             </tr>
                                             <tr style="border: 0; border-color: White;">
                                                 <td align="left">
-                                                    <img src="Assets/images/3.GIF" />
+                                                    <img  loading="lazy" alt="3" src="Assets/images/3.GIF" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -334,7 +334,7 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td align="center" bgcolor="#5aa1ea" class="cgi1" height="35">
-                                                                        <%--   <img src="Assets/images/carrentaldetail.jpg" />--%>
+                                                                        <%--   <img  loading="lazy" alt="" src="Assets/images/carrentaldetail.jpg" />--%>
                                                                         Car Rental Details<br />
                                                                     </td>
                                                                     <%-- <td class="mandatory" align="right" style="height: 25px">
@@ -351,7 +351,7 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td style="margin: 0pt 10px; width: 150px; height: 57px;" align="center">
-                                                                        <img src="Assets/images/car1.jpg" />
+                                                                        <img  loading="lazy" alt="car1" src="Assets/images/car1.jpg" />
                                                                     </td>
                                                                     <td class="pad2" align="left" style="height: 57px">
                                                                         <p>
@@ -488,23 +488,23 @@
                                                             <tbody>
                                                                 <tr style="display: none">
                                                                     <td style="width: 4px">
-                                                                        <img src="Assets/images/bullet.gif" alt="image" />
+                                                                        <img  loading="lazy" src="Assets/images/bullet.gif" alt="bullet" />
                                                                     </td>
                                                                     <td style="width: 258px" align="left">
                                                                     </td>
                                                                     <td style="width: 15px">
-                                                                        <img src="Assets/images/bullet.gif" alt="image" />
+                                                                        <img  loading="lazy"  src="Assets/images/bullet.gif" alt="bullet" />
                                                                     </td>
                                                                     <td align="left">
                                                                 </tr>
                                                                 <tr style="display: none">
                                                                     <td style="width: 4px; height: 19px;">
-                                                                        <img src="Assets/images/bullet.gif" alt="image" />
+                                                                        <img  loading="lazy" src="Assets/images/bullet.gif" alt="bullet" />
                                                                     </td>
                                                                     <td style="width: 258px; height: 19px;" align="left">
                                                                     </td>
                                                                     <td style="width: 15px; height: 18px;">
-                                                                        <img src="Assets/images/bullet.gif" alt="image" />
+                                                                        <img  loading="lazy" src="Assets/images/bullet.gif" alt="bullet" />
                                                                     </td>
                                                                     <td align="left">
                                                                     </td>
@@ -575,7 +575,7 @@
                                                                             <td>
                                                                                 <a title="Pick up date" href="javascript:void(null)" onclick="objCal('DepartIcon','ddate','360','160');"
                                                                                     hidefocus="">
-                                                                                    <img alt="Calendar" id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0"
+                                                                                    <img  loading="lazy"  alt="Calendar" id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0"
                                                                                         style="visibility: visible; padding-bottom: 0px;" /></a>
                                                                             </td>
                                                                         </tr>
@@ -750,13 +750,13 @@
                                 </tr>
                                 <tr>
                                     <td align="left">
-                                        <img src="Assets/images/left_d_corner.gif" width="8" height="8" alt="image" />
+                                        <img  loading="lazy"  src="Assets/images/left_d_corner.gif" width="8" height="8" alt="left_d_corner" />
                                     </td>
                                     <td bgcolor="#E7E7E7">
-                                        <img src="Assets/images/trans.gif" width="1" height="1" alt="image" />
+                                        <img  loading="lazy"  src="Assets/images/trans.gif" width="1" height="1" alt="trans" />
                                     </td>
                                     <td align="right">
-                                        <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="image" />
+                                        <img  loading="lazy"  src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="rgt_d_corner" />
                                     </td>
                                 </tr>
                             </table>

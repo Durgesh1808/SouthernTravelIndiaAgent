@@ -11,7 +11,13 @@ namespace SouthernTravelIndiaAgent.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Request.UrlReferrer == null)
+            {
+            }
+            if (Request.UserAgent.IndexOf("AppleWebKit") > 0)
+                Request.Browser.Adapters.Clear();
+            Menu1.DynamicHoverStyle.ForeColor = System.Drawing.Color.Black;
+            //  Response.Write(System.Net.Dns.GetHostByName(Environment.MachineName).AddressList[0].ToString());   
         }
     }
 }

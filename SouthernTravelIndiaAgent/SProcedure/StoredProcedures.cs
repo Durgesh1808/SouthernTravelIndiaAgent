@@ -79,5 +79,15 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string sp_Car_LocalTransfer = "sp_Car_LocalTransfer";
         public const string sp_Car_GetFixedTour = "sp_Car_GetFixedTour";
         public const string sp_Car_LocalSubTransfer = "sp_Car_LocalSubTransfer";
+        public const string sp_GetState= "sp_GetState";
+        public const string insert_Group_GroupBookingRequest = "insert_Group_GroupBookingRequest";
+        public const string InsertPaymentHDFCPG_SP = "InsertPaymentHDFCPG_SP";
+        public const string insert_tbl_PaymentDetails = "insert_tbl_PaymentDetails";
+        public const string GetCABpnr_sp = "GetCABpnr_sp";
+        public const string car_perkm_display = "car_perkm_display";
+        public const string car_perkm_display_IsAC = "car_perkm_display_IsAC";
+        public const string GetCarPerKMFareMaster_sp = "GetCarPerKMFareMaster_sp";
+        public const string insert_tbl_CarTailermade_perkm_log = "insert_tbl_CarTailermade_perkm_log";
+        public const string Car_SubTransfertypes = "Car_SubTransfertypes";
     }
 }

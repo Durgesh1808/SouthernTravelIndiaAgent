@@ -13,6 +13,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Reflection;
 using System.Web;
+using System.Web.Mail;
 using System.Web.UI;
 
 namespace SouthernTravelIndiaAgent.BAL
@@ -312,6 +313,7 @@ namespace SouthernTravelIndiaAgent.BAL
                 System.Diagnostics.Debug.WriteLine("SendMail Exception: " + ex.ToString());
             }
         }
+
         public static void sendmail(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName)
         {
             // Ensure TLS 1.2 is used
@@ -859,6 +861,6 @@ namespace SouthernTravelIndiaAgent.BAL
             DescriptionAttribute[] array = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false);
             return (array.Length > 0) ? array[0].Description : pValue.ToString();
         }
-
+    
     }
 }

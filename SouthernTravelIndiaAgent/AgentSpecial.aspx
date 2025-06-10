@@ -58,11 +58,11 @@
         <table width="276" height="429" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="260" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="260" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
             </tr>
             <tr>
                 <td align="left" bgcolor="#E7E7E7">
@@ -71,7 +71,7 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0" height="415">
                         <tr>
                             <td width="100%" valign="top">
-                                <img src="Assets/images/flight_img.gif" alt="Build Your Package" width="260" height="81"
+                                <img  loading="lazy" alt="flight_img" src="Assets/images/flight_img.gif" alt="Build Your Package" width="260" height="81"
                                     border="0" usemap="#Map1" /></td>
                         </tr>
                         <tr>
@@ -108,7 +108,7 @@
                                     <tr class="verdana11bk">
                                         <td colspan="3" align="center">
                                             <div id="imgWait" style="display:none;">
-                                                                <img width="33px" height="33px"  src="Assets/images/wait_spinner.gif" alt="" /><br />
+                                                                <img  loading="lazy" alt="wait_spinner" width="33px" height="33px"  src="Assets/images/wait_spinner.gif" alt="" /><br />
                                                                 Please wait...
                                              </div>
                                          </td>   
@@ -131,11 +131,11 @@
             </tr>
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
             </tr>
         </table>
          <map name="Map1" id="Map1">

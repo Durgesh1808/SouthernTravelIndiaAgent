@@ -1477,11 +1477,11 @@ function IMG1_onclick() {
         <table width="276" height="409" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="260" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="260" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
             </tr>
             <tr>
                 <td align="left" bgcolor="#E7E7E7">
@@ -1490,7 +1490,7 @@ function IMG1_onclick() {
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td width="100%">
-                                <img src="Assets/images/hotel_img.gif" width="260" height="81" border="0" usemap="#Map"
+                                <img  loading="lazy" alt="hotel_img" src="Assets/images/hotel_img.gif" width="260" height="81" border="0" usemap="#Map"
                                     id="IMG1" language="javascript" onclick="return IMG1_onclick()" /></td>
                         </tr>
                         <tr>
@@ -1643,7 +1643,7 @@ function IMG1_onclick() {
                                                                             <td valign="center" align="left">
                                                                                 <!-- 
                                                                                <a name="anchor51" href="#" onclick="getmonth51();cal51.showCalendar('anchor51',getDateString(document.searchform.strCheckinyear,document.searchform.strCheckinmonth,document.searchform.strCheckindate,'1')); return false;" id="anchor10">
-                                                                                <img width="18" height="14" border="0" src="Assets/images/hotels_calendar.jpg" onmouseover="if(!document.all){style.cursor='pointer'};style.cursor='hand';"/> 
+                                                                                <img  loading="lazy" alt="" width="18" height="14" border="0" src="Assets/images/hotels_calendar.jpg" onmouseover="if(!document.all){style.cursor='pointer'};style.cursor='hand';"/> 
                                                                                </a>
                                                                             -->
                                                                                 <div style="background: rgb(143, 184, 245) none repeat scroll 0%; font-size: 5pt;
@@ -1735,7 +1735,7 @@ function IMG1_onclick() {
                                                                                 </select>
                                                                             </td>
                                                                             <td valign="center" align="left">
-                                                                                <!--<a name="anchor52" href="#" onclick="getmonthout52();cal52.showCalendar('anchor52',getDateString(document.searchform.strCheckoutyear,document.searchform.strCheckoutmonth,document.searchform.strCheckoutdate,'1')); return false;" id="anchor11"><img width="18" height="14" border="0" src="Assets/images/hotels_calendar.jpg" onmouseover="if(!document.all){style.cursor='pointer'};style.cursor='hand';"/> </a>-->
+                                                                                <!--<a name="anchor52" href="#" onclick="getmonthout52();cal52.showCalendar('anchor52',getDateString(document.searchform.strCheckoutyear,document.searchform.strCheckoutmonth,document.searchform.strCheckoutdate,'1')); return false;" id="anchor11"><img  loading="lazy" alt="" width="18" height="14" border="0" src="Assets/images/hotels_calendar.jpg" onmouseover="if(!document.all){style.cursor='pointer'};style.cursor='hand';"/> </a>-->
                                                                                 <div style="background: rgb(143, 184, 245) none repeat scroll 0%; font-size: 5pt;
                                                                                     -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;
                                                                                     visibility: hidden; font-family: courier; position: absolute;" id="testdiv2" />
@@ -1992,7 +1992,7 @@ function IMG1_onclick() {
                                                                                     <tr>
                                                                                         <td width="12%" nowrap="nowrap" class="tabwht">
                                                                                             <strong>
-                                                                                                <img width="1" height="22" src="Assets/images/blank.gif" />Room 1</strong></td>
+                                                                                                <img  loading="lazy" alt="blank" width="1" height="22" src="Assets/images/blank.gif" />Room 1</strong></td>
                                                                                         <td>
                                                                                             <table>
                                                                                                 <tr>
@@ -2089,7 +2089,7 @@ function IMG1_onclick() {
                                                                                     <tr>
                                                                                         <td width="12%" nowrap="nowrap" class="tabwht">
                                                                                             <strong>
-                                                                                                <img width="1" height="22" src="Assets/images/blank.gif" />Room 2</strong></td>
+                                                                                                <img  loading="lazy" alt="blank" width="1" height="22" src="Assets/images/blank.gif" />Room 2</strong></td>
                                                                                         <td>
                                                                                             <table>
                                                                                                 <tr>
@@ -2186,7 +2186,7 @@ function IMG1_onclick() {
                                                                                     <tr>
                                                                                         <td width="12%" nowrap="nowrap" class="tabwht">
                                                                                             <strong>
-                                                                                                <img width="1" height="22" src="Assets/images/blank.gif" />Room 3</strong></td>
+                                                                                                <img  loading="lazy" alt="blank" width="1" height="22" src="Assets/images/blank.gif" />Room 3</strong></td>
                                                                                         <td>
                                                                                             <table class="txtwht">
                                                                                                 <tr>
@@ -2283,7 +2283,7 @@ function IMG1_onclick() {
                                                                                     <tr>
                                                                                         <td width="12%" nowrap="nowrap" class="tabwht">
                                                                                             <strong>
-                                                                                                <img width="1" height="22" src="Assets/images/blank.gif" />Room 4</strong></td>
+                                                                                                <img  loading="lazy" alt="blank" width="1" height="22" src="Assets/images/blank.gif" />Room 4</strong></td>
                                                                                         <td>
                                                                                             <table class="txtwht">
                                                                                                 <tr>
@@ -2413,11 +2413,11 @@ function IMG1_onclick() {
             </tr>
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
             </tr>
         </table>
     </form>

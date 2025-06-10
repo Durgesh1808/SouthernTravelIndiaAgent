@@ -52,11 +52,11 @@
                         <tbody>
                             <tr>
                                 <td align="left">
-                                    <img width="8" height="8" src="Assets/images/left_corner.gif" /></td>
+                                    <img  loading="lazy" alt="left_corner" width="8" height="8" src="Assets/images/left_corner.gif" /></td>
                                 <td bgcolor="#e7e7e7">
-                                    <img width="280" height="1" src="Assets/images/trans.gif" /></td>
+                                    <img  loading="lazy" alt="trans" width="280" height="1" src="Assets/images/trans.gif" /></td>
                                 <td align="right">
-                                    <img width="8" height="8" src="Assets/images/rgt_corner.gif" /></td>
+                                    <img  loading="lazy" alt="rgt_corner" width="8" height="8" src="Assets/images/rgt_corner.gif" /></td>
                             </tr>
                             <tr>
                                 <td bgcolor="#e7e7e7" align="left">
@@ -70,7 +70,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="right">
-                                                    <img width="1" height="1" src="Assets/images/trans.gif" /></td>
+                                                    <img  loading="lazy" alt="" width="1" height="1" src="Assets/images/trans.gif" /></td>
                                             </tr>
                                             <tr>
                                                 <td valign="top" align="center">
@@ -141,7 +141,7 @@
                                             </tr>
                                             <tr>
                                                 <td align="left">
-                                                    <img width="1" height="1" src="Assets/images/trans.gif" /></td>
+                                                    <img  loading="lazy" alt="trans" width="1" height="1" src="Assets/images/trans.gif" /></td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -151,11 +151,11 @@
                             </tr>
                             <tr>
                                 <td align="left" style="height: 8px">
-                                    <img width="8" height="8" src="Assets/images/left_d_corner.gif" /></td>
+                                    <img  loading="lazy" alt="left_d_corner" width="8" height="8" src="Assets/images/left_d_corner.gif" /></td>
                                 <td bgcolor="#e7e7e7" style="height: 8px">
-                                    <img width="1" height="1" src="Assets/images/trans.gif" /></td>
+                                    <img  loading="lazy" alt="trans" width="1" height="1" src="Assets/images/trans.gif" /></td>
                                 <td align="right" style="height: 8px">
-                                    <img width="8" height="8" src="Assets/images/rgt_d_corner.gif" /></td>
+                                    <img  loading="lazy" alt="rgt_d_corner" width="8" height="8" src="Assets/images/rgt_d_corner.gif" /></td>
                             </tr>
                         </tbody>
                     </table>

@@ -197,7 +197,7 @@ namespace SouthernTravelIndiaAgent.UserControls
                             <td colspan=""#ImgColSpan"" align=""right"">
 
                                 <a href=http://www.southerntravelsindia.com/download.aspx?file=spltour" + fldTourID + @".pdf >Download e-Broucher
-                                 <img src=http://www.southerntravelsindia.com/Assets/images/pdf.gif alt=""image"" border=""0""/></a>&nbsp;
+                                 <img src=http://www.southerntravelsindia.com/Assets/images/pdf.gif alt=""pdf"" border=""0""/></a>&nbsp;
                                   <input id=""Button1"" style=""FONT-SIZE: 11px; COLOR: #333333; FONT-FAMILY: Arial; 
                                    BACKGROUND-COLOR: #eeeeee;BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; FONT-WEIGHT: bold; BORDER-LEFT: #000000 1px solid; WIDTH: 76px;
                                    BORDER-BOTTOM: #000000 1px solid; HEIGHT: 24px; BACKGROUND-COLOR: #ffd21e;"" 
@@ -214,7 +214,7 @@ namespace SouthernTravelIndiaAgent.UserControls
                         pvEBroucherEndUser = @"<tr style="""">
                             <td colspan=""#ImgColSpan"" align=""right"">
                         <a href=http://www.southerntravelsindia.com/download.aspx?file=spltour" + fldTourID + @".pdf >Download e-Broucher
-                                 <img src=http://www.southerntravelsindia.com/Assets/images/pdf.gif alt=""image"" border=""0""/></a>&nbsp;
+                                 <img src=http://www.southerntravelsindia.com/Assets/images/pdf.gif alt=""pdf"" border=""0""/></a>&nbsp;
                     <img id=""Button" + fldTourID.ToString() + @""" alt="""" 
                         style=""cursor: pointer"" src=""Assets/images/btn_bookNow.gif""
                         onclick=""Javascript:window.location.href='BookSpecialTour.aspx?TourID=" + fldTourID.ToString() + "&jdate=" + fldJourneyDate + @"'""

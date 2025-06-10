@@ -154,5 +154,46 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+        public static int PaymentTable_Entry_hdfc(string pOrderID, string pItemCode, decimal pAmount, string pBankName,
+    char pPaidStatus, string pPayMode, char pIsHdfc, string EMIMonth, string SectionName)
+        {
+            #region Optimize Code
+            /*SqlParameter[] param = new SqlParameter[13];
+            param[0] = new SqlParameter("@orderId", pOrderID);
+            param[1] = new SqlParameter("@itemCode", pItemCode);
+            param[2] = new SqlParameter("@Amount", pAmount);
+            param[3] = new SqlParameter("@BankName", pBankName);
+            param[4] = new SqlParameter("@IsPaid", pPaidStatus);
+            param[5] = new SqlParameter("@gatewayBID", "");
+            param[6] = new SqlParameter("@orderDetails", "");
+            param[7] = new SqlParameter("@currency", "INR");
+            param[8] = new SqlParameter("@payMode", pPayMode);       
+            param[9] = new SqlParameter("@ccChargeAmt", Convert.ToDecimal("0"));
+            param[10] = new SqlParameter("@isHDFC", pIsHdfc);
+            param[11] = new SqlParameter("@ip", Convert.ToString(HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]));
+            param[12] = new SqlParameter("@TotalAmount", pAmount);
+            return DataLib.InsStoredProcData("insert_tbl_PaymentDetails", param);*/
+            #endregion
+            ClsAdo pclsObj = null;
+            try
+            {
+                pclsObj = new ClsAdo();
+                bool lIsHdfc = false;
+                int? lStatus = 0;
+                if (pIsHdfc == '1')
+                    lIsHdfc = true;
+                int val = pclsObj.fninsert_tbl_PaymentDetails(pOrderID, pItemCode, pAmount, pBankName, pPaidStatus,
+                               "", "", "INR", pPayMode, Convert.ToDecimal("0"), lIsHdfc,
+                               Convert.ToString(HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"]), pAmount, EMIMonth, SectionName);
+                return val;
+            }
+            finally
+            {
+                if (pclsObj != null)
+                {
+                    pclsObj = null;
+                }
+            }
+        }
     }
 }

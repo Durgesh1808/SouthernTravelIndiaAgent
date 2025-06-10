@@ -152,11 +152,11 @@
                                                 <tbody>
                                                     <tr>
                                                         <td width="6" valign="top" align="left">
-                                                            <img width="6" height="5" border="0" src="images/board1.gif" />
+                                                            <img  loading="lazy" alt="board1" width="6" height="5" border="0" src="images/board1.gif" />
                                                         </td>
                                                         <td valign="top" background="images/board_top.gif" align="left" />
                                                         <td>
-                                                            <img width="5" height="5" border="0" src="images/board2.gif" />
+                                                            <img  loading="lazy" alt="board2" width="5" height="5" border="0" src="images/board2.gif" />
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -235,7 +235,7 @@
                                                                                                                                         <tbody>
                                                                                                                                             <tr>
                                                                                                                                                 <td width="10%" height="22" align="left" valign="top" bgcolor="#FFFFFF">
-                                                                                                                                                    <img src="<%# DataBinder.Eval(Container.DataItem, "Image") %>" width="90" height="90" />
+                                                                                                                                                    <img  loading="lazy" alt="images" src="<%# DataBinder.Eval(Container.DataItem, "Image") %>" width="90" height="90" />
                                                                                                                                                 </td>
                                                                                                                                                 <td width="90%" align="left">
                                                                                                                                                     <b>
@@ -379,7 +379,7 @@
                                                                                                                                                         </td>
                                                                                                                                                         <td valign="top" align="center" width="83%" style="background-color:#FFFEEC">
                                                                                                                                                             <asp:Image runat="server" ID="ImgUrl" />
-                                                                                                                                                            <%--<img  width="330px" height="330px" id="ImgUrl_TabPhotos" />--%>
+                                                                                                                                                            <%--<img  loading="lazy" alt=""  width="330px" height="330px" id="ImgUrl_TabPhotos" />--%>
                                                                                                                                                         </td>
                                                                                                                                                     </tr>
                                                                                                                                                 </table>
@@ -445,16 +445,16 @@
                                                             <br />
                                                         </td>
                                                         <td height="113" background="images/board_rt.gif">
-                                                            <img width="5" height="1" border="0" src="Assets/images/board_rt.gif" />
+                                                            <img  loading="lazy" alt="board_rt" width="5" height="1" border="0" src="Assets/images/board_rt.gif" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td width="6" height="5">
-                                                            <img width="6" height="5" border="0" src="images/board3.gif" />
+                                                            <img  loading="lazy" alt="board3" width="6" height="5" border="0" src="images/board3.gif" />
                                                         </td>
                                                         <td width="6" height="5" background="images/board_bot.gif" />
                                                         <td height="5">
-                                                            <img width="5" height="5" border="0" src="images/board4.gif" />
+                                                            <img  loading="lazy" alt="board4" width="5" height="5" border="0" src="images/board4.gif" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
