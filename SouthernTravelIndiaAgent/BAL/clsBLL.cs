@@ -9,8 +9,32 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    /// /// This class contains business logic methods related to agent validation.
+    /// </summary>
     public class clsBLL
     {
+        /// <summary>
+        /// /// This method validates an agent by checking their user ID against the database.
+        /// </summary>
+        /// <param name="pDescription"></param>
+        /// <param name="pName"></param>
+        /// <param name="pEmail"></param>
+        /// <param name="pPhone"></param>
+        /// <param name="pFax"></param>
+        /// <param name="pStreet"></param>
+        /// <param name="pCity"></param>
+        /// <param name="pZIP"></param>
+        /// <param name="pCountry"></param>
+        /// <param name="pAdults"></param>
+        /// <param name="pChild"></param>
+        /// <param name="pArrivalDate"></param>
+        /// <param name="pDeptDate"></param>
+        /// <param name="pRequestType"></param>
+        /// <param name="pRefNo"></param>
+        /// <param name="pCaptcha"></param>
+        /// <param name="pPanNo"></param>
+        /// <returns></returns>
         public static int EnquiryTable_Entry(string pDescription, string pName, string pEmail, string pPhone,
  string pFax, string pStreet, string pCity, string pZIP, string pCountry,
  int pAdults, int pChild, DateTime pArrivalDate, DateTime pDeptDate,
@@ -154,6 +178,20 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method inserts payment details into the PaymentDetails table for HDFC payments.
+        /// </summary>
+        /// <param name="pOrderID"></param>
+        /// <param name="pItemCode"></param>
+        /// <param name="pAmount"></param>
+        /// <param name="pBankName"></param>
+        /// <param name="pPaidStatus"></param>
+        /// <param name="pPayMode"></param>
+        /// <param name="pIsHdfc"></param>
+        /// <param name="EMIMonth"></param>
+        /// <param name="SectionName"></param>
+        /// <returns></returns>
         public static int PaymentTable_Entry_hdfc(string pOrderID, string pItemCode, decimal pAmount, string pBankName,
     char pPaidStatus, string pPayMode, char pIsHdfc, string EMIMonth, string SectionName)
         {

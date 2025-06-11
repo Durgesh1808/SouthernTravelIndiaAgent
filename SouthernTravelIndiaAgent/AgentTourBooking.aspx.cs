@@ -872,6 +872,15 @@ namespace SouthernTravelIndiaAgent
         }
         #endregion
         #region "Method(s)"
+
+        /// <summary>
+        /// //  
+        /// </summary>
+        /// <param name="pTourID"></param>
+        /// <param name="pDOJ"></param>
+        /// <param name="pUserType"></param>
+        /// <param name="pSeat"></param>
+        /// <returns></returns>
         private bool CheackSeatsForFD_Tour(int pTourID, DateTime pDOJ, int pUserType, int pSeat)
         {
             SqlConnection lConn = null;
@@ -957,6 +966,12 @@ namespace SouthernTravelIndiaAgent
             }
             return lFlag;
         }
+
+        /// <summary>
+        /// /// This method retrieves the pickup details based on the provided row ID.
+        /// </summary>
+        /// <param name="strRowId"></param>
+        /// <returns></returns>
         short oo(string strRowId)
         {
             ClsAdo pclsObj = null;
@@ -1002,6 +1017,12 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method retrieves the fare for a tour based on the journey date and tour ID.
+        /// </summary>
+        /// <param name="pJourneyDate"></param>
+        /// <param name="pTourID"></param>
         public void GetTourFare(DateTime pJourneyDate, int pTourID)
         {
             char lIsLTC = 'N';
@@ -2436,6 +2457,12 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+
+        /// <summary>
+        /// // This method fills the dropdown list with journey dates based on the selected tour number.
+        /// </summary>
+        /// <param name="TourNo"></param>
         private void fillddlJdate(int TourNo)
         {
             ddlJdate.Items.Clear();
@@ -2505,6 +2532,12 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+        /// <summary>
+        /// //  /// This method retrieves the pickup address and departure time for a given tour number.
+        /// </summary>
+        /// <param name="tourno"></param>
+        /// <returns></returns>
         private string Dispup(int tourno)
         {
             string pickup = "";
@@ -2720,6 +2753,12 @@ namespace SouthernTravelIndiaAgent
             return pickup;
 
         }
+
+        /// <summary>
+        /// /// Gets the available bus seats for a given bus serial number
+        /// </summary>
+        /// <param name="CurrentBusSerial"></param>
+        /// <returns></returns>
         private int GetAvailBusSeat(int CurrentBusSerial)
         {
 
@@ -2762,6 +2801,13 @@ namespace SouthernTravelIndiaAgent
             }
 
         }
+
+        /// <summary>
+        /// // Blocks the selected seats for a tour
+        /// </summary>
+        /// <param name="tstr"></param>
+        /// <param name="tserial"></param>
+        /// <returns></returns>
         private string doBlock(string tstr, int tserial)
         {
             string BlockedString, BlockedString1, BlockedString2, BlockedString3;
@@ -2821,6 +2867,12 @@ namespace SouthernTravelIndiaAgent
              * */
             #endregion
         }
+
+        /// <summary>
+        /// // Unblocks the seats that were previously blocked
+        /// </summary>
+        /// <param name="tstr"></param>
+        /// <param name="tserial"></param>
         private void doUnBlock(string tstr, int tserial)
         {
             optedSeatNos.Value = "";
@@ -2841,6 +2893,20 @@ namespace SouthernTravelIndiaAgent
             }*/
             #endregion
         }
+
+        /// <summary>
+        /// //  Calculate the total amount based on the number of adults, children, and other parameters
+        /// </summary>
+        /// <param name="adults"></param>
+        /// <param name="child"></param>
+        /// <param name="adultstwin"></param>
+        /// <param name="adultstriple"></param>
+        /// <param name="childbed"></param>
+        /// <param name="singleadults"></param>
+        /// <param name="dormitory"></param>
+        /// <param name="NoAWFood"></param>
+        /// <param name="NoCWFood"></param>
+        /// <returns></returns>
         private decimal CalCulateAmount(int adults, int child, int adultstwin, int adultstriple, int childbed, int singleadults, int dormitory, int NoAWFood, int NoCWFood)
         {
             if (tAACFAre == "")
@@ -2907,6 +2973,16 @@ namespace SouthernTravelIndiaAgent
             }
             return decimal.Round(amt);
         }
+
+
+        /// <summary>
+        /// //  Insert booking details into the database
+        /// </summary>
+        /// <param name="tourno"></param>
+        /// <param name="totpax"></param>
+        /// <param name="jdate"></param>
+        /// <param name="orderid"></param>
+        /// <param name="BusserialNo"></param>
         private void insertbook(int tourno, int totpax, System.DateTime jdate, string orderid, string BusserialNo)
         {
             decimal afare = 0;
@@ -3118,6 +3194,16 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+        /// <summary>
+        /// // Updates the booking details in the database.
+        /// </summary>
+        /// <param name="tourno"></param>
+        /// <param name="totpax"></param>
+        /// <param name="jdate"></param>
+        /// <param name="orderid"></param>
+        /// <param name="Rowid"></param>
+        /// <param name="BusserialNo"></param>
         private void updatebook(int tourno, int totpax, System.DateTime jdate, string orderid, int Rowid, string BusserialNo)
         {
             decimal afare = 0;
@@ -3301,6 +3387,14 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+
+        /// <summary>
+        /// // This method retrieves the serial number for a fixed tour based on the journey date and tour number.
+        /// </summary>
+        /// <param name="jdate"></param>
+        /// <param name="tourno"></param>
+        /// <returns></returns>
         private int TSerial(DateTime jdate, int tourno)
         {
             string hr = ConfigurationManager.AppSettings["AgentFixedTourHours"].ToString();
@@ -3332,6 +3426,15 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+
+        /// <summary>
+        /// // This method checks the availability of multiple buses for a given tour and journey date.
+        /// </summary>
+        /// <param name="sreq"></param>
+        /// <param name="tourno"></param>
+        /// <param name="jdate"></param>
+        /// <returns></returns>
         private string ChekAvailability1(int sreq, int tourno, System.DateTime jdate)
         {
             hlmsgerr.Text = "";
@@ -3441,6 +3544,14 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+        /// <summary>
+        /// // This method checks the availability of multiple buses for a given tour and date.
+        /// </summary>
+        /// <param name="sreq"></param>
+        /// <param name="tourno"></param>
+        /// <param name="jdate"></param>
+        /// <returns></returns>
         private string ChekAvailabilitymultiple(int sreq, int tourno, System.DateTime jdate)
         {
             hlmsgerr.Text = "";
@@ -3552,6 +3663,11 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+
+        /// <summary>
+        /// // This method refreshes the fare labels and other controls on the page.
+        /// </summary>
+
         private void refresh()
         {
             btncheckavail.Enabled = false;
@@ -3591,6 +3707,13 @@ namespace SouthernTravelIndiaAgent
             orderid = OrderIDH.Value;
             Tourno = Convert.ToInt32(Request.QueryString["Tourid"]);
         }
+
+
+        /// <summary>
+        /// // This method validates the discount for a given journey date and tour ID.
+        /// </summary>
+        /// <param name="jdate"></param>
+        /// <returns></returns>
         private string validateDiscount(string jdate)
         {
 
@@ -3672,6 +3795,13 @@ namespace SouthernTravelIndiaAgent
             }*/
             #endregion
         }
+
+
+        /// <summary>
+        /// // This method checks the bus type for a given journey date and tour ID.
+        /// </summary>
+        /// <param name="jdate"></param>
+        /// <returns></returns>
         private string ChkBusType(string jdate)
         {
             ClsAdo pClsLinq = null;
@@ -3747,6 +3877,13 @@ namespace SouthernTravelIndiaAgent
         //    //Random R = new Random();R.Next(100, 999).ToString()
         //    return Convert.ToString(tt) + System.DateTime.Now.Day.ToString("00") + System.DateTime.Now.Month.ToString("00") + System.DateTime.Now.Year + System.DateTime.Now.Minute.ToString("00") + System.DateTime.Now.Second.ToString("00") + System.DateTime.Now.Millisecond.ToString("000");
         //}
+
+        /// <summary>
+        /// // This method retrieves the number of vacant seats for a given tour number and journey date.
+        /// </summary>
+        /// <param name="tourno"></param>
+        /// <param name="jdate"></param>
+        /// <returns></returns>
         private string getvacantseats(int tourno, string jdate)
         {
             string vacantseats = "";
@@ -3798,6 +3935,13 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+
+        /// <summary>
+        /// //  This method checks for specific alerts based on the bus number, journey date, and tour number.
+        /// </summary>
+        /// <param name="BusNo"></param>
+        /// <param name="Jdate"></param>
+        /// <param name="Tourno"></param>
         private void GetAlertAccordingToBusNo(int BusNo, DateTime Jdate, int Tourno)
         {
             if (BusNo == 2 && Jdate == Convert.ToDateTime("06/26/2017") && Tourno == 123)
@@ -3806,6 +3950,13 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+
+        /// <summary>
+        /// // This method checks if the helicopter is available for a given tour and date.
+        /// </summary>
+        /// <param name="TourId"></param>
+        /// <param name="HelDat"></param>
+        /// <returns></returns>
         private bool IsHelicopterAvailable(int TourId, string HelDat)
         {
             bool ret = true;

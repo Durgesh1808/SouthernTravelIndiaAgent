@@ -18,6 +18,9 @@ using System.Web.UI;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    /// // This class contains common methods and enums used across the application.
+    /// </summary>
     public enum MailRequestFrom
     {
         Agent,
@@ -25,12 +28,19 @@ namespace SouthernTravelIndiaAgent.BAL
         Admin,
         Branch
     }
+    /// <summary>
+    /// // This class is used to encapsulate a list of data items along with a request status.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class DataListResponse<T>
     {
         public List<T> ResultList;
 
         public RequestStatus Status;
     }
+    /// <summary>
+    /// /// This enum defines various exception codes used in the application.
+    /// </summary>
     public enum pbException
     {
         [Description("Success")]
@@ -62,6 +72,10 @@ namespace SouthernTravelIndiaAgent.BAL
         [Description("Date collapsing with previous date range.")]
         ERR_DATE_COLLAPSE = 1013
     }
+
+    /// <summary>
+    /// /// This struct is used to encapsulate the status of a request, including whether it was successful, an error number, and a description of the error.
+    /// </summary>
     public struct RequestStatus
     {
         public bool Status;
@@ -70,6 +84,10 @@ namespace SouthernTravelIndiaAgent.BAL
 
         public string ErrDesc;
     }
+
+    /// <summary>
+    /// /// This enum defines the status of an email sent from the application.
+    /// </summary>
     public enum MailStatus
     {
         Sent,
@@ -77,8 +95,10 @@ namespace SouthernTravelIndiaAgent.BAL
         Queued,
         Bounced
     }
+
+
     /// <summary>
-    /// Tour Type enum
+    /// /// This enum defines the types of tours available in the application.
     /// </summary>
     public enum TOURTYPE
     {
@@ -121,13 +141,17 @@ namespace SouthernTravelIndiaAgent.BAL
         [Description("MBK")]
         MBK_Booking = 19,
     }
+
+    /// <summary>
+    /// /// This class contains common methods used across the application, such as date format conversion and alert messages.
+    /// </summary>
     public class ClsCommon
     {
 
         /// <summary>
         /// Convert Date Formate from MM/dd/yyyy to dd/MM/yyyy
         /// </summary>
-        /// <param name="date1"></param>
+        /// <param name="pDate"></param>
         /// <returns> Date Formate of dd/MM/yyyy  </returns>
         public static string mmddyy2ddmmyy(string pDate)
         {
@@ -145,6 +169,12 @@ namespace SouthernTravelIndiaAgent.BAL
                 return "";
         }
 
+
+        /// <summary>
+        /// /// Convert Date Formate from dd/MM/yyyy to MM/dd/yyyy
+        /// </summary>
+        /// <param name="pDate"></param>
+        /// <returns></returns>
         public static string ddmmyy2mmddyy(string pDate)
         {
             pDate = pDate.Replace("-", "/");
@@ -162,6 +192,12 @@ namespace SouthernTravelIndiaAgent.BAL
                 return "";
         }
 
+
+        /// <summary>
+        /// /// Show alert message on the current page
+        /// </summary>
+        /// <param name="currentPage"></param>
+        /// <param name="message"></param>
         public static void ShowAlert(System.Web.UI.Page currentPage, string message)
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder();
@@ -170,6 +206,12 @@ namespace SouthernTravelIndiaAgent.BAL
             sb.Append("');");
             currentPage.ClientScript.RegisterStartupScript(typeof(ClsCommon), "showalert", sb.ToString(), true);
         }
+
+
+        /// <summary>
+        /// /// Show alert message on the current page using ScriptManager
+        /// </summary>
+        /// <param name="Msg"></param>
         public static void ShowAlert(string Msg)
         {
             Page page = HttpContext.Current.Handler as Page;
@@ -180,17 +222,19 @@ namespace SouthernTravelIndiaAgent.BAL
                  "err_msg", "alert('" + Msg + "');", true);
             }
         }
-        ///// <summary>
-        ///// Mail With Attachment
-        ///// </summary>
-        ///// <param name="pTO"></param>
-        ///// <param name="pBCC"></param>
-        ///// <param name="pCC"></param>
-        ///// <param name="pFrom"></param>
-        ///// <param name="pSubject"></param>
-        ///// <param name="pBody"></param>
-        ///// <param name="pFromName"></param>
-        ///// <param name="pFileName"></param>
+
+
+        /// <summary>
+        /// /// Send an email with the specified parameters.
+        /// </summary>
+        /// <param name="pTO"></param>
+        /// <param name="pBCC"></param>
+        /// <param name="pCC"></param>
+        /// <param name="pFrom"></param>
+        /// <param name="pSubject"></param>
+        /// <param name="pBody"></param>
+        /// <param name="pFromName"></param>
+        /// <param name="pFilePath"></param>
         public static void sendmail(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName, string pFilePath)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
@@ -251,6 +295,16 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
+
+        /// <summary>
+        /// /// Send an email with the specified parameters.
+        /// </summary>
+        /// <param name="pTO"></param>
+        /// <param name="pBCC"></param>
+        /// <param name="pCC"></param>
+        /// <param name="pFrom"></param>
+        /// <param name="pSubject"></param>
+        /// <param name="pBody"></param>
         public static void SendMail(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody)
         {
             // Force TLS 1.2
@@ -314,6 +368,21 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
+
+        /// <summary>
+        /// /// Send an email with the specified parameters.
+        /// </summary>
+        /// <param name="pTO"></param>
+        /// <param name="pBCC"></param>
+        /// <param name="pCC"></param>
+        /// <param name="pFrom"></param>
+        /// <param name="pSubject"></param>
+        /// <param name="pBody"></param>
+        /// <param name="pFromName"></param>
+        /// /// <remarks>
+        /// /// This method sends an email using the SMTP client configured in the application settings.
+        /// /// It supports multiple recipients for TO, CC, and BCC fields, and allows HTML content in the body.
+        /// /// </remarks>
         public static void sendmail(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName)
         {
             // Ensure TLS 1.2 is used
@@ -385,18 +454,37 @@ namespace SouthernTravelIndiaAgent.BAL
                 errorMessage = ex.ToString();
                 LogEmailToDB(0, pFrom, pTO, pCC, pBCC, pSubject, pBody, statusEnum.ToString(), errorMessage, "", "", requestFromEnum.ToString());
 
-                // Consider logging the error
             }
-            //finally
-            //{
-            //    LogEmailToDB(0, pFrom, pTO, pCC, pBCC, pSubject, pBody, statusEnum.ToString(), errorMessage, "", "", requestFromEnum.ToString());
-            //}
+          
         }
 
+
+        /// <summary>
+        /// /// Send an email with the specified parameters.
+        /// </summary>
+        /// <param name="pTO"></param>
+        /// <param name="pBCC"></param>
+        /// <param name="pCC"></param>
+        /// <param name="pFrom"></param>
+        /// <param name="pSubject"></param>
+        /// <param name="pBody"></param>
+        /// <param name="pFromName"></param>
         public static void MailSend(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName)
         {
             SendSmtpMail(pTO, pBCC, pCC, pFrom, pSubject, pBody, pFromName, null);
         }
+
+        /// <summary>
+        /// /// Send an authenticated email with the specified parameters.
+        /// </summary>
+        /// <param name="pTO"></param>
+        /// <param name="pBCC"></param>
+        /// <param name="pCC"></param>
+        /// <param name="pFrom"></param>
+        /// <param name="pSubject"></param>
+        /// <param name="pBody"></param>
+        /// <param name="pFromName"></param>
+        /// <param name="pFileName"></param>
         public static void AuthMail(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName, string pFileName = null)
         {
             MailStatus statusEnum = MailStatus.Sent; // or MailStatus.Failed if caught in catch
@@ -423,6 +511,23 @@ namespace SouthernTravelIndiaAgent.BAL
             //}
 
         }
+
+        /// <summary>
+        /// // /// Send an SMTP email with the specified parameters.
+        /// </summary>
+        /// <param name="pTO"></param>
+        /// <param name="pBCC"></param>
+        /// <param name="pCC"></param>
+        /// <param name="pFrom"></param>
+        /// <param name="pSubject"></param>
+        /// <param name="pBody"></param>
+        /// <param name="pFromName"></param>
+        /// <param name="pFileName"></param>
+        /// <param name="smtpHost"></param>
+        /// <param name="smtpPort"></param>
+        /// <param name="smtpUser"></param>
+        /// <param name="smtpPass"></param>
+        /// <param name="enableSsl"></param>
         private static void SendSmtpMail(
  string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName,
  string pFileName = null,
@@ -504,7 +609,23 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
-        // Save the email log 
+
+
+        /// <summary>
+        /// /// Log email details to the database.
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="sender"></param>
+        /// <param name="recipient"></param>
+        /// <param name="cc"></param>
+        /// <param name="bcc"></param>
+        /// <param name="subject"></param>
+        /// <param name="body"></param>
+        /// <param name="status"></param>
+        /// <param name="errorMessage"></param>
+        /// <param name="messageId"></param>
+        /// <param name="attachments"></param>
+        /// <param name="requestFrom"></param>
         public static void LogEmailToDB(int userId, string sender, string recipient, string cc, string bcc,
                                      string subject, string body, string status, string errorMessage,
                                      string messageId, string attachments, string requestFrom)
@@ -533,6 +654,16 @@ namespace SouthernTravelIndiaAgent.BAL
                 cmd.ExecuteNonQuery();
             }
         }
+
+
+        /// <summary>
+        /// /// This method retrieves tours at a glance for a specific day, month, year, and branch code.
+        /// </summary>
+        /// <param name="pDay"></param>
+        /// <param name="pMonth"></param>
+        /// <param name="pYear"></param>
+        /// <param name="pBranchCode"></param>
+        /// <returns></returns>
         public static DataTable Fixed_ToursAtAGlance(string pDay, string pMonth, string pYear, string pBranchCode)
         {
             DataTable ldtToursAtAGlance = null;
@@ -579,6 +710,13 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// Convert a string to an integer, returning 0 if the string is null, empty, or not a valid integer.// If the string is "&nbsp;", it also returns 0.
+        /// </summary>
+        /// <param name="strInt"></param>
+        /// <returns></returns>
         public static int ConvertStringint(object strInt)
         {
             int intval = 0;
@@ -599,6 +737,12 @@ namespace SouthernTravelIndiaAgent.BAL
             }
             return intval;
         }
+
+        /// <summary>
+        /// /// This method adds a fixed pickup place for a given tour ID.
+        /// </summary>
+        /// <param name="pTourID"></param>
+        /// <returns></returns>
         public static int Add_Fixed_PickupPlace(int pTourID)
         {
             #region Optimize Code
@@ -657,6 +801,15 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method blocks seats for a specific tour and returns a boolean indicating success or failure.
+        /// </summary>
+        /// <param name="pSeats"></param>
+        /// <param name="pTourSerial"></param>
+        /// <param name="pBlockedString"></param>
+        /// <returns></returns>
         public static bool Block_Seats(string pSeats, int pTourSerial, string pBlockedString)
         {
             int val = 0;
@@ -695,6 +848,13 @@ namespace SouthernTravelIndiaAgent.BAL
 
             return val > 0;
         }
+
+
+        /// <summary>
+        /// /// This method unblocks seats for a specific tour.
+        /// </summary>
+        /// <param name="pSeats"></param>
+        /// <param name="pTourSerial"></param>
         public static void UnBlock_Seats(string pSeats, int pTourSerial)
         {
             try
@@ -706,6 +866,55 @@ namespace SouthernTravelIndiaAgent.BAL
                 throw;
             }
         }
+
+
+        /// <summary>
+        /// /// This method inserts a new online tours booking for an agent.
+        /// </summary>
+        /// <param name="pOrderID"></param>
+        /// <param name="pTourID"></param>
+        /// <param name="pDOJ"></param>
+        /// <param name="pDOB"></param>
+        /// <param name="pBusEnvType"></param>
+        /// <param name="pAdults"></param>
+        /// <param name="pChilds"></param>
+        /// <param name="pTwin"></param>
+        /// <param name="pTriple"></param>
+        /// <param name="pChildNoBed"></param>
+        /// <param name="pSingle"></param>
+        /// <param name="pTourName"></param>
+        /// <param name="pAmount"></param>
+        /// <param name="pTaxPercent"></param>
+        /// <param name="pTax"></param>
+        /// <param name="pTotalAmount"></param>
+        /// <param name="pSeatNos"></param>
+        /// <param name="pBusSerial"></param>
+        /// <param name="pTourSerial"></param>
+        /// <param name="pPickupPointID"></param>
+        /// <param name="pAdultFare"></param>
+        /// <param name="pChildFare"></param>
+        /// <param name="pTwinFare"></param>
+        /// <param name="pTripleFare"></param>
+        /// <param name="pChildNoBedFare"></param>
+        /// <param name="pSingleFare"></param>
+        /// <param name="pCCFee"></param>
+        /// <param name="pCCAmount"></param>
+        /// <param name="pDormitory"></param>
+        /// <param name="pDormitoryFare"></param>
+        /// <param name="pRemarks"></param>
+        /// <param name="pOnlineDiscont"></param>
+        /// <param name="pNoAWFood"></param>
+        /// <param name="pNoCWFood"></param>
+        /// <param name="pAdWFoodfare"></param>
+        /// <param name="pCWFoodfare"></param>
+        /// <param name="pAdvancePaid"></param>
+        /// <param name="lIsPartialPaymentByAgent"></param>
+        /// <param name="ServiceChargesTotal"></param>
+        /// <param name="ServiceChargesTax"></param>
+        /// <param name="ServiceChargesTaxVal"></param>
+        /// <param name="AdultServiceCharges"></param>
+        /// <param name="ChildServiceCharges"></param>
+        /// <returns></returns>
         public static int Insert_OnlineToursBookingAgent(string pOrderID, int pTourID, DateTime pDOJ, DateTime pDOB, char pBusEnvType,
        int pAdults, int pChilds, int pTwin, int pTriple, int pChildNoBed, int pSingle, string pTourName, decimal pAmount,
        decimal pTaxPercent, decimal pTax, decimal pTotalAmount, string pSeatNos, string pBusSerial, string pTourSerial,
@@ -779,6 +988,50 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method updates an existing online tours booking for an agent.
+        /// </summary>
+        /// <param name="pJDate"></param>
+        /// <param name="pBusEnvType"></param>
+        /// <param name="pAdults"></param>
+        /// <param name="pChilds"></param>
+        /// <param name="pTwin"></param>
+        /// <param name="pTriple"></param>
+        /// <param name="pChildNoBed"></param>
+        /// <param name="pSingle"></param>
+        /// <param name="pAmount"></param>
+        /// <param name="pTax"></param>
+        /// <param name="pTaxAmount"></param>
+        /// <param name="pTotalAmt"></param>
+        /// <param name="pSeatNos"></param>
+        /// <param name="pBusSerial"></param>
+        /// <param name="pTourSerial"></param>
+        /// <param name="pPickupID"></param>
+        /// <param name="pAdultFare"></param>
+        /// <param name="pChildFare"></param>
+        /// <param name="pTwinFare"></param>
+        /// <param name="pTripleFare"></param>
+        /// <param name="pChildNoBedFare"></param>
+        /// <param name="pSingleFare"></param>
+        /// <param name="pCCFee"></param>
+        /// <param name="pCCAmount"></param>
+        /// <param name="pRowID"></param>
+        /// <param name="pDormitory"></param>
+        /// <param name="pDormitoryFare"></param>
+        /// <param name="pRemarks"></param>
+        /// <param name="pNoAWFood"></param>
+        /// <param name="pNoCWFood"></param>
+        /// <param name="pAdWFoodfare"></param>
+        /// <param name="pCWFoodfare"></param>
+        /// <param name="pAdvancePaid"></param>
+        /// <param name="lIsPartialPaymentByAgent"></param>
+        /// <param name="ServiceChargesTotal"></param>
+        /// <param name="ServiceChargesTax"></param>
+        /// <param name="ServiceChargesTaxVal"></param>
+        /// <param name="AdultServiceCharges"></param>
+        /// <param name="ChildServiceCharges"></param>
+        /// <returns></returns>
         public static int Update_OnlineToursBookingAgent(DateTime pJDate, char pBusEnvType, int pAdults, int pChilds, int pTwin,
      int pTriple, int pChildNoBed, int pSingle, decimal pAmount, decimal pTax, decimal pTaxAmount, decimal pTotalAmt,
      string pSeatNos, string pBusSerial, int pTourSerial, int pPickupID, decimal pAdultFare, decimal pChildFare,
@@ -847,6 +1100,14 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the request status based on a boolean status and an exception enum.
+        /// </summary>
+        /// <param name="pStatus"></param>
+        /// <param name="pException"></param>
+        /// <returns></returns>
         public static RequestStatus fnGetRequestStatus(bool pStatus, pbException pException)
         {
             RequestStatus result = default(RequestStatus);
@@ -855,6 +1116,13 @@ namespace SouthernTravelIndiaAgent.BAL
             result.ErrDesc = fnGetEnumDescription(pException);
             return result;
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the description of an enum value.
+        /// </summary>
+        /// <param name="pValue"></param>
+        /// <returns></returns>
         internal static string fnGetEnumDescription(Enum pValue)
         {
             FieldInfo field = pValue.GetType().GetField(pValue.ToString());

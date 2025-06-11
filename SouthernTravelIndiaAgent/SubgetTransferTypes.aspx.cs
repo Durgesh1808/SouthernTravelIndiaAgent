@@ -9,8 +9,17 @@ using System.Web.UI.WebControls;
 
 namespace SouthernTravelIndiaAgent
 {
+    /// <summary>
+    /// /// This page handles the retrieval of sub-transfer types based on a query parameter.
+    /// </summary>
     public partial class SubgetTransferTypes : System.Web.UI.Page
     {
+
+        /// <summary>
+        /// /// This method is called when the page is loaded. It checks for a query string parameter "subtrans"
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["subtrans"] != null)

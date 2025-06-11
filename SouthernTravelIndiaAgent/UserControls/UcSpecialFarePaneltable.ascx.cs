@@ -13,6 +13,10 @@ using System.Xml.Linq;
 
 namespace SouthernTravelIndiaAgent.UserControls
 {
+
+    /// <summary>
+    /// /// This class represents a user control for displaying special fare panels for tours.
+    /// </summary>
     public enum PanelSectiontable
     {
         SEC_EndUser = 1,
@@ -20,6 +24,11 @@ namespace SouthernTravelIndiaAgent.UserControls
         SEC_Agent = 3,
         SEC_Kerala = 4
     }
+
+
+    /// <summary>
+    /// /// This class represents a tour category hierarchy table, which contains information about tour categories and their relationships.
+    /// </summary>
     public class TourCategoryHierarchytable
     {
         #region "Member Variable(s)"
@@ -73,6 +82,10 @@ namespace SouthernTravelIndiaAgent.UserControls
         }
         #endregion
     }
+
+    /// <summary>
+    /// /// This class represents a user control for displaying special fare panels for tours.
+    /// </summary>
     public partial class UcSpecialFarePaneltable : System.Web.UI.UserControl
     {
         #region "Member Variable(s)"
@@ -229,6 +242,10 @@ namespace SouthernTravelIndiaAgent.UserControls
 
             }
         }
+
+        /// <summary>
+        /// /// This property returns the HTML for the "Book Now" button or link, depending on the panel section.
+        /// </summary>
         public string fldEBroucher
         {
             get
@@ -271,6 +288,10 @@ namespace SouthernTravelIndiaAgent.UserControls
 
             }
         }
+
+        /// <summary>
+        /// /// This property returns the HTML for the fare type header cell in the fare panel.
+        /// </summary>
         public string fldTDFareTypeHead
         {
             get
@@ -283,6 +304,10 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+        /// <summary>
+        /// /// This property returns the HTML for the fare value cell in the fare panel.
+        /// </summary>
         public string fldTDFareValue
         {
             get
@@ -293,6 +318,11 @@ namespace SouthernTravelIndiaAgent.UserControls
                 return pvTDFareValue;
             }
         }
+
+
+        /// <summary>
+        /// /// This property returns the HTML for the season header cell in the fare panel.
+        /// </summary>
 
         public string fldTDSeasonHead
         {
@@ -309,6 +339,10 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+        /// <summary>
+        /// /// This property returns the HTML for the season value cell in the fare panel.
+        /// </summary>
         public string fldTDSeasonValue
         {
             get
@@ -547,6 +581,13 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+        /// <summary>
+        /// /// This method retrieves the fare panel data for a special tour and generates the HTML representation of the fare panel.
+        /// </summary>
+        /// <param name="lSeasonIDs"></param>
+        /// <param name="pSeasonID"></param>
+        /// <returns></returns>
         private string GetColumnName(ArrayList lSeasonIDs, int pSeasonID)
         {
             string lColumnName = string.Empty;
@@ -561,6 +602,16 @@ namespace SouthernTravelIndiaAgent.UserControls
             return lColumnName;
         }
 
+
+
+        /// <summary>
+        /// /// This method checks if a season already exists in the list of seasons for a given vehicle and passenger ID.
+        /// </summary>
+        /// <param name="pSeasonID"></param>
+        /// <param name="pVehicleID"></param>
+        /// <param name="pPaxID"></param>
+        /// <param name="pSeasonHeading"></param>
+        /// <param name="parrSeasonIDs"></param>
         private void CheckSeasonHead(long? pSeasonID, int pVehicleID, int pPaxID, string pSeasonHeading, ref ArrayList parrSeasonIDs)
         {
             if (parrSeasonIDs.Count == 0)
@@ -601,6 +652,12 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+        /// <summary>
+        /// /// This method generates the HTML representation of the fare panel for a special tour.
+        /// </summary>
+        /// <param name="pdtFarePanel"></param>
+        /// <param name="pSeasonIDs"></param>
         private void ShowFarePanel(DataTable pdtFarePanel, ArrayList pSeasonIDs)
         {
             StringBuilder lFarePanel = new StringBuilder();
@@ -720,6 +777,11 @@ namespace SouthernTravelIndiaAgent.UserControls
         }
         #endregion
         #region "New Implementation"
+
+
+        /// <summary>
+        /// /// This method retrieves the fare panel data for a special tour from an XML file and generates the HTML representation of the fare panel.
+        /// </summary>
         private void GetNewFarePanel_XML()
         {
             Get_SPL_Fare_Panel_spResult lContext = null;
@@ -922,6 +984,10 @@ namespace SouthernTravelIndiaAgent.UserControls
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method retrieves the fare panel data for a special tour and generates the HTML representation of the fare panel.
+        /// </summary>
         public void GetNewFarePanel()
         {
             ClsAdo lContext = new ClsAdo();
@@ -1063,6 +1129,11 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+        /// <summary>
+        /// /// This method checks if the current tour is a student package based on the tour ID.
+        /// </summary>
+        /// <returns></returns>
         private bool IsStudentPackage()
         {
             if ((fldTourID == 49/*SSBM*/) || (fldTourID == 67/*SSK*/) || (fldTourID == 46/*SSMC*/) || (fldTourID == 50/*SSG*/) ||
@@ -1075,6 +1146,14 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
             return false;
         }
+
+
+
+        /// <summary>
+        /// /// This method checks if a season already exists in the list of seasons for a given vehicle, passenger ID, and category.
+        /// </summary>
+        /// <param name="lFarePanel"></param>
+        /// <returns></returns>
 
         private List<Get_SPL_Fare_Panel_spResult> GetDistinctFare(List<Get_SPL_Fare_Panel_spResult> lFarePanel)
         {
@@ -1118,6 +1197,13 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+
+        /// <summary>
+        /// /// This method generates the HTML representation of the fare panel for a special tour for end users.
+        /// </summary>
+        /// <param name="lFarePanel"></param>
+        /// <param name="lSeasonIDs"></param>
         private void ShowFarePanel(List<Get_SPL_Fare_Panel_spResult> lFarePanel, ArrayList lSeasonIDs)
         {
 
@@ -1483,6 +1569,18 @@ namespace SouthernTravelIndiaAgent.UserControls
             hdnTourFare.Value = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + litSpecialTourFarePanel.Text + "</div>";
         }
 
+
+        /// <summary>
+        /// /// This method checks if a new season heading needs to be created based on the provided parameters.
+        /// </summary>
+        /// <param name="pSeasonID"></param>
+        /// <param name="pParentID"></param>
+        /// <param name="pChildID"></param>
+        /// <param name="pSeasonHeading"></param>
+        /// <param name="pParentName"></param>
+        /// <param name="pChildName"></param>
+        /// <param name="pFareExist"></param>
+        /// <param name="parrSeasonIDs"></param>
         private void CheckNewSeasonHead(long? pSeasonID, int pParentID, int pChildID, string pSeasonHeading,
             string pParentName, string pChildName, bool pFareExist, ref ArrayList parrSeasonIDs)
         {
@@ -1635,6 +1733,13 @@ namespace SouthernTravelIndiaAgent.UserControls
             }
         }
 
+
+        /// <summary>
+        /// //  /// This method retrieves the column name for a specific season ID from the provided list of season IDs.
+        /// </summary>
+        /// <param name="lSeasonIDs"></param>
+        /// <param name="pSeasonID"></param>
+        /// <returns></returns>
         private string GetNewColumnName(ArrayList lSeasonIDs, int pSeasonID)
         {
             string lColumnName = string.Empty;
@@ -1649,6 +1754,12 @@ namespace SouthernTravelIndiaAgent.UserControls
             return lColumnName;
         }
 
+
+        /// <summary>
+        /// /// This method generates and displays a new fare panel based on the provided fare data and season IDs.
+        /// </summary>
+        /// <param name="pdtFarePanel"></param>
+        /// <param name="pSeasonIDs"></param>
         private void ShowNewFarePanel(DataTable pdtFarePanel, ArrayList pSeasonIDs)
         {
             StringBuilder lFarePanel = new StringBuilder();
@@ -1768,6 +1879,13 @@ namespace SouthernTravelIndiaAgent.UserControls
             hdnTourFare.Value = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + lFarePanel.ToString() + "</div>";
         }
 
+
+
+        /// <summary>
+        /// /// This method displays the fare panel for end users based on the provided fare data and season IDs.
+        /// </summary>
+        /// <param name="lFarePanel"></param>
+        /// <param name="lSeasonIDs"></param>
         private void ShowFarePanel_EndUser(List<Get_SPL_Fare_Panel_spResult> lFarePanel, ArrayList lSeasonIDs)
         {
             //Narendra

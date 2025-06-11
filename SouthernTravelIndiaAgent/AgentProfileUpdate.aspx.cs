@@ -87,12 +87,22 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method fills the date of birth dropdowns with day, month, and year options.
+        /// </summary>
         private void fillDOB()
         {
             Globals.LoadDropDownDay(ref ddlDay, 1, true);
             Globals.LoadDropDownMonth(ref ddlMonth, 1, true);
             FillddlYear();
         }
+
+
+        /// <summary>
+        /// /// This method fills the year dropdown with the last 120 years, starting from the current year.
+        /// </summary>
         private void FillddlYear()
         {
             int j = Convert.ToInt32(System.DateTime.Now.Year.ToString());

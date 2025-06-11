@@ -10,6 +10,9 @@ using System.Web.UI.WebControls;
 
 namespace SouthernTravelIndiaAgent.Common
 {
+    /// <summary>
+    /// // This class contains global variables and utility methods used throughout the application.
+    /// </summary>
     public class Globals
     {
         public Globals()
@@ -18,7 +21,16 @@ namespace SouthernTravelIndiaAgent.Common
             // TODO: Add constructor logic here
             //
         }
+
+        /// <summary>
+        /// /// This property holds the agent's address.
+        /// </summary>
         static string _AgentAddress;
+
+
+        /// <summary>
+        /// /// This property allows setting and getting the agent's address.
+        /// </summary>
         public static string AgentAddress
         {
             get
@@ -31,6 +43,11 @@ namespace SouthernTravelIndiaAgent.Common
             }
         }
         static string _AgentPhone;
+
+
+        /// <summary>
+        /// /// This property holds the agent's phone number.
+        /// </summary>
         public static string AgentPhone
         {
             get
@@ -42,6 +59,14 @@ namespace SouthernTravelIndiaAgent.Common
                 _AgentPhone = value;
             }
         }
+
+
+        /// <summary>
+        /// /// This property holds the agent's email address.
+        /// </summary>
+        /// <param name="oDropDown"></param>
+        /// <param name="iType"></param>
+        /// <param name="bShowDefault"></param>
 
         public static void LoadDropDownDay(ref System.Web.UI.WebControls.DropDownList oDropDown, int iType, bool bShowDefault)
         {
@@ -56,8 +81,10 @@ namespace SouthernTravelIndiaAgent.Common
             if (bShowDefault)
                 oDropDown.Items.Insert(0, new System.Web.UI.WebControls.ListItem(" DD ", "0"));
         }
+
+
         /// <summary>
-        /// Get machine's Date Separator Character.
+        /// /// This property holds the agent's email address.
         /// </summary>
         public static string fldDateSeparator
         {
@@ -67,6 +94,13 @@ namespace SouthernTravelIndiaAgent.Common
             }
         }
 
+
+        /// <summary>
+        /// /// This method loads the month dropdown with month names and values.
+        /// </summary>
+        /// <param name="oDropDown"></param>
+        /// <param name="iType"></param>
+        /// <param name="bShowDefault"></param>
         public static void LoadDropDownMonth(ref System.Web.UI.WebControls.DropDownList oDropDown, int iType, bool bShowDefault)
         {
 
@@ -85,6 +119,14 @@ namespace SouthernTravelIndiaAgent.Common
             oDropDown.Items.Insert(11, new System.Web.UI.WebControls.ListItem("Nov", "11"));
             oDropDown.Items.Insert(12, new System.Web.UI.WebControls.ListItem("Dec", "12"));
         }
+
+
+        /// <summary>
+        /// /// This method checks if the DataTable has data and updates the DataGrid and Label accordingly.
+        /// </summary>
+        /// <param name="oDataGrid"></param>
+        /// <param name="dt"></param>
+        /// <param name="oLbl"></param>
         public static void CheckData(ref System.Web.UI.WebControls.DataGrid oDataGrid, DataTable dt, ref System.Web.UI.WebControls.Label oLbl)
 
         {
@@ -118,6 +160,14 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method checks if the DataTable has data and updates the DataGrid and Label accordingly.
+        /// </summary>
+        /// <param name="oDataGrid"></param>
+        /// <param name="dt"></param>
+        /// <param name="oLbl"></param>
         public static void CheckData1(ref System.Web.UI.WebControls.DataGrid oDataGrid, DataTable dt, ref System.Web.UI.WebControls.Label oLbl)
         {
             oLbl.Text = "";
@@ -195,6 +245,12 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+        /// <summary>
+        /// // This method fills the labels in the given control with text from the provided DataSet.
+        /// </summary>
+        /// <param name="pParent"></param>
+        /// <param name="pDsLanguage"></param>
         public static void FillLanguageLabels(Control pParent, DataSet pDsLanguage)
         {
             if (pDsLanguage != null && pDsLanguage.Tables.Count > 0 &&
@@ -222,6 +278,13 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method generates a row of HTML for passenger details based on the number of passengers.
+        /// </summary>
+        /// <param name="pNoofPax"></param>
+        /// <returns></returns>
         public static StringBuilder PassengerRow(int pNoofPax)
         {
             StringBuilder stbuild = new StringBuilder();
@@ -255,6 +318,12 @@ namespace SouthernTravelIndiaAgent.Common
             return stbuild;
 
         }
+
+        /// <summary>
+        /// /// This method converts a number to its equivalent string representation in Indian Rupees.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         public static string GetNumber(int Num)
         {
             int NumLength;
@@ -296,6 +365,12 @@ namespace SouthernTravelIndiaAgent.Common
             return TotalString;
         }
 
+
+        /// <summary>
+        /// /// This method returns the string representation of a number based on its value.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         private static string ReturnNumbers(int Num)
         {
             switch (Num)
@@ -367,6 +442,13 @@ namespace SouthernTravelIndiaAgent.Common
 
             }
         }
+
+
+        /// <summary>
+        /// //  This method handles the conversion of numbers greater than 20 into their string representation.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         private static string TenFunction(int Num)
         {
             int HundredDigit;
@@ -402,6 +484,13 @@ namespace SouthernTravelIndiaAgent.Common
             }
             return TotalString;
         }
+
+
+        /// <summary>
+        /// /// This method handles the conversion of numbers in the hundreds into their string representation.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         private static string HundredFunction(int Num)
         {
             int HundredDigit;
@@ -453,6 +542,12 @@ namespace SouthernTravelIndiaAgent.Common
             }
             return TotalString;
         }
+
+        /// <summary>
+        /// /// This method handles the conversion of numbers in the thousands into their string representation.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         private static string ThousandFunction(int Num)
         {
             int FourthDigit;
@@ -470,6 +565,13 @@ namespace SouthernTravelIndiaAgent.Common
             }
             return TotalString;
         }
+
+
+        /// <summary>
+        /// /// This method handles the conversion of numbers in the lakhs into their string representation.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         private static string LakhFunction(int Num)
         {
             int FifthDigit;
@@ -480,6 +582,13 @@ namespace SouthernTravelIndiaAgent.Common
             TotalString = HundredFunction(FifthDigit) + " Lakh " + ThousandFunction(ThousandNumber);
             return TotalString;
         }
+
+
+        /// <summary>
+        /// /// This method handles the conversion of numbers in the crores into their string representation.
+        /// </summary>
+        /// <param name="Num"></param>
+        /// <returns></returns>
         private static string CroreFunction(int Num)
         {
             int SixthDigit;

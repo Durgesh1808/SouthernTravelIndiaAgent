@@ -45,6 +45,12 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method is triggered when the booking button is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnBooking_Click(object sender, ImageClickEventArgs e)
         {
             string value = ddlTourName.SelectedValue;

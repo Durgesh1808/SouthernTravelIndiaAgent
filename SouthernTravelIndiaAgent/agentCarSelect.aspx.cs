@@ -75,6 +75,11 @@ namespace SouthernTravelIndiaAgent
         }
 
 
+        /// <summary>
+        /// /// This method binds the page with necessary data such as car details, fare, etc.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Button1_Click(object sender, EventArgs e)
         {
             string[] DateArr = new string[3];
@@ -577,6 +582,12 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+
+        /// <summary>
+        /// /// This method converts a date from mm/dd/yyyy format to dd/mm/yyyy format.
+        /// </summary>
+        /// <param name="date1"></param>
+        /// <returns></returns>
         public static string mmddyy2ddmmyy(string date1)
         {
             if (date1 != null || date1 != "")
@@ -603,6 +614,12 @@ namespace SouthernTravelIndiaAgent
             numPax.DataBind();
             numPax.Items.Insert(0, new ListItem("Select", "0"));
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the agent's balance from the database.
+        /// </summary>
+        /// <returns></returns>
         decimal getAgentBalance()
         {
             decimal availBal = 0.0m;

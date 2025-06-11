@@ -10,6 +10,9 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.Common
 {
+    /// <summary>
+    /// /// This class contains methods related to agent transactions, including details retrieval, profile management, password changes, and transaction reporting.
+    /// </summary>
     public class ClsAgentTransaction
     {
         public ClsAgentTransaction()
@@ -18,6 +21,12 @@ namespace SouthernTravelIndiaAgent.Common
             // TODO: Add constructor logic here
             //
         }
+
+        /// <summary>
+        /// /// This method retrieves agent details based on the provided agent ID.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <returns></returns>
         public static DataSet AgentDetails(int pAgentID)
         {
             DataSet lds = null;
@@ -46,6 +55,12 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method retrieves agent session details based on the provided agent user ID.
+        /// </summary>
+        /// <param name="pAgentuserID"></param>
+        /// <returns></returns>
         public static DataTable Agent_Details(string pAgentuserID)
         {
             DataTable ldtAgentdetails = null;
@@ -83,6 +98,13 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the agent profile based on the provided agent user ID.
+        /// </summary>
+        /// <param name="pAgentuserID"></param>
+        /// <returns></returns>
         public List<Agent_ProfileResult> Agent_Profile(string pAgentuserID)
         {
             ClsAdo clsObj = null;
@@ -121,6 +143,14 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method changes the agent's password based on the provided agent ID, old password, and new password.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <param name="pOldPassword"></param>
+        /// <param name="pNewPassword"></param>
+        /// <returns></returns>
         public static int Agent_ChangePassword(string pAgentID, string pOldPassword, string pNewPassword)
         {
             int result;
@@ -153,6 +183,24 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+
+        /// <summary>
+        /// //  /// This method updates the agent's profile based on the provided parameters such as email ID, first name, last name, date
+        /// </summary>
+        /// <param name="pAgentUserID"></param>
+        /// <param name="pEmailID"></param>
+        /// <param name="pFName"></param>
+        /// <param name="pLName"></param>
+        /// <param name="pDOB"></param>
+        /// <param name="pGender"></param>
+        /// <param name="pAddress"></param>
+        /// <param name="pCity"></param>
+        /// <param name="pMobile"></param>
+        /// <param name="pLandline"></param>
+        /// <param name="pFax"></param>
+        /// <param name="pPanNo"></param>
+        /// <returns></returns>
         public static int Agent_UpdateProfile(string pAgentUserID, string pEmailID, string pFName, string pLName,
             DateTime pDOB, char pGender, string pAddress, string pCity, string pMobile, string pLandline, string pFax, string pPanNo)
         {
@@ -196,6 +244,13 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method handles the agent's forgot password functionality by resetting the password based on the provided email ID and new password.
+        /// </summary>
+        /// <param name="pAgentEmail"></param>
+        /// <param name="pAgentResetPassword"></param>
+        /// <returns></returns>
         public static DataTable Agent_ForgotPassword(string pAgentEmail, string pAgentResetPassword)
         {
             DataTable ldtAgentForgotPassword = null;
@@ -324,6 +379,13 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the transaction types available for agents based on the provided agent character.
+        /// </summary>
+        /// <param name="pAtAgent"></param>
+        /// <returns></returns>
         public static DataTable Agent_TransactionTypes(char? pAtAgent)
         {
             DataTable ldtAgentTransactionTypes = null;
@@ -364,6 +426,18 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the agent transaction report based on various parameters such as agent ID, transaction type, date range, and branch code.
+        /// </summary>
+        /// <param name="pIsFromAgent"></param>
+        /// <param name="pAgentID"></param>
+        /// <param name="pTransTypeId"></param>
+        /// <param name="pFromDate"></param>
+        /// <param name="pToDate"></param>
+        /// <param name="pBranchCode"></param>
+        /// <returns></returns>
         public static DataTable Agent_Transaction_Report(char pIsFromAgent, int pAgentID, int pTransTypeId, string pFromDate, string pToDate, string pBranchCode)
         {
             DataTable ldtAgentTransaction_Report = null;
@@ -409,6 +483,21 @@ namespace SouthernTravelIndiaAgent.Common
                 }
             }
         }
+
+        /// <summary>
+        /// /// This method adds funds to an agent's account through net banking.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <param name="pCredit"></param>
+        /// <param name="pBalance"></param>
+        /// <param name="pStatus"></param>
+        /// <param name="pRefNo"></param>
+        /// <param name="pTransTypeNo"></param>
+        /// <param name="pUserName"></param>
+        /// <param name="pBranchCode"></param>
+        /// <param name="pTCode"></param>
+        /// <param name="pCCCharge"></param>
+        /// <returns></returns>
         public static int AddFundsByNetBanking(int pAgentID, decimal pCredit, decimal pBalance, string pStatus,
             string pRefNo, int pTransTypeNo, string pUserName, string pBranchCode, string pTCode, decimal pCCCharge)
         {
@@ -425,6 +514,19 @@ namespace SouthernTravelIndiaAgent.Common
             param[9] = new SqlParameter("@CCCharge", pCCCharge);
             return DataLib.InsStoredProcData("Agent_AddFunds", param);
         }
+
+
+        /// <summary>
+        /// /// This method creates a pending entry for agent funds, which is used to track transactions that are not yet completed.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <param name="pAgentName"></param>
+        /// <param name="pTransactionTypeId"></param>
+        /// <param name="pAmount"></param>
+        /// <param name="pStatus"></param>
+        /// <param name="pTransactionNo"></param>
+        /// <param name="pDepositorName"></param>
+        /// <returns></returns>
         public static string agent_addfunds_Pendingentry(int pAgentID, string pAgentName, int pTransactionTypeId, decimal pAmount, string pStatus,
             string pTransactionNo, string pDepositorName)
         {

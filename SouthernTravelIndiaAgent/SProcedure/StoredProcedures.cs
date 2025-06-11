@@ -5,8 +5,17 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.SProcedure
 {
+    /// <summary>
+    /// // This class contains the names of stored procedures used in the application.
+    /// </summary>
+    // <remarks>
+    // This class is used to store the names of stored procedures as constants.///
+    // It helps in avoiding hardcoding of procedure names throughout the codebase, making it easier to maintain and update.
+    // </remarks>
+ 
     public class StoredProcedures
     {
+
         public const string ValidateAgent_sp = "ValidateAgent_sp";
         public const string agent_session_details = "agent_session_details";
         public const string SaveAgentLogInInfo_sp = "SaveAgentLogInInfo_sp";

@@ -10,8 +10,23 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    ///  This class contains business logic methods related to GST data operations.
+    /// </summary>
+    /// <remarks>
+    /// This class is responsible for interacting with the database to retrieve city lists based on state and search criteria,
+    /// and for inserting final special tour information for agents.
+    ///  It encapsulates the logic for these operations, making it easier to maintain and test.
+    /// </remarks>
     public class GST_Data
     {
+
+        /// <summary>
+        /// /// This method retrieves a list of cities based on the provided state ID and search text.
+        /// </summary>
+        /// <param name="search"></param>
+        /// <param name="StateId"></param>
+        /// <returns></returns>
         public List<GST_GetCityListByStateIdAndSearchedCityTextResult> GST_GetCityListByStateIdAndSearchedCityText(string search, int? StateId)
         {
             List<GST_GetCityListByStateIdAndSearchedCityTextResult> cityList = new List<GST_GetCityListByStateIdAndSearchedCityTextResult>();
@@ -52,6 +67,24 @@ namespace SouthernTravelIndiaAgent.BAL
 
             return cityList;
         }
+
+
+        /// <summary>
+        /// /// This method inserts final special tour information for an agent into the database.
+        /// </summary>
+        /// <param name="pclsspl_tourEnquiry_tbl"></param>
+        /// <param name="pclsOnlineTrans_tbl"></param>
+        /// <param name="lPws"></param>
+        /// <param name="lTitle"></param>
+        /// <param name="lAlternateMBLNO"></param>
+        /// <param name="lCanSendPromotions"></param>
+        /// <param name="totalChildWithoutMatress"></param>
+        /// <param name="totalChildWithMatress"></param>
+        /// <param name="Nationality"></param>
+        /// <param name="Country"></param>
+        /// <param name="AadharNo"></param>
+        /// <param name="AadharNoImg"></param>
+        /// <returns></returns>
         public long GST_InsertFinalSPLTourInfoAgent(GST_spl_tourEnquiry pclsspl_tourEnquiry_tbl, OnlineTransactionTable pclsOnlineTrans_tbl,
     string lPws, string lTitle, string lAlternateMBLNO, bool lCanSendPromotions, int totalChildWithoutMatress,
     int totalChildWithMatress, string Nationality, string Country, string AadharNo, string AadharNoImg)

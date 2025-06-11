@@ -9,10 +9,21 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    /// /// This class contains business logic methods related to contract management, specifically for retrieving country names.
+    /// </summary>
     public class clsContractModule
     {
+
+        /// <summary>
+        /// /// This property holds the connection string used to connect to the database.
+        /// </summary>
         private string pvConnectionString = string.Empty;
 
+
+        /// <summary>
+        /// /// This property allows setting and getting the connection string for database operations.
+        /// </summary>
         public string fldConnString
         {
             get
@@ -24,6 +35,13 @@ namespace SouthernTravelIndiaAgent.BAL
                 pvConnectionString = value;
             }
         }
+
+
+        /// <summary>
+        /// /// This method retrieves the name of a country based on the provided country ID.
+        /// </summary>
+        /// <param name="iCountryID"></param>
+        /// <returns></returns>
         public DataListResponse<GetCountryName_SPResult> fnGetCountryName(int iCountryID)
         {
             DataListResponse<GetCountryName_SPResult> dataListResponse = new DataListResponse<GetCountryName_SPResult>();

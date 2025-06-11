@@ -39,6 +39,10 @@ namespace SouthernTravelIndiaAgent
                 Response.Redirect("agentlogin.aspx");
             }
         }
+
+        /// <summary>
+        /// /// This method binds the fixed tour details to the grid view based on the selected city ID.
+        /// </summary>
         public void CarFixedTourBind()
         {
 

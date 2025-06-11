@@ -178,6 +178,13 @@ namespace SouthernTravelIndiaAgent
         }
         string xmlResponse = "";
         DataTable dtRates, dtRateDays;
+
+
+        /// <summary>
+        /// // This method sets up the initial data for the hotel search, including the XML request string.
+        /// </summary>
+        /// <param name="xmlRequestStr"></param>
+        /// <returns></returns>
         private DataTable getHotelResults(string xmlRequestStr)
         {
             //Response.Write("<br>Sending Request<br><br><font size=\"3\" face=\"arial\"  color=\"red\"><b>" + Server.HtmlEncode(xmlStr) + "</b></font><br>");
@@ -452,6 +459,12 @@ namespace SouthernTravelIndiaAgent
         DataSet dsCached;
         HtmlGenericControl spImages, diVratesTable;
         DataRow[] tempRows;
+
+        /// <summary>
+        /// // This method handles the ItemDataBound event of the Repeater control, which is used to bind hotel search results.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void rptResults_ItemDataBound(object sender, RepeaterItemEventArgs e)
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
@@ -605,6 +618,18 @@ namespace SouthernTravelIndiaAgent
             }
         }
         protected string strDesc = "", strRooms = "", strFac = "", strInaA = "";
+
+
+        /// <summary>
+        /// // This method binds the hotel description, room details, facilities, and amenities to the respective controls.
+        /// </summary>
+        /// <param name="strhotelCityCode"></param>
+        /// <param name="strhotelCode"></param>
+        /// <param name="dlGallery"></param>
+        /// <param name="ImgUrl"></param>
+        /// <param name="ltRoomDesc"></param>
+        /// <param name="listrInaA"></param>
+        /// <param name="listrFac"></param>
         private void bindHtDesc(string strhotelCityCode, string strhotelCode, DataList dlGallery, Image ImgUrl, Literal ltRoomDesc,
            Literal listrInaA, Literal listrFac)
         {

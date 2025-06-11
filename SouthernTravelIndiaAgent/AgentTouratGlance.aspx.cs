@@ -56,6 +56,10 @@ namespace SouthernTravelIndiaAgent
                 fillgrid();
             }
         }
+
+        /// <summary>
+        /// /// This method fills the grid with tours at a glance based on the selected date and branch.
+        /// </summary>
         public void fillgrid()
         {
             string[] dat = date.Value.Split('/');
@@ -82,11 +86,25 @@ namespace SouthernTravelIndiaAgent
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// This method handles the page index change event for the DataGrid control.
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="e"></param>
         protected void dgglance_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
         {
             dgglance.CurrentPageIndex = e.NewPageIndex;
             fillgrid();
         }
+
+
+        /// <summary>
+        /// /// This method handles the click event of the "Go" button to refresh the grid with the selected date.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btngo_Click(object sender, EventArgs e)
         {
             fillgrid();

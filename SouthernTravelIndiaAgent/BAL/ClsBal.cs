@@ -9,9 +9,17 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    /// /// This class contains business logic methods related to agent validation.
+    /// </summary>
     public class ClsBal
     {
 
+        /// <summary>
+        /// /// This method validates an agent by checking their user ID against the database.
+        /// </summary>
+        /// <param name="pUserID"></param>
+        /// <returns></returns>
         public DataTable ValidateAgent(string pUserID)
         {
             DataTable dtValidateAgent = new DataTable();

@@ -11,8 +11,19 @@ using System.Web.Configuration;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    /// This class handles the Virtual Payment Client (VPC) request and response processing.
+    /// </summary>
+    /// <remarks>
+    /// The VPCRequest class is used to create and send requests to the VPC server, handle responses, and manage secure hashing for transaction validation.
+    ///  It supports both two-party and three-party transaction processing models.
+    ///  It also provides methods for formatting return URLs and creating hidden form fields for payment redirection.
+    /// </remarks>
     public class VPCRequest
     {
+
+        // Class variables
+        
         Uri _address;
         SortedList<String, String> _requestFields = new SortedList<String, String>(new VPCStringComparer());
         String _rawResponse;
@@ -29,6 +40,10 @@ namespace SouthernTravelIndiaAgent.BAL
         String _vpcVersion;
         private NameValueCollection appSettings;
 
+
+        /// <summary>
+        /// /// Constructor for VPCRequest class.
+        /// </summary>
         public VPCRequest()
         {
             appSettings = WebConfigurationManager.AppSettings;
@@ -41,7 +56,9 @@ namespace SouthernTravelIndiaAgent.BAL
             _secureSecret = appSettings["SecureSecret"];
         }
 
-
+        /// <summary>
+        /// /// Gets the address of the VPC server.
+        /// </summary>
         public String MerchantID { get { return _merchantID; } }
 
         public String AccessCode { get { return _accessCode; } }
@@ -78,6 +95,12 @@ namespace SouthernTravelIndiaAgent.BAL
             _secureSecret = secret;
         }
 
+        /// <summary>
+        /// /// Sets the address of the VPC server.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="value"></param>
+
         public void AddDigitalOrderField(String key, String value)
         {
             if (!String.IsNullOrEmpty(value))
@@ -86,6 +109,13 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
+
+        /// <summary>
+        /// /// Adds a request field to the VPC request.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="defValue"></param>
+        /// <returns></returns>
         public String GetResultField(String key, String defValue)
         {
             String value;
@@ -99,6 +129,11 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
+        /// <summary>
+        /// // Returns a return URL with host and port information based on the page's current execution environment.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <returns></returns>
         public String GetResultField(String key)
         {
             return GetResultField(key, "");
@@ -125,6 +160,14 @@ namespace SouthernTravelIndiaAgent.BAL
             return returnURL.ToString();
         }
 
+
+
+        /// <summary>
+        /// /// Formats the expiry date for the payment client.
+        /// </summary>
+        /// <param name="month"></param>
+        /// <param name="year"></param>
+        /// <returns></returns>
         public String FormatDate(String month, String year)
         {
             // We have the expiry month and year, but the Payment Client requires
@@ -152,6 +195,11 @@ namespace SouthernTravelIndiaAgent.BAL
             return year + month;
         }
 
+
+        /// <summary>
+        /// /// Gets the raw request string to be sent to the VPC server.
+        /// </summary>
+        /// <returns></returns>
         private String GetRequestRaw()
         {
             StringBuilder data = new StringBuilder();
@@ -168,6 +216,11 @@ namespace SouthernTravelIndiaAgent.BAL
             return data.ToString();
         }
 
+
+        /// <summary>
+        /// /// Gets the raw response from the VPC server.
+        /// </summary>
+        /// <returns></returns>
         public String GetResponseRaw()
         {
             if (!String.IsNullOrEmpty(_rawResponse))
@@ -183,6 +236,11 @@ namespace SouthernTravelIndiaAgent.BAL
         //_____________________________________________________________________________________________________
         // Three-Party order transaction processing with hidden fields when sending CC info
 
+
+        /// <summary>
+        /// /// Creates a hidden form with the request fields to be submitted to the VPC server.
+        /// </summary>
+        /// <returns></returns>
         public String GetHiddenRequestForm()
         {
             StringBuilder data = new StringBuilder();
@@ -206,6 +264,9 @@ namespace SouthernTravelIndiaAgent.BAL
         //_____________________________________________________________________________________________________
         // Two-Party order transaction processing
 
+        /// <summary>
+        /// /// Sends the request to the VPC server and processes the response.
+        /// </summary>
         public void SendRequest()
         {
             // Setup proxy if needed
@@ -302,6 +363,11 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
+
+        /// <summary>
+        /// /// Gets the transaction response code from the VPC response.
+        /// </summary>
+        /// <returns></returns>
         public string GetTxnResponseCode()
         {
             return GetResultField("vpc_TxnResponseCode");
@@ -310,6 +376,10 @@ namespace SouthernTravelIndiaAgent.BAL
         //_____________________________________________________________________________________________________
         // Three-Party order transaction processing
 
+        /// <summary>
+        /// /// Creates a query string for a three-party transaction.
+        /// </summary>
+        /// <returns></returns>
         public String Create3PartyQueryString()
         {
             StringBuilder url = new StringBuilder();
@@ -325,6 +395,12 @@ namespace SouthernTravelIndiaAgent.BAL
             url.Append("&vpc_SecureHashType=SHA256");
             return url.ToString();
         }
+
+        /// <summary>
+        /// /// Processes the response from a three-party transaction.
+        /// </summary>
+        /// <param name="nameValueCollection"></param>
+        /// <exception cref="Exception"></exception>
 
         public void Process3PartyResponse(System.Collections.Specialized.NameValueCollection nameValueCollection)
         {
