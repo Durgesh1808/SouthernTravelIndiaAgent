@@ -868,13 +868,13 @@
                 <table width="80%" cellspacing="0" cellpadding="0" border="0" style="background-color: #cccccc">
                     <tr>
                         <td align="left" style="width: 9px">
-                            <img src="Assets/images/left_corner.gif" alt="image" />
+                            <img  loading="lazy" src="Assets/images/left_corner.gif" alt="left_corner" />
                         </td>
                         <td bgcolor="#e7e7e7">
-                            <img src="Assets/images/trans.gif" alt="image" />
+                            <img  loading="lazy" src="Assets/images/trans.gif" alt="trans" />
                         </td>
                         <td align="right">
-                            <img src="Assets/images/rgt_corner.gif" alt="image" />
+                            <img  loading="lazy" src="Assets/images/rgt_corner.gif" alt="rgt_corner" />
                         </td>
                     </tr>
                     <tr>
@@ -925,7 +925,7 @@
                                             <tr>
                                                 <td>
                                                     <div id="imgWait" style="display: none;">
-                                                        <img width="33px" height="33px" src="Assets/images/wait_spinner.gif" />
+                                                        <img  loading="lazy" alt="wait_spinner" width="33px" height="33px" src="Assets/images/wait_spinner.gif" />
                                                         Please wait...
                                                     </div>
                                                 </td>
@@ -962,7 +962,7 @@
                                                         onblur="javascript:return checkDate(this.value);" size="9" onfocus="objCal('DepartIcon','txtDate','360','160'); " />
                                                     <a title="journey date" href="javascript:void(null)" onclick="objCal('DepartIcon','txtDate','360','160');"
                                                         hidefocus="">
-                                                        <img id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0" style="visibility: visible;
+                                                        <img  loading="lazy" alt="" id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0" style="visibility: visible;
                                                             padding-bottom: 0px;" /></a>--%>
                                                     <asp:Label ID="dept" CssClass="hlinks" runat="server">&nbsp;@&nbsp;<%=depttime.Value %></asp:Label>
                                                 </td>
@@ -1769,13 +1769,13 @@
                     </tr>
                     <tr>
                         <td align="left" style="width: 9px; height: 17px;">
-                            <img src="Assets/images/left_d_corner.gif" />
+                            <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" />
                         </td>
                         <td bgcolor="#e7e7e7" style="height: 17px">
-                            <img src="Assets/images/trans.gif" />
+                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" />
                         </td>
                         <td align="right" style="height: 17px">
-                            <img src="Assets/images/rgt_d_corner.gif" />
+                            <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" />
                         </td>
                     </tr>
                 </table>

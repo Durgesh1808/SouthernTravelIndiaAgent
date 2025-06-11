@@ -376,13 +376,13 @@
         <table width="276" height="429" border="0" cellpadding="0" cellspacing="0">
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_corner.gif" width="8" height="8" />
+                    <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" />
                 </td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="260" height="1" />
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="260" height="1" />
                 </td>
                 <td align="right">
-                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" />
+                    <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8" />
                 </td>
             </tr>
             <tr>
@@ -393,7 +393,7 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td width="100%">
-                                <img src="Assets/images/car_img.gif" width="260" height="81" border="0" usemap="#MapMap" />
+                                <img  loading="lazy" alt="car_img" src="Assets/images/car_img.gif" width="260" height="81" border="0" usemap="#MapMap" />
                             </td>
                         </tr>
                         <tr style="visibility: hidden">
@@ -425,7 +425,7 @@
                                     </tr>
                                     <tr class="verdana11bk" id="trSelectCity1">
                                         <td colspan="3" style="height: 8px">
-                                            <img src="Assets/images/trans.gif" width="1" height="8" />
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="8" />
                                         </td>
                                     </tr>
                                     <tr class="verdana11bk" id="tr4">
@@ -445,7 +445,7 @@
                                     </tr>
                                     <tr class="verdana11bk">
                                         <td colspan="3" align="left">
-                                            <img src="Assets/images/trans.gif" width="1" height="8" />
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="8" />
                                         </td>
                                     </tr>
                                     <tr class="verdana11bk" id="tr1" style="display: none">
@@ -466,7 +466,7 @@
                                     </tr>
                                     <tr class="verdana11bk" id="tr2">
                                         <td colspan="3" style="height: 8px">
-                                            <img src="Assets/images/trans.gif" width="1" height="8" />
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="8" />
                                         </td>
                                     </tr>
                                     <tr class="verdana11bk" id="tr6" style="display: none">
@@ -487,7 +487,7 @@
                                     </tr>
                                     <tr class="verdana11bk" id="tr7">
                                         <td colspan="3" style="height: 8px">
-                                            <img src="Assets/images/trans.gif" width="1" height="8" />
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="8" />
                                         </td>
                                     </tr>
                                     <tr class="verdana11bk" id="tr3" style="display: none">
@@ -506,7 +506,7 @@
                                     </tr>
                                     <tr class="verdana11bk">
                                         <td colspan="3" align="left">
-                                            <img src="Assets/images/trans.gif" width="1" height="8" />
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="8" />
                                         </td>
                                     </tr>
                                     <tr class="verdana11bk" id="tr5" style="display: none">
@@ -526,7 +526,7 @@
                                     </tr>
                                     <tr class="verdana11bk">
                                         <td colspan="3" align="left">
-                                            <img src="Assets/images/trans.gif" width="1" height="8" />
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="8" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -556,13 +556,13 @@
             </tr>
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" />
+                    <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" width="8" height="8" />
                 </td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" />
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" />
                 </td>
                 <td align="right">
-                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" />
+                    <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" width="8" height="8" />
                 </td>
             </tr>
         </table>

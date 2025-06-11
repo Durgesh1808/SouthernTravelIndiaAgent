@@ -565,5 +565,48 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+        public static string CABpnr()
+        {
+            #region Optimize Code
+            /*string str = "select top 1 cabid from tbl_CarBookings_Log(nolock) order by id desc";
+            string rr = DataLib.GetStringData(DataLib.Connection.ConnectionString, str);*/
+            #endregion
+            ClsAdo clsObj = null;
+            try
+            {
+                clsObj = new ClsAdo();
+                string rr = clsObj.fnGetCABpnr();
+                int tt = 100;
+
+                if (rr.Trim().Length > 0)
+                {
+                    rr = rr.Substring(0, 3);
+                }
+                try
+                {
+                    tt = Convert.ToInt32(rr);
+                }
+                catch (Exception ex)
+                {
+                }
+                finally
+                {
+
+                    if (tt == 999)
+                        tt = 100;
+                    else
+                        tt++;
+                }
+
+                return Convert.ToString(tt) + System.DateTime.Now.Day.ToString("00") + System.DateTime.Now.Month.ToString("00") + System.DateTime.Now.Year + System.DateTime.Now.Minute.ToString("00") + System.DateTime.Now.Second.ToString("00") + System.DateTime.Now.Millisecond.ToString("000");
+            }
+            finally
+            {
+                if (clsObj != null)
+                {
+                    clsObj = null;
+                }
+            }
+        }
     }
 }

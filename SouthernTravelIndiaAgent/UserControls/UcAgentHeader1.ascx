@@ -15,7 +15,7 @@ window.history.forward(1);
     </table>
     
     </td>
-    <td width="426"><img src="Assets/images/header1.jpg" width="426" height="155" /></td>
+    <td width="426"><img  loading="lazy" alt="header1" src="Assets/images/header1.jpg" width="426" height="155" /></td>
     <td width="331" align="right" valign="top" background="Assets/images/header_03.jpg"><table width="150" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td width="131">&nbsp;</td>
@@ -28,9 +28,9 @@ window.history.forward(1);
    <tr>
     <td colspan="3"><table width="1002" border="0" cellspacing="0" cellpadding="0">
       <tr>
-        <td width="14"><img src="Assets/images/left_curve.jpg" width="14" height="23" /></td>
+        <td width="14"><img  loading="lazy" alt="left_curve" src="Assets/images/left_curve.jpg" width="14" height="23" /></td>
         <td width="973" bgcolor="#348de7" class="white_text" colspan="2">&nbsp;</td>
-        <td width="15"><img src="Assets/images/right_curve.jpg" width="15" height="23" /></td>
+        <td width="15"><img  loading="lazy" alt="right_curve" src="Assets/images/right_curve.jpg" width="15" height="23" /></td>
       </tr>
       
     </table></td>

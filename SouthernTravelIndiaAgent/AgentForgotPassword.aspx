@@ -84,11 +84,11 @@
         <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
             <tr>
                 <td align="left" style="width: 9px">
-                    <img src="Assets/images/left_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="280" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="280" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
             </tr>
             <tr valign="middle">
                 <td align="left" bgcolor="#E7E7E7" style="width: 9px">
@@ -106,11 +106,11 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3">
-                                            <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                                     </tr>
                                     <tr>
                                         <td colspan="3" bgcolor="#F2F9FF">
-                                            <img src="Assets/images/trans.gif" width="1" height="5" /></td>
+                                            <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="5" /></td>
                                     </tr>
                                     <tr>
                                         <td height="30" bgcolor="#F2F9FF">
@@ -143,11 +143,11 @@
             </tr>
             <tr>
                 <td align="left" style="width: 9px">
-                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                    <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
+                    <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
             </tr>
         </table>
         <div>

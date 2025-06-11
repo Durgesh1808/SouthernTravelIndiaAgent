@@ -230,13 +230,13 @@
                                         <table width="96%" cellspacing="0" cellpadding="0" border="0" style="background-color: #cccccc">
                                             <tr>
                                                 <td align="left">
-                                                    <img src="Assets/images/left_corner.gif" alt="image" />
+                                                    <img  loading="lazy" src="Assets/images/left_corner.gif" alt="left_corner" />
                                                 </td>
                                                 <td bgcolor="#e7e7e7">
-                                                    <img src="Assets/images/trans.gif" alt="image" />
+                                                    <img  loading="lazy" src="Assets/images/trans.gif" alt="trans" />
                                                 </td>
                                                 <td align="right">
-                                                    <img src="Assets/images/rgt_corner.gif" alt="image" />
+                                                    <img  loading="lazy" src="Assets/images/rgt_corner.gif" alt="rgt_corner" />
                                                 </td>
                                             </tr>
                                             <tr>
@@ -291,7 +291,7 @@
                                                                 <!--OnSelectedIndexChanged="ddlJdate_SelectedIndexChanged"-->
                                                                 <div style="height: 50px;">
                                                                     <div id="imgWait" style="display: none;">
-                                                                        <img width="33px" height="33px" src="Assets/images/wait_spinner.gif" /><br />
+                                                                        <img  loading="lazy" alt="wait_spinner" width="33px" height="33px" src="Assets/images/wait_spinner.gif" /><br />
                                                                         Please wait...
                                                                     </div>
                                                                 </div>
@@ -322,13 +322,13 @@
                                             </tr>
                                             <tr>
                                                 <td align="left">
-                                                    <img width="8" height="8" src="../Assets/images/left_d_corner.gif" />
+                                                    <img  loading="lazy" alt="left_d_corner" width="8" height="8" src="../Assets/images/left_d_corner.gif" />
                                                 </td>
                                                 <td bgcolor="#e7e7e7">
-                                                    <img width="1" height="1" src="../Assets/images/trans.gif" />
+                                                    <img  loading="lazy" alt="trans" width="1" height="1" src="../Assets/images/trans.gif" />
                                                 </td>
                                                 <td align="right">
-                                                    <img width="8" height="8" src="../Assets/images/rgt_d_corner.gif" />
+                                                    <img  loading="lazy" alt="rgt_d_corner" width="8" height="8" src="../Assets/images/rgt_d_corner.gif" />
                                                 </td>
                                             </tr>
                                         </table>
@@ -346,13 +346,13 @@
                                                     <table id="table5" runat="server" cellspacing="0" cellpadding="0" border="0" style="background-color: #cccccc">
                                                         <tr>
                                                             <td align="left">
-                                                                <img src="Assets/images/left_corner.gif" alt="image" />
+                                                                <img  loading="lazy"  src="Assets/images/left_corner.gif" alt="left_corner" />
                                                             </td>
                                                             <td bgcolor="#e7e7e7">
-                                                                <img src="Assets/images/trans.gif" alt="image" />
+                                                                <img  loading="lazy"  src="Assets/images/trans.gif" alt="trans" />
                                                             </td>
                                                             <td align="right">
-                                                                <img src="Assets/images/rgt_corner.gif" alt="image" />
+                                                                <img  loading="lazy"  src="Assets/images/rgt_corner.gif" alt="rgt_corner" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -753,13 +753,13 @@
                                                         </tr>
                                                         <tr>
                                                             <td align="left">
-                                                                <img src="Assets/images/left_d_corner.gif" alt="image" />
+                                                                <img  loading="lazy" src="Assets/images/left_d_corner.gif" alt="left_d_corner" />
                                                             </td>
                                                             <td bgcolor="#e7e7e7">
-                                                                <img src="Assets/images/trans.gif" alt="image" />
+                                                                <img  loading="lazy" src="Assets/images/trans.gif" alt="trans" />
                                                             </td>
                                                             <td align="right">
-                                                                <img src="Assets/images/rgt_d_corner.gif" alt="image" />
+                                                                <img  loading="lazy" src="Assets/images/rgt_d_corner.gif" alt="rgt_d_corner" />
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -800,7 +800,7 @@
                                                         </tr>
                                                         <tr>
                                                             <td align="left" valign="top">
-                                                                <img src="Assets/images/spacer.gif" width="1" height="30" />
+                                                                <img  loading="lazy" alt="" src="Assets/images/spacer.gif" width="1" height="30" />
                                                             </td>
                                                         </tr>
                                                         <tr >
@@ -808,19 +808,19 @@
                                                                 <table width="45%" border="0" cellspacing="0" cellpadding="0" align="center">
                                                                     <tr>
                                                                         <td width="7%" align="left" valign="middle">
-                                                                            <img src="Assets/images/booked_img.gif" width="22" height="20" />
+                                                                            <img  loading="lazy" alt="" src="Assets/images/booked_img.gif" width="22" height="20" />
                                                                         </td>
                                                                         <td width="26%" align="left" valign="middle" class="Rfnt">
                                                                             Booked
                                                                         </td>
                                                                         <td width="6%" align="left" valign="middle">
-                                                                            <img src="Assets/images/selected_img.gif" width="23" height="20" />
+                                                                            <img  loading="lazy" alt="" src="Assets/images/selected_img.gif" width="23" height="20" />
                                                                         </td>
                                                                         <td width="27%" align="left" valign="middle" class="Rfnt">
                                                                             Selected
                                                                         </td>
                                                                         <td width="6%" align="left" valign="middle">
-                                                                            <img src="Assets/images/available_img.gif" width="23" height="20" />
+                                                                            <img  loading="lazy" alt="" src="Assets/images/available_img.gif" width="23" height="20" />
                                                                         </td>
                                                                         <td width="28%" align="left" valign="middle" class="Rfnt">
                                                                             Available
@@ -846,11 +846,11 @@
                                                                             <%--<div class="selectiondiv">
                                                                                 <div class="frontsection">
                                                                                     <div class="seat-d">
-                                                                                        <img src="Assets/images/seat-d.png"></div>
+                                                                                        <img  loading="lazy" alt="" src="Assets/images/seat-d.png"></div>
                                                                                     <div class="seat-c">
-                                                                                        <img src="Assets/images/seat-c.png"></div>
+                                                                                        <img  loading="lazy" alt="" src="Assets/images/seat-c.png"></div>
                                                                                     <div class="bus-entry">
-                                                                                        <img src="Assets/images/bus-entry.jpg"></div>
+                                                                                        <img  loading="lazy" alt="" src="Assets/images/bus-entry.jpg"></div>
                                                                                 </div>
                                                                                 <div class="backsection">
                                                                                     <div class="bus-midspace bus-midspace2">
@@ -874,19 +874,19 @@
                                                                 <table width='35%' border='0' cellspacing='0' cellpadding='0' align='center'>
                                                                     <tr>
                                                                         <td width='7%' align='left' valign='middle'>
-                                                                            <img src='Assets/images/booked1_img.gif' width='22' height='20' />
+                                                                            <img  loading="lazy" alt="" src='Assets/images/booked1_img.gif' width='22' height='20' />
                                                                         </td>
                                                                         <td width='26%' align='left' valign='middle' class='Rfnt'>
                                                                             Booked
                                                                         </td>
                                                                         <td width='6%' align='left' valign='middle'>
-                                                                            <img src='Assets/images/selected_img.gif' width='23' height='20' />
+                                                                            <img  loading="lazy" alt="" src='Assets/images/selected_img.gif' width='23' height='20' />
                                                                         </td>
                                                                         <td width='27%' align='left' valign='middle' class='Rfnt'>
                                                                             Selected
                                                                         </td>
                                                                         <td width='6%' align='left' valign='middle'>
-                                                                            <img src='Assets/images/available_img.gif' width='23' height='20' />
+                                                                            <img  loading="lazy" alt="" src='Assets/images/available_img.gif' width='23' height='20' />
                                                                         </td>
                                                                         <td width='28%' align='left' valign='middle' class='Rfnt'>
                                                                             Available
@@ -897,7 +897,7 @@
                                                         </tr>--%>
                                                         <tr>
                                                             <td align="left" valign="top">
-                                                                <img src="Assets/images/spacer1.gif" width="1" height="30" />
+                                                                <img  loading="lazy" alt="spacer1" src="Assets/images/spacer1.gif" width="1" height="30" />
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -931,17 +931,17 @@
                                                                             <td bgcolor="#FF7755" width="20" valign="middle">
                                                                             </td>
                                                                             <td align="left" valign="middle" class="heads" bgcolor="#ffffff">
-                                                                                &nbsp;<img src="Assets/images/bullet.gif" alt="-" border="0" />&nbsp;Booked Seats
+                                                                                &nbsp;<img  loading="lazy" alt="" src="Assets/images/bullet.gif" alt="-" border="0" />&nbsp;Booked Seats
                                                                             </td>
                                                                             <td bgcolor="#9bc7f4" width="20" valign="middle">
                                                                             </td>
                                                                             <td align="left" valign="middle" class="heads" bgcolor="#ffffff">
-                                                                                &nbsp;<img src="Assets/images/bullet.gif" alt="-" border="0" />&nbsp;Available Seats
+                                                                                &nbsp;<img  loading="lazy" alt="" src="Assets/images/bullet.gif" alt="-" border="0" />&nbsp;Available Seats
                                                                             </td>
                                                                             <td bgcolor="#5aa1ea" width="20" valign="middle">
                                                                             </td>
                                                                             <td align="left" valign="middle" class="heads" bgcolor="#ffffff">
-                                                                                &nbsp;<img src="Assets/images/bullet.gif" alt="-" border="0" />&nbsp;Selected Seats
+                                                                                &nbsp;<img  loading="lazy" alt="" src="Assets/images/bullet.gif" alt="-" border="0" />&nbsp;Selected Seats
                                                                             </td>
                                                                         </tr>
                                                                     </table>

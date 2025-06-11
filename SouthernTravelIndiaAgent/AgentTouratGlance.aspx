@@ -19,11 +19,11 @@
                     <table width="296" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td align="left">
-                                <img src="Assets/images/left_corner.gif" width="8" height="8" alt="image" /></td>
+                                <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" /></td>
                             <td bgcolor="#E7E7E7">
-                                <img src="Assets/images/trans.gif" width="280" height="1" alt="image" /></td>
+                                <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="280" height="1"  /></td>
                             <td align="right">
-                                <img src="Assets/images/rgt_corner.gif" width="8" height="8" alt="image" /></td>
+                                <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8"  /></td>
                         </tr>
                         <tr>
                             <td align="left" bgcolor="#E7E7E7">
@@ -33,7 +33,7 @@
                                     <tr>
                                         <td>
                                             <a href="Agentrecentbookings.aspx">
-                                                <img src="Assets/images/recent_booking.gif" width="280" height="43" border="0" alt="image" /></a></td>
+                                                <img  loading="lazy" alt="recent_booking" src="Assets/images/recent_booking.gif" width="280" height="43" border="0"  /></a></td>
                                     </tr>
                                 </table>
                             </td>
@@ -42,26 +42,26 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <img src="Assets/images/left_d_corner.gif" width="8" height="8" alt="image" /></td>
+                                <img  loading="lazy" src="Assets/images/left_d_corner.gif" width="8" height="8" alt="left_d_corner" /></td>
                             <td bgcolor="#E7E7E7">
-                                <img src="Assets/images/trans.gif" width="1" height="1" alt="image" /></td>
+                                <img  loading="lazy" src="Assets/images/trans.gif" width="1" height="1" alt="trans" /></td>
                             <td align="right">
-                                <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="image" /></td>
+                                <img  loading="lazy" src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="rgt_d_corner" /></td>
                         </tr>
                     </table>
                 </td>
             </tr>
             <tr>
                 <td colspan="3">
-                    <img src="Assets/images/trans.gif" width="296" height="6" alt="image" /></td>
+                    <img  loading="lazy" alt="" src="Assets/images/trans.gif" width="296" height="6" alt="image" /></td>
             </tr>
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_corner.gif" width="8" height="8" alt="image" /></td>
-                <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="280" height="1" alt="image" /></td>
-                <td align="right">
-                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" alt="image" /></td>
+                    <img  loading="lazy" src="Assets/images/left_corner.gif" width="8" height="8" alt="left_corner" /></td>
+                <td bgcolor="#E7E7E7">   
+                    <img  loading="lazy" src="Assets/images/trans.gif" width="280" height="1" alt="trans" /></td>
+                <td align="right">       
+                    <img  loading="lazy" src="Assets/images/rgt_corner.gif" width="8" height="8" alt="rgt_corner" /></td>
             </tr>
             <tr>
                 <td align="left" bgcolor="#E7E7E7">
@@ -70,13 +70,13 @@
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                         <tr>
                             <td>
-                                <img src="Assets/images/tour_glance1.gif" width="280" height="43" border="0" alt="image" /></td>
+                                <img  loading="lazy" alt="tour_glance1" src="Assets/images/tour_glance1.gif" width="280" height="43" border="0" /></td>
                         </tr>
                         <tr>
                             <td height="24" align="left" class="verdana11bk">
                                 &nbsp;<input id="date" type="text" size="8" name="txtdate" runat="server" maxlength="10"
                                     readonly onclick="showCalendarControl(this);" />
-                                <img id="Img1" style="cursor: hand" onclick="showCalendarControl(document.getElementById('date'));"
+                                <img  loading="lazy" id="Img1" style="cursor: hand" onclick="showCalendarControl(document.getElementById('date'));"
                                     alt="View calendar" src="Assets/images/calendar.gif" value="Calendar" />
                                 <asp:DropDownList ID="ddlBranchName" runat="server" DataValueField="Branchcode" Width="120"
                                     DataTextField="Branchname">
@@ -147,7 +147,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="Assets/images/trans.gif" width="1" height="7" alt="image" /></td>
+                                <img  loading="lazy"  src="Assets/images/trans.gif" width="1" height="7" alt="trans" /></td>
                         </tr>
                     </table>
                 </td>
@@ -156,11 +156,11 @@
             </tr>
             <tr>
                 <td align="left">
-                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" alt="image" /></td>
+                    <img  loading="lazy" src="Assets/images/left_d_corner.gif" width="8" height="8" alt="left_d_corner" /></td>
                 <td bgcolor="#E7E7E7">
-                    <img src="Assets/images/trans.gif" width="1" height="1" alt="image" /></td>
+                    <img  loading="lazy" src="Assets/images/trans.gif" width="1" height="1" alt="trans" /></td>
                 <td align="right">
-                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="image" /></td>
+                    <img  loading="lazy" src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="rgt_d_corner" /></td>
             </tr>
         </table>
     </form>

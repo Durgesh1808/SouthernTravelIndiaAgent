@@ -233,11 +233,11 @@ function ClearTxtF()
             <table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
                 <tr>
                     <td align="left" style="width: 9px">
-                        <img src="Assets/images/left_corner.gif" width="8" height="8" /></td>
+                        <img  loading="lazy" alt="left_corner" src="Assets/images/left_corner.gif" width="8" height="8" /></td>
                     <td bgcolor="#E7E7E7">
-                        <img src="Assets/images/trans.gif" width="280" height="1" /></td>
+                        <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="280" height="1" /></td>
                     <td align="right">
-                        <img src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
+                        <img  loading="lazy" alt="rgt_corner" src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
                 </tr>
                 <tr>
                     <td align="left" bgcolor="#E7E7E7" style="width: 9px">
@@ -254,18 +254,18 @@ function ClearTxtF()
                                         </tr>
                                         <tr>
                                             <td colspan="3" align="right" class="verdana11bk">
-                                                <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                                                <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" align="right" bgcolor="#F2F9FF" class="verdana11bk">
-                                                <img src="Assets/images/trans.gif" width="1" height="10" /></td>
+                                                <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="10" /></td>
                                         </tr>
                                         <tr>
                                             <td width="40%" height="30" align="right" bgcolor="#F2F9FF" class="verdana11bk">
                                                 My Name :
                                             </td>
                                             <td width="1%" align="center" bgcolor="#F2F9FF" class="verdana11">
-                                                <img src="Assets/images/trans.gif" width="25" height="30" /></td>
+                                                <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="25" height="30" /></td>
                                             <td width="50%" align="left" bgcolor="#F2F9FF" class="verdana11">
                                                 <input name="textfield7" type="text" class="verdana11bk" id="txtFname" runat="server"
                                                     maxlength="25" onfocus="JavaScript:ClearTxt();" onblur="JavaScript:FillTxt();" />
@@ -399,7 +399,7 @@ function ClearTxtF()
                                             <td height="22" align="left" bgcolor="#F2F9FF" class="verdana11bk">
                                                 <a href="agenthomepage.aspx">
                                                     <asp:ImageButton ID="btnUpdate" runat="server" ImageUrl="Assets/images/update.gif" OnClick="btnUpdate_Click" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                                        href="agenthomepage.aspx"><img id="ImageButton2" alt="" border="0" runat="server"
+                                                        href="agenthomepage.aspx"><img  loading="lazy" alt="cancel1" id="ImageButton2" alt="" border="0" runat="server"
                                                             src="Assets/images/cancel1.gif" />
                                                     </a>
                                             </td>
@@ -422,11 +422,11 @@ function ClearTxtF()
                 </tr>
                 <tr>
                     <td align="left" style="width: 9px">
-                        <img src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
+                        <img  loading="lazy" alt="left_d_corner" src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
                     <td bgcolor="#E7E7E7">
-                        <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                        <img  loading="lazy" alt="trans" src="Assets/images/trans.gif" width="1" height="1" /></td>
                     <td align="right">
-                        <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
+                        <img  loading="lazy" alt="rgt_d_corner" src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
                 </tr>
             </table>
             <div>

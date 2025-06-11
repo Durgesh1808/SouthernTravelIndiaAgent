@@ -113,11 +113,11 @@
             <table width="276" height="429" border="0" cellpadding="0" cellspacing="0">
                 <tr>
                     <td align="left">
-                        <img src="Assets/images/left_corner.gif" width="8" height="8" alt="image" /></td>
+                        <img  loading="lazy" src="Assets/images/left_corner.gif" width="8" height="8" alt="left_corner" /></td>
                     <td bgcolor="#E7E7E7">
-                        <img src="Assets/images/trans.gif" width="260" height="1" alt="image" /></td>
+                        <img  loading="lazy"  src="Assets/images/trans.gif" width="260" height="1" alt="trans" /></td>
                     <td align="right" style="width: 9px">
-                        <img src="Assets/images/rgt_corner.gif" width="8" height="8" alt="image" /></td>
+                        <img  loading="lazy"  src="Assets/images/rgt_corner.gif" width="8" height="8" alt="rgt_corner" /></td>
                 </tr>
                 <tr>
                     <td align="left" bgcolor="#E7E7E7">
@@ -126,13 +126,13 @@
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="100%" style="height: 81px">
-                                    <img src="Assets/images/build.gif" width="260" height="81" border="0" usemap="#Map"  alt="Tour Booking" id="IMG1" language="javascript" onclick="return IMG1_onclick()"/></td>
+                                    <img  loading="lazy" alt="build" src="Assets/images/build.gif" width="260" height="81" border="0" usemap="#Map"  alt="Tour Booking" id="IMG1" language="javascript" onclick="return IMG1_onclick()"/></td>
                             </tr>
                             <tr><td style="height:5px"></td></tr>
                             <tr>
                                 <td align="Left" class="tour" style="height: 50px">
-                                    &nbsp;<img src="Assets/images/bullet.gif" alt="-" border="0" /><a href="Agentspecial.aspx" class="tour">Special Packages</a>&nbsp;&nbsp;
-                                    <img src="Assets/images/bullet.gif" alt="-" border="0" /><a href="GroupBookingRequestform.aspx" target ="_parent" class="tour">Group Booking</a>
+                                    &nbsp;<img  loading="lazy" alt="bullet" src="Assets/images/bullet.gif" alt="-" border="0" /><a href="Agentspecial.aspx" class="tour">Special Packages</a>&nbsp;&nbsp;
+                                    <img  loading="lazy" alt="bullet" src="Assets/images/bullet.gif" border="0" /><a href="GroupBookingRequestform.aspx" target ="_parent" class="tour">Group Booking</a>
                                     <br /><br />
                                     <b>&nbsp;Fixed Tours Booking</b>
                                     </td>
@@ -168,7 +168,7 @@
                                                     <tr style="height:40px;">
                                                         <td colspan="3" align="center" valign="middle"> 
                                                             <div id="imgWait" style="display:none;">
-                                                                <img width="33px" height="33px"  src="Assets/images/wait_spinner.gif" alt="" /><br />
+                                                                <img  loading="lazy" width="33px" height="33px"  src="Assets/images/wait_spinner.gif" alt="wait_spinner" /><br />
                                                                 Please wait...
                                                             </div>
                                                         </td>
@@ -214,11 +214,11 @@
                 </tr>
                 <tr>
                     <td align="left" style="height: 8px">
-                        <img src="Assets/images/left_d_corner.gif" width="8" height="8" alt="image" /></td>
+                        <img  loading="lazy" src="Assets/images/left_d_corner.gif" width="8" height="8" alt="left_d_corner" /></td>
                     <td bgcolor="#E7E7E7" style="height: 8px">
-                        <img src="Assets/images/trans.gif" width="1" height="1" alt="image" /></td>
+                        <img  loading="lazy" src="Assets/images/trans.gif" width="1" height="1" alt="trans" /></td>
                     <td align="right" style="width: 9px; height: 8px">
-                        <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="image" /></td>
+                        <img  loading="lazy" src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="rgt_d_corner" /></td>
                 </tr>
             </table>
             <map name="Map" id="Map">
