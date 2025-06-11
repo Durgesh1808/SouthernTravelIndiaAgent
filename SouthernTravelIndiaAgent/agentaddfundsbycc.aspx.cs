@@ -66,6 +66,11 @@ namespace SouthernTravelIndiaAgent
                 Response.Redirect("agentlogin.aspx");
         }
 
+        /// <summary>
+        /// // This method is called when the submit button is clicked. It processes the payment based on the selected payment method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Submit_Click(object sender, EventArgs e)
         {
             DataTable dt = null;

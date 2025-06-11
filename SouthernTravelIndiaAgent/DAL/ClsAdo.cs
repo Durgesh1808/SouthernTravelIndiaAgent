@@ -18,6 +18,11 @@ namespace SouthernTravelIndiaAgent.DAL
         {
             connectionString = DataLib.getConnectionString();
         }
+        /// <summary>
+        /// Retrieves agent session details based on the provided user ID.     
+        /// </summary>
+        /// <param name="lUserID"></param>
+        /// <returns></returns>
         public DataTable fnagent_session_details(string lUserID)
         {
             DataTable dtSessionDetails = new DataTable();
@@ -49,7 +54,12 @@ namespace SouthernTravelIndiaAgent.DAL
             }
         }
 
-
+        /// <summary>
+        ///  Saves the agent login information including AgentID and IP Address.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <param name="pIPAddress"></param>
+        /// <returns></returns>
         public int fnSaveAgentLogInInfo(int? pAgentID, string pIPAddress)
         {
             int status = 0;
@@ -82,6 +92,11 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return status;
         }
+        /// <summary>
+        /// // Retrieves agent profile information based on the provided user ID.
+        /// </summary>
+        /// <param name="lUserID"></param>
+        /// <returns></returns>
         public List<Agent_ProfileResult> fnAgent_Profile(string lUserID)
         {
             List<Agent_ProfileResult> results = new List<Agent_ProfileResult>();
@@ -146,6 +161,13 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return results;
         }
+        /// <summary>
+        ///Changes the password for an agent.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <param name="pOldPassword"></param>
+        /// <param name="pNewPassword"></param>
+        /// <returns></returns>
         public int fnAgent_changepassword(string pAgentID, string pOldPassword, string pNewPassword)
         {
             int result = 0;
@@ -183,6 +205,22 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return result;
         }
+        /// <summary>
+        /// Updates the agent's profile information.
+        /// </summary>
+        /// <param name="pAgentUserID"></param>
+        /// <param name="pEmailID"></param>
+        /// <param name="pFName"></param>
+        /// <param name="pLName"></param>
+        /// <param name="pDOB"></param>
+        /// <param name="pGender"></param>
+        /// <param name="pAddress"></param>
+        /// <param name="pCity"></param>
+        /// <param name="pMobile"></param>
+        /// <param name="pLandline"></param>
+        /// <param name="pFax"></param>
+        /// <param name="pPanNo"></param>
+        /// <returns></returns>
         public int fnAgent_UpdateProfile(
        string pAgentUserID,
        string pEmailID,
@@ -240,6 +278,16 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return result;
         }
+        /// <summary>
+        /// Retrieves agent information based on the provided email ID and password.
+        /// </summary>
+        /// <remarks>This method executes a stored procedure to validate the agent's credentials and
+        /// retrieve their information. Ensure that the provided email ID and password match the expected format and
+        /// values.</remarks>
+        /// <param name="lEmailID">The email address of the agent. This parameter cannot be null or empty.</param>
+        /// <param name="lPws">The password associated with the agent's account. This parameter cannot be null or empty.</param>
+        /// <returns>A <see cref="DataTable"/> containing the agent's information if the operation is successful. Returns <see
+        /// langword="null"/> if an error occurs during the operation.</returns>
         public DataTable fnAgent_ForgotPassword(string lEmailID, string lPws)
         {
             DataTable dt = new DataTable();
@@ -273,7 +321,18 @@ namespace SouthernTravelIndiaAgent.DAL
             }
         }
 
-
+        /// <summary>
+        /// Retrieves pending entries for agent add funds based on various parameters.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <param name="lAgentame"></param>
+        /// <param name="lTransID"></param>
+        /// <param name="lAmount"></param>
+        /// <param name="pvStatus"></param>
+        /// <param name="lTransNo"></param>
+        /// <param name="lDepositorName"></param>
+        /// <returns>A <see cref="DataSet"/> containing pending entries for agent add funds.</returns>
+        
         public DataSet fnGetagent_addfunds_Pendingentry(
     int? lAgentID,
     string lAgentame,
@@ -319,6 +378,16 @@ namespace SouthernTravelIndiaAgent.DAL
             return pdtDTSet;
         }
 
+        /// <summary>
+        /// Retrieves agent transaction report based on various parameters.
+        /// </summary>
+        /// <param name="lFromAgent"></param>
+        /// <param name="lAgentID"></param>
+        /// <param name="lTransType"></param>
+        /// <param name="lDateFrom"></param>
+        /// <param name="lDateTo"></param>
+        /// <param name="lBranchCode"></param>
+        /// <returns></returns>
         public DataTable fnGetAgent_Transaction_Report(
     char? lFromAgent,
     int? lAgentID,
@@ -377,7 +446,11 @@ namespace SouthernTravelIndiaAgent.DAL
                 return null;
             }
         }
-
+        /// <summary>
+        /// /// Retrieves transaction types for agents based on the provided agent character.
+        /// </summary>
+        /// <param name="i_AtAgent"></param>
+        /// <returns></returns>
         public DataTable fnAgent_Transactiontypes(char? i_AtAgent)
         {
             DataTable dt = new DataTable();
@@ -409,6 +482,11 @@ namespace SouthernTravelIndiaAgent.DAL
                 return null;
             }
         }
+        /// <summary>
+        /// /// Retrieves the available balance for a specific agent.   
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <returns></returns>
         public DataSet fnGetAgent_Availablebalance(int? lAgentID)
         {
             DataSet ds = new DataSet();
@@ -440,6 +518,12 @@ namespace SouthernTravelIndiaAgent.DAL
                 return null;
             }
         }
+        /// <summary>
+        /// /// Retrieves the commission for an agent based on the tour number and agent level.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <param name="lAgentLevel"></param>
+        /// <returns></returns>
         public double fnGetAgentCommission(int lTourNo, int lAgentLevel)
         {
             double agentCommission = 0;
@@ -477,6 +561,10 @@ namespace SouthernTravelIndiaAgent.DAL
                 return 0;
             }
         }
+        /// <summary>
+        /// /// Retrieves active fixed tours from the database.
+        /// </summary>
+        /// <returns></returns>
         public DataTable fnGetFixedToursActive()
         {
             DataTable dtResult = new DataTable();
@@ -508,6 +596,10 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+        /// <summary>
+        /// /// Retrieves origin branches for fixed tours.
+        /// </summary>
+        /// <returns></returns>
         public DataTable fnFixed_OriginBranches()
         {
             DataTable dtResult = new DataTable();
@@ -539,6 +631,14 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+        /// <summary>
+        /// /// Retrieves vacant seats for fixed tours based on the specified date and branch.
+        /// </summary>
+        /// <param name="lDay"></param>
+        /// <param name="lMonth"></param>
+        /// <param name="lYear"></param>
+        /// <param name="lBranch"></param>
+        /// <returns></returns>
         public DataSet fnFixed_DatewiseTours_Vacantseats(string lDay, string lMonth, string lYear, string lBranch)
         {
             DataSet dsResult = new DataSet();
@@ -577,6 +677,12 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+        /// <summary>
+        /// /// Retrieves branch-wise tour information based on the provided HR and branch code.
+        /// </summary>
+        /// <param name="pHR"></param>
+        /// <param name="pBranch"></param>
+        /// <returns></returns>
         public DataTable fnBranchWiseTour(int? pHR, string pBranch)
         {
             DataTable dtResult = new DataTable();
@@ -614,6 +720,11 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+        /// <summary>
+        /// /// Retrieves sub-ledger head information based on the provided row ID.
+        /// </summary>
+        /// <param name="pRowID"></param>
+        /// <returns></returns>
         public List<GetSubLedgerHead_SPResult> fnGetSubLedgerHead(int pRowID)
         {
             List<GetSubLedgerHead_SPResult> resultList = new List<GetSubLedgerHead_SPResult>();
@@ -656,6 +767,12 @@ namespace SouthernTravelIndiaAgent.DAL
             return resultList;
         }
 
+        /// <summary>
+        /// /// Saves the agent logout information including AgentID and IP Address.
+        /// </summary>
+        /// <param name="pAgentID"></param>
+        /// <param name="pIPAddress"></param>
+        /// <returns></returns>
         public int fnSaveAgentLogoutInfo(int? pAgentID, string pIPAddress)
         {
             int result = 0;
@@ -682,6 +799,11 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return result;
         }
+
+        /// <summary>
+        /// /// Retrieves valid hotel information from the database.
+        /// </summary>
+        /// <returns></returns>
         public DataSet fnGetHotelInfoValid()
         {
             DataSet ds = new DataSet();
@@ -713,6 +835,11 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves active city categories from the database.
+        /// </summary>
+        /// <returns></returns>
         public DataTable fnGetActive_Cat_City()
         {
             string connStr = DataLib.getConnectionString(); // Your connection string
@@ -748,6 +875,13 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return dtResult;
         }
+
+        /// <summary>
+        /// /// Retrieves car transfer types based on the provided city ID and user type.
+        /// </summary>
+        /// <param name="pCityID"></param>
+        /// <param name="lUserType"></param>
+        /// <returns></returns>
         public DataTable fnCar_TransferTypes_CityWise(int? pCityID, string lUserType)
         {
             string connStr = DataLib.getConnectionString(); // your connection string
@@ -773,21 +907,19 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
                 catch (Exception ex)
                 {
-                    // Optionally log the exception
                     return null;
                 }
-                //finally
-                //{
-                //    if (dtResult != null)
-                //    {
-                //        dtResult.Dispose();
-                //        dtResult = null;
-                //    }
-                //}
+               
             }
 
             return dtResult;
         }
+
+        /// <summary>
+        /// /// Retrieves special tours based on the provided zone ID.
+        /// </summary>
+        /// <param name="pZoneID"></param>
+        /// <returns></returns>
         public DataTable fnSpecialTours_Zonewise(int pZoneID)
         {
             DataTable pdtTable = new DataTable();
@@ -823,6 +955,10 @@ namespace SouthernTravelIndiaAgent.DAL
             return pdtTable;
         }
 
+        /// <summary>
+        /// /// Retrieves the SPL ticket code from the database.
+        /// </summary>
+        /// <returns></returns>
         public string fnSPLticketCode()
         {
             string ticketCode = "";
@@ -859,6 +995,11 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return ticketCode;
         }
+
+        /// <summary>
+        /// /// Retrieves the SPL PNR number from the database.
+        /// </summary>
+        /// <returns></returns>
         public string fnGetSPLpnr()
         {
             string pnrNo = "";
@@ -896,6 +1037,12 @@ namespace SouthernTravelIndiaAgent.DAL
             return pnrNo;
         }
 
+        /// <summary>
+        /// /// Retrieves recent bookings for fixed tours based on the request source and ID.
+        /// </summary>
+        /// <param name="lRqstFrom"></param>
+        /// <param name="lID"></param>
+        /// <returns></returns>
         public DataTable fnFixed_RecentBookings(string lRqstFrom, string lID)
         {
             DataTable dtResult = new DataTable();
@@ -929,6 +1076,12 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return dtResult;
         }
+
+        /// <summary>
+        /// /// Retrieves fixed tour details based on the provided city ID.
+        /// </summary>
+        /// <param name="lCityID"></param>
+        /// <returns></returns>
         public DataTable fnCar_FixedTourDetails(decimal? lCityID)
         {
             DataTable ldtRecSet = new DataTable();
@@ -964,10 +1117,23 @@ namespace SouthernTravelIndiaAgent.DAL
 
             return ldtRecSet;
         }
+
+        /// <summary>
+        /// /// Retrieves special tour fare panel information based on the fare type, tour ID, and LTC status.
+        /// </summary>
+        /// <param name="i_FareType"></param>
+        /// <param name="i_TourID"></param>
+        /// <param name="i_IsLTC"></param>
+        /// <param name="o_IsAccomodation"></param>
+        /// <param name="o_ReturnValue"></param>
+        /// <param name="o_TourName"></param>
+        /// <param name="o_Notes"></param>
+        /// <param name="o_IsQuery"></param>
+        /// <returns></returns>
         public List<Get_SPL_Fare_Panel_spResult> Get_SpecialTour_FarePanel(
-string i_FareType, int? i_TourID, bool? i_IsLTC,
-out bool? o_IsAccomodation, out int? o_ReturnValue,
-out string o_TourName, out string o_Notes, out bool? o_IsQuery)
+                    string i_FareType, int? i_TourID, bool? i_IsLTC,
+                    out bool? o_IsAccomodation, out int? o_ReturnValue,
+                    out string o_TourName, out string o_Notes, out bool? o_IsQuery)
         {
             var list = new List<Get_SPL_Fare_Panel_spResult>();
 
@@ -1037,6 +1203,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return list;
         }
+
+        /// <summary>
+        /// /// Retrieves the tax value based on the specified tax type.
+        /// </summary>
+        /// <param name="taxType"></param>
+        /// <returns></returns>
         public string fnGetTAXValue(string taxType)
         {
             string taxValue = null;
@@ -1059,6 +1231,14 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
             }
             return taxValue;
         }
+
+        /// <summary>
+        /// // Retrieves special tour master information based on the provided tour ID.
+        /// </summary>
+        /// <param name="pOrderId"></param>
+        /// <param name="pAgentID"></param>
+        /// <param name="pAvaiBal"></param>
+        /// <returns></returns>
         public DataTable fnGetAgentPayDetail(string pOrderId, int? pAgentID, ref string pAvaiBal)
         {
             DataTable ldtRecSet = new DataTable();
@@ -1101,6 +1281,16 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return ldtRecSet;
         }
+
+        /// <summary>
+        /// /// Retrieves the agent level commission based on the agent ID, tour number, table column, and table name.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <param name="lTourNo"></param>
+        /// <param name="lTBLCol"></param>
+        /// <param name="lTBLName"></param>
+        /// <param name="lIsPers"></param>
+        /// <returns></returns>
         public string fnGetAgentLavelComm(int? lAgentID, string lTourNo, string lTBLCol, string lTBLName, ref bool? lIsPers)
         {
             string lAgentComm = "0";
@@ -1153,6 +1343,16 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return lAgentComm;
         }
+
+        /// <summary>
+        /// /// Retrieves the child pax count based on the provided tour ID and date.
+        /// </summary>
+        /// <param name="lTourID"></param>
+        /// <param name="lTourDate"></param>
+        /// <param name="lCategoryID"></param>
+        /// <param name="lPaxID"></param>
+        /// <param name="o_ReturnValue"></param>
+        /// <returns></returns>
         public DataTable fnGetSpecialTourFare(int? lTourID, DateTime? lTourDate, int? lCategoryID, int? lPaxID, out int? o_ReturnValue)
         {
             o_ReturnValue = null;
@@ -1198,6 +1398,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves the list of countries based on the specified region ID.
+        /// </summary>
+        /// <param name="lRegionId"></param>
+        /// <returns></returns>
         public DataTable fnGetCountry(int? lRegionId)
         {
             DataTable dtTable = new DataTable();
@@ -1229,6 +1435,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves whether service tax is applicable for the specified tour number.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <returns></returns>
         public string fnGetServiceTaxIsAcc(int? lTourNo)
         {
             string connectionString = DataLib.getConnectionString();
@@ -1264,6 +1476,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves the service tax value based on the specified tax type.
+        /// </summary>
+        /// <param name="pTaxType"></param>
+        /// <returns></returns>
         public decimal fnGetServiceTaxValue(string pTaxType)
         {
             string connectionString = DataLib.getConnectionString();
@@ -1303,6 +1521,11 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves the LTC charges from the database.
+        /// </summary>
+        /// <returns></returns>
         public string fnGetLTCCharges()
         {
             string connectionString = DataLib.getConnectionString();
@@ -1338,6 +1561,11 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves a new order ID from the database.
+        /// </summary>
+        /// <returns></returns>
         public string fnGetOrderID()
         {
             string connectionString = DataLib.getConnectionString();
@@ -1370,6 +1598,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves seat arrangement details based on the provided tour serial number.
+        /// </summary>
+        /// <param name="lTourSrNo"></param>
+        /// <returns></returns>
         public DataSet fnGetSeatArrangementDetail(long? lTourSrNo)
         {
             DataSet pdtDTSet = new DataSet();
@@ -1407,6 +1641,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves pickup details based on the provided row ID.
+        /// </summary>
+        /// <param name="lRowID"></param>
+        /// <returns></returns>
         public DataTable fnGetPickupDetail(int? lRowID)
         {
             DataTable ldtRecSet = new DataTable();
@@ -1445,6 +1685,15 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves fixed tour fare details based on the provided tour number, date, LTC status, and request source.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <param name="lTourDate"></param>
+        /// <param name="lisLTC"></param>
+        /// <param name="lReqFrom"></param>
+        /// <returns></returns>
         public DataSet fnGetFixedTour_Fare(int? lTourNo, DateTime? lTourDate, char? lisLTC, string lReqFrom)
         {
             DataSet pdtDTSet = new DataSet();
@@ -1489,6 +1738,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves vacant seats for a specific tour and date.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <param name="lTourDate"></param>
+        /// <returns></returns>
         public DataSet fnGetjdates_vacantseats(int? lTourNo, int? lTourDate)
         {
             DataSet pdsTable = new DataSet();
@@ -1526,6 +1782,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// Retrieves pickup address and departure time for a specific tour number.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <returns></returns>
         public DataTable fnFixed_PickupAddr_DeptTime(int? lTourNo)
         {
             DataTable pdtTable = new DataTable();
@@ -1561,6 +1824,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// Retrieves the default pickup address for a specific tour number.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <returns></returns>
         public DataSet fnFixed_Default_PickupAddress(int? lTourNo)
         {
             DataSet pdsTable = new DataSet();
@@ -1596,6 +1866,20 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// Inserts or updates a pickup point in the database.
+        /// </summary>
+        /// <param name="lRowID"></param>
+        /// <param name="lTourNo"></param>
+        /// <param name="lPckUpPlace"></param>
+        /// <param name="lstrArrHrs"></param>
+        /// <param name="lstrDroHrs"></param>
+        /// <param name="lActive"></param>
+        /// <param name="lBCode"></param>
+        /// <param name="lAddress"></param>
+        /// <returns></returns>
         public int fnInsertUpdatedispup(int? lRowID, int? lTourNo, string lPckUpPlace, string lstrArrHrs, string lstrDroHrs, char lActive,
     string lBCode, string lAddress)
         {
@@ -1631,6 +1915,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return lStatus;
         }
+
+
+        /// <summary>
+        /// /// Retrieves multiple pickup points for a specific tour number.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <returns></returns>
         public DataTable fnGetMultiplePickupPoint(int? lTourNo)
         {
             DataTable ldtRecSet = new DataTable();
@@ -1665,6 +1956,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves the seat arrangement for a specific tour serial number.
+        /// </summary>
+        /// <param name="pTourSrNo"></param>
+        /// <returns></returns>
         public DataTable fnGetSeatArrangement(decimal? pTourSrNo)
         {
             DataTable ldtRecSet = new DataTable();
@@ -1699,6 +1996,15 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Blocks or unblocks seats for a specific tour based on the provided parameters.
+        /// </summary>
+        /// <param name="lTourSrNo"></param>
+        /// <param name="lSeats"></param>
+        /// <param name="lBlkString"></param>
+        /// <param name="lBklOrUnBlh"></param>
+        /// <returns></returns>
         public int fnBlockUnBlockSeats_sp(string lTourSrNo, string lSeats, string lBlkString, bool? lBklOrUnBlh)
         {
             int status = 0;
@@ -1732,6 +2038,14 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return status;
         }
+
+        /// <summary>
+        /// /// Retrieves the pickup master row ID based on the provided tour number, section, and row ID.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <param name="pFromSection"></param>
+        /// <param name="pROwID"></param>
+        /// <returns></returns>
         public int fnGetPickUpMAsterRowID(int? lTourNo, string pFromSection, int? pROwID)
         {
             int result = 0;
@@ -1771,6 +2085,14 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return result;
         }
+
+        /// <summary>
+        /// /// Retrieves bus allotment details based on the provided tour serial number, bus environment type, and bus number.
+        /// </summary>
+        /// <param name="lTourSr"></param>
+        /// <param name="lBusEnv"></param>
+        /// <param name="lBusNo"></param>
+        /// <returns></returns>
         public DataTable fnGetBusAllot_Detail(string lTourSr, string lBusEnv, string lBusNo)
         {
             DataTable pdtTable = new DataTable();
@@ -1801,6 +2123,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return pdtTable;
         }
+
+        /// <summary>
+        /// /// Retrieves the number of seats available for a specific tour and date.
+        /// </summary>
+        /// <param name="tourNo"></param>
+        /// <param name="tourDate"></param>
+        /// <returns></returns>
         public DataSet fnGetNoOfSeats_ADO(int tourNo, string tourDate)
         {
             DataSet ds = new DataSet();
@@ -1820,6 +2149,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
             }
             return ds;
         }
+
+        /// <summary>
+        /// /// Retrieves the number of seats available for a specific tour and date.
+        /// </summary>
+        /// <param name="tourNo"></param>
+        /// <param name="tourDate"></param>
+        /// <returns></returns>
         public DataSet fnGetNoOfSeats(int tourNo, string tourDate)
         {
             DataSet ds = new DataSet();
@@ -1839,6 +2175,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
             }
             return ds;
         }
+
+        /// <summary>
+        /// /// Checks the bus type for a specific tour and journey date.
+        /// </summary>
+        /// <param name="JDate"></param>
+        /// <param name="lTourID"></param>
+        /// <returns></returns>
         public string fnChkBusTypeAgent(DateTime? JDate, int? lTourID)
         {
             string lBusType = "0";
@@ -1872,6 +2215,13 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Validates the discount agent based on the journey date and tour ID.
+        /// </summary>
+        /// <param name="JDate"></param>
+        /// <param name="lTourID"></param>
+        /// <returns></returns>
         public string fnValidateDiscountAgent(DateTime? JDate, int? lTourID)
         {
             string connectionString = DataLib.getConnectionString();
@@ -1906,6 +2256,14 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves the tour serial number for a specific journey date, hour, and tour number.
+        /// </summary>
+        /// <param name="lJDate"></param>
+        /// <param name="lHour"></param>
+        /// <param name="lTourNo"></param>
+        /// <returns></returns>
         public DataTable fnFixed_TourSerial(DateTime? lJDate, string lHour, int? lTourNo)
         {
             string connectionString = DataLib.getConnectionString();
@@ -1945,6 +2303,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+        /// <summary>
+        /// /// Inserts a new booking for an agent into the database.
+        /// </summary>
+        /// <param name="T"></param>
+        /// <returns></returns>
         public int fnInsertbookAgent(OnlineToursBooking T)
         {
             int status = 0;
@@ -2021,6 +2385,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return status;
         }
+
+        /// <summary>
+        /// /// Updates an existing booking for an agent in the database.
+        /// </summary>
+        /// <param name="T"></param>
+        /// <returns></returns>
         public int fnUpdatebookAgent(OnlineToursBooking T)
         {
             int lStatus = 0;
@@ -2092,6 +2462,16 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return lStatus;
         }
+
+
+        /// <summary>
+        /// /// Retrieves special tour fare based on the provided tour ID, date, category ID, and pax ID.
+        /// </summary>
+        /// <param name="lTourID"></param>
+        /// <param name="lTourDate"></param>
+        /// <param name="lCategoryID"></param>
+        /// <param name="lPaxID"></param>
+        /// <returns></returns>
         public DataTable fnGetSpecialTourFare(int? lTourID, DateTime? lTourDate, int? lCategoryID, int? lPaxID)
         {
             DataTable dtResult = new DataTable();
@@ -2140,6 +2520,16 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// Retrieves car details based on the provided city ID, transfer ID, sub-transfer ID, and company ID.
+        /// </summary>
+        /// <param name="lCityId"></param>
+        /// <param name="lTransferId"></param>
+        /// <param name="lSubTransferId"></param>
+        /// <param name="lCompanyId"></param>
+        /// <returns></returns>
         public DataTable fnGetCar_Local(int? lCityId, int? lTransferId, int? lSubTransferId, int lCompanyId)
         {
             DataTable dt = new DataTable();
@@ -2172,6 +2562,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return dt;
         }
+
+        /// <summary>
+        /// /// Retrieves fixed car details based on the provided tour ID.
+        /// </summary>
+        /// <param name="lTourId"></param>
+        /// <returns></returns>
         public DataTable fnGetCar_fixed(int? lTourId)
         {
             DataTable dt = new DataTable();
@@ -2201,6 +2597,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return dt;
         }
+
+        /// <summary>
+        /// /// Retrieves city details based on the provided city ID.
+        /// </summary>
+        /// <param name="lCityId"></param>
+        /// <returns></returns>
         public DataTable fnGetFind_City(int? lCityId)
         {
             DataTable dt = new DataTable();
@@ -2229,6 +2631,40 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return dt;
         }
+
+
+        /// <summary>
+        /// /// Books a cab for an agent based on the provided parameters.
+        /// </summary>
+        /// <param name="cityid"></param>
+        /// <param name="fareId"></param>
+        /// <param name="transferId"></param>
+        /// <param name="noOfPax"></param>
+        /// <param name="farePerCar"></param>
+        /// <param name="noOfCars"></param>
+        /// <param name="pickTupTime"></param>
+        /// <param name="pickupAddress"></param>
+        /// <param name="dropOffAddress"></param>
+        /// <param name="emailId"></param>
+        /// <param name="fare"></param>
+        /// <param name="sTax"></param>
+        /// <param name="cC"></param>
+        /// <param name="netTotal"></param>
+        /// <param name="payMode"></param>
+        /// <param name="discount"></param>
+        /// <param name="advance"></param>
+        /// <param name="tourCategoty"></param>
+        /// <param name="isExist"></param>
+        /// <param name="tourName"></param>
+        /// <param name="carName"></param>
+        /// <param name="perExtraKMFare"></param>
+        /// <param name="perExtraHRFare"></param>
+        /// <param name="agentId"></param>
+        /// <param name="duration"></param>
+        /// <param name="originCity"></param>
+        /// <param name="returnStatus"></param>
+        /// <param name="cabId"></param>
+        /// <returns></returns>
         public int CabBookingAgent(int? cityid, int? fareId, int? transferId, int? noOfPax, decimal? farePerCar, int? noOfCars, DateTime? pickTupTime, string pickupAddress,
     string dropOffAddress, string emailId, decimal? fare, decimal? sTax, decimal? cC, decimal? netTotal, string payMode, decimal? discount, decimal? advance,
     string tourCategoty, bool isExist, string tourName, string carName, string perExtraKMFare, string perExtraHRFare, int? agentId, string duration, string originCity,
@@ -2303,6 +2739,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return status;
         }
+
+        /// <summary>
+        /// /// Retrieves local transfer details based on the provided fare ID.
+        /// </summary>
+        /// <param name="lFareId"></param>
+        /// <returns></returns>
         public DataTable fnCar_LocalTransfer(int? lFareId)
         {
             DataTable ldtUserRoles = new DataTable();
@@ -2363,6 +2805,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return ldtUserRoles;
         }
+
+        /// <summary>
+        /// /// Retrieves local sub-transfer details based on the provided fare ID.
+        /// </summary>
+        /// <param name="lFareId"></param>
+        /// <returns></returns>
         public DataTable fnCar_LocalSubTransfer(int? lFareId)
         {
             DataTable ldtUserRoles = new DataTable();
@@ -2394,6 +2842,11 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return ldtUserRoles;
         }
+
+        /// <summary>
+        /// /// Retrieves the list of states from the database.
+        /// </summary>
+        /// <returns></returns>
         public DataTable fnGetState()
         {
             DataTable dtState = new DataTable();
@@ -2434,6 +2887,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
                     dtState.Dispose(); // Optional: only if you don’t return it
             }
         }
+
+        /// <summary>
+        /// /// Inserts a new group booking request into the database.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
         public int fnInsertGroup_GroupBookingRequest(Group_GroupBookingRequest request)
         {
             int status = 0;
@@ -2488,6 +2947,29 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return status;
         }
+
+        /// <summary>
+        /// /// Inserts a new payment record for HDFC PG into the database.
+        /// </summary>
+        /// <param name="lPaymentID"></param>
+        /// <param name="lOrderID"></param>
+        /// <param name="lEmailId"></param>
+        /// <param name="lAuth"></param>
+        /// <param name="lAmount"></param>
+        /// <param name="lRef"></param>
+        /// <param name="lTranID"></param>
+        /// <param name="lTrackID"></param>
+        /// <param name="lPostDate"></param>
+        /// <param name="lResult"></param>
+        /// <param name="lErrorText"></param>
+        /// <param name="lUDF1"></param>
+        /// <param name="lUDF2"></param>
+        /// <param name="lUDF3"></param>
+        /// <param name="lUDF4"></param>
+        /// <param name="lUDF5"></param>
+        /// <param name="lUDF6"></param>
+        /// <param name="lSectionName"></param>
+        /// <returns></returns>
         public int fnInsertPaymentHDFCPG(
  string lPaymentID, string lOrderID, string lEmailId, string lAuth,
  decimal lAmount, string lRef, string lTranID, string lTrackID, string lPostDate,
@@ -2545,6 +3027,26 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return returnValue;
         }
+
+        /// <summary>
+        /// /// Inserts a new payment detail record into the database.
+        /// </summary>
+        /// <param name="lOrderID"></param>
+        /// <param name="lItemCode"></param>
+        /// <param name="lAmount"></param>
+        /// <param name="lBankName"></param>
+        /// <param name="lIsPaid"></param>
+        /// <param name="lGatewayBID"></param>
+        /// <param name="lOrderDetail"></param>
+        /// <param name="lCurrency"></param>
+        /// <param name="lPayMode"></param>
+        /// <param name="lCcChargeAmt"></param>
+        /// <param name="lIsHDFC"></param>
+        /// <param name="lIP"></param>
+        /// <param name="lTotalAmt"></param>
+        /// <param name="EMIMonth"></param>
+        /// <param name="SectionName"></param>
+        /// <returns></returns>
         public int fninsert_tbl_PaymentDetails(string lOrderID, string lItemCode, decimal? lAmount, string lBankName, char? lIsPaid, string lGatewayBID,
   string lOrderDetail, string lCurrency, string lPayMode, decimal lCcChargeAmt, bool? lIsHDFC, string lIP, decimal? lTotalAmt, string EMIMonth, string SectionName)
         {
@@ -2586,6 +3088,11 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return result;
         }
+
+        /// <summary>
+        /// /// Retrieves the current CAB PNR from the database.
+        /// </summary>
+        /// <returns></returns>
         public string fnGetCABpnr()
         {
             string lReturnValue = "";
@@ -2622,38 +3129,14 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return lReturnValue;
         }
-        //public DataTable fncar_perkm_display_IsAC(int? lCarID)
-        //{
-        //    DataTable ldtRecSet = new DataTable();
 
-        //    using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
-        //    {
-        //        try
-        //        {
-        //            conn.Open();
 
-        //            using (SqlCommand cmd = new SqlCommand(StoredProcedures.car_perkm_display_IsAC, conn))
-        //            {
-        //                cmd.CommandType = CommandType.StoredProcedure;
-
-        //                // Input parameter
-        //                cmd.Parameters.AddWithValue("@CarId", (object)lCarID ?? DBNull.Value);
-
-        //                // Use SqlDataAdapter to fill DataTable
-        //                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-        //                {
-        //                    da.Fill(ldtRecSet);
-        //                }
-        //            }
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            return null;
-        //        }
-        //    }
-
-        //    return ldtRecSet;
-        //}
+        /// <summary>
+        /// /// Displays the per kilometer fare details for cars based on the provided city ID and company ID.
+        /// </summary>
+        /// <param name="lCityID"></param>
+        /// <param name="lCompanyID"></param>
+        /// <returns></returns>
         public DataTable fncar_perkm_display(int? lCityID, int lCompanyID)
         {
             DataTable ldtRecSet = new DataTable();
@@ -2688,6 +3171,14 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return ldtRecSet;
         }
+
+        /// <summary>
+        /// /// Retrieves the car per kilometer fare master details based on the provided city ID, car ID, and company ID.
+        /// </summary>
+        /// <param name="lCityID"></param>
+        /// <param name="lCarID"></param>
+        /// <param name="lCompanyID"></param>
+        /// <returns></returns>
         public DataTable fnGetCarPerKMFareMaster(int? lCityID, int? lCarID, int lCompanyID)
         {
             DataTable ldtRecSet = new DataTable();
@@ -2722,6 +3213,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return ldtRecSet;
         }
+
+        /// <summary>
+        /// /// Inserts a new car tailermade log entry into the database.
+        /// </summary>
+        /// <param name="pclsCarTailermade_log_tbl"></param>
+        /// <returns></returns>
         public int fnInsertCarTailermade_perkm_log(tbl_CarTailermade_log pclsCarTailermade_log_tbl)
         {
             int lStatus = 0;
@@ -2775,6 +3272,12 @@ out string o_TourName, out string o_Notes, out bool? o_IsQuery)
 
             return lStatus;
         }
+
+        /// <summary>
+        /// /// Retrieves the sub-transfer types based on the provided transfer ID.
+        /// </summary>
+        /// <param name="pTransferID"></param>
+        /// <returns></returns>
         public DataTable fnCar_SubTransfertypes(int? pTransferID)
         {
             DataTable dtSubTransferTypes = new DataTable();

@@ -36,6 +36,11 @@ namespace SouthernTravelIndiaAgent
             else
                 dtDOB1 = Convert.ToDateTime(ClsCommon.mmddyy2ddmmyy(dtDOB)).ToShortDateString();
         }
+
+        /// <summary>
+        /// /// Sends an email with the agent details after registration.
+        /// </summary>
+        /// <param name="refno"></param>
         private void SnedMail(string refno)
         {
             try

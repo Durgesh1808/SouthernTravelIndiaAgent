@@ -26,6 +26,8 @@ namespace SouthernTravelIndiaAgent
                 //Response.Redirect("sessionexpire.aspx");
                 Response.Redirect("agentlogin.aspx");
             }
+            
+            
             if (!IsPostBack)
             {
                 cityid = Request.QueryString["cityid"];
@@ -72,6 +74,12 @@ namespace SouthernTravelIndiaAgent
             Submit.Attributes.Add("OnClick", "return validatesubmit();");
 
         }
+
+        /// <summary>
+        /// // This method is called when the vehicle dropdown is changed. It retrieves the maximum seating capacity of the selected vehicle and updates the number of passengers dropdown accordingly.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void ddlvehicle_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -142,6 +150,13 @@ namespace SouthernTravelIndiaAgent
                 ddlnoofpax.Items.Insert(0, new ListItem("Select Pax", "0"));
             }
         }
+
+
+        /// <summary>
+        /// // This method is called when the reset button is clicked. It clears all the input fields in the form.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void reset_Click(object sender, EventArgs e)
         {
             txtTourName.Value = "";
@@ -166,6 +181,12 @@ namespace SouthernTravelIndiaAgent
             txtdriver.Text = "";
             txtadvance.Text = "";
         }
+
+        /// <summary>
+        /// // This method is called when the submit button is clicked. It collects the data from the form, validates it, and submits it to the database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Submit_Click(object sender, EventArgs e)
         {
             cabid = DataLib.CABpnr();

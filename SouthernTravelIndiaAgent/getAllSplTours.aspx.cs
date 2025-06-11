@@ -16,6 +16,12 @@ namespace SouthernTravelIndiaAgent
             if ((Request.QueryString["zone"] != null) && (Request.QueryString["mode"] != null))
                 GEtAllTours(DataLib.funClear(Request.QueryString["zone"]), DataLib.funClear(Request.QueryString["mode"]));
         }
+
+        /// <summary>
+        /// /// This method retrieves all special tours available in a specific zone and displays them in a table format.
+        /// </summary>
+        /// <param name="zoneId"></param>
+        /// <param name="mode"></param>
         private void GEtAllTours(string zoneId, string mode)
         {
             string url = "";

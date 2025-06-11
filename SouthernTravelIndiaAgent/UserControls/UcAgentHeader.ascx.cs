@@ -54,6 +54,13 @@ namespace SouthernTravelIndiaAgent.UserControls
 
         }
         #endregion
+
+
+        /// <summary>
+        /// /// This method is called when the user clicks the link button to go back to the branch login page.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void lbtn_Click(object sender, EventArgs e)
         {
             if (Session["BranchId"] != null)

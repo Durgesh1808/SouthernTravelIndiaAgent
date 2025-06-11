@@ -1897,6 +1897,11 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+
+        /// <summary>
+        /// /// Get Pax ID based on the selected Pax and Child Pax with and without mattress
+        /// </summary>
+        /// <returns></returns>
         private int GetPaxId()
         {
             //int PaxID = 0;
@@ -2045,6 +2050,12 @@ namespace SouthernTravelIndiaAgent
             return PaxID;
         }
 
+
+        /// <summary>
+        /// // Convert String to Decimal
+        /// </summary>
+        /// <param name="decimalString"></param>
+        /// <returns></returns>
         public decimal ConvertStringDecimal(string decimalString)
         {
             Decimal decval = 0.00M;
@@ -2066,6 +2077,11 @@ namespace SouthernTravelIndiaAgent
             return decval;
         }
 
+        /// <summary>
+        /// // Convert String to Integer
+        /// </summary>
+        /// <param name="stringint"></param>
+        /// <returns></returns>
         public int ConvertStringint(string stringint)
         {
             int value = 0;
@@ -2080,6 +2096,13 @@ namespace SouthernTravelIndiaAgent
             return value;
 
         }
+
+
+        /// <summary>
+        /// // Get Integer from Decimal String
+        /// </summary>
+        /// <param name="DecimalString"></param>
+        /// <returns></returns>
 
         public static string GetIntegerFromDecimal(object DecimalString)
         {
@@ -2096,6 +2119,11 @@ namespace SouthernTravelIndiaAgent
             return strinteger;
         }
 
+        /// <summary>
+        /// // Round Decimal to String Integer
+        /// </summary>
+        /// <param name="DecimalString"></param>
+        /// <returns></returns>
         public static string RoundDecimalToStrIntegerl(object DecimalString)
         {
             string strinteger = string.Empty;
@@ -2123,6 +2151,11 @@ namespace SouthernTravelIndiaAgent
             return strinteger;
         }
 
+
+        /// <summary>
+        /// // Bind Country Name for New Tour Booking
+        /// </summary>
+        /// <param name="lregionID"></param>
         private void BindCountryNameNew(int lregionID)
         {
             DataTable ldtcountry = null;
@@ -2164,6 +2197,11 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+
+        /// <summary>
+        /// / Re-arrange Country DataTable to show India at the top of the list
+        /// </summary>
+        /// <param name="ldtcountry"></param>
         private void ReArrangeCountry(ref DataTable ldtcountry)
         {
             if (ldtcountry != null && ldtcountry.Rows.Count > 0)
@@ -2186,6 +2224,9 @@ namespace SouthernTravelIndiaAgent
             }
         }
 
+        /// <summary>
+        /// // Bind State Name for New Tour Booking
+        /// </summary>
         private void BindStateName_New()
         {
             DataSet dscars = null;
@@ -2343,6 +2384,7 @@ namespace SouthernTravelIndiaAgent
 
         [System.Web.Script.Services.ScriptMethod()]
         [WebMethod]
+        
         public static string[] GetCity(string prefixText, int count, int? contextKey)
         {
             int? lStateID1 = null;

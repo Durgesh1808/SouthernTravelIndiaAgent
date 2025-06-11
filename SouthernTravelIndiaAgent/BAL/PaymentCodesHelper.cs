@@ -5,8 +5,19 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+    /// <summary>
+    /// This class contains helper methods for handling payment codes and their descriptions.
+    /// </summary>
+    /// <remarks>
+    /// This class provides methods for retrieving transaction response codes and card security code descriptions.
+    /// </remarks>
     public static class PaymentCodesHelper
     {
+
+        /// <summary>
+        /// // This property returns the version of the MasterCard payment system.
+        /// </summary>
+        /// /// This property gets the version of the MasterCard payment system.
         public static string Version
         {
             get
@@ -14,6 +25,12 @@ namespace SouthernTravelIndiaAgent.BAL
                 return "MasterCard 2.0";
             }
         }
+
+        /// <summary>
+        ///  This function uses the TxnResponseCode retrieved from the Digital
+        /// </summary>
+        /// <param name="TxnResponseCode"></param>
+        /// <returns></returns>
 
         public static string GetTxnResponseCodeDescription(string TxnResponseCode)
         {

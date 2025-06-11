@@ -181,6 +181,13 @@ namespace SouthernTravelIndiaAgent
         public void txtPax_TextChanged(object sender, EventArgs e)
         {
         }
+
+
+        /// <summary>
+        /// /// Handles the click event of the Submit button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void Submit_Click(object sender, EventArgs e)
         {
             totalAmount = decimal.Round(Convert.ToDecimal(txtTotalFare.Value));
@@ -436,6 +443,12 @@ namespace SouthernTravelIndiaAgent
 
         }
 
+
+        /// <summary>
+        /// // Converts date from mm/dd/yyyy format to dd/mm/yyyy format.
+        /// </summary>
+        /// <param name="date1"></param>
+        /// <returns></returns>
         public static string mmddyy2ddmmyy(string date1)
         {
             if (date1 != null || date1 != "")

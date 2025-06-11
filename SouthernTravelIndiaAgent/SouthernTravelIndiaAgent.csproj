@@ -335,7 +335,6 @@
     <Compile Include="Common\Globals.cs" />
     <Compile Include="Common\SqlData.cs" />
     <Compile Include="DAL\ClsAdo.cs" />
-    <Compile Include="DAL\clsCommon.cs" />
     <Compile Include="DAL\DataLib.cs" />
     <Compile Include="DTO\AgentTransaction_RPT_SPResult.cs" />
     <Compile Include="DTO\Agent_ForgotPasswordResult.cs" />

@@ -10,11 +10,32 @@ using System.Web;
 
 namespace SouthernTravelIndiaAgent.BAL
 {
+
+    /// <summary>
+    ///  This class contains business logic methods related to special tours and other functionalities.
+    /// </summary>
+    /// <remarks>
+    ///    This class provides methods to interact with the database for retrieving tour master details, instant booking information, and discounts.
+    ///     It encapsulates the logic for connecting to the database, executing stored procedures, and returning results in a structured manner.
+    ///    The methods handle nullable parameters and return types, ensuring flexibility in usage.
+    ///   </remarks>
     public class STSPLOrOther
     {
+
+
+        /// <summary>
+        /// /// Default constructor for the STSPLOrOther class.
+        /// </summary>
         public STSPLOrOther()
         {
         }
+
+
+        /// <summary>
+        /// // This method retrieves the special tour master details based on the provided Tour ID.
+        /// </summary>
+        /// <param name="lTourID"></param>
+        /// <returns></returns>
         public DataTable fnGetSPLTourMaster(int? lTourID)
         {
             SqlConnection con = null;
@@ -56,6 +77,14 @@ namespace SouthernTravelIndiaAgent.BAL
                 }
             }
         }
+
+
+
+        /// <summary>
+        ///  This method retrieves instant booking information based on the provided Tour ID.
+        /// </summary>
+        /// <param name="lTourID"></param>
+        /// <returns></returns>
         public string fnGetInstentBooking(int? lTourID)
         {
             SqlConnection con = null;
@@ -100,6 +129,14 @@ namespace SouthernTravelIndiaAgent.BAL
 
             return lReturnValue;
         }
+
+
+        /// <summary>
+        /// // This method retrieves discount information based on the provided Tour Type and Tour ID.
+        /// </summary>
+        /// <param name="pTourType"></param>
+        /// <param name="pTourID"></param>
+        /// <returns></returns>
         public List<GetDiscount_spResult> fnGetDiscount(int pTourType, int pTourID)
         {
             var results = new List<GetDiscount_spResult>();

@@ -13,31 +13,67 @@ using System.Xml;
 
 namespace SouthernTravelIndiaAgent.DAL
 {
-    
+
+    /// <summary>
+    /// // DataLib class provides methods for database operations, including executing stored procedures, retrieving data, and managing connections.
+    /// </summary>
+
     public class DataLib
     {
+
+        // Static lists to hold seat numbers and bus numbers
         public static System.Collections.Generic.List<int> vacentSeatNumber = new System.Collections.Generic.List<int>();
         public static System.Collections.Generic.List<int> occupiedSeatNumber = new System.Collections.Generic.List<int>();
         public static System.Collections.Generic.List<string> bus_vac_Number = new System.Collections.Generic.List<string>();
+
+        /// <summary>
+        /// // Enum for different types of database connections.
+        /// </summary>
         public enum Connection
         {
             ConnectionString
-            // Add more here (using comma's!)
         }
 
+        /// <summary>
+        /// /// Retrieves the connection string from the application settings.
+        /// </summary>
+        /// <returns></returns>
         public static string getConnectionString()
         {
             return ConfigurationSettings.AppSettings["southernconn"];
         }
+
+
+        /// <summary>
+        /// /// Cleans a given string by removing potentially harmful characters and HTML tags.
+        /// </summary>
+        /// <param name="strText"></param>
+        /// <returns></returns>
         public static string funClear(string strText)
         {
             if (strText == null || strText.Length == 0) return "";
             return replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(replace(strText, "<", ""), ">", ""), "--", ""), "'", ""), ";", ""), "+", ""), "\"", ""), "/", ""), "&quot;", ""), "&lt", ""), "&gt", ""), "&#40", ""), "&#41", ""), "&#35", ""), "&#38", ""), "&apos;", ""), "\u0027", ""), "(", ""), ")", "");
         }
+
+        /// <summary>
+        /// /// Replaces occurrences of a specified substring within a string with another substring.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="findwhat"></param>
+        /// <param name="replWith"></param>
+        /// <returns></returns>
         private static string replace(string text, string findwhat, string replWith)
         {
             return text.Replace(findwhat, replWith);
         }
+
+
+        /// <summary>
+        /// /// Executes a stored procedure with the provided parameters and returns an integer result.
+        /// </summary>
+        /// <param name="strSP"></param>
+        /// <param name="arrSPParam"></param>
+        /// <returns></returns>
         public static int InsStoredProcData(string strSP, SqlParameter[] arrSPParam)
         {
             int strTour = 0;
@@ -91,6 +127,13 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return strTour;
         }
+
+
+        /// <summary>
+        /// /// Gets a SQL connection using the connection string defined in the application settings.
+        /// </summary>
+        /// <param name="conInvitesConnection"></param>
+        /// <returns></returns>
         public static SqlConnection GetConnection(SqlConnection conInvitesConnection)
         {
 
@@ -101,12 +144,25 @@ namespace SouthernTravelIndiaAgent.DAL
             return conInvitesConnection;
         }
 
+
+        /// <summary>
+        /// /// Closes the SQL connection and disposes of it.
+        /// </summary>
+        /// <param name="conInvitesConnection"></param>
+        /// <returns></returns>
         public static SqlConnection CloseConnection(SqlConnection conInvitesConnection)
         {
             conInvitesConnection.Close();
             conInvitesConnection.Dispose();
             return conInvitesConnection;
         }
+
+
+        /// <summary>
+        /// /// Generates a unique code based on the provided Enquery type.
+        /// </summary>
+        /// <param name="Enquerytype"></param>
+        /// <returns></returns>
         public static string Code(string Enquerytype)
         {
             DataTable dtcode = null;
@@ -119,6 +175,14 @@ namespace SouthernTravelIndiaAgent.DAL
             else
                 return Convert.ToString(Enquerytype + "000001");
         }
+
+        /// <summary>
+        /// /// Sends an HTTP SOAP request with the provided XML string to the specified URI and returns the response as a string.
+        /// </summary>
+        /// <param name="xmlString"></param>
+        /// <param name="uri"></param>
+        /// <param name="proxy"></param>
+        /// <returns></returns>
         public static string HttpSOAPRequest(String xmlString, string uri, string proxy)
         {
             string resultStr = "";
@@ -164,10 +228,26 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return resultStr;
         }
+
+
+        /// <summary>
+        /// /// Retrieves a string value from the database based on the provided SQL query and connection type.
+        /// </summary>
+        /// <param name="connType"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static string GetStringData(Connection connType, string sql)
         {
             return GetStringData(GetConnectionString(connType), sql);
         }
+
+
+        /// <summary>
+        /// /// Executes a SQL query and returns a single string value.
+        /// </summary>
+        /// <param name="connectStr"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         private static string GetStringData(string connectStr, string sql)
         {
             string retValue = "";
@@ -182,6 +262,12 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return retValue;
         }
+
+        /// <summary>
+        /// /// Retrieves the connection string based on the specified connection type.
+        /// </summary>
+        /// <param name="connType"></param>
+        /// <returns></returns>
         public static string GetConnectionString(Connection connType)
         {
             string retValue = "";
@@ -197,10 +283,26 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return retValue;
         }
+
+
+        /// <summary>
+        /// /// Retrieves a DataTable based on the provided SQL query and connection type.
+        /// </summary>
+        /// <param name="connType"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         public static DataTable GetDataTable(Connection connType, string sql)
         {
             return GetDataTable(GetConnectionString(connType), sql);
         }
+
+
+        /// <summary>
+        /// /// Executes a SQL query and returns the result as a DataTable.
+        /// </summary>
+        /// <param name="connectStr"></param>
+        /// <param name="sql"></param>
+        /// <returns></returns>
         private static DataTable GetDataTable(string connectStr, string sql)
         {
             DataTable theTable = new DataTable();
@@ -213,6 +315,12 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return theTable;
         }
+
+
+        /// <summary>
+        /// /// Generates a unique ticket code for SPL (Southern Passenger Line) based on the last ticket number in the database.
+        /// </summary>
+        /// <returns></returns>
         public static string SPLticketCode()
         {
             #region Optimize Code
@@ -255,6 +363,11 @@ namespace SouthernTravelIndiaAgent.DAL
             }
         }
 
+
+        /// <summary>
+        /// /// Generates a unique PNR (Passenger Name Record) number for SPL tours based on the last PNR number in the database.
+        /// </summary>
+        /// <returns></returns>
         public static string SPLpnr()
         {
             #region Optimize Code
@@ -298,6 +411,15 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+
+
+        /// <summary>
+        /// /// Executes a SQL command and returns the number of rows affected or the new ID value if requested.
+        /// </summary>
+        /// <param name="connType"></param>
+        /// <param name="sql"></param>
+        /// <param name="ret"></param>
+        /// <returns></returns>
         public static int ExecuteSQL1(Connection connType, string sql, bool ret)
         {
             return ExecuteSQL(GetConnectionString(connType), sql, false);
@@ -338,6 +460,13 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return newID;
         }
+
+
+        /// <summary>
+        /// /// Retrieves the service tax value based on the provided tax string.
+        /// </summary>
+        /// <param name="strTax"></param>
+        /// <returns></returns>
         public static string GetserviceTax(string strTax)
         {
             try
@@ -351,7 +480,14 @@ namespace SouthernTravelIndiaAgent.DAL
             }
         }
 
-        //Execute Stored Procedure and return result in DataSet
+
+        /// <summary>
+        /// /// Executes a stored procedure with the provided parameters and returns a DataSet.
+        /// </summary>
+        /// <param name="connType"></param>
+        /// <param name="strSP"></param>
+        /// <param name="arrSPParam"></param>
+        /// <returns></returns>
         public static DataSet GetStoredProcData(Connection connType, string strSP, SqlParameter[] arrSPParam)
         {
             return GetStoredProcData(GetConnectionString(connType), strSP, arrSPParam);
@@ -384,6 +520,12 @@ namespace SouthernTravelIndiaAgent.DAL
             }
             return ds;
         }
+
+
+        /// <summary>
+        /// /// Generates a unique PNR (Passenger Name Record) number based on the last order ID in the database.
+        /// </summary>
+        /// <returns></returns>
         public static string pnr()
         {
             #region Optimize Code
@@ -429,6 +571,8 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+
+
         /// <summary>
         /// For Displaying the seating chart
         /// </summary>
@@ -565,6 +709,11 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// /// Generates a unique PNR (Passenger Name Record) number for car bookings based on the last cab booking ID in the database.
+        /// </summary>
+        /// <returns></returns>
         public static string CABpnr()
         {
             #region Optimize Code

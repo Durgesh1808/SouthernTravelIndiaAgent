@@ -27,6 +27,11 @@ namespace SouthernTravelIndiaAgent
             // Dispose of the CAPTCHA image object.
             ci.Dispose();
         }
+
+        /// <summary>
+        /// // Generates a random 6-digit code for CAPTCHA.
+        /// </summary>
+        /// <returns></returns>
         public string GenerateRandomCode()
         {
             string s = "";

@@ -27,6 +27,12 @@ namespace SouthernTravelIndiaAgent
                 bindPage();
 
         }
+
+        /// <summary>
+        /// /// This method is called when the submit button is clicked. It retrieves the selected city and transfer details
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         protected void btnSubmit_Click(object sender, ImageClickEventArgs e)
         {
             string citycode = ddlcity.SelectedValue;
@@ -72,6 +78,11 @@ namespace SouthernTravelIndiaAgent
         {
             fillCities();
         }
+
+
+        /// <summary>
+        /// /// This method fills the dropdown list with active cities from the database.
+        /// </summary>
         private void fillCities()
         {
             /*DataTable dtCities = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select cityid,cityname from City_tbl where lower(activated)='y' ");*/

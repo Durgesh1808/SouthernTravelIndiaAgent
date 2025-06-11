@@ -29,7 +29,7 @@ namespace SouthernTravelIndiaAgent
         }
         private void SetDates()
         {
-
+            // Set default check-in and check-out dates to tomorrow and the day after tomorrow
             DateTime dtStart = DateTime.Now.AddDays(1);
             DateTime dtEnd = dtStart.AddDays(1);
             int dayPart = dtStart.Day;
@@ -37,6 +37,7 @@ namespace SouthernTravelIndiaAgent
             int yearPart = dtStart.Year;
 
 
+            // Set the dropdowns for check-in and check-out dates
             strCheckindate.Items.FindByValue(dayPart.ToString("00")).Selected = true;
             strCheckinmonth.Items.FindByValue(monthPart.ToString("00")).Selected = true;
             strCheckinyear.Items.FindByValue(yearPart.ToString()).Selected = true;
