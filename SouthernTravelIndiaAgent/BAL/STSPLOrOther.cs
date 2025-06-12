@@ -197,5 +197,361 @@ namespace SouthernTravelIndiaAgent.BAL
             return results;
         }
 
+        /// <summary>
+        /// /// This method retrieves accommodation discount information based on the provided Hotel ID and Room Type.
+        /// </summary>
+        /// <param name="pHotelID"></param>
+        /// <param name="pRoomType"></param>
+        /// <returns></returns>
+        public DataTable fnGetAccDiscount(int pHotelID, int pRoomType)
+        {
+            string connStr = DataLib.getConnectionString();
+            DataTable dtResult = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetAccDiscount_sp, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@HotelID", pHotelID);
+                    cmd.Parameters.AddWithValue("@RoomTypeID", pRoomType);
+
+                    try
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dtResult);
+                        }
+                        return dtResult;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optionally log ex.Message
+                        return null;
+                    }
+                    finally
+                    {
+                        if (dtResult != null)
+                        {
+                            dtResult.Dispose();
+                        }
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// This method retrieves hotel names based on the provided State ID and City ID using ADO.NET.
+        /// </summary>
+        /// <param name="pStateID"></param>
+        /// <param name="pCityID"></param>
+        /// <returns></returns>
+        public List<GetHotelNames_SPResult> fnGetHotelNames(int pStateID, int pCityID)
+        {
+            List<GetHotelNames_SPResult> hotels = new List<GetHotelNames_SPResult>();
+            string connStr = DataLib.getConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("GetHotelNames_SP", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@i_StateID", pStateID);
+                    cmd.Parameters.AddWithValue("@i_CityID", pCityID);
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                GetHotelNames_SPResult hotel = new GetHotelNames_SPResult
+                                {
+                                    HotelID = reader.GetInt32(reader.GetOrdinal("HotelID")),
+                                    VendorID = reader.GetInt32(reader.GetOrdinal("VendorID")),
+                                    HotelName = reader["HotelName"]?.ToString(),
+                                    HotelDesc = reader["HotelDesc"]?.ToString(),
+                                    CountryID = reader["CountryID"] as int?,
+                                    StateID = reader["StateID"] as int?,
+                                    CityID = reader["CityID"] as int?,
+                                    HotelAddress = reader["HotelAddress"]?.ToString(),
+                                    Pincode = reader["Pincode"]?.ToString(),
+                                    EmailID = reader["EmailID"]?.ToString(),
+                                    WebSite = reader["WebSite"]?.ToString(),
+                                    ISPaymentToHotel = reader["ISPaymentToHotel"] as bool?,
+                                    PaymentTo = reader["PaymentTo"] as int?,
+                                    BankName = reader["BankName"]?.ToString(),
+                                    BankBranchName = reader["BankBranchName"]?.ToString(),
+                                    Number = reader["Number"]?.ToString(),
+                                    IFSCCode = reader["IFSCCode"]?.ToString(),
+                                    TypeID = reader["TypeID"] as int?,
+                                    Priority = reader["Priority"] as int?,
+                                    IsActive = Convert.ToBoolean(reader["IsActive"]),
+                                    CreatedOn = Convert.ToDateTime(reader["CreatedOn"]),
+                                    CreatedBy = Convert.ToInt32(reader["CreatedBy"]),
+                                    LastUpdatedOn = reader["LastUpdatedOn"] as DateTime?,
+                                    LastUpdatedBy = reader["LastUpdatedBy"] as int?,
+                                    PhoneNo = reader["PhoneNo"]?.ToString(),
+                                    AlternatePhoneNo = reader["AlternatePhoneNo"]?.ToString(),
+                                    FaxNo = reader["FaxNo"]?.ToString(),
+                                    MobileNo = reader["MobileNo"]?.ToString(),
+                                    ChildAgeRange = reader["ChildAgeRange"]?.ToString(),
+                                    Latitude = reader["Latitude"]?.ToString(),
+                                    Longitude = reader["Longitude"]?.ToString(),
+                                    HotelLocation = reader["HotelLocation"]?.ToString(),
+                                    GuaranteeAmount = reader["GuaranteeAmount"]?.ToString(),
+                                    GuaranteeByBank = reader["GuaranteeByBank"]?.ToString(),
+                                    GuaranteeByBankBranch = reader["GuaranteeByBankBranch"]?.ToString(),
+                                    PaymentOption = reader["PaymentOption"] as bool?,
+                                    AlternamtePhoneNo2 = reader["AlternamtePhoneNo2"]?.ToString(),
+                                    ChildAgeRangeMin = reader["ChildAgeRangeMin"] as int?,
+                                    ChildAgeRangeMax = reader["ChildAgeRangeMax"] as int?,
+                                    ContactPerson = reader["ContactPerson"]?.ToString(),
+                                    Tax = reader["Tax"] as decimal?,
+                                    ChequeBankName = reader["ChequeBankName"]?.ToString(),
+                                    ChequeBankBranchName = reader["ChequeBankBranchName"]?.ToString(),
+                                    ChequeNo = reader["ChequeNo"]?.ToString(),
+                                    TaxOption = reader["TaxOption"]?.ToString(),
+                                    TOBEUSEDIN = reader["TOBEUSEDIN"]?.ToString(),
+                                    IsPreferred = reader["IsPreferred"] as int?,
+                                    Is24Hrs = reader["Is24Hrs"] as bool?,
+                                    CheckInTime = reader["CheckInTime"] as DateTime?,
+                                    BuffCheckIn = reader["BuffCheckIn"] as DateTime?,
+                                    CheckOutTime = reader["CheckOutTime"] as DateTime?,
+                                    BuffCheckOut = reader["BuffCheckOut"] as DateTime?,
+                                    LTax = reader["LTax"] as decimal?,
+                                    STax = reader["STax"] as decimal?
+                                };
+                                hotels.Add(hotel);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log or handle error
+                        return null;
+                    }
+                }
+            }
+
+            return hotels;
+        }
+
+
+
+        /// <summary>
+        /// /// This method retrieves the payment modes available in the system using ADO.NET.
+        /// </summary>
+        /// <returns></returns>
+        public DataTable fnGetPaymentMode()
+        {
+            DataTable dtPaymentMode = new DataTable();
+            string connStr = DataLib.getConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_GetPaymentMode, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dtPaymentMode);
+                        }
+                        return dtPaymentMode;
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// This method retrieves hotel room types using ADO.NET.
+        /// </summary>
+        /// <returns></returns>
+        public DataTable fnHotelRoomTypes()
+        {
+            DataTable dt = new DataTable();
+            string connStr = DataLib.getConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_HotelRoomTypes, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dt);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        return null;
+                    }
+                }
+            }
+
+            return dt;
+        }
+
+
+        /// <summary>
+        /// /// This method retrieves the payment modes for tickets using ADO.NET.
+        /// </summary>
+        /// <returns></returns>
+        public List<GetHotelRooms_Fare_SPResult> fnGetHotelRooms_Fares(int pHotelID, DateTime pCheckInDate)
+        {
+            List<GetHotelRooms_Fare_SPResult> resultList = new List<GetHotelRooms_Fare_SPResult>();
+            string connStr = DataLib.getConnectionString();
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetHotelRooms_Fare_SP, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@i_HotelID", pHotelID);
+                    cmd.Parameters.AddWithValue("@i_CheckinDate", pCheckInDate);
+
+                    try
+                    {
+                        con.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                var model = new GetHotelRooms_Fare_SPResult
+                                {
+                                    TypeID = reader["TypeID"] != DBNull.Value ? Convert.ToInt32(reader["TypeID"]) : 0,
+                                    TypeName = reader["TypeName"]?.ToString(),
+                                    SingleOccupancy = reader["SingleOccupancy"] as bool?,
+                                    DoubleOccupancy = reader["DoubleOccupancy"] as bool?,
+                                    FourOccupancy = reader["FourOccupancy"] as bool?,
+                                    OptionalName = reader["OptionalName"]?.ToString(),
+                                    SeasonID = reader["SeasonID"] != DBNull.Value ? Convert.ToInt32(reader["SeasonID"]) : 0,
+                                    SeasonName = reader["SeasonName"]?.ToString(),
+                                    FromDate = reader["FromDate"] as DateTime?,
+                                    ToDate = reader["ToDate"] as DateTime?,
+                                    FareID = reader["FareID"] != DBNull.Value ? Convert.ToInt32(reader["FareID"]) : 0,
+                                    MealPlanID = reader["MealPlanID"] as int?,
+                                    MealPlan = reader["MealPlan"]?.ToString(),
+                                    SglOccSellingPrice = reader["SglOccSellingPrice"] as decimal?,
+                                    SellingPrice = reader["SellingPrice"] as decimal?,
+                                    ExtraBedSellingPrice = reader["ExtraBedSellingPrice"] as decimal?,
+                                    FourOccSellingPrice = reader["FourOccSellingPrice"] as decimal?,
+                                    FourOccExtraBedSell = reader["FourOccExtraBedSell"] as decimal?,
+                                    CWBSellingPrice = reader["CWBSellingPrice"] != DBNull.Value ? Convert.ToDecimal(reader["CWBSellingPrice"]) : 0
+                                };
+
+                                resultList.Add(model);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // handle or log error
+                        return null;
+                    }
+                }
+            }
+
+            return resultList;
+        }
+
+
+        /// <summary>
+        /// /// This method retrieves room type occupancy details for a specific hotel using ADO.NET.
+        /// </summary>
+        /// <param name="pHotelID"></param>
+        /// <returns></returns>
+        public List<GetRoomTypeOccupancy_SPResult> fnGetRoomTypeOccupancy(int pHotelID)
+        {
+            List<GetRoomTypeOccupancy_SPResult> resultList = new List<GetRoomTypeOccupancy_SPResult>();
+            string connectionString = DataLib.getConnectionString(); // use your actual connection string method
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetRoomTypeOccupancy_SP, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@i_HotelID", pHotelID);
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var model = new GetRoomTypeOccupancy_SPResult
+                            {
+                                TypeID = reader["TypeID"] != DBNull.Value ? Convert.ToInt32(reader["TypeID"]) : 0,
+                                TypeName = reader["TypeName"]?.ToString(),
+                                SingleOccupancy = reader["SingleOccupancy"] != DBNull.Value ? (bool?)Convert.ToBoolean(reader["SingleOccupancy"]) : null,
+                                DoubleOccupancy = reader["DoubleOccupancy"] != DBNull.Value ? (bool?)Convert.ToBoolean(reader["DoubleOccupancy"]) : null,
+                                FourOccupancy = reader["FourOccupancy"] != DBNull.Value ? (bool?)Convert.ToBoolean(reader["FourOccupancy"]) : null
+                            };
+                            resultList.Add(model);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception
+                resultList = null;
+            }
+
+            return resultList;
+        }
+
+        /// <summary>
+        /// /// This method retrieves the tour ticket banner details based on the provided Tour ID and Tour Type Code.
+        /// </summary>
+        /// <param name="pTourID"></param>
+        /// <param name="pTourTypeCode"></param>
+        /// <returns></returns>
+        public DataTable fnGetTourTicketBanner(int? pTourID, string pTourTypeCode)
+        {
+            DataTable dtResult = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetTourTicketBanner_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input parameters
+                    cmd.Parameters.AddWithValue("@TourID", (object)pTourID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TourTypeCode", (object)pTourTypeCode ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dtResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the error
+                return null;
+            }
+
+            return dtResult;
+        }
+
     }
 }

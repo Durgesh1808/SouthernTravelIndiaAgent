@@ -3308,5 +3308,2037 @@ namespace SouthernTravelIndiaAgent.DAL
             return dtSubTransferTypes;
         }
 
+
+        /// <summary>
+        /// /// Retrieves customer details based on the provided search value (email or mobile number).
+        /// </summary>
+        /// <param name="lSearchValue"></param>
+        /// <returns></returns>
+        public DataTable fnGetCustomerDetail(string lSearchValue)
+        {
+            DataTable pdtTable = new DataTable();
+            SqlConnection conn = null;
+            SqlCommand cmd = null;
+            SqlDataAdapter da = null;
+
+            try
+            {
+                conn = new SqlConnection(DataLib.getConnectionString());
+                cmd = new SqlCommand(StoredProcedures.GetCustomerDetail_sp, conn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@i_EmailorMbNo", lSearchValue);
+
+                da = new SqlDataAdapter(cmd);
+                da.Fill(pdtTable);
+                return pdtTable;
+            }
+            catch (Exception ex)
+            {
+                // Log or handle exception
+                return null;
+            }
+            finally
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                    conn.Close();
+                if (da != null)
+                    da.Dispose();
+                if (cmd != null)
+                    cmd.Dispose();
+                if (pdtTable != null)
+                    pdtTable.Dispose();
+            }
+        }
+        /// <summary>
+        /// /// Retrieves the available balance for a specific agent based on the agent ID.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <returns></returns>
+        public DataTable fnGetAgent_AvailableBalance(int? lAgentID)
+        {
+            DataTable dtResult = new DataTable();
+            using (SqlConnection con = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_GetAgent_AvailableBalance, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Agentid", (object)lAgentID ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        try
+                        {
+                            da.Fill(dtResult);
+                        }
+                        catch (Exception ex)
+                        {
+                            // Optional: log error
+                            return null;
+                        }
+                    }
+                }
+            }
+            return dtResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent commission details based on the trip type and agent level ID.
+        /// </summary>
+        /// <param name="lTripType"></param>
+        /// <param name="lAgentLavelID"></param>
+        /// <returns></returns>
+        public DataTable fnAgentCommission(string lTripType, int? lAgentLavelID)
+        {
+            DataTable dtResult = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetAgentCommission, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input Parameters
+                    cmd.Parameters.AddWithValue("@TripType", (object)lTripType ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AgentLavelID", (object)lAgentLavelID ?? DBNull.Value);
+
+                    // Output Parameter
+                    SqlParameter outParam = new SqlParameter("@ReturnValue", SqlDbType.VarChar, 50);
+                    outParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outParam);
+
+                    try
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(dtResult);
+                        }
+
+                        // Optional: You can get the return value like this
+                        string returnValue = Convert.ToString(cmd.Parameters["@ReturnValue"].Value);
+                        // Use returnValue if needed
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optional: Log the exception
+                        return null;
+                    }
+                }
+            }
+
+            return dtResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent view report based on the provided agent ID, transaction type ID, and date range.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <param name="lTransTypeID"></param>
+        /// <param name="lFromDate"></param>
+        /// <param name="lToDate"></param>
+        /// <returns></returns>
+        public DataTable fnGetAgent_ViewReport(int? lAgentID, int? lTransTypeID, DateTime? lFromDate, DateTime? lToDate)
+        {
+            DataTable dtReport = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.agent_viewreport, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@I_AgentId", (object)lAgentID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@I_TransTypeID", (object)lTransTypeID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@I_FromDate", (object)lFromDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@I_ToDate", (object)lToDate ?? DBNull.Value);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dtReport);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optional: Log exception
+                dtReport = null;
+            }
+
+            return dtReport;
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent fixed tour duplicate information based on the provided agent ID.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <returns></returns>
+        public DataTable fnGetAgentFixedTourDupInfo(int? lAgentID)
+        {
+            DataTable dtResult = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetAgentFixedTourDupInfo_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@AgentID", (object)lAgentID ?? DBNull.Value);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dtResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally log exception
+                dtResult = null;
+            }
+
+            return dtResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent fixed tour duplicate ticket information based on the provided parameters.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <param name="lPnr"></param>
+        /// <param name="lTicketNo"></param>
+        /// <param name="llPhNo"></param>
+        /// <param name="lEmailID"></param>
+        /// <param name="lJDate"></param>
+        /// <returns></returns>
+        public DataSet fnGetAgentFixedTourDupTKT(string lAgentID, string lPnr, string lTicketNo, string llPhNo, string lEmailID, DateTime? lJDate)
+        {
+            DataSet dsResult = new DataSet();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetAgentFixedTourDupTKT_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@AgentID", (object)lAgentID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PNR", (object)lPnr ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TicketNo", (object)lTicketNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PhNo", (object)llPhNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Email", (object)lEmailID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@JDate", (object)lJDate ?? DBNull.Value);
+
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
+                    {
+                        adapter.Fill(dsResult); // Automatically fills all result sets into DataTable[0], [1], etc.
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                dsResult = null; // Or log the exception
+            }
+
+            return dsResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the ticket code by order detail from the database.
+        /// </summary>
+        /// <param name="pTicketCode"></param>
+        /// <returns></returns>
+        public DataTable TicketCodeByOrderDetail(string pTicketCode)
+        {
+            DataTable dtResult = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_TicketCodeByOrderDetail, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@TicketCode", (object)pTicketCode ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dtResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                dtResult = null; // You can log the exception if needed
+            }
+
+            return dtResult;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the ticket panel details based on the provided order ID.
+        /// </summary>
+        /// <param name="lOrderID"></param>
+        /// <returns></returns>
+        public DataSet fnGetTickets_PanelDetail(string lOrderID)
+        {
+            DataSet dsResult = new DataSet();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_GetTickets_Panel, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Orderid", (object)lOrderID ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        conn.Open();
+                        da.Fill(dsResult); // This will fill all result sets into the DataSet
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                dsResult = null; // Handle/log exception if needed
+            }
+
+            return dsResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the duplicate ticket print agent information based on the provided order ID, row ID, and bus number.
+        /// </summary>
+        /// <param name="lOrderID"></param>
+        /// <param name="lRowID"></param>
+        /// <param name="lBusNo"></param>
+        /// <returns></returns>
+        public DataSet fnGetDupTicketPrintAgent(string lOrderID, int? lRowID, string lBusNo)
+        {
+            DataSet dsResult = new DataSet();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.DupTicketPrintAgent_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@OrderID", (object)lOrderID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@RowID", (object)lRowID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@BusNo", (object)lBusNo ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        conn.Open();
+                        da.Fill(dsResult); // Automatically fills all result sets into DataSet tables
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optional: Log the exception
+                dsResult = null;
+            }
+
+            return dsResult;
+        }
+        public DataTable fnGetCancelTktHierarchy(string pTktCode, ref int? pHierarchyCount)
+        {
+            DataTable dtResult = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCancelTktHierarchy_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input parameter
+                    cmd.Parameters.AddWithValue("@I_CurrentTkt", (object)pTktCode ?? DBNull.Value);
+
+                    // Output parameter
+                    SqlParameter outputParam = new SqlParameter("@O_ReturnValue", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dtResult);
+                    }
+
+                    // Retrieve output parameter value
+                    if (outputParam.Value != DBNull.Value)
+                    {
+                        pHierarchyCount = Convert.ToInt32(outputParam.Value);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the error
+                return null;
+            }
+
+            return dtResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent hotel account duplicate ticket information based on the provided parameters.
+        /// </summary>
+        /// <param name="lPNR"></param>
+        /// <param name="lTicketNo"></param>
+        /// <param name="llPhNo"></param>
+        /// <param name="lEmailID"></param>
+        /// <param name="lJDate"></param>
+        /// <param name="lAgentID"></param>
+        /// <returns></returns>
+        public DataSet fnAgentHTLAccDupTKT(string lPNR, string lTicketNo, string llPhNo, string lEmailID, DateTime? lJDate, string lAgentID)
+        {
+            DataSet dsResult = new DataSet();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.AgentHTLAccDupTKT, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@PNR", (object)lPNR ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TicketNo", (object)lTicketNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@PhNo", (object)llPhNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Email", (object)lEmailID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@JDate", (object)lJDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AgentID", (object)lAgentID ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dsResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log the error (optional)
+                return null;
+            }
+
+            return dsResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the room fare details along with the room type based on the accommodation booking ID.
+        /// </summary>
+        /// <param name="lAccBookID"></param>
+        /// <returns></returns>
+        public DataTable fnGetRoomFareWithRoomType(int? lAccBookID)
+        {
+            DataTable dtResult = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_GetRoomFareWithRoomType, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameter
+                    cmd.Parameters.AddWithValue("@AccmBookID", (object)lAccBookID ?? DBNull.Value);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dtResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the error here
+                return null;
+            }
+
+            return dtResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the account data to be sent via email based on the provided ticket number.
+        /// </summary>
+        /// <param name="lTicketNo"></param>
+        /// <returns></returns>
+        public DataTable fnGetAccDattTOMail(string lTicketNo)
+        {
+            DataTable dtResult = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetAccDattTOMail_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameter
+                    cmd.Parameters.AddWithValue("@ticketno", string.IsNullOrEmpty(lTicketNo) ? DBNull.Value : (object)lTicketNo);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(dtResult);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optional: Log the exception if needed
+                return null;
+            }
+
+            return dtResult;
+        }
+
+        /// <summary>
+        /// /// Retrieves the hotel receipt details based on the provided order ID.
+        /// </summary>
+        /// <param name="lOrderID"></param>
+        /// <returns></returns>
+        public DataTable fnHotelReceipt_Details(string lOrderID)
+        {
+            DataTable ldtRecSet = new DataTable();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.sp_HotelReceipt_Details, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Add parameters
+                        cmd.Parameters.AddWithValue("@OrderId", lOrderID);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                }
+
+                return ldtRecSet;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception
+                return null;
+            }
+            finally
+            {
+                if (ldtRecSet != null)
+                {
+                    ldtRecSet.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the payment mode or term details based on the provided ticket number.
+        /// </summary>
+        /// <param name="lTicketNo"></param>
+        /// <returns></returns>
+        public DataSet fnGetPayModeOrTerm(string lTicketNo)
+        {
+            DataSet dsResults = new DataSet();
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetPayModeOrTerm_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TicketNo", lTicketNo);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+
+                            da.Fill(dsResults);
+                        }
+                    }
+                }
+
+                return dsResults;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log exception
+                return null;
+            }
+            finally
+            {
+                if (dsResults != null)
+                {
+                    dsResults.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// // Retrieves the email ID of an agent based on the provided agent ID.
+        /// </summary>
+        /// <param name="lAgentID"></param>
+        /// <returns></returns>
+        public string fnGetEmailIDAgent(int? lAgentID)
+        {
+            string connectionString = DataLib.getConnectionString();
+            string lReturnValue = "";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetEmailIDAgent_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Input parameter
+                        cmd.Parameters.AddWithValue("@AgentID", lAgentID.HasValue ? (object)lAgentID.Value : DBNull.Value);
+
+                        // Output parameter
+                        SqlParameter outParam = new SqlParameter("@ReturnEmail", SqlDbType.VarChar, 250);
+                        outParam.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(outParam);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        lReturnValue = outParam.Value != DBNull.Value ? outParam.Value.ToString() : "";
+                    }
+                }
+
+                return lReturnValue;
+            }
+            catch (Exception ex)
+            {
+                return "0"; // Default error return, as in original
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the email security information based on the provided branch code and user name.
+        /// </summary>
+        /// <param name="lBranchCode"></param>
+        /// <param name="lUserName"></param>
+        /// <returns></returns>
+        public string fnEmailSecurity(string lBranchCode, string lUserName)
+        {
+            string connectionString = DataLib.getConnectionString();
+            string lReturnValue = "";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.EmailSecurity_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Input parameters
+                        cmd.Parameters.AddWithValue("@BranchCode", string.IsNullOrEmpty(lBranchCode) ? DBNull.Value : (object)lBranchCode);
+                        cmd.Parameters.AddWithValue("@UserName", string.IsNullOrEmpty(lUserName) ? DBNull.Value : (object)lUserName);
+
+                        // Output parameter
+                        SqlParameter outParam = new SqlParameter("@o_ReturnValue", SqlDbType.VarChar, 250)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outParam);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        lReturnValue = outParam.Value != DBNull.Value ? outParam.Value.ToString() : "";
+                    }
+                }
+
+                return lReturnValue;
+            }
+            catch (Exception ex)
+            {
+                return "0"; // Matches original fallback on error
+            }
+        }
+
+
+        /// <summary>
+        /// /// Inserts or updates agent balance clearance information in the database.
+        /// </summary>
+        /// <param name="lType"></param>
+        /// <param name="lRefNo"></param>
+        /// <param name="lBranchCode"></param>
+        /// <param name="lUserID"></param>
+        /// <param name="lTicketAmt"></param>
+        /// <param name="lAdvancePaid"></param>
+        /// <param name="lTourName"></param>
+        /// <param name="lPayMode"></param>
+        /// <param name="lNumber"></param>
+        /// <param name="lBankName"></param>
+        /// <param name="lChqDate"></param>
+        /// <param name="lCredit"></param>
+        /// <param name="lTransType"></param>
+        /// <param name="lBrnachClear"></param>
+        /// <param name="lAmtPaid"></param>
+        /// <returns></returns>
+        public int fnInsertUpdateAgentBalanceClearence(
+    string lType, string lRefNo, string lBranchCode, string lUserID,
+    decimal? lTicketAmt, decimal? lAdvancePaid, string lTourName,
+    string lPayMode, string lNumber, string lBankName, string lChqDate,
+    decimal? lCredit, int? lTransType, decimal? lBrnachClear, decimal lAmtPaid)
+        {
+            int lStatus = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.InsertUpdateAgentBalanceClearence_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Input Parameters
+                        cmd.Parameters.AddWithValue("@iType", (object)lType ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@RefNo", (object)lRefNo ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@BranchCode", (object)lBranchCode ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@UserId", (object)lUserID ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@TicketAmount", (object)lTicketAmt ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@AdvancePaid", (object)lAdvancePaid ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@TourName", (object)lTourName ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@PaymentMode", (object)lPayMode ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Number", (object)lNumber ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@BankName", (object)lBankName ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@chqdate", (object)lChqDate ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@credit", (object)lCredit ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@TransactionType", (object)lTransType ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@BranchClear", (object)lBrnachClear ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@AmountPaid", lAmtPaid);
+
+                        // Output parameter
+                        SqlParameter outputParam = new SqlParameter("@ReturnValue", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        // Read output parameter
+                        lStatus = outputParam.Value != DBNull.Value ? Convert.ToInt32(outputParam.Value) : 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lStatus = -1;
+            }
+
+            return lStatus;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the international tour balance details based on the provided ticket number.
+        /// </summary>
+        /// <param name="lTicket"></param>
+        /// <returns></returns>
+        public DataSet fnInternationalTourBal(string lTicket)
+        {
+            DataSet pdtDTSet = new DataSet();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.InternationalTourBal_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TicketNo", lTicket ?? (object)DBNull.Value);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(pdtDTSet);
+                        }
+                    }
+                }
+
+                return pdtDTSet;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (pdtDTSet != null)
+                {
+                    pdtDTSet.Dispose();
+                    pdtDTSet = null;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the tour balance details for a specific agent based on the provided ticket number, agent ID, and type.
+        /// </summary>
+        /// <param name="lTicket"></param>
+        /// <param name="lAgentID"></param>
+        /// <param name="lType"></param>
+        /// <returns></returns>
+        public DataSet fnAllTourBalAgent(string lTicket, int lAgentID, string lType)
+        {
+            DataSet pdtDTSet = new DataSet();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.AllTourBalAgent_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@TicketNo", string.IsNullOrEmpty(lTicket) ? (object)DBNull.Value : lTicket);
+                        cmd.Parameters.AddWithValue("@AgentID", lAgentID);
+                        cmd.Parameters.AddWithValue("@Type", string.IsNullOrEmpty(lType) ? (object)DBNull.Value : lType);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(pdtDTSet);
+                        }
+                    }
+                }
+
+                return pdtDTSet;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (pdtDTSet != null)
+                {
+                    pdtDTSet.Dispose();
+                    pdtDTSet = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent fixed tour information based on the provided parameters.
+        /// </summary>
+        /// <param name="lPNR"></param>
+        /// <param name="lEmail"></param>
+        /// <param name="lTktCode"></param>
+        /// <param name="JDate"></param>
+        /// <returns></returns>
+        public DataSet fnAgentFixedTourInfo(string lPNR, string lEmail, string lTktCode, DateTime JDate)
+        {
+            DataSet pdtDTSet = new DataSet();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.AgentFixedTourInfo_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@PNRNO", string.IsNullOrEmpty(lPNR) ? (object)DBNull.Value : lPNR);
+                        cmd.Parameters.AddWithValue("@email", string.IsNullOrEmpty(lEmail) ? (object)DBNull.Value : lEmail);
+                        cmd.Parameters.AddWithValue("@TicketNo", string.IsNullOrEmpty(lTktCode) ? (object)DBNull.Value : lTktCode);
+                        cmd.Parameters.AddWithValue("@journeydate", JDate);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(pdtDTSet);
+                        }
+                    }
+                }
+
+                return pdtDTSet;
+            }
+            catch (Exception ex)
+            {
+                // Log error if needed
+                return null;
+            }
+            finally
+            {
+                if (pdtDTSet != null)
+                {
+                    pdtDTSet.Dispose();
+                    pdtDTSet = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the cancellation ticket string based on the provided ticket code.
+        /// </summary>
+        /// <param name="lTktCode"></param>
+        /// <returns></returns>
+        public DataTable fnbr_can_ticketstring(string lTktCode)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.br_can_ticketstring, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ticketno", string.IsNullOrEmpty(lTktCode) ? (object)DBNull.Value : lTktCode);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                }
+
+                return ldtRecSet;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception: ex.Message
+                return null;
+            }
+            finally
+            {
+                if (ldtRecSet != null)
+                {
+                    ldtRecSet.Dispose();
+                    ldtRecSet = null;
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the agent fixed tour detail based on the provided parameters.
+        /// </summary>
+        /// <param name="lPNR"></param>
+        /// <param name="lEmail"></param>
+        /// <param name="lTktCode"></param>
+        /// <param name="JDate"></param>
+        /// <returns></returns>
+        public DataTable fnAgentFixedTourDetail(string lPNR, string lEmail, string lTktCode, DateTime JDate)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.AgentFixedTourDetail_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@PNRNO", string.IsNullOrEmpty(lPNR) ? (object)DBNull.Value : lPNR);
+                        cmd.Parameters.AddWithValue("@email", string.IsNullOrEmpty(lEmail) ? (object)DBNull.Value : lEmail);
+                        cmd.Parameters.AddWithValue("@TicketCode", string.IsNullOrEmpty(lTktCode) ? (object)DBNull.Value : lTktCode);
+                        cmd.Parameters.AddWithValue("@journeydate", JDate);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                }
+
+                return ldtRecSet;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception
+                return null;
+            }
+            finally
+            {
+                if (ldtRecSet != null)
+                {
+                    ldtRecSet.Dispose();
+                    ldtRecSet = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent cancel ticket print information based on the provided ticket number.
+        /// </summary>
+        /// <param name="lTicketNo"></param>
+        /// <returns></returns>
+        public DataSet fnAgentCancelTktPrint(string lTicketNo)
+        {
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.AgentCancelTktPrint_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@TicketNo", string.IsNullOrEmpty(lTicketNo) ? (object)DBNull.Value : lTicketNo);
+
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            int tableIndex = 1;
+                            do
+                            {
+                                DataTable dt = new DataTable("Table" + tableIndex++);
+                                dt.Load(reader);
+                                ds.Tables.Add(dt);
+                            }
+                            while (!reader.IsClosed && reader.NextResult());
+                        }
+                    }
+                }
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception here
+                return null;
+            }
+            finally
+            {
+                if (ds != null)
+                {
+                    ds.Dispose();
+                    ds = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Saves the branch to agent booking information in the database.
+        /// </summary>
+        /// <param name="pTicketNo"></param>
+        /// <param name="pBranchUserID"></param>
+        /// <param name="pAgentID"></param>
+        /// <param name="pIPAdd"></param>
+        /// <returns></returns>
+        public int fnSaveBranchToAgentBooking(string pTicketNo, int pBranchUserID, int pAgentID, string pIPAdd)
+        {
+            int lStatus = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.SaveBranchToAgentBooking_SP, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@I_TicketNo", string.IsNullOrEmpty(pTicketNo) ? (object)DBNull.Value : pTicketNo);
+                        cmd.Parameters.AddWithValue("@I_BranchUserID", pBranchUserID);
+                        cmd.Parameters.AddWithValue("@I_AgentID", pAgentID);
+                        cmd.Parameters.AddWithValue("@I_IPAddress", string.IsNullOrEmpty(pIPAdd) ? (object)DBNull.Value : pIPAdd);
+
+                        SqlParameter outputParam = new SqlParameter("@O_ReturnValue", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputParam);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        if (outputParam.Value != DBNull.Value)
+                        {
+                            lStatus = Convert.ToInt32(outputParam.Value);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                lStatus = -1;
+                // Optionally log the exception here
+            }
+
+            return lStatus;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the agent cancellation ticket string based on the provided ticket number.
+        /// </summary>
+        /// <param name="lTicketNo"></param>
+        /// <returns></returns>
+        public DataSet fnAgent_can_ticketstring(string lTicketNo)
+        {
+            DataSet ds = new DataSet();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.Agent_can_ticketstring, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@TicketNo", string.IsNullOrEmpty(lTicketNo) ? (object)DBNull.Value : lTicketNo);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        conn.Open();
+                        da.Fill(ds); // Fills all result sets into separate tables in the DataSet
+                    }
+                }
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the error
+                return null;
+            }
+            finally
+            {
+                if (ds != null)
+                {
+                    ds.Dispose();
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the cancellation percentage based on the tour number, number of days left, and type.
+        /// </summary>
+        /// <param name="pTourNo"></param>
+        /// <param name="PNoOfDaysLeft"></param>
+        /// <param name="pType"></param>
+        /// <param name="pReturnValue"></param>
+        /// <returns></returns>
+        public decimal fnGetCancelPercentage(int pTourNo, int PNoOfDaysLeft, bool pType, ref int? pReturnValue)
+        {
+            decimal cancelPercentage = 0;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetFixedTourCancelPerc_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@I_TourNo", pTourNo);
+                    cmd.Parameters.AddWithValue("@I_NoOfDaysLeft", PNoOfDaysLeft);
+                    cmd.Parameters.AddWithValue("@I_CanType", pType);
+
+                    SqlParameter percParam = new SqlParameter("@O_CancPercentage", SqlDbType.Float)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(percParam);
+
+                    SqlParameter returnParam = new SqlParameter("@O_ReturnValue", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(returnParam);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    double? lCanPerc = percParam.Value != DBNull.Value ? Convert.ToDouble(percParam.Value) : 0;
+                    pReturnValue = returnParam.Value != DBNull.Value ? Convert.ToInt32(returnParam.Value) : (int?)null;
+
+                    return Convert.ToDecimal(lCanPerc);
+                }
+            }
+            catch (Exception ex)
+            {
+                pReturnValue = -1;
+                return 0;
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent branch code information from the database.
+        /// </summary>
+        /// <returns></returns>
+        public DataTable fnAgentBranchCode()
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.AgentBranchCode_sp, conn))
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    conn.Open();
+                    da.Fill(ldtRecSet);
+
+                    return ldtRecSet;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (ldtRecSet != null)
+                {
+                    ldtRecSet.Dispose();
+                    ldtRecSet = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the journey date based on the provided date and tour ID.
+        /// </summary>
+        /// <param name="lJDate"></param>
+        /// <param name="lTourID"></param>
+        /// <returns></returns>
+        public string fnJourneyDate(DateTime? lJDate, int? lTourID)
+        {
+            string lReturnValue = "";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.JourneyDate_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@JourneyDate", (object)lJDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TourNo", (object)lTourID ?? DBNull.Value);
+
+                    SqlParameter outputParam = new SqlParameter("@ReturnValue", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    lReturnValue = outputParam.Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                return "0";
+            }
+
+            return lReturnValue;
+        }
+
+        /// <summary>
+        /// /// Retrieves the service tax value for a cancellation ticket based on the provided ticket number.
+        /// </summary>
+        /// <param name="lTicketNo"></param>
+        /// <returns></returns>
+        public string fnGetSTaxForCanTkt(string lTicketNo)
+        {
+            string lTaxValue = "";
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSTaxForCanTkt_SP, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@I_TicketNo", lTicketNo ?? (object)DBNull.Value);
+
+                    SqlParameter outputParam = new SqlParameter("@O_ReturnValue", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    lTaxValue = outputParam.Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                lTaxValue = null;
+            }
+
+            return lTaxValue;
+        }
+
+        /// <summary>
+        /// /// Retrieves the agent commission details based on the provided trip type and agent level ID.
+        /// </summary>
+        /// <param name="lTripType"></param>
+        /// <param name="lAgentID"></param>
+        /// <param name="lTourID"></param>
+        /// <returns></returns>
+        public DataTable fnAgentCommission(string lTripType, int? lAgentID, int lTourID)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetAgentCommission_New_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input parameters
+                    cmd.Parameters.AddWithValue("@TripType", lTripType ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AgentID", lAgentID ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TourNo", lTourID);
+
+                    // Output parameter
+                    SqlParameter outputParam = new SqlParameter("@ReturnValue", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(ldtRecSet);
+                    }
+
+                    // Optional: read the return value
+                    string lStatus = outputParam.Value.ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle/log error as needed
+                return null;
+            }
+
+            return ldtRecSet;
+        }
+
+
+        /// <summary>
+        /// /// Updates the fixed tour cancellation information in the database.
+        /// </summary>
+        /// <param name="lCanCharges"></param>
+        /// <param name="lRefundAmt"></param>
+        /// <param name="lTicketNo"></param>
+        /// <param name="lCanNoTick"></param>
+        /// <param name="lBranchUserID"></param>
+        /// <param name="lAgentID"></param>
+        /// <param name="lAgentCredit"></param>
+        /// <param name="lAvailableBal"></param>
+        /// <param name="lAgentDebit"></param>
+        /// <param name="lTicketAmt"></param>
+        /// <param name="lCommission"></param>
+        /// <param name="lsBranchCode"></param>
+        /// <param name="lPayMode"></param>
+        /// <param name="lDebit"></param>
+        /// <param name="lCredit"></param>
+        /// <param name="lUserName"></param>
+        /// <param name="lBranchCode"></param>
+        /// <param name="lSTax"></param>
+        /// <param name="lTDS"></param>
+        /// <param name="ISPartial"></param>
+        /// <param name="lRemarks"></param>
+        /// <param name="Overriddenpes"></param>
+        /// <param name="IsOverridden"></param>
+        /// <param name="ServiceCanChrg"></param>
+        /// <param name="lSerRemarks"></param>
+        /// <param name="lOverRiddenSerPers"></param>
+        /// <param name="IsOverRiddenSer"></param>
+        /// <param name="lImpersonateUID"></param>
+        /// <param name="lImpersonateBranchCode"></param>
+        /// <returns></returns>
+        public int fnUpdateFixedTourCancelInfo(
+    decimal? lCanCharges, decimal? lRefundAmt, string lTicketNo,
+    int? lCanNoTick, string lBranchUserID, int? lAgentID, decimal? lAgentCredit, decimal? lAvailableBal,
+    decimal? lAgentDebit, decimal? lTicketAmt, decimal? lCommission, string lsBranchCode, string lPayMode,
+    decimal? lDebit, decimal? lCredit, string lUserName, string lBranchCode, decimal? lSTax, decimal? lTDS,
+    bool? ISPartial, string lRemarks, decimal? Overriddenpes, char? IsOverridden, decimal ServiceCanChrg,
+    string lSerRemarks, decimal lOverRiddenSerPers, bool IsOverRiddenSer, string lImpersonateUID,
+    string lImpersonateBranchCode)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.UpdateFixedTourCancelInfo_sp, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add parameters
+                cmd.Parameters.AddWithValue("@CanCharges", lCanCharges.HasValue ? (object)lCanCharges.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@RefundAmt", lRefundAmt.HasValue ? (object)lRefundAmt.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@TicketNo", (object)lTicketNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CanNoTick", lCanNoTick.HasValue ? (object)lCanNoTick.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@BranchUserId", (object)lBranchUserID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@sBranchCode", (object)lsBranchCode ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@AgentId", lAgentID.HasValue ? (object)lAgentID.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@AgentCredit", lAgentCredit.HasValue ? (object)lAgentCredit.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@AvailableBalance", lAvailableBal.HasValue ? (object)lAvailableBal.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@AgentDebit", lAgentDebit.HasValue ? (object)lAgentDebit.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@TicketAmount", lTicketAmt.HasValue ? (object)lTicketAmt.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@Commission", lCommission.HasValue ? (object)lCommission.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@PaymentMode", (object)lPayMode ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Debit", lDebit.HasValue ? (object)lDebit.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@Credit", lCredit.HasValue ? (object)lCredit.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@UserName", (object)lUserName ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@BranchCode", (object)lBranchCode ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Servicetax", lSTax.HasValue ? (object)lSTax.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@TDS", lTDS.HasValue ? (object)lTDS.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@ISPartial", ISPartial.HasValue ? (object)ISPartial.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@Remarks", (object)lRemarks ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Overriddenpes", Overriddenpes.HasValue ? (object)Overriddenpes.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@IsOverridden", IsOverridden.HasValue ? (object)IsOverridden.Value.ToString() : DBNull.Value);
+                cmd.Parameters.AddWithValue("@RemarksServiceCharge", (object)lSerRemarks ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@ServiceChargeOverPerc", (object)lOverRiddenSerPers);
+                cmd.Parameters.AddWithValue("@IsServiceChargeOver", (object)IsOverRiddenSer);
+                cmd.Parameters.AddWithValue("@CanServiceCharge", (object)ServiceCanChrg);
+                cmd.Parameters.AddWithValue("@I_ImpersonateUID", (object)lImpersonateUID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@I_ImpersonateBranchCode", (object)lImpersonateBranchCode ?? DBNull.Value);
+
+                // Output parameter
+                SqlParameter outParam = new SqlParameter("@ReturnValue", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outParam);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    lStatus = outParam.Value != DBNull.Value ? Convert.ToInt32(outParam.Value) : 0;
+                }
+                catch (Exception)
+                {
+                    lStatus = 0; // Handle/log exception as needed
+                }
+            }
+
+            return lStatus;
+        }
+
+        /// <summary>
+        /// /// Retrieves the tour detail based on the provided parameters.
+        /// </summary>
+        /// <param name="lTourNo"></param>
+        /// <param name="lJDate"></param>
+        /// <param name="lTicketNo"></param>
+        /// <param name="RowID"></param>
+        /// <param name="PkpRowID"></param>
+        /// <param name="SeatNo"></param>
+        /// <returns></returns>
+        public int fnGetTourDetail(int? lTourNo, DateTime? lJDate, string lTicketNo, ref int? RowID, ref int? PkpRowID, ref string SeatNo)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetTourDetail_sp, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Input parameters
+                cmd.Parameters.AddWithValue("@TourNo", lTourNo.HasValue ? (object)lTourNo.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@JourneyDate", lJDate.HasValue ? (object)lJDate.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@TicketNo", (object)lTicketNo ?? DBNull.Value);
+
+                // Output parameters
+                SqlParameter paramRowID = new SqlParameter("@ToursRowID", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(paramRowID);
+
+                SqlParameter paramPkpRowID = new SqlParameter("@PickupMasterRowId", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(paramPkpRowID);
+
+                SqlParameter paramSeatNo = new SqlParameter("@SeatNo", SqlDbType.VarChar, -1)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(paramSeatNo);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    // Extract output parameter values
+                    RowID = paramRowID.Value != DBNull.Value ? (int?)Convert.ToInt32(paramRowID.Value) : null;
+                    PkpRowID = paramPkpRowID.Value != DBNull.Value ? (int?)Convert.ToInt32(paramPkpRowID.Value) : null;
+                    SeatNo = paramSeatNo.Value != DBNull.Value ? Convert.ToString(paramSeatNo.Value) : null;
+                }
+                catch (Exception ex)
+                {
+                    // Handle exception or log if needed
+                    return -1;
+                }
+            }
+
+            return lStatus; // Return 0 by default (same as original)
+        }
+
+        /// <summary>
+        /// //
+        /// </summary>
+        /// <param name="pTktNo"></param>
+        /// <param name="pTotalAmt"></param>
+        /// <param name="pAdvance"></param>
+        /// <returns></returns>
+        public int fnSaveONTranAdv(string pTktNo, decimal? pTotalAmt, ref double? pAdvance)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.SaveONTranAdv_sp, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Input Parameters
+                cmd.Parameters.AddWithValue("@TicketNo", (object)pTktNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TotalAmt", pTotalAmt.HasValue ? (object)pTotalAmt.Value : DBNull.Value);
+
+                // Output Parameter
+                SqlParameter paramAdvance = new SqlParameter("@ReturnValue", SqlDbType.Float)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(paramAdvance);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    // Retrieve output value
+                    pAdvance = paramAdvance.Value != DBNull.Value ? (double?)Convert.ToDouble(paramAdvance.Value) : null;
+                }
+                catch (Exception ex)
+                {
+                    lStatus = -1;
+                }
+            }
+
+            return lStatus;
+        }
+
+        /// <summary>
+        /// /// Retrieves the bus allotment record based on the provided tour serial number and bus number.
+        /// </summary>
+        /// <param name="lTourSrNo"></param>
+        /// <param name="lBusNo"></param>
+        /// <returns></returns>
+        public DataTable fnAgentGetBusAllotRec(int? lTourSrNo, string lBusNo)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetBusAllotRec_sp, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add input parameters
+                cmd.Parameters.AddWithValue("@TourSerial", lTourSrNo.HasValue ? (object)lTourSrNo.Value : DBNull.Value);
+                cmd.Parameters.AddWithValue("@BusNo", (object)lBusNo ?? DBNull.Value);
+
+                try
+                {
+                    conn.Open();
+                    using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                    {
+                        da.Fill(ldtRecSet);
+                    }
+
+                    return ldtRecSet;
+                }
+                catch (Exception ex)
+                {
+                    // Optionally log the exception
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the multi-seating chart with seats based on the provided ticket ID and seats.
+        /// </summary>
+        /// <param name="lTicketID"></param>
+        /// <param name="lSeats"></param>
+        /// <returns></returns>
+        public string fnGetMultiSeattingChartWithSeats(string lTicketID, string lSeats)
+        {
+            string lReturnSeats = "";
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetMultiSeattingChartWithSeats_sp, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Input parameters
+                cmd.Parameters.AddWithValue("@Old_TicketCode", (object)lTicketID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@i_SeatNo", (object)lSeats ?? DBNull.Value);
+
+                // Output parameter
+                SqlParameter outputSeats = new SqlParameter("@ReturnSeats", SqlDbType.VarChar, 5000)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outputSeats);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    lReturnSeats = outputSeats.Value != DBNull.Value ? outputSeats.Value.ToString() : "";
+                }
+                catch (Exception ex)
+                {
+                    // Optional: Log the exception
+                    // Keep lReturnSeats as empty or previously assigned
+                }
+            }
+
+            return lReturnSeats;
+        }
+
+
+        /// <summary>
+        /// /// Inserts agent fixed tour information into the database.
+        /// </summary>
+        /// <param name="lorderid"></param>
+        /// <param name="ltourid"></param>
+        /// <param name="ldoj"></param>
+        /// <param name="ldob"></param>
+        /// <param name="lBusEnvType"></param>
+        /// <param name="lNoOfAdults"></param>
+        /// <param name="lNoofchild"></param>
+        /// <param name="lNoofAdultsTwin"></param>
+        /// <param name="lNoofAdultsTriple"></param>
+        /// <param name="lChildWithoutbed"></param>
+        /// <param name="lSingleAdult"></param>
+        /// <param name="lTourName"></param>
+        /// <param name="lAmount"></param>
+        /// <param name="lTax"></param>
+        /// <param name="lCalcTaxValue"></param>
+        /// <param name="lTotalAmount"></param>
+        /// <param name="lseatno"></param>
+        /// <param name="lBusSerialNo"></param>
+        /// <param name="lTourSerial"></param>
+        /// <param name="lPickupPointID"></param>
+        /// <param name="lAdultfare"></param>
+        /// <param name="lChildfare"></param>
+        /// <param name="ladultstwinfare"></param>
+        /// <param name="ladultstriplefare"></param>
+        /// <param name="lchildwithoutbedfare"></param>
+        /// <param name="lsingleadultfare"></param>
+        /// <param name="lCreditCardFee"></param>
+        /// <param name="lCalcCreditCardFee"></param>
+        /// <param name="ldormitory"></param>
+        /// <param name="ldormitoryfare"></param>
+        /// <param name="lEmailD"></param>
+        /// <param name="lTicketNo"></param>
+        /// <param name="lCanRowID"></param>
+        /// <param name="noAdultWithFood"></param>
+        /// <param name="noChildWithFood"></param>
+        /// <param name="AdultWithFoodFare"></param>
+        /// <param name="ChildWithFoodFare"></param>
+        /// <param name="lAdvance"></param>
+        /// <param name="lIsPartialPaymentByAgent"></param>
+        /// <param name="lAdultServiceCharge"></param>
+        /// <param name="ChildServiceCharge"></param>
+        /// <param name="ServiceChargeTotal"></param>
+        /// <param name="ServiceChargeTax"></param>
+        /// <param name="ServiceChargeTaxValue"></param>
+        /// <returns></returns>
+        public int fnInsertAgentFixTourInfo(ref string lorderid, string ltourid, DateTime? ldoj, DateTime? ldob, char? lBusEnvType, int? lNoOfAdults,
+    int? lNoofchild, int? lNoofAdultsTwin, int? lNoofAdultsTriple, int? lChildWithoutbed, int? lSingleAdult, string lTourName,
+    decimal? lAmount, decimal? lTax, decimal? lCalcTaxValue, decimal? lTotalAmount, string lseatno, string lBusSerialNo, string lTourSerial,
+    int? lPickupPointID, decimal? lAdultfare, decimal? lChildfare, decimal? ladultstwinfare, decimal? ladultstriplefare,
+    decimal? lchildwithoutbedfare, decimal? lsingleadultfare, decimal? lCreditCardFee, decimal? lCalcCreditCardFee,
+    int ldormitory, decimal? ldormitoryfare, string lEmailD, string lTicketNo, string lCanRowID, int noAdultWithFood, int noChildWithFood,
+    decimal AdultWithFoodFare, decimal ChildWithFoodFare, decimal lAdvance, bool lIsPartialPaymentByAgent,
+    decimal lAdultServiceCharge, decimal ChildServiceCharge, decimal ServiceChargeTotal, decimal ServiceChargeTax, decimal ServiceChargeTaxValue)
+        {
+            int returnStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.InsertAgentFixTourInfo_sp, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add all input parameters (null-safe)
+                cmd.Parameters.AddWithValue("@tourid", (object)ltourid ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@doj", (object)ldoj ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@dob", (object)ldob ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@BusEnvType", (object)lBusEnvType ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@NoOfAdults", (object)lNoOfAdults ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Noofchild", (object)lNoofchild ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@NoofAdultsTwin", (object)lNoofAdultsTwin ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@NoofAdultsTriple", (object)lNoofAdultsTriple ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@ChildWithoutbed", (object)lChildWithoutbed ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@SingleAdult", (object)lSingleAdult ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TourName", (object)lTourName ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Amount", (object)lAmount ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Tax", (object)lTax ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CalcTaxValue", (object)lCalcTaxValue ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TotalAmount", (object)lTotalAmount ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@seatno", (object)lseatno ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@BusSerialNo", (object)lBusSerialNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TourSerial", (object)lTourSerial ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@PickupPointID", (object)lPickupPointID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Adultfare", (object)lAdultfare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Childfare", (object)lChildfare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@adultstwinfare", (object)ladultstwinfare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@adultstriplefare", (object)ladultstriplefare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@childwithoutbedfare", (object)lchildwithoutbedfare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@singleadultfare", (object)lsingleadultfare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CreditCardFee", (object)lCreditCardFee ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CalcCreditCardFee", (object)lCalcCreditCardFee ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@dormitory", (object)ldormitory);
+                cmd.Parameters.AddWithValue("@dormitoryfare", (object)ldormitoryfare ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@EmailID", (object)lEmailD ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TicketNo", (object)lTicketNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CanRowid", (object)lCanRowID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@noAdultWithFood", noAdultWithFood);
+                cmd.Parameters.AddWithValue("@noChildWithFood", noChildWithFood);
+                cmd.Parameters.AddWithValue("@AdultWithFoodFare", (object)AdultWithFoodFare);
+                cmd.Parameters.AddWithValue("@ChildWithFoodFare", (object)ChildWithFoodFare);
+                cmd.Parameters.AddWithValue("@AdavncePaid", (object)lAdvance);
+                cmd.Parameters.AddWithValue("@IsPartialPaymentByAgent", (object)lIsPartialPaymentByAgent);
+                cmd.Parameters.AddWithValue("@AdultServiceCharge", (object)lAdultServiceCharge);
+                cmd.Parameters.AddWithValue("@ChildServiceCharge", (object)ChildServiceCharge);
+                cmd.Parameters.AddWithValue("@ServiceChargesTotal", (object)ServiceChargeTotal);
+                cmd.Parameters.AddWithValue("@ServiceChargesTax", (object)ServiceChargeTax);
+                cmd.Parameters.AddWithValue("@ServiceChargesTaxVal", (object)ServiceChargeTaxValue);
+
+                // Output parameter
+                SqlParameter outOrderId = new SqlParameter("@returnValue", SqlDbType.VarChar, 50)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(outOrderId);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    lorderid = outOrderId.Value != DBNull.Value ? outOrderId.Value.ToString() : "";
+                    returnStatus = 1;
+                }
+                catch (Exception ex)
+                {
+                    returnStatus = 0;
+                }
+            }
+
+            return returnStatus;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves special tour ticket information based on the provided PNR, email, and journey date.
+        /// </summary>
+        /// <param name="lPNR"></param>
+        /// <param name="lEmail"></param>
+        /// <param name="JDate"></param>
+        /// <returns></returns>
+        public DataTable fnAgentSplTourTicket(string lPNR, string lEmail, DateTime JDate)
+        {
+            DataTable ldtRecSet = new DataTable();
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSplTourTicket_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@PNRNO", lPNR ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@email", lEmail ?? (object)DBNull.Value);
+                    cmd.Parameters.AddWithValue("@journeydate", JDate);
+
+                    try
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optionally log error
+                        return null;
+                    }
+                }
+            }
+            return ldtRecSet;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the special vehicle master information based on the provided vehicle ID.
+        /// </summary>
+        /// <param name="lVehicleID"></param>
+        /// <returns></returns>
+        public DataTable fnAgentSplVehiclemaster(string lVehicleID)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSplVehiclemaster_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add input parameter
+                    cmd.Parameters.AddWithValue("@vehicleid", string.IsNullOrEmpty(lVehicleID) ? (object)DBNull.Value : lVehicleID);
+
+                    try
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log the error if needed
+                        return null;
+                    }
+                }
+            }
+
+            return ldtRecSet;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the weekend cancellation percentage based on the provided tour ID and number of days.
+        /// </summary>
+        /// <param name="lTourID"></param>
+        /// <param name="lNooFDays"></param>
+        /// <returns></returns>
+        public DataTable fnspl_weekend_cancelpercentage(int? lTourID, int? lNooFDays)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.spl_weekend_cancelpercentage, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters with null-checking
+                    cmd.Parameters.AddWithValue("@tourid", lTourID.HasValue ? (object)lTourID.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@noofdays", lNooFDays.HasValue ? (object)lNooFDays.Value : DBNull.Value);
+
+                    try
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optionally log the error
+                        return null;
+                    }
+                }
+            }
+
+            return ldtRecSet;
+        }
+
+        /// <summary>
+        /// /// Retrieves the payment mode based on the provided payment mode string.
+        /// </summary>
+        /// <param name="lPayMode"></param>
+        /// <returns></returns>
+        public DataTable fnPayMode(string lPayMode)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetPayMode_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add input parameter
+                    cmd.Parameters.AddWithValue("@PaymentMode", string.IsNullOrEmpty(lPayMode) ? DBNull.Value : (object)lPayMode);
+
+                    try
+                    {
+                        conn.Open();
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+
+                        return ldtRecSet;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optional: log the error
+                        return null;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the special tour cancellation ticket information based on the provided PNR, email, and journey date.
+        /// </summary>
+        /// <param name="lPNR"></param>
+        /// <param name="lEmail"></param>
+        /// <param name="JDate"></param>
+        /// <returns></returns>
+        public DataTable fnAgentSplTourCancelTicket(string lPNR, string lEmail, DateTime JDate)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSplTourCancelTicket_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add input parameters
+                    cmd.Parameters.AddWithValue("@PNRNO", string.IsNullOrEmpty(lPNR) ? DBNull.Value : (object)lPNR);
+                    cmd.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(lEmail) ? DBNull.Value : (object)lEmail);
+                    cmd.Parameters.AddWithValue("@JourneyDate", JDate);
+
+                    try
+                    {
+                        conn.Open();
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+
+                        return ldtRecSet;
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optionally log the error
+                        return null;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// Updates the special tour cancellation information in the database.
+        /// </summary>
+        /// <param name="lCanCharges"></param>
+        /// <param name="lRefundAmt"></param>
+        /// <param name="lTicketNo"></param>
+        /// <param name="lCanNoTick"></param>
+        /// <param name="lBranchUserID"></param>
+        /// <param name="lAgentID"></param>
+        /// <param name="lAgentCredit"></param>
+        /// <param name="lAvailableBal"></param>
+        /// <param name="lAgentDebit"></param>
+        /// <param name="lTicketAmt"></param>
+        /// <param name="lCommission"></param>
+        /// <param name="lsBranchCode"></param>
+        /// <param name="lPayMode"></param>
+        /// <param name="lDebit"></param>
+        /// <param name="lCredit"></param>
+        /// <param name="lUserName"></param>
+        /// <param name="lBranchCode"></param>
+        /// <param name="lSTax"></param>
+        /// <param name="lTDS"></param>
+        /// <returns></returns>
+        public int fnUpdateSPLTourCancelInfo(
+      decimal? lCanCharges, decimal? lRefundAmt, string lTicketNo,
+      int? lCanNoTick, string lBranchUserID, int? lAgentID, decimal? lAgentCredit, decimal? lAvailableBal,
+      decimal? lAgentDebit, decimal? lTicketAmt, decimal? lCommission,
+      string lsBranchCode, string lPayMode, decimal? lDebit, decimal? lCredit,
+      string lUserName, string lBranchCode, decimal? lSTax, decimal? lTDS)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand("UpdateSPLTourCancelInfo_sp", conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                // Add all input parameters
+                cmd.Parameters.AddWithValue("@CanCharges", (object)lCanCharges ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@RefundAmt", (object)lRefundAmt ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TicketNo", (object)lTicketNo ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@CanNoTick", (object)lCanNoTick ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@BranchUserId", (object)lBranchUserID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@sBranchCode", (object)lsBranchCode ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@AgentId", (object)lAgentID ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@AgentCredit", (object)lAgentCredit ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@AvailableBalance", (object)lAvailableBal ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@AgentDebit", (object)lAgentDebit ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TicketAmount", (object)lTicketAmt ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Commission", (object)lCommission ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@PaymentMode", (object)lPayMode ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Debit", (object)lDebit ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Credit", (object)lCredit ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@UserName", (object)lUserName ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@BranchCode", (object)lBranchCode ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@Servicetax", (object)lSTax ?? DBNull.Value);
+                cmd.Parameters.AddWithValue("@TDS", (object)lTDS ?? DBNull.Value);
+
+                // Add Return Output parameter
+                SqlParameter returnParam = new SqlParameter("@ReturnValue", SqlDbType.Int);
+                returnParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(returnParam);
+
+                try
+                {
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    lStatus = (int)(returnParam.Value ?? 0);
+                }
+                catch (Exception ex)
+                {
+                    lStatus = 0;
+                    // You may log ex.Message here
+                }
+            }
+
+            return lStatus;
+        }
+
+
+
     }
 }

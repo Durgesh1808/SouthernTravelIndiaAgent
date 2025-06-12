@@ -12,6 +12,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mail;
 using System.Web.UI;
@@ -1129,6 +1131,212 @@ namespace SouthernTravelIndiaAgent.BAL
             DescriptionAttribute[] array = (DescriptionAttribute[])field.GetCustomAttributes(typeof(DescriptionAttribute), inherit: false);
             return (array.Length > 0) ? array[0].Description : pValue.ToString();
         }
-    
+
+        /// <summary>
+        /// /// This method generates a row of HTML for costing details.
+        /// </summary>
+        /// <param name="pCostType"></param>
+        /// <param name="pNoOfPerson"></param>
+        /// <param name="pSinglePersonFare"></param>
+        /// <param name="pTotalFare"></param>
+        /// <returns></returns>
+        public static string GetCostingRow(string pCostType, decimal pNoOfPerson, decimal pSinglePersonFare, decimal pTotalFare)
+        {
+            StringBuilder lReturnValue = new StringBuilder();
+            lReturnValue.Append(" <tr><td width=\"35%\"><SPAN class=\"cgi\">" + pCostType + "</SPAN></td>");
+            lReturnValue.Append("<td width=\"5%\"><SPAN class=\"hlinks\">" + pNoOfPerson + "</SPAN></td>");
+            lReturnValue.Append("<td width=\"5%\"><SPAN class=\"hlinks\">" + " X " + "</SPAN></td>");
+            lReturnValue.Append("<td width=\"5%\"><SPAN class=\"hlinks\">" + pSinglePersonFare + "</SPAN></td>");
+            lReturnValue.Append("<td width=\"5%\"><SPAN class=\"hlinks\">" + "&nbsp;=&nbsp;" + "</SPAN></td>");
+            lReturnValue.Append("<td width=\"5%\"><SPAN class=\"hlinks\">" + pTotalFare + "</SPAN></td>");
+            lReturnValue.Append("<td width=\"40%\"><SPAN class=\"hlinks\">&nbsp;</SPAN></td>");
+            lReturnValue.Append("</tr>");
+            return lReturnValue.ToString();
+        }
+
+        /// <summary>
+        /// /// This method retrieves the tour ticket banner for a specific tour ID and type code.
+        /// </summary>
+        /// <param name="pTourID"></param>
+        /// <param name="pTourTypeCode"></param>
+        /// <param name="pUser"></param>
+        /// <returns></returns>
+        public static string GetTourTicketBanner(int pTourID, string pTourTypeCode, string pUser)
+        {
+            STSPLOrOther lSPLToDB;
+            DataTable dtTourTicket = null;
+            StringBuilder lFinalHTML = new StringBuilder();
+            lSPLToDB = null;
+            try
+            {
+                lSPLToDB = new STSPLOrOther();
+                dtTourTicket = new DataTable();
+                dtTourTicket = lSPLToDB.fnGetTourTicketBanner(pTourID, pTourTypeCode);
+
+                if (dtTourTicket != null && dtTourTicket.Rows.Count > 0)
+                {
+                    lFinalHTML.Append("<table width='100%' border='0' cellspacing='0' cellpadding='0' align='left' border='0'>");
+                    lFinalHTML.Append("<tr>");
+                    for (int pCount = 0; pCount < dtTourTicket.Rows.Count; pCount++)
+                    {
+                        for (int pSequence = 1; pSequence <= 10; pSequence++)
+                        {
+                            if (pSequence == Convert.ToInt32(dtTourTicket.Rows[pCount]["ImageSequence"]))
+                            {
+                                string hrfLink = string.Empty;
+                                if (dtTourTicket.Rows[pCount]["Link"].ToString() != "")
+                                {
+                                    hrfLink = dtTourTicket.Rows[pCount]["Link"].ToString();
+                                }
+                                string imgURL = string.Empty;
+                                if (dtTourTicket.Rows[pCount]["ImageUrl"].ToString() != "")
+                                {
+                                    imgURL = dtTourTicket.Rows[pCount]["ImageUrl"].ToString().Replace('\\', '/');
+                                }
+                                string appPath = System.Web.HttpContext.Current.Request.Url.Host.ToString();
+                                if (appPath.ToLower() == "southerntravelsindia")
+                                {
+                                    appPath = "http://" + appPath;
+                                    appPath += ".com/";
+                                }
+                                else if (appPath.ToLower() == "localhost")
+                                {
+                                    appPath = "http://" + appPath;
+                                    appPath += ":4541//SouthernTravels_New/ControlPanel/";
+                                }
+                                else if (pUser == "EndUser")
+                                {
+                                    appPath = "";
+                                }
+                                else
+                                {
+                                    appPath = "../";
+                                }
+                                appPath = "http://www.southerntravelsindia.com/";
+                                StringBuilder strLink = new StringBuilder();
+                                if (hrfLink != string.Empty)
+                                {
+                                    strLink.Append("<a href='" + hrfLink + "' target='_blank'><img src='" + appPath + imgURL + "' width='228'  border='0' /></a>");
+                                }
+                                else
+                                {
+                                    strLink.Append("<img src='" + appPath + imgURL + "' width='228'  border='0' />");
+                                }
+                                if (dtTourTicket.Rows[pCount]["Alignment"].ToString() != "")
+                                {
+                                    lFinalHTML.Append("<td aling='" + dtTourTicket.Rows[pCount]["Alignment"].ToString() + "'>");
+                                }
+                                else
+                                {
+                                    lFinalHTML.Append("<td>");
+                                }
+                                lFinalHTML.Append(strLink.ToString());
+                                lFinalHTML.Append("</td>");
+                            }
+                        }
+                    }
+                    lFinalHTML.Append("</tr>");
+                    lFinalHTML.Append("</table>");
+                }
+                else
+                {
+                    string appPath = System.Web.HttpContext.Current.Request.Url.Host.ToString();
+                    if (appPath.ToLower() == "southerntravelsindia")
+                    {
+                        appPath = "http://" + appPath;
+                        appPath += ".com/";
+                    }
+                    else if (appPath.ToLower() == "localhost")
+                    {
+                        appPath = "http://" + appPath;
+                        appPath += ":2532/Site/";
+                    }
+                    else if (pUser == "EndUser")
+                    {
+                        appPath = "";
+                    }
+                    else
+                    {
+                        appPath = "../";
+                    }
+                    appPath = "http://www.southerntravelsindia.com/";
+                    lFinalHTML.Append("<table width='100%' border='0' cellspacing='0' cellpadding='0' align='left' border='0'>");
+                    lFinalHTML.Append("<tr>");
+                    lFinalHTML.Append("<td>");
+                    lFinalHTML.Append(" <a href='http://www.facebook.com/SouthernTravels?sk=app_190322544333196' target='_blank'><img src='" + appPath + "images/fb.jpg' width='228'  border='0' /></a>");
+                    lFinalHTML.Append("</td>");
+                    lFinalHTML.Append("<td align=center>");
+                    lFinalHTML.Append("<a href='http://www.southerntravelsindia.com/International-GroupDeparture.aspx'><img src='" + appPath + "images/singapore1.jpg' width='228'  border='0' /></a>");
+                    lFinalHTML.Append("</td>");
+                    lFinalHTML.Append("<td align=right>");
+                    lFinalHTML.Append("<a href='http://www.southerntravelsindia.com/hotel-southern-jaipur.aspx'><img src='" + appPath + "images/southerngrand.jpg' width='228'  border='0' /></a>");
+                    lFinalHTML.Append("</td>");
+                    lFinalHTML.Append("</tr>");
+                    lFinalHTML.Append("</table>");
+                }
+            }
+            finally
+            {
+                if (lSPLToDB != null)
+                {
+                    lSPLToDB = null;
+                }
+                if (dtTourTicket != null)
+                {
+                    dtTourTicket.Dispose();
+                    dtTourTicket = null;
+                }
+            }
+            return lFinalHTML.ToString();
+        }
+
+        private static byte[] EncryptionData(byte[] clearData, byte[] Key, byte[] IV)
+        {
+            try
+            {
+                MemoryStream ms = new MemoryStream();
+                Rijndael alg = Rijndael.Create();
+                alg.Key = Key;
+                alg.IV = IV;
+                CryptoStream cs = new CryptoStream(ms, alg.CreateEncryptor(), CryptoStreamMode.Write);
+                cs.Write(clearData, 0, clearData.Length);
+                cs.Close();
+                byte[] encryptedData = ms.ToArray();
+                return encryptedData;
+            }
+            catch
+            {
+                return null;
+            }
+
+        }
+        static string _Password = "SouthernTravels";
+        static byte[] _Salt = new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 };
+        /// <summary>
+        /// /// This method encrypts a given string using a password and salt.
+        /// </summary>
+        /// <param name="inputText"></param>
+        /// <returns></returns>
+        public static string Encrypt(string inputText)
+        {
+            string encryptedValue = "";
+            try
+            {
+
+                byte[] clearBytes = System.Text.Encoding.Unicode.GetBytes(inputText);
+                PasswordDeriveBytes pdb = new PasswordDeriveBytes(_Password, _Salt);
+                byte[] encryptedData = EncryptionData(clearBytes, pdb.GetBytes(32), pdb.GetBytes(16));
+                encryptedValue = Convert.ToBase64String(encryptedData);
+
+                // VSR: Escape String (URL Encode) whenever passing encrypted data in URL
+                return encryptedValue;
+
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

@@ -6,7 +6,7 @@ window.history.forward(1);
 
 <table width="1002" border="0" align="center" cellpadding="0" cellspacing="0">
   <tr>
-    <td width="245" align="right" valign="bottom" background="Assets/images/logo.webp">
+    <td width="245" align="right" valign="bottom" background="Assets/images/logo.jpg">
       
       <table width="220" border="0" cellspacing="0" cellpadding="0">
       <tr>

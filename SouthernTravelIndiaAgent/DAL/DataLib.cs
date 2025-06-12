@@ -757,5 +757,55 @@ namespace SouthernTravelIndiaAgent.DAL
                 }
             }
         }
+
+        /// <summary>
+        /// /// Retrieves a string value from the database based on the provided SQL query and parameters.
+        /// </summary>
+        /// <param name="connType"></param>
+        /// <param name="sql"></param>
+        /// <param name="arrSPParams"></param>
+        /// <returns></returns>
+        public static string GetStringDataWithParam(Connection connType, string sql, SqlParameter[] arrSPParams)
+        {
+            return GetStringDataWithParam(GetConnectionString(connType), sql, arrSPParams);
+        }
+
+
+        /// <summary>
+        /// /// Executes a SQL query with parameters and returns a single string value.
+        /// </summary>
+        /// <param name="connectStr"></param>
+        /// <param name="sql"></param>
+        /// <param name="arrSPParams"></param>
+        /// <returns></returns>
+        private static string GetStringDataWithParam(string connectStr, string sql, SqlParameter[] arrSPParams)
+        {
+            string returnValue = "";
+
+            using (SqlConnection localSqlConnection = new SqlConnection(connectStr))
+            {
+                using (SqlCommand localSQLCommand = new SqlCommand(sql, localSqlConnection))
+                {
+                    localSQLCommand.CommandTimeout = 1000;
+                    if (arrSPParams.Length > 0)
+                    {
+                        foreach (SqlParameter param in arrSPParams)
+                        {
+                            localSQLCommand.Parameters.Add(param);
+                        }
+
+                        localSQLCommand.Connection.Open();
+                        returnValue = Convert.ToString(localSQLCommand.ExecuteScalar());
+                    }
+                    else
+                    {
+                        returnValue = "";
+                    }
+                }
+            }
+
+            return returnValue;
+        }
+
     }
 }
