@@ -63,7 +63,6 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string GetOrderID_sp = "GetOrderID_sp";
         public const string sp_GetSeatArrangement = "sp_GetSeatArrangement";
         public const string GetPickupDetail_sp = "GetPickupDetail_sp";
-        public const string sp_GetSeatArrangements = "sp_GetSeatArrangements";
         public const string Get_FixedTour_Fare = "Get_FixedTour_Fare";
         public const string jdates_vacantseats = "jdates_vacantseats";
         public const string Fixed_PickupAddr_DeptTime = "Fixed_PickupAddr_DeptTime";
@@ -151,6 +150,34 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string spl_weekend_cancelpercentage = "spl_weekend_cancelpercentage";
         public const string GetPayMode_sp = "GetPayMode_sp"; 
         public const string GetSplTourCancelTicket_sp = "GetSplTourCancelTicket_sp";  
-        public const string UpdateSPLTourCancelInfo_sp = "UpdateSPLTourCancelInfo_sp";    
+        public const string UpdateSPLTourCancelInfo_sp = "UpdateSPLTourCancelInfo_sp";
+        public const string FixTourBalancecReceipt_sp = "FixTourBalancecReceipt_sp";
+        public const string SPLTourBalancecReceipt_sp = "SPLTourBalancecReceipt_sp";
+        public const string INTTourBalancecReceipt_sp = "INTTourBalancecReceipt_sp";
+        public const string ChkInitialDutySlip_sp = "ChkInitialDutySlip_sp";
+        public const string sp_AgentCarcancellation = "sp_AgentCarcancellation";
+        public const string GetCancelTicket_sp = "GetCancelTicket_sp";
+        public const string UpdateCarCancelInfo_sp = "UpdateCarCancelInfo_sp";
+        public const string GetHAccCancelPerc_sp= "GetHAccCancelPerc_sp";
+        public const string GetHotelCancelPerc_sp= "GetHotelCancelPerc_sp";
+        public const string SaveHACCancelInfo_sp = "SaveHACCancelInfo_sp"; 
+        public const string GetSTaxForHACTkt_SP = "GetSTaxForHACTkt_SP";
+        public const string GetHAccDetail_sp = "GetHAccDetail_sp";
+        public const string BranchHACCancelInfo_sp = "BranchHACCancelInfo_sp";
+        public const string GetRoomTypeOccupancyNew_SP = "GetRoomTypeOccupancyNew_SP";
+        public const string AccCancelReceipt_sp = "AccCancelReceipt_sp";
+        public const string Acccancellation_sp = "Acccancellation_sp";
+        public const string GetAgentCarTourDupInfo_sp = "GetAgentCarTourDupInfo_sp";
+        public const string GetAgentCarTourDupTKT_sp = "GetAgentCarTourDupTKT_sp";  
+        public const string GetEmailCarBooking_sp = "GetEmailCarBooking_sp";
+        public const string sp_Agent_CarTicket = "sp_Agent_CarTicket";
+        public const string GetAgentSPLTourDupInfo_sp = "GetAgentSPLTourDupInfo_sp";
+        public const string GetAgentSPLTourDupTKT_sp = "GetAgentSPLTourDupTKT_sp";
+        public const string Special_Ticket = "Special_Ticket";
+        public const string GetTour_sp = "GetTour_sp";
+        public const string DeleteOnlineToursBooking_sp= "DeleteOnlineToursBooking_sp";
+        public const string GetPaxCount_sp = "GetPaxCount_sp";
+        public const string GetToursBookingInfoAgent_sp = "GetToursBookingInfoAgent_sp"; 
+        public const string GetTourBookTotalAmt_sp = "GetTourBookTotalAmt_sp";  
     }
 }

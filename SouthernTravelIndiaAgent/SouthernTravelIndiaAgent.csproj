@@ -102,10 +102,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AccommodationCancellation.aspx" />
     <Content Include="agentaddfundsbycc.aspx" />
     <Content Include="AgentBalanceClearence.aspx" />
+    <Content Include="AgentBalanceReceipt.aspx" />
+    <Content Include="AgentbookedTour.aspx" />
     <Content Include="AgentCancellation.aspx" />
     <Content Include="AgentCarbooking.aspx" />
+    <Content Include="AgentCarCancellation.aspx" />
+    <Content Include="AgentCarDuplicateTicket.aspx" />
     <Content Include="AgentCarFixedTours.aspx" />
     <Content Include="agentCarMultiple.aspx" />
     <Content Include="agentCarSelect.aspx" />
@@ -123,6 +128,7 @@
     <Content Include="AgentProfilePage.aspx" />
     <Content Include="AgentProfileUpdate.aspx" />
     <Content Include="Agentrecentbookings.aspx" />
+    <Content Include="AgentSpDuplicateTickets.aspx" />
     <Content Include="AgentSpecial.aspx" />
     <Content Include="AgentspecialseasonTour.aspx" />
     <Content Include="agentspecialtour.aspx" />
@@ -137,6 +143,7 @@
     <Content Include="Agent_CarPerKMBooking.aspx" />
     <Content Include="AmexPGReceipt.aspx" />
     <Content Include="CityWisetours.aspx" />
+    <Content Include="css\style.css" />
     <Content Include="getAllSplTours.aspx" />
     <Content Include="getTransferTypes.aspx" />
     <Content Include="Global.asax" />
@@ -145,19 +152,26 @@
     <Content Include="JpegImage.aspx" />
     <Content Include="StatFarePanel.aspx" />
     <Content Include="SubgetTransferTypes.aspx" />
+    <Content Include="UserControls\GST_ucManageCustomer.ascx" />
     <Content Include="UserControls\UCAgentBalanceClearence.ascx" />
     <Content Include="UserControls\UcAgentFooter.ascx" />
     <Content Include="UserControls\UcAgentHeader.ascx" />
     <Content Include="UserControls\UcAgentHeader1.ascx" />
     <Content Include="UserControls\UcAgentRightUsc.ascx" />
     <Content Include="UserControls\UcAjentmenu.ascx" />
-    <Content Include="UserControls\UcGST_ucManageCustomer.ascx" />
     <Content Include="UserControls\UcSpecialFarePaneltable.ascx" />
     <Content Include="UserControls\UcSpecialTourFarePanel.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccommodationCancellation.aspx.cs">
+      <DependentUpon>AccommodationCancellation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AccommodationCancellation.aspx.designer.cs">
+      <DependentUpon>AccommodationCancellation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="agentaddfundsbycc.aspx.cs">
       <DependentUpon>agentaddfundsbycc.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -172,6 +186,20 @@
     <Compile Include="AgentBalanceClearence.aspx.designer.cs">
       <DependentUpon>AgentBalanceClearence.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentBalanceReceipt.aspx.cs">
+      <DependentUpon>AgentBalanceReceipt.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentBalanceReceipt.aspx.designer.cs">
+      <DependentUpon>AgentBalanceReceipt.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentbookedTour.aspx.cs">
+      <DependentUpon>AgentbookedTour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentbookedTour.aspx.designer.cs">
+      <DependentUpon>AgentbookedTour.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentCancellation.aspx.cs">
       <DependentUpon>AgentCancellation.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -185,6 +213,20 @@
     </Compile>
     <Compile Include="AgentCarbooking.aspx.designer.cs">
       <DependentUpon>AgentCarbooking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentCarCancellation.aspx.cs">
+      <DependentUpon>AgentCarCancellation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentCarCancellation.aspx.designer.cs">
+      <DependentUpon>AgentCarCancellation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgentCarDuplicateTicket.aspx.cs">
+      <DependentUpon>AgentCarDuplicateTicket.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentCarDuplicateTicket.aspx.designer.cs">
+      <DependentUpon>AgentCarDuplicateTicket.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentCarFixedTours.aspx.cs">
       <DependentUpon>AgentCarFixedTours.aspx</DependentUpon>
@@ -251,6 +293,7 @@
     </Compile>
     <Compile Include="AgentHotelBooking.aspx.cs">
       <DependentUpon>AgentHotelBooking.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentHotelBooking.aspx.designer.cs">
       <DependentUpon>AgentHotelBooking.aspx</DependentUpon>
@@ -304,6 +347,13 @@
     <Compile Include="Agentrecentbookings.aspx.designer.cs">
       <DependentUpon>Agentrecentbookings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentSpDuplicateTickets.aspx.cs">
+      <DependentUpon>AgentSpDuplicateTickets.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentSpDuplicateTickets.aspx.designer.cs">
+      <DependentUpon>AgentSpDuplicateTickets.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentSpecial.aspx.cs">
       <DependentUpon>AgentSpecial.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,6 +363,7 @@
     </Compile>
     <Compile Include="AgentspecialseasonTour.aspx.cs">
       <DependentUpon>AgentspecialseasonTour.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentspecialseasonTour.aspx.designer.cs">
       <DependentUpon>AgentspecialseasonTour.aspx</DependentUpon>
@@ -498,6 +549,13 @@
     <Compile Include="SubgetTransferTypes.aspx.designer.cs">
       <DependentUpon>SubgetTransferTypes.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\GST_ucManageCustomer.ascx.cs">
+      <DependentUpon>GST_ucManageCustomer.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\GST_ucManageCustomer.ascx.designer.cs">
+      <DependentUpon>GST_ucManageCustomer.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UCAgentBalanceClearence.ascx.cs">
       <DependentUpon>UCAgentBalanceClearence.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -540,12 +598,6 @@
     <Compile Include="UserControls\UcAjentmenu.ascx.designer.cs">
       <DependentUpon>UcAjentmenu.ascx</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\UcGST_ucManageCustomer.ascx.cs">
-      <DependentUpon>UcGST_ucManageCustomer.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\UcGST_ucManageCustomer.ascx.designer.cs">
-      <DependentUpon>UcGST_ucManageCustomer.ascx</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\UcSpecialFarePaneltable.ascx.cs">
       <DependentUpon>UcSpecialFarePaneltable.ascx</DependentUpon>
     </Compile>
@@ -566,6 +618,7 @@
     <Folder Include="Assets\HtmlPages\" />
     <Folder Include="Assets\images\" />
     <Folder Include="Assets\js\" />
+    <Folder Include="Includes\" />
     <Folder Include="mailer\" />
   </ItemGroup>
   <ItemGroup>

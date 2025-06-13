@@ -1,12 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgentspecialseasonTour.aspx.cs" Inherits="SouthernTravelIndiaAgent.AgentspecialseasonTour" %>
 
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 <%@ Register TagPrefix="uc1" TagName="AgentFooter" Src="UserControls/UcAgentFooter.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="AgentHeader" Src="UserControls/UcAgentHeader.ascx" %>
-<%@ Register Src="~/UserControls/UcSpecialTourFarePanel.ascx" TagName="SpecialTourFarePanel"
+<%@ Register Src="UserControls/UcSpecialTourFarePanel.ascx" TagName="SpecialTourFarePanel"
     TagPrefix="uc1" %>
-<%@ Register Src="../UserControls/UcSpecialFarePaneltable.ascx" TagName="SpecialFarePaneltable"
+<%@ Register Src="UserControls/UcSpecialFarePaneltable.ascx" TagName="SpecialFarePaneltable"
     TagPrefix="uc5" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
@@ -14,9 +15,9 @@
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
-    <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
-    <link href="../Assets/css/font-style.css" type="text/css" rel="stylesheet" />
+    <link href="../images/style.css" rel="stylesheet" type="text/css" />
+    <link href="../Images/stylesheet.css" type="text/css" rel="stylesheet" />
+    <link href="../indexResources/font-style.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
     <style>
         .Throug
@@ -52,7 +53,7 @@
         }
         .loading
         {
-            background-image: url(https://www.southerntravelsindia.com/Assets/images/loading1.gif);
+            background-image: url(https://www.southerntravelsindia.com/images/loading1.gif);
             background-position: right;
             background-repeat: no-repeat;
         }
@@ -90,24 +91,24 @@
 
     <script language="javascript" src="../Assets/js/spl_ST_calendar.js" type="text/javascript"></script>
 
-    <script language="javascript" src="../Assets/js/query-script.js" type="text/javascript"></script>
+    <script language="javascript" src="../Images/query-script.js" type="text/javascript"></script>
 
-    <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
+    <script language="javascript" src="../JavaScript/MyScript.js" type="text/javascript"></script>
 
     <%--<script language="javascript" src="JavaScript/GST_OnlineSplSeason.js" type="text/javascript"></script>--%>
 
-    <script language="javascript" src="../Assets/js/GST_OnlineSplSeason.js" type="text/javascript"></script>
+    <script language="javascript" src="../JavaScript/GST_OnlineSplSeason.js" type="text/javascript"></script>
 
-    <link href="../Assets/css/demos.css" rel="stylesheet" type="text/css" />
-    <link type="text/css" href="../Assets/js/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
+    <link href="../css/demos.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="../css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
 
-    <script src="../Assets/js//jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="../css/Js/jquery-1.3.2.min.js" type="text/javascript"></script>
 
-    <script src="../Assets/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
+    <script src="../css/Js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
 
-    <link href="../Assets/css/rupee.css" rel="stylesheet" type="text/css" />
+    <link href="../font/rupee.css" rel="stylesheet" type="text/css" />
     <style>
         .DatePickerImage
         {
@@ -366,24 +367,24 @@
                 document.getElementById('<%=txtForeignCity.ClientID %>').value = "";
             }
         }
-
+        
     </script>
 
     <script type="text/javascript">
 
-        $(function () {
+        $(function() {
             var dt = '';
             $("#txtDate").datepicker({
 
                 numberOfMonths: 2,
                 showOn: "button", autoSize: true,
-                buttonImage: "../Assets/images/cal.gif",
+                buttonImage: "../images/cal.gif",
                 buttonImageOnly: true,
                 minDate: new Date(),
                 minDate: "+3D",
                 closeText: 'Close',
                 dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date',
-                onSelect: function (date) {
+                onSelect: function(date) {
                     checkDate(date);
                     dt = date;
                     $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
@@ -651,8 +652,8 @@
                 return false;
             }
             if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
-                (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
-                (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
+            (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
+            (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
                 alert('Please first select Category Type.');
                 return false;
             }
@@ -661,8 +662,8 @@
         function ValidateNoOfPax() {
             if (ValidateJourneyDate()) {
                 if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
-                    (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
-                    (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
+                (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
+                (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
                     alert('Please first select Category Type.');
                     return false;
                 }
@@ -704,7 +705,7 @@
                 ManageChildWithMatAndWitoutMatFare();
             }
         }
-
+   
     </script>
 
     <script language="javascript" src="../includes/md5.js" type="text/javascript"></script>
@@ -790,77 +791,77 @@
     <div id="framediv" style="z-index: 1; left: -999px; width: 148px; position: absolute;
         height: 194px;" frameborder="0" scrolling="no">
     </div>
-    <f"form1""form1" runat="server">
-    <asp:ScriptMana"script1"cript1" runat="server">
+    <form id="form1" runat="server">
+    <asp:ScriptManager ID="script1" runat="server">
     </asp:ScriptManager>
-    <input type="hidd"tmpEnValue"nValue" runat="server" />
-    <input type="hidd"txtServiceTax"iceTax" runat="server" />
-    <input type="hidd"txtCCVal"tCCVal" runat="server" />
-    <input type="hidden" runat="serv"car2pax"ar2pax" />
-    <input type="hidden" runat="serv"car34pax"r34pax" />
-    <input type="hidden" runat="serv"innova45pax"a45pax" />
-    <input type="hidden" runat="serv"innova67pax"a67pax" />
-    <input type="hidden" runat="serv"qualis46pax"s46pax" />
-    <input type="hidden" runat="serv"qualis78pax"s78pax" />
-    <input type="hidden" runat="serv"tempo89pax"o89pax" />
-    <input type="hidden" runat="serv"car2min"ar2min" />
-    <input type="hidden" runat="serv"car2max"ar2max" />
-    <input type="hidden" runat="serv"car34min"r34min" />
-    <input type="hidden" runat="serv"car34max"r34max" />
-    <input type="hidden" runat="serv"innova45min"a45min" />
-    <input type="hidden" runat="serv"innova45max"a45max" />
-    <input type="hidden" runat="serv"innova67min"a67min" />
-    <input type="hidden" runat="serv"innova67max"a67max" />
-    <input type="hidden" runat="serv"qualis46min"s46min" />
-    <input type="hidden" runat="serv"qualis46max"s46max" />
-    <input type="hidden" runat="serv"qualis78min"s78min" />
-    <input type="hidden" runat="serv"qualis78max"s78max" />
-    <input type="hidden" runat="serv"tempo89min"o89min" />
-    <input type="hidden" runat="serv"tempo89max"o89max" />
-    <input type="hidden" runat="serv"txtCar12pxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtCar12pxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"txtCar34pxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtCar34pxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"txtInn45PxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtInn45PxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"txtInn67PxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtInn67PxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"txtQua46PxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtQua46PxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"txtQua78PxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtQua78PxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"txtTem89PxHiddenSt"ddenSt" />
-    <input type="hidden" runat="serv"txtTem89PxHiddenDl"ddenDl" />
-    <input type="hidden" runat="serv"depttime"pttime" />
-    <input type="hidden" runat="serv"SARstandard"andard" />
-    <input type="hidden" runat="serv"SARdeluxe"deluxe" />
-    <input type="hidden" runat="serv"tid"d="tid" />
-    <input type="hidden" runat="serv"etourname"urname" />
-    <input type="hidden" runat="serv"txtHiddenFare"enFare" />
-    <input type="hidden" runat="serv"txtHiddenValue"nValue" />
-    <input type="hidden" runat="serv"txtMinPax"MinPax" />
-    <input type="hidden" runat="serv"txtMaxPax"MaxPax" />
-    <input type="hidden" runat="serv"SARFare"ARFare" />
-    <input type="hidd"hdNoofDays"ofDays" name="hdNoofDays" value="0" runat="server" />
-    <asp:HiddenFi"hdSPLDiscount"scount" runat="server" Value="0" />
-    <asp:HiddenFi"hdfMaxVehiclePax"clePax" runat="server" Value="0" />
-    <asp:HiddenFi"hdfChildWithoutMatressFare"ssFare" runat="server" Value="0" />
-    <asp:HiddenFi"hdfChildWithMatressFare"ssFare" runat="server" Value="0" />
-    <asp:HiddenFi"hdfTotalChildWithMatress"atress" runat="server" Value="0" />
-    <asp:HiddenFi"hdfTotalChildWithoutMatress"atress" runat="server" Value="0" />
-    <asp:HiddenFi"hdfIsChildPaxAvailable"ilable" runat="server" Value="0" />
+    <input type="hidden" id="tmpEnValue" runat="server" />
+    <input type="hidden" id="txtServiceTax" runat="server" />
+    <input type="hidden" id="txtCCVal" runat="server" />
+    <input type="hidden" runat="server" id="car2pax" />
+    <input type="hidden" runat="server" id="car34pax" />
+    <input type="hidden" runat="server" id="innova45pax" />
+    <input type="hidden" runat="server" id="innova67pax" />
+    <input type="hidden" runat="server" id="qualis46pax" />
+    <input type="hidden" runat="server" id="qualis78pax" />
+    <input type="hidden" runat="server" id="tempo89pax" />
+    <input type="hidden" runat="server" id="car2min" />
+    <input type="hidden" runat="server" id="car2max" />
+    <input type="hidden" runat="server" id="car34min" />
+    <input type="hidden" runat="server" id="car34max" />
+    <input type="hidden" runat="server" id="innova45min" />
+    <input type="hidden" runat="server" id="innova45max" />
+    <input type="hidden" runat="server" id="innova67min" />
+    <input type="hidden" runat="server" id="innova67max" />
+    <input type="hidden" runat="server" id="qualis46min" />
+    <input type="hidden" runat="server" id="qualis46max" />
+    <input type="hidden" runat="server" id="qualis78min" />
+    <input type="hidden" runat="server" id="qualis78max" />
+    <input type="hidden" runat="server" id="tempo89min" />
+    <input type="hidden" runat="server" id="tempo89max" />
+    <input type="hidden" runat="server" id="txtCar12pxHiddenSt" />
+    <input type="hidden" runat="server" id="txtCar12pxHiddenDl" />
+    <input type="hidden" runat="server" id="txtCar34pxHiddenSt" />
+    <input type="hidden" runat="server" id="txtCar34pxHiddenDl" />
+    <input type="hidden" runat="server" id="txtInn45PxHiddenSt" />
+    <input type="hidden" runat="server" id="txtInn45PxHiddenDl" />
+    <input type="hidden" runat="server" id="txtInn67PxHiddenSt" />
+    <input type="hidden" runat="server" id="txtInn67PxHiddenDl" />
+    <input type="hidden" runat="server" id="txtQua46PxHiddenSt" />
+    <input type="hidden" runat="server" id="txtQua46PxHiddenDl" />
+    <input type="hidden" runat="server" id="txtQua78PxHiddenSt" />
+    <input type="hidden" runat="server" id="txtQua78PxHiddenDl" />
+    <input type="hidden" runat="server" id="txtTem89PxHiddenSt" />
+    <input type="hidden" runat="server" id="txtTem89PxHiddenDl" />
+    <input type="hidden" runat="server" id="depttime" />
+    <input type="hidden" runat="server" id="SARstandard" />
+    <input type="hidden" runat="server" id="SARdeluxe" />
+    <input type="hidden" runat="server" id="tid" />
+    <input type="hidden" runat="server" id="etourname" />
+    <input type="hidden" runat="server" id="txtHiddenFare" />
+    <input type="hidden" runat="server" id="txtHiddenValue" />
+    <input type="hidden" runat="server" id="txtMinPax" />
+    <input type="hidden" runat="server" id="txtMaxPax" />
+    <input type="hidden" runat="server" id="SARFare" />
+    <input type="hidden" id="hdNoofDays" name="hdNoofDays" value="0" runat="server" />
+    <asp:HiddenField ID="hdSPLDiscount" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfMaxVehiclePax" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfChildWithoutMatressFare" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfChildWithMatressFare" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfTotalChildWithMatress" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfTotalChildWithoutMatress" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfIsChildPaxAvailable" runat="server" Value="0" />
     <!-- When pax selected we will set the value in this and used to caluculate the child with matress fare -->
-    <asp:HiddenFi"hdfMinAllowedInVehicle"ehicle" runat="server" Value="0" />
-    <asp:HiddenFi"hdfMaxAllowedInVehilce"ehilce" runat="server" Value="0" />
-    <asp:HiddenFi"hdfNoOfPaxSelected"lected" runat="server" Value="0" />
-    <asp:HiddenFi"hdfCaltotalFare"alFare" runat="server" Value="0" />
-    <asp:HiddenFi"hdfCalServicetax"icetax" runat="server" Value="0" />
-    <asp:HiddenFi"hdfCalDiscount"scount" runat="server" Value="0" />
-    <asp:HiddenFi"hdfcalAdvance"dvance" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfMinAllowedInVehicle" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfMaxAllowedInVehilce" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfNoOfPaxSelected" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfCaltotalFare" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfCalServicetax" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfCalDiscount" runat="server" Value="0" />
+    <asp:HiddenField ID="hdfcalAdvance" runat="server" Value="0" />
     <table id="Table2" cellspacing="0" cellpadding="0" width="100%" border="0">
         <tr>
             <td colspan="2">
-                <uc1:AgentHea"agentHeader"Header" runat="server" />
+                <uc1:AgentHeader ID="agentHeader" runat="server" />
             </td>
         </tr>
         <tr>
@@ -904,7 +905,7 @@
                                                         type="text/javascript"></script>--%>
                                                     <%--    <uc1:SpecialTourFarePanel ID="SpecialTourFarePanelUC" runat="server" CanBook="false"
                                                         fldPanelSection="SEC_Agent" />--%>
-                                                    <uc5:SpecialFarePanelta"SpecialTourFarePanelUC"anelUC" runat="server" CanBook="false"
+                                                    <uc5:SpecialFarePaneltable ID="SpecialTourFarePanelUC" runat="server" CanBook="false"
                                                         fldPanelSection="SEC_Agent" fldWidth="80%" runat="server" />
                                                 </td>
                                             </tr>
@@ -947,7 +948,7 @@
                                                     Tour Name :
                                                 </td>
                                                 <td>
-                                                    <asp:La"txttourName"urName" runat="server" Font-Bold="true" BorderStyle="None" BorderWidth="0"></asp:Label>
+                                                    <asp:Label ID="txttourName" runat="server" Font-Bold="true" BorderStyle="None" BorderWidth="0"></asp:Label>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -955,7 +956,7 @@
                                                     Journey&nbsp; Date :*
                                                 </td>
                                                 <td>
-                                                    <in"txtDate"xtDate" name="txtDate" type="text" runat="server" onblur="javascript:return checkDate(this.value);"
+                                                    <input id="txtDate" name="txtDate" type="text" runat="server" onblur="javascript:return checkDate(this.value);"
                                                         size="9" />
                                                     <%--<asp:TextBox ID="txtDate" runat="server"  onblur="javascript:return checkDate(this.value);"></asp:TextBox>
                                                     <input id="txtDate" name="txtDate" onchange="alert(this.value);" type="text" runat="server"
@@ -964,7 +965,7 @@
                                                         hidefocus="">
                                                         <img id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0" style="visibility: visible;
                                                             padding-bottom: 0px;" /></a>--%>
-                                                    <asp:La"dept"="dept" CssClass="hlinks" runat="server">&nbsp;@&nbsp;<%=depttime.Value %></asp:Label>
+                                                    <asp:Label ID="dept" CssClass="hlinks" runat="server">&nbsp;@&nbsp;<%=depttime.Value %></asp:Label>
                                                 </td>
                                             </tr>
 
@@ -973,7 +974,7 @@
                                                 // stObj = new SOUTHERN.caldoy.Calendar2up("stObj","STContainer","05/2008","05/03/2008");
                                                 stObj.title = " &nbsp;&nbsp;&nbsp;&nbsp;Select Date &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
                                                 stObj.setChildFunction("onSelect", setDate);
-                                                stObj.render();
+                                                stObj.render();	
                                             </script>
 
                                             <tr>
@@ -981,13 +982,13 @@
                                                     Category Type :
                                                 </td>
                                                 <td style="height: 28px">
-                                                    Standard<input type="radio" runat="serve"rdoStandard"ndard" name="rdocategory" onclick="javascript:FareTypeCheck(this.value);ExtrafareCal();"
-                                                        value="St" />&nbsp; Deluxe<input type="radio" runat="serve"rdoDeluxe"eluxe" name="rdocategory"
+                                                    Standard<input type="radio" runat="server" id="rdoStandard" name="rdocategory" onclick="javascript:FareTypeCheck(this.value);ExtrafareCal();"
+                                                        value="St" />&nbsp; Deluxe<input type="radio" runat="server" id="rdoDeluxe" name="rdocategory"
                                                             onclick="FareTypeCheck(this.value),ExtrafareCal();" value="Dl" />
-                                                    &nbsp;Premium<input type="radio" runat="serve"rdoLuxury"uxury" name="rdocategory"
+                                                    &nbsp;Premium<input type="radio" runat="server" id="rdoLuxury" name="rdocategory"
                                                         onclick="FareTypeCheck(this.value),ExtrafareCal();" value="Lx" />
                                                     &nbsp;&nbsp;
-                                                    <asp:DropDownLi"ddlSubCategory"egory" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSubCategory_SelectedIndexChanged">
+                                                    <asp:DropDownList ID="ddlSubCategory" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlSubCategory_SelectedIndexChanged">
                                                         <asp:ListItem Selected="True" Text="Select" Value="-1"></asp:ListItem>
                                                         <asp:ListItem Text="CP" Value="0"></asp:ListItem>
                                                         <asp:ListItem Text="MAP" Value="1"></asp:ListItem>
@@ -1001,19 +1002,19 @@
                                                 <td>
                                                     <%--<asp:TextBox ID="txtPax" MaxLength="2" size="5" onblur="Getsuggession();" Style="text-align: right"
                                                             runat="server"></asp:TextBox>--%>
-                                                    <asp:DropDownLi"ddlCarType"rType" runat="server" onclick="return ValidateJourneyDate();"
+                                                    <asp:DropDownList ID="ddlCarType" runat="server" onclick="return ValidateJourneyDate();"
                                                         OnSelectedIndexChanged="ddlCarType_SelectedIndexChanged" AutoPostBack="True">
                                                     </asp:DropDownList>
                                                 </td>
                                             </tr>
                                             <tr id="tr5" class="hlinks">
                                                 <td style="width: 223px">
-                                                    <asp:Lab"lblNoOfpax"Ofpax" runat="server"> No Of Pax :*</asp:Label>
+                                                    <asp:Label ID="lblNoOfpax" runat="server"> No Of Pax :*</asp:Label>
                                                 </td>
                                                 <td>
                                                     <%--<asp:TextBox ID="txtPax" MaxLength="2" size="5" onblur="Getsuggession();" Style="text-align: right"
                                                             runat="server"></asp:TextBox>--%>
-                                                    <asp:DropDownLi"ddlNoOfPax"OfPax" runat="server" onclick="return ValidateNoOfPax();"
+                                                    <asp:DropDownList ID="ddlNoOfPax" runat="server" onclick="return ValidateNoOfPax();"
                                                         OnSelectedIndexChanged="ddlNoOfPax_SelectedIndexChanged" DataTextField="fldDisplayString"
                                                         DataValueField="fldPaxID" AutoPostBack="True">
                                                     </asp:DropDownList>
@@ -1021,13 +1022,13 @@
                                             </tr>
                                             <tr id="tr6" class="hlinks">
                                                 <td colspan="4">
-                                                    <table style="width: 100%"tblChildPax"ldPax" runat="server">
+                                                    <table style="width: 100%;" id="tblChildPax" runat="server">
                                                         <tr>
                                                             <td style="width: 20%;">
                                                                 Child without matress(6-11 Yrs)
                                                             </td>
                                                             <td style="width: 25%;">
-                                                                <asp:TextB"txtChildWhoutMatress"tress" size="5" Style="text-align: right" runat="server"
+                                                                <asp:TextBox ID="txtChildWhoutMatress" size="5" Style="text-align: right" runat="server"
                                                                     onblur="return ValidatePaxWithChild('txtChildWhoutMatress')" Text="0" onfocus="javascript: if(this.value == '0'){ this.value = ''; }"></asp:TextBox>
                                                             </td>
                                                         </tr>
@@ -1036,7 +1037,7 @@
                                                                 Child with matress(6-11 Yrs)
                                                             </td>
                                                             <td style="width: 25%;">
-                                                                <asp:TextB"txtChildWithMatress"tress" size="5" Style="text-align: right" runat="server"
+                                                                <asp:TextBox ID="txtChildWithMatress" size="5" Style="text-align: right" runat="server"
                                                                     onblur="return ValidatePaxWithChild('txtChildWithMatress')" Text="0" onfocus="javascript: if(this.value == '0'){ this.value = ''; }"></asp:TextBox>
                                                             </td>
                                                         </tr>
@@ -1045,19 +1046,19 @@
                                             </tr>
                                             <tr id="Tr1" class="hlinks">
                                                 <td colspan="2">
-                                                    <asp:CheckB"chkSingle"ingle" runat="server" onclick="javascript:fnchkSingle();" />
+                                                    <asp:CheckBox ID="chkSingle" runat="server" onclick="javascript:fnchkSingle();" />
                                                     <b><span><font color="red" size="3">*</font></span>Single Adult In a Room</b>&nbsp;
                                                 </td>
                                             </tr>
-                                            <"Singlepax"lepax" class="hlinks" runat="server" align="left" style="display: none">
+                                            <tr id="Singlepax" class="hlinks" runat="server" align="left" style="display: none">
                                                 <td style="width: 223px">
                                                     Single Pax
                                                 </td>
                                                 <td align="left">
-                                                    <asp:TextB"txtSinglePax"lePax" MaxLength="2" size="5" Style="text-align: right" Width="15"
+                                                    <asp:TextBox ID="txtSinglePax" MaxLength="2" size="5" Style="text-align: right" Width="15"
                                                         runat="server" onblur="ExtrafareCal()" onclick="javascript:fnchkSingle2();"></asp:TextBox>@<asp:TextBox
-                                                         "txtExtraFareS"FareS" Style="text-align: right" MaxLength="10" size="4" runat="server"
-                                                            ReadOnly="true"></asp:TextBox>&nbsp;Fare<asp:TextB"txtTotalExtrafare"afare" MaxLength="10"
+                                                            ID="txtExtraFareS" Style="text-align: right" MaxLength="10" size="4" runat="server"
+                                                            ReadOnly="true"></asp:TextBox>&nbsp;Fare<asp:TextBox ID="txtTotalExtrafare" MaxLength="10"
                                                                 size="4" runat="server" Style="text-align: right" ReadOnly="true"></asp:TextBox>
                                                 </td>
                                             </tr>
@@ -1071,7 +1072,7 @@
                                                     GST
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtTotalServiceTax"ceTax" size="5" Style="text-align: right" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtTotalServiceTax" size="5" Style="text-align: right" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" style="display: none">
@@ -1079,7 +1080,7 @@
                                                     Convenience Charges:
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtCC"txtCC" size="5" Style="text-align: right" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtCC" size="5" Style="text-align: right" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr id="Tr3" class="hlinks">
@@ -1087,8 +1088,8 @@
                                                     Total Fare
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtFareTotal"Total" size="5" runat="server" Style="text-align: right"></asp:TextBox>
-                                                    <asp:Lab"lblDFare"DFare" runat="server"></asp:Label>
+                                                    <asp:TextBox ID="txtFareTotal" size="5" runat="server" Style="text-align: right"></asp:TextBox>
+                                                    <asp:Label ID="lblDFare" runat="server"></asp:Label>
                                                 </td>
                                             </tr>
                                         </table>
@@ -1108,7 +1109,7 @@
                                                     Name:*
                                                 </td>
                                                 <td>
-                                                    <asp:DropDownLi"ddlTitle"Title" runat="server" Width="30%">
+                                                    <asp:DropDownList ID="ddlTitle" runat="server" Width="30%">
                                                         <asp:ListItem Text="Title" Value="Title"></asp:ListItem>
                                                         <asp:ListItem Text="Mr." Value="Mr"></asp:ListItem>
                                                         <asp:ListItem Text="Mrs." Value="Mrs"></asp:ListItem>
@@ -1117,7 +1118,7 @@
                                                         <asp:ListItem Text="Prof." Value="Prof"></asp:ListItem>
                                                     </asp:DropDownList>
                                                     &nbsp;
-                                                    <asp:TextB"txtFName"FName" MaxLength="30" size="15" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtFName" MaxLength="30" size="15" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1125,7 +1126,7 @@
                                                     Nationality *
                                                 </td>
                                                 <td style="height: 28px">
-                                                    <asp:DropDownList runat="serve"ddlNationality"ality" class="sel" Width="150px">
+                                                    <asp:DropDownList runat="server" ID="ddlNationality" class="sel" Width="150px">
                                                     </asp:DropDownList>
                                                     <font color="red"><strong>**</strong></font>
                                                     <%--AutoPostBack="True"
@@ -1137,7 +1138,7 @@
                                                     Country*
                                                 </td>
                                                 <td align="left" class="hlinks">
-                                                    <asp:DropDownLi"ddlCountry"untry" runat="server" Width="150px" class="sel" onchange="OnChangeCountry(this.value);">
+                                                    <asp:DropDownList ID="ddlCountry" runat="server" Width="150px" class="sel" onchange="OnChangeCountry(this.value);">
                                                     </asp:DropDownList>
                                                     <%--OnSelectedIndexChanged="ddlCountry_SelectedIndexChanged"    AutoPostBack="True" --%>
                                                 </td>
@@ -1147,10 +1148,10 @@
                                                     State *
                                                 </td>
                                                 <td class="hlinks" style="height: 28px">
-                                                    <asp:DropDownLi"ddlState"State" runat="server" Width="150px" onchange="return clearCitylist();">
+                                                    <asp:DropDownList ID="ddlState" runat="server" Width="150px" onchange="return clearCitylist();">
                                                     </asp:DropDownList>
-                                                    <asp:TextB"TxtForeignState"State" runat="server" Style="display: none"></asp:TextBox>
-                                                    <asp:HiddenFie"hdfForeignState"State" runat="server" Value="48" />
+                                                    <asp:TextBox ID="TxtForeignState" runat="server" Style="display: none"></asp:TextBox>
+                                                    <asp:HiddenField ID="hdfForeignState" runat="server" Value="48" />
                                                     <font color="red"><strong>**</strong></font>
                                                     <%--AutoPostBack="True"
                                                         OnSelectedIndexChanged="ddlState_SelectedIndexChanged"--%>
@@ -1161,7 +1162,7 @@
                                                     Address:*
                                                 </td>
                                                 <td style="height: 28px">
-                                                    <asp:TextB"txtAddress"dress" MaxLength="250" size="15" runat="server" TextMode="MultiLine" Width="291px"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAddress" MaxLength="250" size="15" runat="server" TextMode="MultiLine" Width="291px"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1171,13 +1172,13 @@
                                                 <td style="height: 28px">
                                                     <%--<asp:DropDownList ID="ddlCity" runat="server" Width="150px">
                                                     </asp:DropDownList>--%>
-                                                    <asp:TextB"txtCity"tCity" runat="server" autocomplete="off" onkeyup="SetContextKey()" ></asp:TextBox>
-                                                    <asp:TextB"txtForeignCity"nCity" runat="server" Style="display: none"></asp:TextBox>
-                                                    <asp:HiddenFie"hdfForeignCity"nCity" runat="server" Value="1630" />
-                                                    <asp:HiddenFie"hdnCity"nCity" runat="server" Value='' />
-                                                    <asp:HiddenFie"hdnCityId"ityId" runat="server" Value='' />
-                                                    <asp:HiddenFie"hdnStateIdBasedOnCity"nCity" runat="server" Value='' />
-                                                    <cc1:AutoCompleteExtender runat="serve"AutoCompleteExtender2"nder2" TargetControlID="txtCity"
+                                                    <asp:TextBox ID="txtCity" runat="server" autocomplete="off" onkeyup="SetContextKey()" ></asp:TextBox>
+                                                    <asp:TextBox ID="txtForeignCity" runat="server" Style="display: none"></asp:TextBox>
+                                                    <asp:HiddenField ID="hdfForeignCity" runat="server" Value="1630" />
+                                                    <asp:HiddenField ID="hdnCity" runat="server" Value='' />
+                                                    <asp:HiddenField ID="hdnCityId" runat="server" Value='' />
+                                                    <asp:HiddenField ID="hdnStateIdBasedOnCity" runat="server" Value='' />
+                                                    <cc1:AutoCompleteExtender runat="server" ID="AutoCompleteExtender2" TargetControlID="txtCity"
                                                         ServicePath="" ServiceMethod="GetCity" MinimumPrefixLength="1" EnableCaching="false"
                                                         CompletionListCssClass="completionList" CompletionListItemCssClass="AutoExtenderList"
                                                         CompletionListHighlightedItemCssClass="AutoExtenderHighlight" CompletionListElementID="divwidth"
@@ -1190,7 +1191,7 @@
                                                     Zip Code
                                                 </td>
                                                 <td style="height: 28px">
-                                                    <asp:TextB"txtZipCode"pCode" MaxLength="6" size="6" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtZipCode" MaxLength="6" size="6" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1198,7 +1199,7 @@
                                                     Mobile:*
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtMobile"obile" MaxLength="11" size="15" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtMobile" MaxLength="11" size="15" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1206,7 +1207,7 @@
                                                     Emergency Contact No:*
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtAlternateMobile"obile" MaxLength="15" size="15" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtAlternateMobile" MaxLength="15" size="15" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1214,7 +1215,7 @@
                                                     Phone No:
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtphone"phone" MaxLength="11" size="15" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtphone" MaxLength="11" size="15" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1222,7 +1223,7 @@
                                                     EmailId:*
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtMail"tMail" MaxLength="50" size="15" runat="server"></asp:TextBox>
+                                                    <asp:TextBox ID="txtMail" MaxLength="50" size="15" runat="server"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             
@@ -1231,7 +1232,7 @@
                                                     Aadhar No:
                                                 </td>
                                                 <td>
-                                                    <inp"txtAadharNo"harNo" runat="server" maxlength="20" type="text" />
+                                                    <input id="txtAadharNo" runat="server" maxlength="20" type="text" />
                                                 </td>
                                             </tr>
                                             
@@ -1240,14 +1241,14 @@
                                                     Image Aadhar Card:
                                                 </td>
                                                 <td>
-                                                    <asp:FileUplo"fupAadhar"adhar" runat="server" />
+                                                    <asp:FileUpload ID="fupAadhar" runat="server" />
                                                 </td>
                                             </tr>
                                             
                                             <tr>
                                                 <td align="left" colspan="2">
                                                     <b>
-                                                        <asp:CheckBox runat="serve"chkPromotions"tions" Text="Can Send Promotions ?" /></b>
+                                                        <asp:CheckBox runat="server" ID="chkPromotions" Text="Can Send Promotions ?" /></b>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1255,7 +1256,7 @@
                                                     Comments:
                                                 </td>
                                                 <td>
-                                                    <asp:TextB"txtComment"mment" MaxLength="150" size="15" runat="server" TextMode="MultiLine"></asp:TextBox>
+                                                    <asp:TextBox ID="txtComment" MaxLength="150" size="15" runat="server" TextMode="MultiLine"></asp:TextBox>
                                                 </td>
                                             </tr>
                                             <tr class="hlinks" align="left">
@@ -1263,27 +1264,27 @@
                                                     Whether registered under GST :
                                                 </td>
                                                 <td class="hlinks" align="left">
-                                                    <asp:RadioButt"rdbIsGSTApplicableYes"leYes" GroupName="GST" OnCheckedChanged="OnCheckChanged_rdbIsGSTApplicableYes"
+                                                    <asp:RadioButton ID="rdbIsGSTApplicableYes" GroupName="GST" OnCheckedChanged="OnCheckChanged_rdbIsGSTApplicableYes"
                                                         OnClick="return GSTHideUnhide('yes');" runat="server" Text="Yes" />
-                                                    <asp:RadioButt"rdbIsGSTApplicableNo"bleNo" GroupName="GST" OnCheckedChanged="OnCheckChanged_rdbIsGSTApplicableNo"
+                                                    <asp:RadioButton ID="rdbIsGSTApplicableNo" GroupName="GST" OnCheckedChanged="OnCheckChanged_rdbIsGSTApplicableNo"
                                                         OnClick="return GSTHideUnhide('no');" Checked="true" runat="server" Text="No" />
                                                 </td>
                                             </tr>
-                                            <tr class="hlinks" align="left" style="display: none;" runat="serve"divGSTDetails"tails">
+                                            <tr class="hlinks" align="left" style="display: none;" runat="server" id="divGSTDetails">
                                                 <td align="left" class="style3">
                                                     <span class="style3">GSTIN Of Customer :*</span>
                                                 </td>
                                                 <td class="hlinks" align="left">
-                                                    <asp:TextBox title="Customer GSTI"txtCustomerGSTIN"GSTIN" placeholder="GSTIN Of Customer*"
+                                                    <asp:TextBox title="Customer GSTIN" ID="txtCustomerGSTIN" placeholder="GSTIN Of Customer*"
                                                         type="text" name="txtCustomerGSTIN" runat="server" CssClass="form-control" />
                                                 </td>
                                             </tr>
-                                            <tr class="hlinks" align="left" style="display: none;" runat="serve"divGSTDetails1"ails1">
+                                            <tr class="hlinks" align="left" style="display: none;" runat="server" id="divGSTDetails1">
                                                 <td align="left">
                                                     Name of GST Holder :*
                                                 </td>
                                                 <td align="left" class="hlinks">
-                                                    <asp:TextB"txtGstHolderName"rName" placeholder="Name of GST Holder*" type="text"
+                                                    <asp:TextBox ID="txtGstHolderName" placeholder="Name of GST Holder*" type="text"
                                                         name="txtGstHolderName" runat="server" CssClass="form-control" />
                                                 </td>
                                             </tr>
@@ -1307,7 +1308,7 @@
                                         <table border="0" cellpadding="0" width="100%" cellspacing="0">
                                             <tr>
                                                 <td align="left" bgcolor="#5aa1ea" class="cgi1" style="height: 30px" width="50%">
-                                                    <asp:CheckB"chkPickUp"ickUp" runat="server" onclick="showHidePickupInfo()" />PickUp
+                                                    <asp:CheckBox ID="chkPickUp" runat="server" onclick="showHidePickupInfo()" />PickUp
                                                     Information
                                                 </td>
                                                 <td align="center" bgcolor="#5aa1ea" class="cgi1" height="20px" width="50%">
@@ -1316,7 +1317,7 @@
                                                             <tr class="hlinks" align="Center">
                                                                 <td align="left" colspan="4" class="verdana11w" bgcolor="#5aa1ea">
                                                                     <b>Drop Information</b>
-                                                                    <asp:CheckB"chkDrop"kDrop" runat="server" onclick="javascript:fnDrophide(this.id);clear5();" />&nbsp;Same
+                                                                    <asp:CheckBox ID="chkDrop" runat="server" onclick="javascript:fnDrophide(this.id);clear5();" />&nbsp;Same
                                                                     As PickUp
                                                                 </td>
                                                             </tr>
@@ -1336,10 +1337,10 @@
                                                         PickUp From:
                                                     </td>
                                                     <td style="height: 22px">
-                                                        <asp:RadioButt"RadFlight"light" runat="server" Checked="true" GroupName="pick" Text="Flight"
+                                                        <asp:RadioButton ID="RadFlight" runat="server" Checked="true" GroupName="pick" Text="Flight"
                                                             onclick="javascript:fnRDOSelection('',this.id);"></asp:RadioButton>
-                                                        <asp:RadioButt"RadTrain"Train" runat="server" GroupName="pick" Text="Train" onclick="javascript:fnRDOSelection('',this.id);">
-                                                        </asp:RadioButton><asp:RadioButt"RadBus"adBus" runat="server" GroupName="pick" Text="Address/Location"
+                                                        <asp:RadioButton ID="RadTrain" runat="server" GroupName="pick" Text="Train" onclick="javascript:fnRDOSelection('',this.id);">
+                                                        </asp:RadioButton><asp:RadioButton ID="RadBus" runat="server" GroupName="pick" Text="Address/Location"
                                                             onclick="javascript:fnRDOSelection('',this.id);"></asp:RadioButton>
                                                     </td>
                                                 </tr>
@@ -1349,7 +1350,7 @@
                                                     </td>
                                                     <td>
                                                         <b>&nbsp;&nbsp;&nbsp;
-                                                            <asp:Lab"lblPkPoint"Point" MaxLength="50" size="15" runat="server"></asp:Label></b>
+                                                            <asp:Label ID="lblPkPoint" MaxLength="50" size="15" runat="server"></asp:Label></b>
                                                     </td>
                                                 </tr>
                                             </table>
@@ -1359,7 +1360,7 @@
                                                         AirPort:*
                                                     </td>
                                                     <td style="height: 14px">
-                                                        <asp:DropDownLi"txtpickVehicleNo"cleNo" runat="server" onchange="copyToDepart(this);">
+                                                        <asp:DropDownList ID="txtpickVehicleNo" runat="server" onchange="copyToDepart(this);">
                                                             <asp:ListItem Text="Select" Value="Select"></asp:ListItem>
                                                             <asp:ListItem Text="Domestic Airport" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="International" Value="2"></asp:ListItem>
@@ -1371,7 +1372,7 @@
                                                         Expected Arrival Time: *
                                                     </td>
                                                     <td style="height: 24px">
-                                                        <select runat="serve"ddlPkHrs"PkHrs" name="ddlPkHrs" class="inputControl" onchange="copyToDepart(this);">
+                                                        <select runat="server" id="ddlPkHrs" name="ddlPkHrs" class="inputControl" onchange="copyToDepart(this);">
                                                             <option value="">hrs</option>
                                                             <option value="00">00</option>
                                                             <option value="01">01</option>
@@ -1399,7 +1400,7 @@
                                                             <option value="23">23</option>
                                                         </select>
                                                         &nbsp;Hrs.
-                                                        <select runat="serve"ddlPkMints"Mints" name="ddlPkMints" class="inputControl" onchange="copyToDepart(this);">
+                                                        <select runat="server" id="ddlPkMints" name="ddlPkMints" class="inputControl" onchange="copyToDepart(this);">
                                                             <option value="">min</option>
                                                             <option value="00">00</option>
                                                             <option value="15">15</option>
@@ -1414,7 +1415,7 @@
                                                         Flight No:*
                                                     </td>
                                                     <td>
-                                                        <asp:TextB"txtFlightNo"ghtNo" onkeyup="copyToDepart(this);" MaxLength="25" size="15"
+                                                        <asp:TextBox ID="txtFlightNo" onkeyup="copyToDepart(this);" MaxLength="25" size="15"
                                                             runat="server"></asp:TextBox>
                                                     </td>
                                                 </tr>
@@ -1427,7 +1428,7 @@
                                                         Railway Station: *
                                                     </td>
                                                     <td style="height: 24px">
-                                                        <asp:TextB"txtRlyStationName"nName" onkeyup="copyToDepart(this);" MaxLength="50"
+                                                        <asp:TextBox ID="txtRlyStationName" onkeyup="copyToDepart(this);" MaxLength="50"
                                                             size="15" runat="server"></asp:TextBox>
                                                     </td>
                                                 </tr>
@@ -1436,7 +1437,7 @@
                                                         Expected Arrival Time: *
                                                     </td>
                                                     <td style="height: 24px">
-                                                        <select runat="serve"ddlTrainPkHr"nPkHr" name="ddlTrainPkHr" class="inputControl"
+                                                        <select runat="server" id="ddlTrainPkHr" name="ddlTrainPkHr" class="inputControl"
                                                             onchange="copyToDepart(this);">
                                                             <option value="">hrs</option>
                                                             <option value="00">00</option>
@@ -1465,7 +1466,7 @@
                                                             <option value="23">23</option>
                                                         </select>
                                                         &nbsp;Hrs.
-                                                        <select runat="serve"ddlTrainPkMin"PkMin" name="ddlTrainPkMin" class="inputControl"
+                                                        <select runat="server" id="ddlTrainPkMin" name="ddlTrainPkMin" class="inputControl"
                                                             onchange="copyToDepart(this);">
                                                             <option value="">min</option>
                                                             <option value="00">00</option>
@@ -1481,7 +1482,7 @@
                                                         Train No:*
                                                     </td>
                                                     <td>
-                                                        <asp:TextB"txtTrainNo"ainNo" onkeyup="copyToDepart(this);" MaxLength="25" size="15"
+                                                        <asp:TextBox ID="txtTrainNo" onkeyup="copyToDepart(this);" MaxLength="25" size="15"
                                                             runat="server"></asp:TextBox>
                                                     </td>
                                                 </tr>
@@ -1494,7 +1495,7 @@
                                                         Address: *
                                                     </td>
                                                     <td style="height: 24px">
-                                                        <asp:TextB"txtAddr"tAddr" onkeyup="copyToDepart(this);" MaxLength="50" size="15"
+                                                        <asp:TextBox ID="txtAddr" onkeyup="copyToDepart(this);" MaxLength="50" size="15"
                                                             runat="server"></asp:TextBox>
                                                     </td>
                                                 </tr>
@@ -1503,7 +1504,7 @@
                                                         Street:*
                                                     </td>
                                                     <td style="height: 24px">
-                                                        <asp:TextB"txtStreet"treet" onkeyup="copyToDepart(this);" MaxLength="50" size="15"
+                                                        <asp:TextBox ID="txtStreet" onkeyup="copyToDepart(this);" MaxLength="50" size="15"
                                                             runat="server"></asp:TextBox>
                                                     </td>
                                                 </tr>
@@ -1515,20 +1516,20 @@
                                         <script>
                                             <!--
 
-    function copyToDepart(v) {
+                                            function copyToDepart(v) {
 
-        var chkDropObj = document.getElementById('chkDrop');
-        if (chkDropObj != null) {
-            if (chkDropObj.checked) {
-                var vArrObj = v;
-                var vDepartObj = document.getElementById(v.id + '_d');
-                if ((vDepartObj != null) && (vArrObj != null)) {
-                    vDepartObj.value = vArrObj.value;
-                }
-            }
-        }
-    }
-    -->
+                                                var chkDropObj = document.getElementById('chkDrop');
+                                                if (chkDropObj != null) {
+                                                    if (chkDropObj.checked) {
+                                                        var vArrObj = v;
+                                                        var vDepartObj = document.getElementById(v.id + '_d');
+                                                        if ((vDepartObj != null) && (vArrObj != null)) {
+                                                            vDepartObj.value = vArrObj.value;
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            -->
                                         </script>
 
                                         <div id="divDrop" style="display: none;">
@@ -1546,12 +1547,12 @@
                                                             GroupName="Drop" Text="Flight"></asp:RadioButton>
                                                         <asp:RadioButton ID="RadTrain_d" onclick="javascript:showHide('_d');" runat="server"
                                                             GroupName="Drop" Text="Train"></asp:RadioButton><asp:RadioButton ID="RadBus_d" onclick="javascript:showHide('_d');"
-                 "RadFlight_d"                                  runat="server" GroupName="Drop" Text="Location/Address"></asp:RadioButton>
+                                                                runat="server" GroupName="Drop" Text="Location/Address"></asp:RadioButton>
                                                     </td>
                                                 </tr>
-                 "RadTrain_d"               </table>
+                                            </table>
                                             <table width="100%" border="0" id="hideFlight_d" cellspacing="2" cellpadding="1"
-                               "RadBus_d"       bgcolor="#FFFFFF">
+                                                bgcolor="#FFFFFF">
                                                 <tr class="hlinks" align="left">
                                                     <td align="left" style="height: 14px; width: 212px;">
                                                         Flight Type:
@@ -1562,7 +1563,7 @@
                                                             <asp:ListItem Text="Domestic Airport" Value="1"></asp:ListItem>
                                                             <asp:ListItem Text="International" Value="2"></asp:ListItem>
                                                         </asp:DropDownList>
-                                     "txtpickVehicleNo_d"
+                                                    </td>
                                                 </tr>
                                                 <tr class="hlinks" align="left">
                                                     <td align="left" style="height: 24px; width: 212px;">
@@ -1575,7 +1576,7 @@
                                                             <option value="01">01</option>
                                                             <option value="02">02</option>
                                                             <option value="03">03</option>
- "ddlPkHrs_d"                                               <option value="04">04</option>
+                                                            <option value="04">04</option>
                                                             <option value="05">05</option>
                                                             <option value="06">06</option>
                                                             <option value="07">07</option>
@@ -1602,7 +1603,8 @@
                                                             <option value="00">00</option>
                                                             <option value="15">15</option>
                                                             <option value="30">30</option>
-                                                            <option value="45">45</option"ddlPkMints_d"                                             </select>
+                                                            <option value="45">45</option>
+                                                        </select>
                                                         &nbsp;Mints.
                                                     </td>
                                                 </tr>
@@ -1618,7 +1620,7 @@
                                                     <td align="left" style="width: 209px">
                                                         Address:</td>
                                                     <td>
-                   "txtFlightNo_d"                      <asp:TextBox ID="txtPkPoint_d" MaxLength="50" size="15" runat="server"></asp:TextBox></td>
+                                                        <asp:TextBox ID="txtPkPoint_d" MaxLength="50" size="15" runat="server"></asp:TextBox></td>
                                                 </tr>--%>
                                             </table>
                                             <!--Code by Jaggu for Toggle---------->
@@ -1636,13 +1638,14 @@
                                                     <td align="left" style="height: 24px; width: 212px;">
                                                         Departure Time:
                                                     </td>
- "txtRlyStationName_d"                              <td style="height: 24px">
+                                                    <td style="height: 24px">
                                                         <select runat="server" id="ddlTrainPkHr_d" name="ddlTrainPkHr_d" class="inputControl">
                                                             <option value="">hrs</option>
                                                             <option value="00">00</option>
                                                             <option value="01">01</option>
                                                             <option value="02">02</option>
-                                                            <option value="03">03</op"ddlTrainPkHr_d"                                                   <option value="04">04</option>
+                                                            <option value="03">03</option>
+                                                            <option value="04">04</option>
                                                             <option value="05">05</option>
                                                             <option value="06">06</option>
                                                             <option value="07">07</option>
@@ -1669,7 +1672,8 @@
                                                             <option value="00">00</option>
                                                             <option value="15">15</option>
                                                             <option value="30">30</option>
-                                                            <option value="45">45</"ddlTrainPkMin_d"                                                </select>
+                                                            <option value="45">45</option>
+                                                        </select>
                                                         &nbsp;Mints.
                                                     </td>
                                                 </tr>
@@ -1684,7 +1688,7 @@
                                             </table>
                                             <!--Code For Location/Address------>
                                             <table width="100%" border="0" id="hideLocation_d" style="display: none;" cellspacing="2"
-                                                cellpaddin"txtTrainNo_d""#FFFFFF">
+                                                cellpadding="1" bgcolor="#FFFFFF">
                                                 <tr class="hlinks" align="left">
                                                     <td align="left" style="height: 24px; width: 212px;">
                                                         Address:
@@ -1697,7 +1701,7 @@
                                                     <td align="left" style="height: 24px; width: 212px;">
                                                         Street:
                                                     </td>
-                   "txtAddr_d"                      <td style="height: 24px">
+                                                    <td style="height: 24px">
                                                         <asp:TextBox ID="txtStreet_d" MaxLength="50" size="15" runat="server"></asp:TextBox>
                                                     </td>
                                                 </tr>
@@ -1706,7 +1710,8 @@
                                     </td>
                                 </tr>
                             </table>
-                            <table cellpadding="1" cellspacing="1" border="0" width="100%" bgcolor="#ffffff""txtStreet_d"                      <tr bgcolor="#FFFFFF">
+                            <table cellpadding="1" cellspacing="1" border="0" width="100%" bgcolor="#ffffff">
+                                <tr bgcolor="#FFFFFF">
                                     <td class="verdana11bk" style="height: 0px" bgcolor="#ffffff" align="center">
 
                                         <script language="javascript" type="text/javascript">
@@ -1743,7 +1748,7 @@
                                     </td>
                                 </tr>
                                 <tr bgcolor="#FFFFFF">
-           "rbtnPaymentOption"      <td align="center" colspan="2" class="verdana11bk">
+                                    <td align="center" colspan="2" class="verdana11bk">
                                         <br />
                                         <asp:CheckBox ID="chkTrue" runat="server" />
                                         I agree to the <a href="#" onclick="javascript:approve();"><b>terms & conditions.</b></a>
@@ -1753,7 +1758,7 @@
                                 </tr>
                                 <tr class="hlinks">
                                     <td align="center" width="100%" style="height: 20px" colspan="2">
-                    "chkTrue"           <asp:Button ID="Submit" Text="Make Payment" runat="Server" BackColor="#5aa1ea" BorderStyle="None"
+                                        <asp:Button ID="Submit" Text="Make Payment" runat="Server" BackColor="#5aa1ea" BorderStyle="None"
                                             CssClass="cgi1" OnClick="Submit_Click" />
                                     </td>
                                 </tr>
@@ -1764,7 +1769,7 @@
                         </td>
                     </tr>
                     <tr>
-              "Submit"  <td align="left" style="width: 9px; height: 17px;">
+                        <td align="left" style="width: 9px; height: 17px;">
                             <img src="Assets/images/left_d_corner.gif" />
                         </td>
                         <td bgcolor="#e7e7e7" style="height: 17px">
@@ -1792,10 +1797,11 @@
         function showHidePickupInfo() {
             if (document.getElementById("<%=chkPickUp.ClientID%>").checked) {
                 document.getElementById('divDropInfo').style.display = 'block'
-                document.getElementById('divDrop').style.display = 'block'"AgentFooter"    document.getElementById('divPickup').style.display = 'block'
+                document.getElementById('divDrop').style.display = 'block'
+                document.getElementById('divPickup').style.display = 'block'
             }
             else {
-           "hidPundit"nt.getElementById('divDropInfo').style.display = 'none'
+                document.getElementById('divDropInfo').style.display = 'none'
                 document.getElementById('divDrop').style.display = 'none'
                 document.getElementById('divPickup').style.display = 'none'
 
@@ -1834,18 +1840,17 @@
                 document.getElementById("<%=txtAddr_d.ClientID%>").value = "";
                 document.getElementById("<%=txtStreet_d.ClientID%>").value = "";
 
-                    document.getElementById("hideTrain").style.display = "none";
-                    document.getElementById("hideLocation").style.display = "none";
-                    document.getElementById("hideFlight").style.display = "block";
+                document.getElementById("hideTrain").style.display = "none";
+                document.getElementById("hideLocation").style.display = "none";
+                document.getElementById("hideFlight").style.display = "block";
 
 
-                    document.getElementById("hideTrain_d").style.display = "none";
-                    document.getElementById("hideLocation_d").style.display = "none";
-                    document.getElementById("hideFlight_d").style.display = "block";
-                }
+                document.getElementById("hideTrain_d").style.display = "none";
+                document.getElementById("hideLocation_d").style.display = "none";
+                document.getElementById("hideFlight_d").style.display = "block";
             }
+        }
     </script>
 
 </body>
 </html>
-
