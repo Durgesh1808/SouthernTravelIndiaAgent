@@ -185,5 +185,257 @@ namespace SouthernTravelIndiaAgent.BAL
             return lStatus;
         }
 
+
+        /// <summary>
+        /// /// This method retrieves customer details based on the provided search value and row ID.
+        /// </summary>
+        /// <param name="lSearchValue"></param>
+        /// <param name="rowid"></param>
+        /// <returns></returns>
+        public DataTable GST_fnGetCustomerDetail(string lSearchValue, int rowid)
+        {
+            DataTable pdtTable = new DataTable();
+
+            // Use your actual connection string provider here
+            string connectionString = DataLib.getConnectionString();
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.GST_GetCustomerDetail_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Add parameters
+                        cmd.Parameters.AddWithValue("@i_EmailorMbNo", lSearchValue ?? (object)DBNull.Value);
+                        cmd.Parameters.AddWithValue("@i_Rowid", rowid);
+
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(pdtTable);
+                        }
+                    }
+                }
+
+                return pdtTable;
+            }
+            catch (Exception ex)
+            {
+                // Log exception if needed
+                return null;
+            }
+            finally
+            {
+                if (pdtTable != null)
+                {
+                    pdtTable.Dispose();
+                }
+            }
+        }
+
+
+        /// <summary>
+        /// /// This method inserts final account booking information into the database.
+        /// </summary>
+        /// <param name="BHT"></param>
+        /// <param name="OTT"></param>
+        /// <param name="sCustName"></param>
+        /// <param name="sAddress"></param>
+        /// <param name="sState"></param>
+        /// <param name="sPhone"></param>
+        /// <param name="sMobile"></param>
+        /// <param name="sAMobile"></param>
+        /// <param name="sEmail"></param>
+        /// <param name="sCompany"></param>
+        /// <param name="sCity"></param>
+        /// <param name="lRoomID"></param>
+        /// <param name="LRoomFare"></param>
+        /// <param name="lExtraBed"></param>
+        /// <param name="pFareID"></param>
+        /// <param name="lXetraFare"></param>
+        /// <param name="lCanSendPromotions"></param>
+        /// <param name="lOccupationId"></param>
+        /// <param name="lOccupation"></param>
+        /// <param name="lTotalCWB"></param>
+        /// <param name="lCWBFare"></param>
+        /// <param name="lgueststring"></param>
+        /// <param name="lOrderID"></param>
+        /// <param name="lTicketCode"></param>
+        /// <param name="IsGSTIN"></param>
+        /// <param name="CustomerGSTIN"></param>
+        /// <param name="GSTINHolderName"></param>
+        /// <param name="ZipCode"></param>
+        /// <param name="Nationality"></param>
+        /// <param name="Country"></param>
+        /// <param name="AadharNo"></param>
+        /// <param name="AadharNoImg"></param>
+        /// <returns></returns>
+        public string GST_fnInsertFinalAccBookingInfo(
+    BranchHotel_Tbl BHT, clsTransactionTable OTT,
+    string sCustName, string sAddress, string sState, string sPhone, string sMobile, string sAMobile,
+    string sEmail, string sCompany, string sCity, decimal? lRoomID, decimal? LRoomFare,
+    int? lExtraBed, string pFareID, decimal? lXetraFare, bool lCanSendPromotions, int lOccupationId,
+    string lOccupation, int lTotalCWB, decimal lCWBFare, string lgueststring,
+    ref string lOrderID, ref string lTicketCode, bool IsGSTIN, string CustomerGSTIN, string GSTINHolderName,
+    string ZipCode, string Nationality, string Country, string AadharNo, string AadharNoImg)
+        {
+            string connStr = DataLib.getConnectionString();
+            string status = "0";
+
+            using (SqlConnection con = new SqlConnection(connStr))
+            {
+                using (SqlCommand cmd = new SqlCommand("GST_InsertFinalAccBookingInfo_sp", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // --- Input Parameters ---
+                    cmd.Parameters.AddWithValue("@CustName", sCustName);
+                    cmd.Parameters.AddWithValue("@Address", sAddress);
+                    cmd.Parameters.AddWithValue("@State", sState);
+                    cmd.Parameters.AddWithValue("@Phone", sPhone);
+                    cmd.Parameters.AddWithValue("@Mobile", sMobile);
+                    cmd.Parameters.AddWithValue("@AMobile", sAMobile);
+                    cmd.Parameters.AddWithValue("@Email", sEmail);
+                    cmd.Parameters.AddWithValue("@Company", sCompany);
+                    cmd.Parameters.AddWithValue("@City", sCity);
+                    cmd.Parameters.AddWithValue("@RoomID", lRoomID.HasValue ? (object)lRoomID.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Roomfare", LRoomFare.HasValue ? (object)LRoomFare.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ExtraRoom", lExtraBed.HasValue ? (object)lExtraBed.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ExtraRoomFare", lXetraFare.HasValue ? (object)lXetraFare.Value : DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Noofadults", Convert.ToInt32(BHT.noofadults));
+                    cmd.Parameters.AddWithValue("@Noofchildren", Convert.ToInt32(BHT.noofchildren));
+                    cmd.Parameters.AddWithValue("@Noofrooms", BHT.noofrooms);
+                    cmd.Parameters.AddWithValue("@Deluxe", BHT.Deluxe);
+                    cmd.Parameters.AddWithValue("@SuperDeluxe", BHT.SuperDeluxe);
+                    cmd.Parameters.AddWithValue("@Executive", BHT.Executive);
+                    cmd.Parameters.AddWithValue("@Royal", BHT.Royal);
+                    cmd.Parameters.AddWithValue("@Totalamount", BHT.Totalamount);
+                    cmd.Parameters.AddWithValue("@STaxValue", BHT.STaxValue);
+                    cmd.Parameters.AddWithValue("@AmtWithTax", BHT.AmtWithTax);
+                    cmd.Parameters.AddWithValue("@Discount", BHT.Discount);
+                    cmd.Parameters.AddWithValue("@Advance", BHT.Advance);
+                    cmd.Parameters.AddWithValue("@Paymode", string.IsNullOrEmpty(BHT.Paymode) ? (object)DBNull.Value : BHT.Paymode);
+                    cmd.Parameters.AddWithValue("@CheckNo", string.IsNullOrEmpty(BHT.CheckNo) ? (object)DBNull.Value : BHT.CheckNo);
+                    cmd.Parameters.AddWithValue("@Bankname", string.IsNullOrEmpty(BHT.bankname) ? (object)DBNull.Value : BHT.bankname);
+                    cmd.Parameters.AddWithValue("@Depttime", (object)BHT.depttime);
+                    cmd.Parameters.AddWithValue("@Arrtime", (object)BHT.arrtime);
+                    cmd.Parameters.AddWithValue("@Username", BHT.Username);
+                    cmd.Parameters.AddWithValue("@Branchcode", BHT.Branchcode);
+                    cmd.Parameters.AddWithValue("@BookingRoomTypes", string.IsNullOrEmpty(BHT.BookingRoomTypes) ? (object)DBNull.Value : BHT.BookingRoomTypes);
+                    cmd.Parameters.AddWithValue("@Remarks", string.IsNullOrEmpty(BHT.Remarks) ? (object)DBNull.Value : BHT.Remarks);
+                    cmd.Parameters.AddWithValue("@Noofdays", BHT.noofdays);
+                    cmd.Parameters.AddWithValue("@AgentId", BHT.AgentId);
+                    cmd.Parameters.AddWithValue("@FareID", pFareID);
+                    cmd.Parameters.AddWithValue("@Occupancy", BHT.Occupancy);
+                    cmd.Parameters.AddWithValue("@CanSendPromotions", lCanSendPromotions);
+                    cmd.Parameters.AddWithValue("@I_OccupationId", lOccupationId);
+                    cmd.Parameters.AddWithValue("@I_Occupation", lOccupation);
+                    cmd.Parameters.AddWithValue("@I_Guestdetials", lgueststring);
+                    cmd.Parameters.AddWithValue("@I_ChildWBedFare", lCWBFare);
+                    cmd.Parameters.AddWithValue("@I_TotalChildWBed", lTotalCWB);
+
+                    // Transaction Details
+                    cmd.Parameters.AddWithValue("@TicketAmount", OTT.fldTicketAmount);
+                    cmd.Parameters.AddWithValue("@PaymentMode", OTT.fldPaymentMode);
+                    cmd.Parameters.AddWithValue("@Number", OTT.fldNumber);
+                    cmd.Parameters.AddWithValue("@Credit", OTT.fldCredit);
+                    cmd.Parameters.AddWithValue("@ServiceTax", OTT.fldServiceTax);
+                    cmd.Parameters.AddWithValue("@ChqDate", string.IsNullOrEmpty(OTT.fldChqDate) ? (object)DBNull.Value : OTT.fldChqDate);
+                    cmd.Parameters.AddWithValue("@TransType", OTT.fldTransType);
+                    cmd.Parameters.AddWithValue("@AgentCredit", OTT.fldAgentCredit);
+                    cmd.Parameters.AddWithValue("@AvailableBalance", OTT.fldAvailableBalance);
+                    cmd.Parameters.AddWithValue("@AgentDebit", OTT.fldAgentDebit);
+                    cmd.Parameters.AddWithValue("@Commission", OTT.fldCommission);
+                    cmd.Parameters.AddWithValue("@Debit", OTT.fldDebit);
+                    cmd.Parameters.AddWithValue("@ImpersonatingUserName", OTT.fldImpersonatingUserName);
+                    cmd.Parameters.AddWithValue("@ImpersonatingBranchCode", OTT.fldImpersonatingBranchCode);
+                    cmd.Parameters.AddWithValue("@Cashier", OTT.fldCashier);
+                    cmd.Parameters.AddWithValue("@TransState", OTT.fldTransState);
+                    cmd.Parameters.AddWithValue("@Status", OTT.fldStatus);
+                    cmd.Parameters.AddWithValue("@TDS", OTT.fldTDS);
+                    cmd.Parameters.AddWithValue("@OT_Discount", OTT.fldDiscount);
+
+                    cmd.Parameters.AddWithValue("@HotelID", BHT.HotelID);
+
+                    // GSTIN Info
+                    cmd.Parameters.AddWithValue("@I_IsGSTIN", IsGSTIN);
+                    cmd.Parameters.AddWithValue("@I_CustomerGSTIN", CustomerGSTIN);
+                    cmd.Parameters.AddWithValue("@I_GSTHolderName", GSTINHolderName);
+                    cmd.Parameters.AddWithValue("@ZipCode", ZipCode);
+                    cmd.Parameters.AddWithValue("@Nationality", Nationality);
+                    cmd.Parameters.AddWithValue("@Country", Country);
+                    cmd.Parameters.AddWithValue("@Aadharno", AadharNo);
+                    cmd.Parameters.AddWithValue("@AadharnoImg", AadharNoImg);
+
+                    // Output Parameters
+                    cmd.Parameters.Add("@O_OrderID", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@O_TicketID", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("@O_RowID", SqlDbType.VarChar, 50).Direction = ParameterDirection.Output;
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                        lOrderID = Convert.ToString(cmd.Parameters["@O_OrderID"].Value);
+                        lTicketCode = Convert.ToString(cmd.Parameters["@O_TicketID"].Value);
+                        status = Convert.ToString(cmd.Parameters["@O_RowID"].Value); // used as return status
+                    }
+                    catch (Exception ex)
+                    {
+                        // log ex.Message if needed
+                        status = "0";
+                    }
+                }
+            }
+            return status;
+        }
+
+
+        /// <summary>
+        /// /// This method retrieves a list of cities based on the provided state name and search text.
+        /// </summary>
+        /// <param name="search"></param>
+        /// <param name="StateName"></param>
+        /// <returns></returns>
+        public List<GST_GetCityListByStateNameAndSearchedCityTextResult> GST_GetCityListByStateNameAndSearchedCityText(string search, string StateName)
+        {
+            List<GST_GetCityListByStateNameAndSearchedCityTextResult> cityList = new List<GST_GetCityListByStateNameAndSearchedCityTextResult>();
+            string connectionString = DataLib.getConnectionString(); // Replace if needed
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GST_GetCityListByStateNameAndSearchedCityText, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@str", search);
+                    cmd.Parameters.AddWithValue("@State", StateName);
+
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            GST_GetCityListByStateNameAndSearchedCityTextResult item = new GST_GetCityListByStateNameAndSearchedCityTextResult
+                            {
+                                CityID = reader["CityID"]?.ToString(),
+                                CityName = reader["CityName"]?.ToString()
+                            };
+                            cityList.Add(item);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the error
+                cityList = null;
+            }
+
+            return cityList;
+        }
+
+
     }
 }

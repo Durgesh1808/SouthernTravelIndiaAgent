@@ -11,7 +11,7 @@ namespace SouthernTravelIndiaAgent
 {
 
 
-    public partial class AgentspecialseasonTour
+    public partial class AgentDuplicateTicket
     {
 
         /// <summary>
@@ -24,130 +24,67 @@ namespace SouthernTravelIndiaAgent
         protected global::System.Web.UI.HtmlControls.HtmlHead Head1;
 
         /// <summary>
-        /// RadFlight_d control.
+        /// Form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadFlight_d;
+        protected global::System.Web.UI.HtmlControls.HtmlForm Form1;
 
         /// <summary>
-        /// RadTrain_d control.
+        /// agentHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton RadTrain_d;
+        protected global::SouthernTravelIndiaAgent.UserControls.UcAgentHeader agentHeader;
 
         /// <summary>
-        /// txtpickVehicleNo_d control.
+        /// txtPnrNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList txtpickVehicleNo_d;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtPnrNo;
 
         /// <summary>
-        /// ddlPkHrs_d control.
+        /// txtticketno control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect ddlPkHrs_d;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtticketno;
 
         /// <summary>
-        /// ddlPkMints_d control.
+        /// txtContact control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect ddlPkMints_d;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtContact;
 
         /// <summary>
-        /// txtFlightNo_d control.
+        /// txtjdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFlightNo_d;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtjdate;
 
         /// <summary>
-        /// txtRlyStationName_d control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRlyStationName_d;
-
-        /// <summary>
-        /// ddlTrainPkHr_d control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect ddlTrainPkHr_d;
-
-        /// <summary>
-        /// ddlTrainPkMin_d control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlSelect ddlTrainPkMin_d;
-
-        /// <summary>
-        /// txtTrainNo_d control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtTrainNo_d;
-
-        /// <summary>
-        /// txtAddr_d control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddr_d;
-
-        /// <summary>
-        /// txtStreet_d control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStreet_d;
-
-        /// <summary>
-        /// rbtnPaymentOption control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList rbtnPaymentOption;
-
-        /// <summary>
-        /// chkTrue control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkTrue;
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtEmail;
 
         /// <summary>
         /// Submit control.
@@ -159,21 +96,39 @@ namespace SouthernTravelIndiaAgent
         protected global::System.Web.UI.WebControls.Button Submit;
 
         /// <summary>
-        /// AgentFooter control.
+        /// lblMsg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::SouthernTravelIndiaAgent.UserControls.UcAgentFooter AgentFooter;
+        protected global::System.Web.UI.WebControls.Label lblMsg;
 
         /// <summary>
-        /// hidPundit control.
+        /// dgDuplicateTickets control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputHidden hidPundit;
+        protected global::System.Web.UI.WebControls.DataGrid dgDuplicateTickets;
+
+        /// <summary>
+        /// agentfooter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SouthernTravelIndiaAgent.UserControls.UcAgentFooter agentfooter;
+
+        /// <summary>
+        /// tmpDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputHidden tmpDelete;
     }
 }
