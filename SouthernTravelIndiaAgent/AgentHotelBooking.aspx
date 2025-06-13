@@ -3,7 +3,7 @@
 
 <%@ Register TagPrefix="uc1" TagName="AgentHeader" Src="UserControls/UcAgentHeader.ascx" %>
 <%@ Register TagPrefix="uc1" TagName="AgentFooter" Src="UserControls/UcAgentFooter.ascx" %>
-<%@ Register Src="../UserControls/UcGST_ucManageCustomer.ascx" TagName="ucManageCustomer"
+<%@ Register Src="UserControls/GST_ucManageCustomer.ascx" TagName="ucManageCustomer"
     TagPrefix="uc3" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,14 +12,14 @@
     </title>
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="../Assets/css/demos.css" rel="stylesheet" type="text/css" />
-    <link type="text/css" href="../Assets/css/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
+    <link href="../css/demos.css" rel="stylesheet" type="text/css" />
+    <link type="text/css" href="../css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
 
-    <script src="../Assets/js/jquery-1.3.2.min.js" type="text/javascript"></script>
+    <script src="../css/Js/jquery-1.3.2.min.js" type="text/javascript"></script>
 
-    <script src="../Assets/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
+    <script src="../css/Js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
 
     <script language="javascript" src="../Assets/js/md5.js" type="text/javascript"></script>
 
@@ -2325,4 +2325,3 @@
 
 </body>
 </html>
-

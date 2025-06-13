@@ -37,7 +37,7 @@
     <script src="../Assets/js/jquery-1.3.2.min.js" type="text/javascript"></script>
 
     <script src="../Assets/js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
-<link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <style>
         .DatePickerImage
         {

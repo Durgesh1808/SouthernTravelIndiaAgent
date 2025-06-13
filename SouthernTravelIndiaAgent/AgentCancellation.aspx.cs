@@ -757,7 +757,7 @@ namespace SouthernTravelIndiaAgent
                         string AgentName = Session["AgentFname"].ToString().Trim() + " " + Session["AgentLname"].ToString().Trim();
                         TicketStrAgent.Append("<TD width=\"69%\"><font color=\"#666666\" size=\"1\" face=\"Verdana, Arial, Helvetica, sans-serif\"><string>'" + AgentName + "'</string><br/>" + address1 + "," + ph + "</font></td>");
                     }
-                    TicketStrAgent.Append("<td width=\"31%\" valign=\"top\"><img src=\"" + ImgUrl + "/Images/STPL_Preferred_Sales_Partner.gif\" width=\"231\" height=\"64\" /></td>");
+                    TicketStrAgent.Append("<td width=\"31%\" valign=\"top\"><img src=\"" + ImgUrl + "/Assets/images/STPL_Preferred_Sales_Partner.gif\" width=\"231\" height=\"64\" /></td>");
                     TicketStrAgent.Append("</TR></table></td></tr></table></td></tr>");
                     TicketStrAgent.Append("<TR>");
                     TicketStrAgent.Append("<TD class=style5 align=center height=7></TD>");
@@ -1636,7 +1636,7 @@ namespace SouthernTravelIndiaAgent
                                 string AgentName = Session["AgentFname"].ToString().Trim() + " " + Session["AgentLname"].ToString().Trim();
                                 TicketStr.Append("<TD width=\"69%\"><font color=\"#666666\" size=\"1\" face=\"Verdana, Arial, Helvetica, sans-serif\"><string>'" + AgentName + "'</string><br/>" + address1 + "," + ph + "</font></td>");
                             }
-                            TicketStr.Append("<td width=\"31%\" valign=\"top\"><img src=\"../Images/southerntravels_logo.gif\" width=\"231\" height=\"64\" /></td>");
+                            TicketStr.Append("<td width=\"31%\" valign=\"top\"><img src=\"../Assets/images/southerntravels_logo.gif\" width=\"231\" height=\"64\" /></td>");
                             TicketStr.Append("</TR></table></td></tr></table></td></tr>");
                             //TicketStr.Append("<TR>");
                             //TicketStr.Append("<TD class=style5 align=center height=7></TD>");

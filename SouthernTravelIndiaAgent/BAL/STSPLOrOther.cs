@@ -553,5 +553,106 @@ namespace SouthernTravelIndiaAgent.BAL
             return dtResult;
         }
 
+
+        /// <summary>
+        /// /// Retrieves the service tax and local tax values for a given HACTicket number.
+        /// </summary>
+        /// <param name="lTicketNo"></param>
+        /// <param name="lSTaxValue"></param>
+        /// <param name="lLTaxValue"></param>
+        /// <returns></returns>
+        public string fnGetSTaxForHACTkt(string lTicketNo, ref string lSTaxValue, ref string lLTaxValue)
+        {
+            string lTaxValue = "";
+
+            using (SqlConnection con = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetSTaxForHACTkt_SP, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input parameter
+                    cmd.Parameters.AddWithValue("@I_TicketNo", lTicketNo ?? (object)DBNull.Value);
+
+                    // Output parameters
+                    SqlParameter acctaxParam = new SqlParameter("@O_@ACCTax", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(acctaxParam);
+
+                    SqlParameter ltaxParam = new SqlParameter("@O_@LTax", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(ltaxParam);
+
+                    SqlParameter returnValueParam = new SqlParameter("@O_ReturnValue", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(returnValueParam);
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        // Assign output values to ref parameters
+                        lSTaxValue = acctaxParam.Value != DBNull.Value ? acctaxParam.Value.ToString() : null;
+                        lLTaxValue = ltaxParam.Value != DBNull.Value ? ltaxParam.Value.ToString() : null;
+                        lTaxValue = returnValueParam.Value != DBNull.Value ? returnValueParam.Value.ToString() : null;
+                    }
+                    catch (Exception ex)
+                    {
+                        lTaxValue = null;
+                    }
+                }
+            }
+
+            return lTaxValue;
+        }
+
+        /// <summary>
+        /// /// This method retrieves accommodation cancellation ticket information based on the provided parameters.
+        /// </summary>
+        /// <param name="pOrderID"></param>
+        /// <param name="pTktNo"></param>
+        /// <param name="pContact"></param>
+        /// <param name="pCheckInDate"></param>
+        /// <returns></returns>
+        public DataTable fnAcccancellationTKTInfo(string pOrderID, string pTktNo, string pContact, DateTime pCheckInDate)
+        {
+            DataTable ldtRecSet = new DataTable();
+
+            using (SqlConnection con = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.Acccancellation_sp, con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add parameters
+                    cmd.Parameters.AddWithValue("@PNRNO", string.IsNullOrEmpty(pOrderID) ? (object)DBNull.Value : pOrderID);
+                    cmd.Parameters.AddWithValue("@TicketNo", string.IsNullOrEmpty(pTktNo) ? (object)DBNull.Value : pTktNo);
+                    cmd.Parameters.AddWithValue("@Email", string.IsNullOrEmpty(pContact) ? (object)DBNull.Value : pContact);
+                    cmd.Parameters.AddWithValue("@CheckIndate", pCheckInDate == DateTime.MinValue ? (object)DBNull.Value : pCheckInDate);
+
+                    try
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            da.Fill(ldtRecSet);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Optional: log the exception
+                        return null;
+                    }
+                }
+            }
+
+            return ldtRecSet;
+        }
     }
 }

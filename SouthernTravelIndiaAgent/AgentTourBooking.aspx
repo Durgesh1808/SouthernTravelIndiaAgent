@@ -23,7 +23,7 @@
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="/Assets/css/rupee.css" rel="stylesheet" type="text/css" />
-    <link href="../Assets/css/style.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
     <style>
         .rupee
         {
@@ -35,7 +35,7 @@
 
     <script language="javascript" src="Assets/js/agenttourbooking.js" type="text/javascript"></script>
 
-    <script language="javascript" type="text/javascript" src="../Assets/js/query_string.js"></script>
+    <script language="javascript" type="text/javascript" src="../Includes/query_string.js"></script>
 
     <script language="javascript" type="text/javascript">
      function fillTransfer(MasterId) {

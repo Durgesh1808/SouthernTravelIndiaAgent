@@ -39,7 +39,7 @@ namespace SouthernTravelIndiaAgent
                     agentimg.Src = saveName;
                     agentimg.Alt = Session["UserId"].ToString();
                     agtaddress.Text = address1 + ", " + ph;
-                    southernimg.Src = "../Images/southerntravels_logo.gif";
+                    southernimg.Src = "../Assets/images/southerntravels_logo.gif";
                     southernimg.Alt = "Southern Travels Pvt Ltd.";
                 }
                 else
@@ -47,7 +47,7 @@ namespace SouthernTravelIndiaAgent
                     string AgentName = Session["AgentFname"].ToString().Trim() + " " + Session["AgentLname"].ToString().Trim();
                     agentimg.Visible = false;
                     agtaddress.Text = AgentName + "<br/>" + address1 + ", " + ph;
-                    southernimg.Src = "../Images/southerntravels_logo.gif";
+                    southernimg.Src = "../Assets/images/southerntravels_logo.gif";
                     southernimg.Alt = "Southern Travels Pvt Ltd.";
                 }
                 DateJourney = txtjdate.Value.ToString();
