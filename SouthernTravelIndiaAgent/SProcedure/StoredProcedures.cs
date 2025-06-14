@@ -178,6 +178,18 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string DeleteOnlineToursBooking_sp= "DeleteOnlineToursBooking_sp";
         public const string GetPaxCount_sp = "GetPaxCount_sp";
         public const string GetToursBookingInfoAgent_sp = "GetToursBookingInfoAgent_sp"; 
-        public const string GetTourBookTotalAmt_sp = "GetTourBookTotalAmt_sp";  
+        public const string GetTourBookTotalAmt_sp = "GetTourBookTotalAmt_sp";
+        public const string RowWiseTourID_sp = "RowWiseTourID_sp";
+        public const string GetJourneyDate_sp= "GetJourneyDate_sp";
+        public const string TourWiseTourSr_sp = "TourWiseTourSr_sp";   
+        public const string SeatDetail_sp = "SeatDetail_sp";
+        public const string UpdaterTourDeatil_sp = "UpdaterTourDeatil_sp";
+        public const string GST_ExistCustomerDetail_sp = "GST_ExistCustomerDetail_sp";
+        public const string GetCountryWiseStateName_SP = "GetCountryWiseStateName_SP";
+        public const string GetAlertSeatFull_sp = "GetAlertSeatFull_sp";  
+        public const string InsertOnlinePassengerAgent_sp = "InsertOnlinePassengerAgent_sp";    
+        public const string insert_SmsSend_tbl= "insert_SmsSend_tbl";
+        public const string GST_InsertUpdateCustomerDetail_sp = "GST_InsertUpdateCustomerDetail_sp";
+        public const string GetCustRowID_sp = "GetCustRowID_sp";  
     }
 }

@@ -150,5 +150,65 @@ namespace SouthernTravelIndiaAgent.BAL
             return dataListResponse;
         }
 
+
+        /// <summary>
+        /// /// This method retrieves a list of state names based on the provided country ID.
+        /// </summary>
+        /// <param name="iCountryID"></param>
+        /// <returns></returns>
+        public DataListResponse<GetCountryWiseStateName_SPResult> fnGetCountryWiseStateName(int iCountryID)
+        {
+            DataListResponse<GetCountryWiseStateName_SPResult> dataListResponse = new DataListResponse<GetCountryWiseStateName_SPResult>();
+            List<GetCountryWiseStateName_SPResult> resultList = new List<GetCountryWiseStateName_SPResult>();
+
+            using (SqlConnection conn = new SqlConnection(fldConnString))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCountryWiseStateName_SP, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input Parameter
+                    cmd.Parameters.AddWithValue("@i_CountryID", iCountryID);
+
+                    try
+                    {
+                        conn.Open();
+
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                GetCountryWiseStateName_SPResult result = new GetCountryWiseStateName_SPResult();
+
+                                // Example mapping (adjust as per your actual columns)
+                                result.StateID = reader["StateID"] != DBNull.Value ? Convert.ToInt32(reader["StateID"]) : 0;
+                                result.StateName = reader["StateName"] != DBNull.Value ? reader["StateName"].ToString() : string.Empty;
+
+                                resultList.Add(result);
+                            }
+                        }
+
+                        dataListResponse.ResultList = resultList;
+
+                        if (resultList.Count > 0)
+                        {
+                            dataListResponse.Status = ClsCommon.fnGetRequestStatus(pStatus: true, pbException.SUCCESS);
+                        }
+                        else
+                        {
+                            dataListResponse.Status = ClsCommon.fnGetRequestStatus(pStatus: true, pbException.ERR_DATANOT_FOUND);
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        dataListResponse.Status = ClsCommon.fnGetRequestStatus(pStatus: false, pbException.ERR_CATCH_BLOCK);
+                    }
+                }
+            }
+
+            return dataListResponse;
+        }
+
+
     }
 }

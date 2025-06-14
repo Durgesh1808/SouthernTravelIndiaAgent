@@ -487,8 +487,11 @@
     <Compile Include="DTO\Get_SPL_Fare_Panel_spResult.cs" />
     <Compile Include="DTO\Group_GroupBookingRequest.cs" />
     <Compile Include="DTO\GST_GetCityListByStateIdAndSearchedCityText.cs" />
+    <Compile Include="DTO\GST_GetCityListByStateIdAndSearchedCityTextResult.cs" />
     <Compile Include="DTO\GST_GetCityListByStateNameAndSearchedCityTextResult.cs" />
+    <Compile Include="DTO\GST_OnlineCustomer.cs" />
     <Compile Include="DTO\GST_spl_tourEnquiry.cs" />
+    <Compile Include="DTO\OnlineCustomer.cs" />
     <Compile Include="DTO\OnlineToursBooking.cs" />
     <Compile Include="DTO\OnlineTransactionTable.cs" />
     <Compile Include="DTO\SpecialTours_ZonewiseResult.cs" />

@@ -858,6 +858,8 @@
     <asp:HiddenField ID="hdfCalServicetax" runat="server" Value="0" />
     <asp:HiddenField ID="hdfCalDiscount" runat="server" Value="0" />
     <asp:HiddenField ID="hdfcalAdvance" runat="server" Value="0" />
+            <asp:HiddenField ID="hdnTourFare" runat="server" Value="" />
+
     <table id="Table2" cellspacing="0" cellpadding="0" width="100%" border="0">
         <tr>
             <td colspan="2">

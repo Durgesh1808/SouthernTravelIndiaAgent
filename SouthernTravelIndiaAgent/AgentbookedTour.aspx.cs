@@ -1,10 +1,14 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.DAL;
+using SouthernTravelIndiaAgent.DTO;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -2414,7 +2418,7 @@ namespace SouthernTravelIndiaAgent
                 int lCountryID = -2;
                 if (ClsCommon.ConvertStringint(ddlCountry.SelectedValue) > 0)
                     lCountryID = ClsCommon.ConvertStringint(ddlCountry.SelectedValue);
-                clsHCobj.fldConnString = ClsCommon.fldConnectionString;
+                clsHCobj.fldConnString = DataLib.getConnectionString();
                 lGetStateName = clsHCobj.fnGetCountryWiseStateName(lCountryID);
                 if (lGetStateName.Status.Status)
                 {
@@ -2450,7 +2454,7 @@ namespace SouthernTravelIndiaAgent
             try
             {
                 lGetCountryName = new DataListResponse<GetCountryName_SPResult>();
-                clsHCobj.fldConnString = ClsCommon.fldConnectionString;
+                clsHCobj.fldConnString = DataLib.getConnectionString()  ;
                 lGetCountryName = clsHCobj.fnGetCountryName(0);
                 if (lGetCountryName.Status.Status)
                 {
@@ -2582,7 +2586,7 @@ namespace SouthernTravelIndiaAgent
                 int lCountryID = -2;
                 if (ClsCommon.ConvertStringint(ddlCountry.SelectedValue) > 0)
                     lCountryID = ClsCommon.ConvertStringint(ddlCountry.SelectedValue);
-                clsHCobj.fldConnString = ClsCommon.fldConnectionString;
+                clsHCobj.fldConnString = DataLib.getConnectionString() ;
                 lGetStateName = clsHCobj.fnGetCountryWiseStateName(lCountryID);
                 if (lGetStateName.Status.Status)
                 {
