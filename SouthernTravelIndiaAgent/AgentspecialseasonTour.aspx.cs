@@ -1,6 +1,7 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.DAL;
 using SouthernTravelIndiaAgent.DTO;
+using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1836,62 +1837,71 @@ namespace SouthernTravelIndiaAgent
 
         public DataSet GetSpecialTourFare(int pTourID, DateTime pJourneyDate, int pCategoryID, int pPaxID)
         {
-            DataTable ldtSpecialTourFare = null;
-            ClsAdo clsObj = null;
-            DataTable dt = new DataTable();
+            DataSet lds = new DataSet();
+            DataTable dt = null;
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            SqlDataAdapter da = null;
+
             try
             {
-                SqlParameter[] lParam = new SqlParameter[5];
-                lParam[0] = new SqlParameter("@I_TourID", pTourID);
-                lParam[1] = new SqlParameter("@I_TourDate", SqlDbType.SmallDateTime);
-                lParam[1].Value = pJourneyDate;
-                lParam[2] = new SqlParameter("@I_CategoryID", pCategoryID);
-                lParam[3] = new SqlParameter("@I_PaxID", pPaxID);
-                lParam[4] = new SqlParameter("@O_ReturnValue", 0);
-                lParam[4].Direction = ParameterDirection.Output;
-                DataSet lds = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString,
-                 "GetSpecialTourFare_sp", lParam);
+                con = new SqlConnection(DataLib.getConnectionString());
+                cmd = new SqlCommand(StoredProcedures.GetSpecialTourFare_sp, con);
+                cmd.CommandType = CommandType.StoredProcedure;
 
+                // Input parameters
+                cmd.Parameters.AddWithValue("@I_TourID", pTourID);
+                cmd.Parameters.AddWithValue("@I_TourDate", pJourneyDate);
+                cmd.Parameters.AddWithValue("@I_CategoryID", pCategoryID);
+                cmd.Parameters.AddWithValue("@I_PaxID", pPaxID);
+
+                // Output parameter
+                SqlParameter outputParam = new SqlParameter("@O_ReturnValue", SqlDbType.Int);
+                outputParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outputParam);
+
+                da = new SqlDataAdapter(cmd);
+                da.Fill(lds);
 
                 //---------------------Setting the child Fare--------------
                 try
                 {
-                    dt = lds.Tables[1];
-                    dt = lds.Tables[1];
-                    dt.DefaultView.RowFilter = "VehicleCode='ChildWithMattress'"; // child with Maress Pax
-                    hdfChildWithMatressFare.Value = Convert.ToString(dt.DefaultView[0].Row["fare"]);
+                    if (lds.Tables.Count > 1)
+                    {
+                        dt = lds.Tables[1];
 
-                    dt = lds.Tables[1];
-                    dt.DefaultView.RowFilter = "VehicleCode='ChildWithoutMattress'";// child without Maress Pax
-                    hdfChildWithoutMatressFare.Value = Convert.ToString(dt.DefaultView[0].Row["fare"]);
+                        // Child With Mattress
+                        DataRow[] dr1 = dt.Select("VehicleCode='ChildWithMattress'");
+                        if (dr1.Length > 0)
+                        {
+                            hdfChildWithMatressFare.Value = Convert.ToString(dr1[0]["fare"]);
+                        }
+
+                        // Child Without Mattress
+                        DataRow[] dr2 = dt.Select("VehicleCode='ChildWithoutMattress'");
+                        if (dr2.Length > 0)
+                        {
+                            hdfChildWithoutMatressFare.Value = Convert.ToString(dr2[0]["fare"]);
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
-
+                    // Optional: log ex
                 }
-                //----------End of setting the child without Fare-----------
 
                 return lds;
             }
-            catch (Exception Ex)
+            catch (Exception ex)
             {
+                // Optional: log ex
                 return null;
             }
             finally
             {
-                if (clsObj != null)
-                {
-                    clsObj = null;
-                }
-                if (ldtSpecialTourFare != null)
-                {
-                    ldtSpecialTourFare.Dispose();
-                    ldtSpecialTourFare = null;
-                }
-                if (dt != null)
-                {
-                    dt = null;
-                }
+                if (da != null) da.Dispose();
+                if (cmd != null) cmd.Dispose();
+                if (con != null) con.Dispose();
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using SouthernTravelIndiaAgent.DAL;
+﻿using SouthernTravelIndiaAgent.Common;
+using SouthernTravelIndiaAgent.DAL;
 using SouthernTravelIndiaAgent.DTO;
 using SouthernTravelIndiaAgent.SProcedure;
 using System;
@@ -434,6 +435,125 @@ namespace SouthernTravelIndiaAgent.BAL
             }
 
             return cityList;
+        }
+
+
+        /// <summary>
+        /// /// This method checks if a customer detail exists for the given Order ID and Row ID.
+        /// </summary>
+        /// <param name="lOrdeID"></param>
+        /// <param name="lRowID"></param>
+        /// <returns></returns>
+        public DataTable GST_fnExistCustomerDetail(string lOrdeID, int? lRowID)
+        {
+            DataTable seatDataTable = null;
+
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+            new SqlParameter("@i_OrderID", SqlDbType.VarChar, 50)
+            {
+                Value = !string.IsNullOrEmpty(lOrdeID) ? (object)lOrdeID : DBNull.Value
+            },
+            new SqlParameter("@i_RowID", SqlDbType.Int)
+            {
+                Value = lRowID.HasValue ? (object)lRowID.Value : DBNull.Value
+            }
+                };
+
+                seatDataTable = SqlData.GetDataTableSP(StoredProcedures.GST_ExistCustomerDetail_sp, param);
+                return seatDataTable;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+
+
+        /// <summary>
+        /// /// This method inserts or updates customer details in the database.
+        /// </summary>
+        /// <param name="pclsOnlineCustomer_tbl"></param>
+        /// <param name="lOrderID"></param>
+        /// <param name="AadharNo"></param>
+        /// <param name="AadharNoImg"></param>
+        /// <returns></returns>
+        public int GST_fnInsertUpdateCustomerDetail(GST_OnlineCustomer pclsOnlineCustomer_tbl, string lOrderID, string AadharNo, string AadharNoImg)
+        {
+            int? lStatus = 0;
+            string lPanNoImg = "";
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GST_InsertUpdateCustomerDetail_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input Parameters
+                    cmd.Parameters.AddWithValue("@i_RowID", (object)pclsOnlineCustomer_tbl.RowId ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_FirstName", (object)pclsOnlineCustomer_tbl.FirstName ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Add1", (object)pclsOnlineCustomer_tbl.Addr1 ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_State", (object)pclsOnlineCustomer_tbl.state ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Phone", (object)pclsOnlineCustomer_tbl.PhoneNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Mobile", (object)pclsOnlineCustomer_tbl.Mobile ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AlterMobileNo", (object)pclsOnlineCustomer_tbl.AlternativeNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_EmailID", (object)pclsOnlineCustomer_tbl.email ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_FaceBookId", (object)pclsOnlineCustomer_tbl.FaceBookID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_PWS", (object)pclsOnlineCustomer_tbl.password ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_OrderID", (object)lOrderID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@I_CanSendPromotions", (object)pclsOnlineCustomer_tbl.CanSendPromotions ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_PanNo", (object)pclsOnlineCustomer_tbl.PanNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_IsPanNoVerify", (object)pclsOnlineCustomer_tbl.IsPanNoVerify ?? DBNull.Value);
+
+                    // Pan Image (ref input/output)
+                    SqlParameter panImgParam = new SqlParameter("@i_PanNoImg", SqlDbType.VarChar, 50)
+                    {
+                        Direction = ParameterDirection.InputOutput,
+                        Value = string.IsNullOrEmpty(lPanNoImg) ? (object)DBNull.Value : lPanNoImg
+                    };
+                    cmd.Parameters.Add(panImgParam);
+
+                    // Output return value
+                    SqlParameter outputStatusParam = new SqlParameter("@o_ReturnValue", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputStatusParam);
+
+                    // More input parameters
+                    cmd.Parameters.AddWithValue("@i_IsGSTIN", (object)pclsOnlineCustomer_tbl.ISGSITIN ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_CustomerGSTIN", (object)pclsOnlineCustomer_tbl.CustomerGSTIN ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_GSTINHolderName", (object)pclsOnlineCustomer_tbl.GstHolderName ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Country", (object)pclsOnlineCustomer_tbl.Country ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_City", (object)pclsOnlineCustomer_tbl.City ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_ZipCode", (object)pclsOnlineCustomer_tbl.zipcode ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Nationality", (object)pclsOnlineCustomer_tbl.Nationality ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Aadharno", (object)AadharNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@AadharnoImg", (object)AadharNoImg ?? DBNull.Value);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        // Get the output values
+                        if (outputStatusParam.Value != DBNull.Value)
+                            lStatus = Convert.ToInt32(outputStatusParam.Value);
+
+                        if (panImgParam.Value != DBNull.Value)
+                            lPanNoImg = panImgParam.Value.ToString();
+                    }
+                    catch (Exception ex)
+                    {
+                        lStatus = -2; // You can log the error if needed
+                    }
+                }
+            }
+
+            return Convert.ToInt32(lStatus);
         }
 
 

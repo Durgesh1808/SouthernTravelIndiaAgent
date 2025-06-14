@@ -807,5 +807,67 @@ namespace SouthernTravelIndiaAgent.DAL
             return returnValue;
         }
 
+        /// <summary>
+        /// /// Sends an SMS message to a specified mobile number and logs the details in the database.
+        /// </summary>
+        /// <param name="rowid"></param>
+        /// <param name="mobileno"></param>
+        /// <param name="message"></param>
+        /// <param name="sender"></param>
+        /// <param name="branch"></param>
+        /// <returns></returns>
+        public static string sendsms(int rowid, string mobileno, string message, string sender, string branch)
+        {
+            if (!Convert.ToBoolean(ConfigurationSettings.AppSettings["IsSMS"]))
+            {
+                return "True";
+            }
+            WebClient wc = new WebClient();
+            string pSenderName = ConfigurationSettings.AppSettings["SenderName"].ToString().Trim();
+            string pSenderID = ConfigurationSettings.AppSettings["SenderID"].ToString().Trim();
+            string pSMSUID = ConfigurationSettings.AppSettings["SMSUID"].ToString().Trim();
+            string pSMSKEY = ConfigurationSettings.AppSettings["SMSKEY"].ToString().Trim();
+            string pAccessKey = ConfigurationSettings.AppSettings["AccessKey"].ToString().Trim();
+            string strData = Encoding.Default.GetString(wc.DownloadData("https://mobilnxt.in/api/push?accesskey=" + pAccessKey + "&to=" + mobileno.Substring(0, 10) + "&text=" + message + "&from=" + pSenderName + ""));
+            //string strData = Encoding.Default.GetString(wc.DownloadData("http://app.m-campaigner.in/SendIndividualSMS.aspx?UserID=" + pSMSUID + "&Key=" + pSMSKEY + "&SenderName=" + pSenderName + "&SenderID=" + pSenderID + "&MobileNo=" + mobileno.Substring(0, 10) + "&Message=" + message + ""));
+            //string strData = Encoding.Default.GetString(wc.DownloadData("http://app.m-campaigner.in/SendIndividualSMS.aspx?UserID=c291dGhlcm5j&Key=c3RwbDEyIw==&SenderName=" + pSenderName + "&SenderID=" + pSenderID + "&MobileNo=" + mobileno.Substring(0, 10) + "&Message=" + message + ""));
+            string sIPAddress = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"].ToString();
+            ClsAdo clsObj = null;
+            try
+            {
+                if (strData.IndexOf("ERROR") < 0)
+                {
+                    #region Optimize Code
+                    /*SqlParameter[] paramsms = new SqlParameter[6];
+                paramsms[0] = new SqlParameter("@CustomerId", Convert.ToInt32(rowid));
+                paramsms[1] = new SqlParameter("@MobileNo", mobileno);
+                paramsms[2] = new SqlParameter("@UserIP", sIPAddress);
+                paramsms[3] = new SqlParameter("@message", message);
+                paramsms[4] = new SqlParameter("@username", sender);
+                paramsms[5] = new SqlParameter("@branchcode", branch);
+                int Val1 = InsStoredProcData("insert_SmsSend_tbl", paramsms);*/
+                    #endregion
+                    clsObj = new ClsAdo();
+                    int Val1 = clsObj.fninsert_SmsSend_tbl(Convert.ToDecimal(rowid), mobileno, sIPAddress, message, sender, branch, null, null, null);
+                    if (Val1 == 0)
+                    {
+                        return "True";
+                    }
+                    else
+                        return "False";
+                }
+                else
+                    return "False";
+            }
+            finally
+            {
+                if (clsObj != null)
+                {
+                    clsObj = null;
+                }
+            }
+        }
+
+
     }
 }

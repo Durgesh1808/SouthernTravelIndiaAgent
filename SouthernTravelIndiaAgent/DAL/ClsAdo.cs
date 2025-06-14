@@ -6414,5 +6414,372 @@ namespace SouthernTravelIndiaAgent.DAL
             return lTotalAmt;
         }
 
+
+        /// <summary>
+        /// /// Retrieves the row-wise tour ID based on the provided row ID.
+        /// </summary>
+        /// <param name="lRowID"></param>
+        /// <returns></returns>
+        public int fnGet_RowWiseTourID(int? lRowID)
+        {
+            int lTourID = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                try
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.RowWiseTourID_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        // Input parameter
+                        cmd.Parameters.Add(new SqlParameter("@i_RowID", SqlDbType.Int));
+                        cmd.Parameters["@i_RowID"].Value = (object)lRowID ?? DBNull.Value;
+
+                        // Output parameter
+                        SqlParameter outputParam = new SqlParameter("@o_ReturnValue", SqlDbType.Int);
+                        outputParam.Direction = ParameterDirection.Output;
+                        cmd.Parameters.Add(outputParam);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        // Get the value of the output parameter
+                        if (outputParam.Value != DBNull.Value)
+                        {
+                            lTourID = Convert.ToInt32(outputParam.Value);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lTourID = 0;
+                    // Log exception if needed
+                }
+            }
+
+            return lTourID;
+        }
+
+        /// <summary>
+        /// /// Retrieves the journey date based on the provided hours and tour number.
+        /// </summary>
+        /// <param name="pHours"></param>
+        /// <param name="pTourNo"></param>
+        /// <returns></returns>
+
+        public DataTable fnGetJourneyDate(int? pHours, int? pTourNo)
+        {
+            DataTable tourDataTable = null;
+
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+            new SqlParameter("@Hours", SqlDbType.Int)
+            {
+                Value = pHours.HasValue ? (object)pHours.Value : DBNull.Value
+            },
+            new SqlParameter("@TourNo", SqlDbType.Int)
+            {
+                Value = pTourNo.HasValue ? (object)pTourNo.Value : DBNull.Value
+            }
+                };
+
+                tourDataTable = SqlData.GetDataTableSP(StoredProcedures.GetJourneyDate_sp, param); // Make sure this matches your SP name
+
+                return tourDataTable;
+            }
+            catch (Exception ex)
+            {
+                // Log ex if needed
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// /// Retrieves the tour serial number based on the provided tour ID and journey date.
+        /// </summary>
+        /// <param name="lTourID"></param>
+        /// <param name="lJDate"></param>
+        /// <returns></returns>
+        public int fnGet_TourWiseTourSr(int? lTourID, DateTime? lJDate)
+        {
+            int lTourSr = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.TourWiseTourSr_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input Parameters
+                    cmd.Parameters.AddWithValue("@i_TourID", (object)lTourID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_JDate", (object)lJDate ?? DBNull.Value);
+
+                    // Output Parameter
+                    SqlParameter outputParam = new SqlParameter("@o_ReturnValue", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        if (outputParam.Value != DBNull.Value)
+                            lTourSr = Convert.ToInt32(outputParam.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        lTourSr = 0; // Optional: Log exception
+                    }
+                }
+            }
+
+            return lTourSr;
+        }
+
+
+        public DataTable fnGetSeatDetail(int? lRowID)
+        {
+            DataTable seatDataTable = null;
+
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+                    new SqlParameter("@i_RowID", SqlDbType.Int)
+                    {
+                        Value = lRowID.HasValue ? (object)lRowID.Value : DBNull.Value
+                    }
+                };
+
+                seatDataTable = SqlData.GetDataTableSP(StoredProcedures.SeatDetail_sp, param);
+
+                return seatDataTable;
+            }
+            catch (Exception ex)
+            {
+
+                return null;
+            }
+        }
+
+
+        public int fnUpdaterTourDeatil(int? lRowID, DateTime? lJDate, string lTourSerial, string lBusSerialNo, string lSeatNo)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.UpdaterTourDeatil_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input Parameters
+                    cmd.Parameters.AddWithValue("@i_RowID", (object)lRowID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_JDate", (object)lJDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_TourSerial", (object)lTourSerial ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_BusSerialNo", (object)lBusSerialNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_SeatNo", (object)lSeatNo ?? DBNull.Value);
+
+                    // Output Parameter
+                    SqlParameter outputParam = new SqlParameter("@o_ReturnValue", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        if (outputParam.Value != DBNull.Value)
+                            lStatus = Convert.ToInt32(outputParam.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        lStatus = 0; // Optionally log the exception
+                    }
+                }
+            }
+
+            return lStatus;
+        }
+
+        public DataTable fnGetAlertSeatFull(string pOrderId)
+        {
+            DataTable tourDatable = null;
+
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+                        new SqlParameter("@OrderID", SqlDbType.VarChar, 50)
+                        {
+                            Value = string.IsNullOrEmpty(pOrderId) ? DBNull.Value : (object)pOrderId
+                        }
+                };
+
+                tourDatable = SqlData.GetDataTableSP(StoredProcedures.GetAlertSeatFull_sp, param);
+
+                return tourDatable;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception here
+                return null;
+            }
+        }
+
+
+        /// <summary>
+        /// /// Inserts an online passenger agent record into the database.
+        /// </summary>
+        /// <param name="lEmail"></param>
+        /// <param name="lOrderID"></param>
+        /// <param name="lName"></param>
+        /// <param name="lAge"></param>
+        /// <param name="lSex"></param>
+        /// <returns></returns>
+        public int fnInsertOnlinePassengerAgent(string lEmail, string lOrderID, string lName, short? lAge, char? lSex)
+        {
+            int lStatus = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.InsertOnlinePassengerAgent_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input Parameters
+                    cmd.Parameters.AddWithValue("@i_Orderid", (object)lOrderID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Name", (object)lName ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Age", (object)lAge ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@i_Sex", (object)lSex ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Email", (object)lEmail ?? DBNull.Value);
+
+                    // Output Parameter
+                    SqlParameter outputParam = new SqlParameter("@o_ReturnValue", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(outputParam);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        if (outputParam.Value != DBNull.Value)
+                            lStatus = Convert.ToInt32(outputParam.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        lStatus = 0; // Optional: log exception
+                    }
+                }
+            }
+
+            return lStatus;
+        }
+
+        /// <summary>
+        /// /// Inserts a record into the SmsSend_tbl table with the provided parameters.
+        /// </summary>
+        /// <param name="pCustID"></param>
+        /// <param name="pMblNo"></param>
+        /// <param name="pUserID"></param>
+        /// <param name="pMsg"></param>
+        /// <param name="pUserName"></param>
+        /// <param name="pBranchCode"></param>
+        /// <param name="TransactionType"></param>
+        /// <param name="TicketNo"></param>
+        /// <param name="OrderId"></param>
+        /// <returns></returns>
+        public int fninsert_SmsSend_tbl(decimal? pCustID, string pMblNo, string pUserID, string pMsg, string pUserName, string pBranchCode, string TransactionType,
+    string TicketNo, string OrderId)
+        {
+            int lStatus = 1;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.insert_SmsSend_tbl, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Add input parameters
+                    cmd.Parameters.AddWithValue("@CustomerId", (object)pCustID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@MobileNo", (object)pMblNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@UserIP", (object)pUserID ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@message", (object)pMsg ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@username", (object)pUserName ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@branchcode", (object)pBranchCode ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TransactionType", (object)TransactionType ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@TicketNo", (object)TicketNo ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@OrderId", (object)OrderId ?? DBNull.Value);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();  // No output parameter
+                        lStatus = 0; // Success
+                    }
+                    catch (Exception ex)
+                    {
+                        lStatus = 1; // Error
+                                     // Optional: log the exception
+                    }
+                }
+            }
+
+            return lStatus;
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the customer row ID from the database.
+        /// </summary>
+        /// <returns></returns>
+        public int fnGetCustRowID()
+        {
+            int? lRowID = 0;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCustRowID_sp, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Define output parameter
+                    SqlParameter rowIdParam = new SqlParameter("@o_RowID", SqlDbType.Int)
+                    {
+                        Direction = ParameterDirection.Output
+                    };
+                    cmd.Parameters.Add(rowIdParam);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        if (rowIdParam.Value != DBNull.Value)
+                            lRowID = Convert.ToInt32(rowIdParam.Value);
+                    }
+                    catch (Exception ex)
+                    {
+                        lRowID = 0; // Default/failure value
+                    }
+                }
+            }
+
+            return Convert.ToInt32(lRowID);
+        }
+
+
     }
 }
