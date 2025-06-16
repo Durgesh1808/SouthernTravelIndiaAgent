@@ -1,0 +1,276 @@
+/* CSS Document */
+BODY {
+	MARGIN: 0px; 
+	BACKGROUND-COLOR: #ffffff
+}
+.tour{
+	font-size:11px;
+	color:#597326;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;
+	}
+.tour:hover{
+	font-size:11px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:underline;
+}
+.car{
+	font-size:11px;
+	color:#EC8289;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;
+	}
+.car:hover{
+	font-size:11px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:underline;
+}
+.spl{
+	font-size:11px;
+	color:#DB8F00;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;
+	}
+.spl:hover{
+	font-size:11px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:underline;
+}
+
+.bg{
+	background-color:#EAEAEA}
+.bg1{
+	background-color:#C6C6C6}
+.bgheader{
+	background-color:#999999}
+
+	
+
+.verdana10{
+	font-size:10px;
+	color:#00000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana10r{
+	font-size:10px;
+	color:#FF3300;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana10r:hover{
+	font-size:10px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana10rac{
+	font-size:10px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana10rb{
+	font-size:10px;
+	color:#FF0014;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;	
+	}
+.verdana10rb:hover{
+	font-size:10px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;	
+	}	
+	
+.verdana11bk{
+	font-size:11px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana11bkb{
+	font-size:11px;
+	color:#000000;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;	
+	}
+.verdana11w{
+	font-size:11px;
+	color:#ffffff;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana12pb{
+	font-size:12px;
+	color:#A31D33;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;	
+	}
+.verdana12p{
+	font-size:12px;
+	color:#A31D33;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:normal;
+	text-decoration:none;	
+	}
+.verdana14w{
+	font-size:14px;
+	color:#ffffff;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style: normal;
+	font-weight:bold;
+	text-decoration:none;	
+	}
+.nav{
+	font-size:12px;
+	color:#FFBF00;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;
+	}
+.nav:hover{
+	font-size:12px;
+	color:#ffffff;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;
+}
+.navac{
+	font-size:12px;
+	color:#ffffff;
+	font-family:"Verdana", Arial, Helvetica, sans-serif;
+	font-style:normal;
+	font-weight:bold;
+	text-decoration:none;
+}
+.tddarkblue{
+	background-color:#5aa1ea}
+.tdlightblue{
+	background-color:#9bc7f4}
+.bluedark{
+	background-color:#5aa1ea}
+
+.bluelight{
+	background-color:#9bc7f4}
+	
+
+/* CSS for new agent header */
+.text1 {font-family:Arial, Helvetica, sans-serif;
+	font-size:13px;
+	color:#de411a;
+}
+.white_text{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FFFFFF;
+}
+.white_text a:link{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FFFFFF;
+text-decoration:none;
+}
+.white_text a:visited{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FFFFFF;
+text-decoration:none;
+}
+.white_text a:active{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FFFFFF;
+text-decoration:none;
+}
+.white_text a:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FFFFFF;
+text-decoration:underline;
+}
+.yellow_text{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#ffffff;
+}
+.yellow_text a:link{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#ffffff;
+text-decoration:none;
+}
+.yellow_text a:visited{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#ffffff;
+text-decoration:none;
+}
+.yellow_text a:active{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#ffffff;
+text-decoration:none;
+}
+.yellow_text a:hover{
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size:11px;
+color:#ffffff;
+text-decoration:underline;
+}
+/* CSS for new agent header */
+
+
+
+/*------------------------------------------------tourbooking Css Starts-----------------------------------------------*/
+.TB_lt { background:url(../images/siting_bg.gif) 0 0 no-repeat; width:16px; height:15px;}
+.TB_Rt { background:url(../images/siting_bg.gif) -16px 0 no-repeat; width:16px; height:15px;}
+.TB_ltB { background:url(../images/siting_bg.gif) 0 -243px no-repeat; width:16px; height:15px;}
+.TB_RtB { background:url(../images/siting_bg.gif) -16px -243px no-repeat; width:16px; height:15px;}
+.TB_Mrpt { background:url(../images/siting_rpt.gif) 0px 0 repeat-x;}
+.TB_MrptB { background:url(../images/siting_rpt.gif) 0px 14px repeat-x;}
+.TB_left {background:url(../images/G_dot.jpg) 1px 0 repeat-y;}
+.TB_right {background:url(../images/G_dot.jpg) 14px 0 repeat-y;}
+.TB_avbl { width:39px; height:35px; background: url(../images/set_arngnt.gif) 0 0 no-repeat; padding-right:10px; text-align:center; line-height:35px; color:#e28d07; font-size:16px;}
+.TB_Bkd { width:39px; height:35px; background: url(../images/set_arngnt.gif) 0 -35px no-repeat;padding-right:10px; text-align:center; line-height:35px; color:#ffd4c9; font-size:16px;}
+.TB_selctd { width:39px; height:35px; background: url(../images/set_arngnt.gif) 0 -70px no-repeat;padding-right:10px; text-align:center; line-height:35px; color:#fff; font-size:16px;}
+.Rfnt { font-size:17px; color:#df411a; padding-left:7px;}
+/*------------------------------------------------tourbooking Css End-----------------------------------------------*/

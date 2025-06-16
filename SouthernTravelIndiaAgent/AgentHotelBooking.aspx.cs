@@ -97,10 +97,10 @@ namespace SouthernTravelIndiaAgent
 
             //DataTable dtOnlineCust = new DataTable();
             //string emailidt = txtSearch.Text.Trim().Replace("'", "").Replace("<", "").Replace(">", "").Replace("alert", "");
-            //clsLinqtoDB pclsObj = null;
+            //ClsAdo pclsObj = null;
             //try
             //{
-            //    pclsObj = new clsLinqtoDB();
+            //    pclsObj = new ClsAdo();
             //    if (txtSearch.Text.Trim() != "")
             //    {
             //        dtOnlineCust = pclsObj.fnGetCustomerDetail(emailidt);
@@ -501,7 +501,7 @@ namespace SouthernTravelIndiaAgent
 
                     //try
                     //{
-                    //    pclsObj = new clsLinqtoDB();
+                    //    pclsObj = new ClsAdo();
                     //    pclsObj.Agent_GetAgentLevelbyAgentId(Convert.ToInt32(Session["AgentId"]), ref AgentLevel);
                     //}
                     //finally

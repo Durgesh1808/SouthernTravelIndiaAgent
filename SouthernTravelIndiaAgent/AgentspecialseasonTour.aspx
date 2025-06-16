@@ -93,11 +93,11 @@
 
     <script language="javascript" src="../Images/query-script.js" type="text/javascript"></script>
 
-    <script language="javascript" src="../JavaScript/MyScript.js" type="text/javascript"></script>
+    <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
 
     <%--<script language="javascript" src="JavaScript/GST_OnlineSplSeason.js" type="text/javascript"></script>--%>
 
-    <script language="javascript" src="../JavaScript/GST_OnlineSplSeason.js" type="text/javascript"></script>
+    <script language="javascript" src="../Assets/js/GST_OnlineSplSeason.js" type="text/javascript"></script>
 
     <link href="../css/demos.css" rel="stylesheet" type="text/css" />
     <link type="text/css" href="../css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
@@ -108,7 +108,7 @@
 
     <script src="../css/Js/jquery-ui-1.7.1.custom.min.js" type="text/javascript"></script>
 
-    <link href="../font/rupee.css" rel="stylesheet" type="text/css" />
+    <link href="../Assets/css/rupee.css" rel="stylesheet" type="text/css" />
     <style>
         .DatePickerImage
         {
@@ -116,6 +116,60 @@
             padding-left: 5px;
         }
     </style>
+
+
+
+
+
+    <style>
+        .rupee
+        {
+            font-family: 'RupeeForadian';
+        }
+    </style>
+    <style type="text/css">
+        .black_overlay
+        {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 320%;
+            background-color: Gray;
+            z-index: 1001;
+            -moz-opacity: 0.8;
+        }
+        .white_content
+        {
+            display: none;
+            position: absolute;
+            top: 180%;
+            left: 10%;
+            width: 80%;
+            height: 40%;
+            padding: 16px;
+            border: 1px solid orange;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
+
+   
+        <link href="Assets/css/rupee.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body vlink="#000000" alink="#000000" link="#000000" bgcolor="#ffffff" leftmargin="0"
+    topmargin="0" onload="get(); fnhideQualis();" marginwidth="0" marginheight="0"
+    bottommargin="0" rightmargin="0" style="background-repeat: repeat-x">
+    <div id="STContainer" style="display: none; position: absolute">
+    </div>
+    <div id="framediv" style="z-index: 1; left: -999px; width: 148px; position: absolute;
+        height: 194px;" frameborder="0" scrolling="no">
+    </div>
+    <form id="form1" runat="server">
+
 
     <script>
         function clearCitylist() {
@@ -368,9 +422,8 @@
             }
         }
         
-    </script>
-
-    <script type="text/javascript">
+            </script>
+     <script type="text/javascript">
 
         $(function() {
             var dt = '';
@@ -411,303 +464,267 @@
                 document.getElementById('divGSTDetails1').style.display = "none";
             }
         }
-    </script>
+            </script>
+     <script language="javascript" type="text/javascript">
+     function fnDrophide() {
+         if (document.getElementById('chkDrop').checked == true) {
+             document.getElementById('RadFlight_d').checked = document.getElementById('RadFlight').checked;
+             document.getElementById('RadTrain_d').checked = document.getElementById('RadTrain').checked;
+             document.getElementById('RadBus_d').checked = document.getElementById('RadBus').checked;
+             copyToDepart(document.getElementById('txtpickVehicleNo'));
+             copyToDepart(document.getElementById('txtFlightNo'));
+             copyToDepart(document.getElementById('ddlPkHrs'));
+             copyToDepart(document.getElementById('ddlPkMints'));
+             copyToDepart(document.getElementById('txtRlyStationName'));
+             copyToDepart(document.getElementById('ddlTrainPkHr'));
+             copyToDepart(document.getElementById('ddlTrainPkMin'));
+             copyToDepart(document.getElementById('txtTrainNo'));
+             copyToDepart(document.getElementById('txtAddr'));
+             copyToDepart(document.getElementById('txtStreet'));
+             if (document.getElementById('RadFlight').checked)
+                 fnRDOSelection('', 'RadFlight');
+             if (document.getElementById('RadTrain').checked)
+                 fnRDOSelection('', 'RadTrain');
+             if (document.getElementById('RadBus').checked)
+                 fnRDOSelection('', 'RadBus');
+         }
+         else {
+             //document.getElementById('divHide').style.display='block';
+         }
+     }
+     function approve() {
+         window.open('../frmterms.aspx?', 'pops', 'width=418,height=249,scrollbars=yes');
+     }
+     function fnhideQualis() {
+         /*if(document.getElementById('txtCar12pxHiddenSt').value==0 && document.getElementById('txtCar12pxHiddenDl').value==0)
+         {
+         document.getElementById('hideCar').style.display='none';
+         }
+         if(document.getElementById('txtQua46PxHiddenSt').value==0 && document.getElementById('txtQua46PxHiddenDl').value==0)
+         {
+         document.getElementById('hideQuils').style.display='none';
+         }
+         if(document.getElementById('txtInn45PxHiddenSt').value==0 && document.getElementById('txtInn45PxHiddenDl').value==0)
+         {
+         document.getElementById('hideInn').style.display='none';
+         }
+         if(document.getElementById('txtTem89PxHiddenSt').value==0 && document.getElementById('txtTem89PxHiddenDl').value==0)
+         {
+         document.getElementById('hideTempo').style.display='none';
+         }*/
+     }
+     function showHide(k) {
+         if (document.getElementById('RadTrain' + k).checked) {
+             document.getElementById('hideTrain' + k).style.display = 'block';
+             document.getElementById('hideFlight' + k).style.display = 'none';
+             document.getElementById('hideLocation' + k).style.display = 'none';
+             if (k == "") {
+                 document.getElementById('txtpickVehicleNo').selectedIndex = 0;
+                 // document.getElementById('txtpicktime').value ='';
+                 document.getElementById('txtFlightNo').value = '';
 
-    <style>
-        .rupee
-        {
-            font-family: 'RupeeForadian';
-        }
-    </style>
-    <style type="text/css">
-        .black_overlay
-        {
-            display: none;
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            width: 100%;
-            height: 320%;
-            background-color: Gray;
-            z-index: 1001;
-            -moz-opacity: 0.8;
-        }
-        .white_content
-        {
-            display: none;
-            position: absolute;
-            top: 180%;
-            left: 10%;
-            width: 80%;
-            height: 40%;
-            padding: 16px;
-            border: 1px solid orange;
-            background-color: white;
-            z-index: 1002;
-            overflow: auto;
-        }
-    </style>
+                 document.getElementById('txtAddr').value = '';
+                 document.getElementById('txtStreet').value = '';
+                 // To clear hte drop text boxes
 
-    <script language="javascript" type="text/javascript">
-        function fnDrophide() {
-            if (document.getElementById('chkDrop').checked == true) {
-                document.getElementById('RadFlight_d').checked = document.getElementById('RadFlight').checked;
-                document.getElementById('RadTrain_d').checked = document.getElementById('RadTrain').checked;
-                document.getElementById('RadBus_d').checked = document.getElementById('RadBus').checked;
-                copyToDepart(document.getElementById('txtpickVehicleNo'));
-                copyToDepart(document.getElementById('txtFlightNo'));
-                copyToDepart(document.getElementById('ddlPkHrs'));
-                copyToDepart(document.getElementById('ddlPkMints'));
-                copyToDepart(document.getElementById('txtRlyStationName'));
-                copyToDepart(document.getElementById('ddlTrainPkHr'));
-                copyToDepart(document.getElementById('ddlTrainPkMin'));
-                copyToDepart(document.getElementById('txtTrainNo'));
-                copyToDepart(document.getElementById('txtAddr'));
-                copyToDepart(document.getElementById('txtStreet'));
-                if (document.getElementById('RadFlight').checked)
-                    fnRDOSelection('', 'RadFlight');
-                if (document.getElementById('RadTrain').checked)
-                    fnRDOSelection('', 'RadTrain');
-                if (document.getElementById('RadBus').checked)
-                    fnRDOSelection('', 'RadBus');
-            }
-            else {
-                //document.getElementById('divHide').style.display='block';
-            }
-        }
-        function approve() {
-            window.open('../frmterms.aspx?', 'pops', 'width=418,height=249,scrollbars=yes');
-        }
-        function fnhideQualis() {
-            /*if(document.getElementById('txtCar12pxHiddenSt').value==0 && document.getElementById('txtCar12pxHiddenDl').value==0)
-            {
-            document.getElementById('hideCar').style.display='none';
-            }
-            if(document.getElementById('txtQua46PxHiddenSt').value==0 && document.getElementById('txtQua46PxHiddenDl').value==0)
-            {
-            document.getElementById('hideQuils').style.display='none';
-            }
-            if(document.getElementById('txtInn45PxHiddenSt').value==0 && document.getElementById('txtInn45PxHiddenDl').value==0)
-            {
-            document.getElementById('hideInn').style.display='none';
-            }
-            if(document.getElementById('txtTem89PxHiddenSt').value==0 && document.getElementById('txtTem89PxHiddenDl').value==0)
-            {
-            document.getElementById('hideTempo').style.display='none';
-            }*/
-        }
-        function showHide(k) {
-            if (document.getElementById('RadTrain' + k).checked) {
-                document.getElementById('hideTrain' + k).style.display = 'block';
-                document.getElementById('hideFlight' + k).style.display = 'none';
-                document.getElementById('hideLocation' + k).style.display = 'none';
-                if (k == "") {
-                    document.getElementById('txtpickVehicleNo').selectedIndex = 0;
-                    // document.getElementById('txtpicktime').value ='';
-                    document.getElementById('txtFlightNo').value = '';
+                 document.getElementById('txtpickVehicleNo_d').selectedIndex = 0;
+                 //  document.getElementById('txtpicktime_d').value ='';
+                 document.getElementById('txtFlightNo_d').value = '';
 
-                    document.getElementById('txtAddr').value = '';
-                    document.getElementById('txtStreet').value = '';
-                    // To clear hte drop text boxes
+                 document.getElementById('txtAddr_d').value = '';
+                 document.getElementById('txtStreet_d').value = '';
+             }
+         }
+         if (document.getElementById('RadFlight' + k).checked) {
+             document.getElementById('hideTrain' + k).style.display = 'none';
+             document.getElementById('hideFlight' + k).style.display = 'block';
+             document.getElementById('hideLocation' + k).style.display = 'none';
 
-                    document.getElementById('txtpickVehicleNo_d').selectedIndex = 0;
-                    //  document.getElementById('txtpicktime_d').value ='';
-                    document.getElementById('txtFlightNo_d').value = '';
+             if (k == "") {
+                 document.getElementById('txtAddr').value = '';
+                 document.getElementById('txtStreet').value = '';
 
-                    document.getElementById('txtAddr_d').value = '';
-                    document.getElementById('txtStreet_d').value = '';
-                }
-            }
-            if (document.getElementById('RadFlight' + k).checked) {
-                document.getElementById('hideTrain' + k).style.display = 'none';
-                document.getElementById('hideFlight' + k).style.display = 'block';
-                document.getElementById('hideLocation' + k).style.display = 'none';
+                 document.getElementById('txtRlyStationName').value = '';
+                 //document.getElementById('txtRlyArrivalTime').value ='';
+                 document.getElementById('txtTrainNo').value = '';
+                 // To clear hte drop text boxes
 
-                if (k == "") {
-                    document.getElementById('txtAddr').value = '';
-                    document.getElementById('txtStreet').value = '';
+                 document.getElementById('txtAddr_d').value = '';
+                 document.getElementById('txtStreet_d').value = '';
 
-                    document.getElementById('txtRlyStationName').value = '';
-                    //document.getElementById('txtRlyArrivalTime').value ='';
-                    document.getElementById('txtTrainNo').value = '';
-                    // To clear hte drop text boxes
+                 document.getElementById('txtRlyStationName_d').value = '';
+                 //document.getElementById('txtRlyArrivalTime_d').value ='';
+                 document.getElementById('txtTrainNo_d').value = '';
+             }
+         }
+         if (document.getElementById('RadBus' + k).checked) {
+             document.getElementById('hideTrain' + k).style.display = 'none';
+             document.getElementById('hideFlight' + k).style.display = 'none';
+             document.getElementById('hideLocation' + k).style.display = 'block';
+             if (k == "") {
+                 document.getElementById('txtpickVehicleNo').selectedIndex = 0;
+                 // document.getElementById('txtpicktime').value ='';
+                 document.getElementById('txtFlightNo').value = '';
 
-                    document.getElementById('txtAddr_d').value = '';
-                    document.getElementById('txtStreet_d').value = '';
+                 document.getElementById('txtRlyStationName').value = '';
+                 // document.getElementById('txtRlyArrivalTime').value ='';
+                 document.getElementById('txtTrainNo').value = '';
+                 // To clear hte drop text boxes
+                 document.getElementById('txtpickVehicleNo_d').selectedIndex = 0;
+                 //  document.getElementById('txtpicktime_d').value ='';
+                 document.getElementById('txtFlightNo_d').value = '';
 
-                    document.getElementById('txtRlyStationName_d').value = '';
-                    //document.getElementById('txtRlyArrivalTime_d').value ='';
-                    document.getElementById('txtTrainNo_d').value = '';
-                }
-            }
-            if (document.getElementById('RadBus' + k).checked) {
-                document.getElementById('hideTrain' + k).style.display = 'none';
-                document.getElementById('hideFlight' + k).style.display = 'none';
-                document.getElementById('hideLocation' + k).style.display = 'block';
-                if (k == "") {
-                    document.getElementById('txtpickVehicleNo').selectedIndex = 0;
-                    // document.getElementById('txtpicktime').value ='';
-                    document.getElementById('txtFlightNo').value = '';
+                 document.getElementById('txtRlyStationName_d').value = '';
+                 // document.getElementById('txtRlyArrivalTime_d').value ='';
+                 document.getElementById('txtTrainNo_d').value = '';
+             }
+         }
+     }
+     function fnRDOSelection(k, idRad) {
+         showHide(k);
+         var chkDropObj = document.getElementById('chkDrop');
+         if ((chkDropObj.checked) && (k == '')) {
+             document.getElementById(idRad + '_d').checked = true;
+             showHide('_d');
+         }
+     }
+     function clear5() {
+         if (!document.getElementById('chkDrop').checked) {
+             var allTxt = document.getElementsByTagName('input');
+             for (var i = 0; i < allTxt.length; i++) {
+                 if (allTxt[i].id.indexOf('_d') != -1)
+                     document.getElementById(allTxt[i].id).value = "";
+             }
+         }
+     }
+     function fnchkSingle() {
+         if (ValidateNoOfPax()) {
+             var ddlPax = document.getElementById('<%=ddlNoOfPax.ClientID %>');
+             var ddlSelectedPax = ddlPax.options[ddlPax.selectedIndex].value;
+             if (ddlSelectedPax == "0") {
+                 alert("Please select No of Pax.");
+                 document.getElementById('<%=ddlNoOfPax.ClientID %>').focus();
+                 document.getElementById('<%=chkSingle.ClientID %>').checked = false;
+                 //ExtrafareCal();
+                 return false;
+             }
+             if ((document.getElementById('<%=chkSingle.ClientID %>').checked)) {
+                 document.getElementById('<%=Singlepax.ClientID %>').style.display = 'block';
+             }
+             else {
+                 document.getElementById('<%=Singlepax.ClientID %>').style.display = 'none';
+                 finalFare();
+             }
+             if ((!document.getElementById('<%=chkSingle.ClientID %>').checked) && (document.getElementById('txtTotalExtrafare').value != "")) {
+                 Getsuggession();
+             }
+         }
+         else {
+             return false;
+         }
+     }
+     function fnchkSingle2() {
+         if ((!document.getElementById('chkSingle').checked) && (document.getElementById('txtSinglePax').value > 0)) {
+             alert("Please Check the Check box also");
+             return false;
+         }
+     }
+     function chkNoPick1() {
+         if ((document.getElementById('chkNoPick').checked)) {
+             document.getElementById('HideDetails').style.display = 'none';
+             document.getElementById('RadBus').checked = true;
+             document.getElementById('txtAddr').value = "Not decided";
+             document.getElementById('txtStreet').value = "Not decided";
+             document.getElementById('txtAddr_d').value = "Not decided";
+             document.getElementById('txtStreet_d').value = "Not decided";
+         }
+         else {
+             document.getElementById('HideDetails').style.display = 'block';
+         }
+     }
+     function GetTourFare() {
+         var Category = '';
+         if (document.getElementById('<%=rdoStandard.ClientID %>').checked) {
+             Category = 'St';
+         }
+         if (document.getElementById('<%=rdoDeluxe.ClientID %>').checked) {
+             Category = 'Dl';
+         }
+         if (document.getElementById('<%=rdoLuxury.ClientID %>').checked) {
+             Category = 'Lx';
+         }
+         if ((document.getElementById('<%=chkSingle.ClientID %>').checked)) {
+             document.getElementById('<%=Singlepax.ClientID %>').style.display = 'block';
+         }
+         else {
+             document.getElementById('<%=Singlepax.ClientID %>').style.display = 'none';
+         }
+         FareTypeCheck(Category);
+         ExtrafareCal();
+     }
+     function ValidateJourneyDate() {
 
-                    document.getElementById('txtRlyStationName').value = '';
-                    // document.getElementById('txtRlyArrivalTime').value ='';
-                    document.getElementById('txtTrainNo').value = '';
-                    // To clear hte drop text boxes
-                    document.getElementById('txtpickVehicleNo_d').selectedIndex = 0;
-                    //  document.getElementById('txtpicktime_d').value ='';
-                    document.getElementById('txtFlightNo_d').value = '';
+         if (document.getElementById('txtDate').value == "") {
+             alert('Please first select a journey date.');
+             return false;
+         }
+         if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
+         (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
+         (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
+             alert('Please first select Category Type.');
+             return false;
+         }
+         return true;
+     }
+     function ValidateNoOfPax() {
+         if (ValidateJourneyDate()) {
+             if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
+             (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
+             (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
+                 alert('Please first select Category Type.');
+                 return false;
+             }
+             if (document.getElementById('<%= ddlCarType.ClientID %>').selectedIndex != "0") {
+                 return true;
+             }
+             else {
+                 alert('Please select car type.');
+                 document.getElementById('<%= ddlCarType.ClientID %>').focus();
+                 return false;
+             }
+         }
+         else {
+             return false;
+         }
+     }
+     //will be used for tours which has no of child with matress or without Matress
 
-                    document.getElementById('txtRlyStationName_d').value = '';
-                    // document.getElementById('txtRlyArrivalTime_d').value ='';
-                    document.getElementById('txtTrainNo_d').value = '';
-                }
-            }
-        }
-        function fnRDOSelection(k, idRad) {
-            showHide(k);
-            var chkDropObj = document.getElementById('chkDrop');
-            if ((chkDropObj.checked) && (k == '')) {
-                document.getElementById(idRad + '_d').checked = true;
-                showHide('_d');
-            }
-        }
-        function clear5() {
-            if (!document.getElementById('chkDrop').checked) {
-                var allTxt = document.getElementsByTagName('input');
-                for (var i = 0; i < allTxt.length; i++) {
-                    if (allTxt[i].id.indexOf('_d') != -1)
-                        document.getElementById(allTxt[i].id).value = "";
-                }
-            }
-        }
-        function fnchkSingle() {
-            if (ValidateNoOfPax()) {
-                var ddlPax = document.getElementById('<%=ddlNoOfPax.ClientID %>');
-                var ddlSelectedPax = ddlPax.options[ddlPax.selectedIndex].value;
-                if (ddlSelectedPax == "0") {
-                    alert("Please select No of Pax.");
-                    document.getElementById('<%=ddlNoOfPax.ClientID %>').focus();
-                    document.getElementById('<%=chkSingle.ClientID %>').checked = false;
-                    //ExtrafareCal();
-                    return false;
-                }
-                if ((document.getElementById('<%=chkSingle.ClientID %>').checked)) {
-                    document.getElementById('<%=Singlepax.ClientID %>').style.display = 'block';
-                }
-                else {
-                    document.getElementById('<%=Singlepax.ClientID %>').style.display = 'none';
-                    finalFare();
-                }
-                if ((!document.getElementById('<%=chkSingle.ClientID %>').checked) && (document.getElementById('txtTotalExtrafare').value != "")) {
-                    Getsuggession();
-                }
-            }
-            else {
-                return false;
-            }
-        }
-        function fnchkSingle2() {
-            if ((!document.getElementById('chkSingle').checked) && (document.getElementById('txtSinglePax').value > 0)) {
-                alert("Please Check the Check box also");
-                return false;
-            }
-        }
-        function chkNoPick1() {
-            if ((document.getElementById('chkNoPick').checked)) {
-                document.getElementById('HideDetails').style.display = 'none';
-                document.getElementById('RadBus').checked = true;
-                document.getElementById('txtAddr').value = "Not decided";
-                document.getElementById('txtStreet').value = "Not decided";
-                document.getElementById('txtAddr_d').value = "Not decided";
-                document.getElementById('txtStreet_d').value = "Not decided";
-            }
-            else {
-                document.getElementById('HideDetails').style.display = 'block';
-            }
-        }
-        function GetTourFare() {
-            var Category = '';
-            if (document.getElementById('<%=rdoStandard.ClientID %>').checked) {
-                Category = 'St';
-            }
-            if (document.getElementById('<%=rdoDeluxe.ClientID %>').checked) {
-                Category = 'Dl';
-            }
-            if (document.getElementById('<%=rdoLuxury.ClientID %>').checked) {
-                Category = 'Lx';
-            }
-            if ((document.getElementById('<%=chkSingle.ClientID %>').checked)) {
-                document.getElementById('<%=Singlepax.ClientID %>').style.display = 'block';
-            }
-            else {
-                document.getElementById('<%=Singlepax.ClientID %>').style.display = 'none';
-            }
-            FareTypeCheck(Category);
-            ExtrafareCal();
-        }
-        function ValidateJourneyDate() {
+     function ValidatePaxWithChild(obj) {
+         debugger;
+         if (document.getElementById(obj).value == '')
+             document.getElementById(obj).value = '0';
 
-            if (document.getElementById('txtDate').value == "") {
-                alert('Please first select a journey date.');
-                return false;
-            }
-            if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
-            (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
-            (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
-                alert('Please first select Category Type.');
-                return false;
-            }
-            return true;
-        }
-        function ValidateNoOfPax() {
-            if (ValidateJourneyDate()) {
-                if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
-                (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
-                (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
-                    alert('Please first select Category Type.');
-                    return false;
-                }
-                if (document.getElementById('<%= ddlCarType.ClientID %>').selectedIndex != "0") {
-                    return true;
-                }
-                else {
-                    alert('Please select car type.');
-                    document.getElementById('<%= ddlCarType.ClientID %>').focus();
-                    return false;
-                }
-            }
-            else {
-                return false;
-            }
-        }
-        //will be used for tours which has no of child with matress or without Matress
+         var MaxPax = parseInt(document.getElementById('<%=hdfMaxVehiclePax.ClientID %>').value);
+         var TotalPaxDrp = document.getElementById('<%= ddlNoOfPax.ClientID %>');
+         var VehiclePaxSelected = parseInt(TotalPaxDrp.options[TotalPaxDrp.selectedIndex].text);
 
-        function ValidatePaxWithChild(obj) {
-            debugger;
-            if (document.getElementById(obj).value == '')
-                document.getElementById(obj).value = '0';
+         var ChildWithoutMatress = parseInt(document.getElementById('<%=txtChildWhoutMatress.ClientID %>').value);
+         var ChildWithMatress = parseInt(document.getElementById('<%=txtChildWithMatress.ClientID %>').value);
 
-            var MaxPax = parseInt(document.getElementById('<%=hdfMaxVehiclePax.ClientID %>').value);
-            var TotalPaxDrp = document.getElementById('<%= ddlNoOfPax.ClientID %>');
-            var VehiclePaxSelected = parseInt(TotalPaxDrp.options[TotalPaxDrp.selectedIndex].text);
+         var TotalPaxSelected = VehiclePaxSelected + ChildWithoutMatress + ChildWithMatress
+         if (TotalPaxSelected > MaxPax) {
+             document.getElementById(obj).value = '0';
+             alert('Total pax selected should be less then the vehicle max pax');
+             return false;
+         }
+         else if (TotalPaxSelected <= MaxPax) {
+             //Methods to calucate the Fare
+             ManageChildWithMatAndWitoutMatFare();
+         }
+     }
 
-            var ChildWithoutMatress = parseInt(document.getElementById('<%=txtChildWhoutMatress.ClientID %>').value);
-            var ChildWithMatress = parseInt(document.getElementById('<%=txtChildWithMatress.ClientID %>').value);
-
-            var TotalPaxSelected = VehiclePaxSelected + ChildWithoutMatress + ChildWithMatress
-            if (TotalPaxSelected > MaxPax) {
-                document.getElementById(obj).value = '0';
-                alert('Total pax selected should be less then the vehicle max pax');
-                return false;
-            }
-            else if (TotalPaxSelected <= MaxPax) {
-                //Methods to calucate the Fare
-                ManageChildWithMatAndWitoutMatFare();
-            }
-        }
-   
-    </script>
-
+         </script>
+        
     <script language="javascript" src="../includes/md5.js" type="text/javascript"></script>
 
     <script language="javascript" type="text/javascript">
@@ -719,7 +736,6 @@
         }
     </script>
 
-    <link href="font/rupee.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript">
         // this function will be call on blur of txtchildwithmatress and txtchildWithout Matress
@@ -782,16 +798,6 @@
             finalFare();
         }
     </script>
-</head>
-<body vlink="#000000" alink="#000000" link="#000000" bgcolor="#ffffff" leftmargin="0"
-    topmargin="0" onload="get(); fnhideQualis();" marginwidth="0" marginheight="0"
-    bottommargin="0" rightmargin="0" style="background-repeat: repeat-x">
-    <div id="STContainer" style="display: none; position: absolute">
-    </div>
-    <div id="framediv" style="z-index: 1; left: -999px; width: 148px; position: absolute;
-        height: 194px;" frameborder="0" scrolling="no">
-    </div>
-    <form id="form1" runat="server">
     <asp:ScriptManager ID="script1" runat="server">
     </asp:ScriptManager>
     <input type="hidden" id="tmpEnValue" runat="server" />

@@ -1,0 +1,444 @@
+.tp-lk {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: arial
+}
+.tp-lk A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.tp-lk A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.mn-lk {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #ff0000; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.mn-lk A {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+.mn-lk A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.mn-lk1 {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 12px; COLOR: #dd4503; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.mn-lk1 A {
+	COLOR: #dd4503; TEXT-DECORATION: none
+}
+.mn-lk1 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.lft-td {
+	MARGIN-TOP: 7px; FLOAT: left; MARGIN-LEFT: 7px; WIDTH: 193px
+}
+.mn-tr-hd {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; BACKGROUND: url(gifs/ip-hd-bg.gif); COLOR: #e14000; FONT-FAMILY: arial
+}
+.mn-tr-hd A {
+	COLOR: #e14000; TEXT-DECORATION: none
+}
+.mn-tr-hd A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.tour-bg {
+	FONT-SIZE: 11px; BACKGROUND: url(gifs/tour-bg.gif); COLOR: #273600; FONT-FAMILY: arial
+}
+.tour-bg A {
+	COLOR: #273600; TEXT-DECORATION: underline
+}
+.tour-bg A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.tour-bg B {
+	COLOR: #730d00
+}
+.tour-bg B A {
+	COLOR: #730d00; TEXT-DECORATION: underline
+}
+.tour-bg B A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.tour-lk {
+	PADDING-LEFT: 10px; LINE-HEIGHT: 19px
+}
+.royal-india {
+	FONT-SIZE: 11px; BACKGROUND: url(gifs/royal-india-bg.gif) no-repeat left top; COLOR: #273600; FONT-FAMILY: arial
+}
+.royal-india A {
+	COLOR: #273600; TEXT-DECORATION: underline
+}
+.royal-india A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.mn-ht-hd {
+	PADDING-LEFT: 15px; FONT-SIZE: 12px; BACKGROUND: url(gifs/hotel-hd-bg.jpg); COLOR: #e14000; FONT-FAMILY: arial
+}
+.mn-ht-hd A {
+	COLOR: #e14000; TEXT-DECORATION: none
+}
+.mn-ht-hd A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.hotel-lk {
+	FONT-SIZE: 11px; BACKGROUND: url(gifs/ht-bg.gif); COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.hotel-lk A {
+	COLOR: #e14000; TEXT-DECORATION: none
+}
+.hotel-lk A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.ht-lk {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px
+}
+.ht-lk .ht-southern {
+	COLOR: #ef4900
+}
+.ht-lk1 {
+	PADDING-LEFT: 5px
+}
+.ht-lk1 .ht-southern {
+	COLOR: #ef4900
+}
+.travel-kit-hd {
+	PADDING-LEFT: 20px; FONT-SIZE: 13px; BACKGROUND: url(gifs/travel-kit-bg.gif) #fd8e00; COLOR: #ffffff; FONT-FAMILY: arial
+}
+.travel-kit-hd A {
+	COLOR: #ffffff; TEXT-DECORATION: none
+}
+.travel-kit-hd A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.travel-kit-lk {
+	FONT-SIZE: 12px; BACKGROUND: #ffe763; COLOR: #000000; FONT-FAMILY: arial
+}
+.travel-kit-lk A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.travel-kit-lk A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.tp-nav {
+	PADDING-RIGHT: 10px; MARGIN-TOP: 5px; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: arial
+}
+.tp-nav A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.tp-nav A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+H1 {
+	PADDING-LEFT: 218px; FONT-SIZE: 17px; COLOR: #e14000; FONT-FAMILY: arial
+}
+.pg-hd {
+	FONT-SIZE: 17px; FLOAT: left; COLOR: #e14000; FONT-FAMILY: arial
+}
+.page-hd {
+	PADDING-LEFT: 218px; FONT-SIZE: 15px; PADDING-BOTTOM: 10px; COLOR: #143780; PADDING-TOP: 10px; FONT-FAMILY: arial
+}
+.page-hd H1 {
+	DISPLAY: inline; PADDING-LEFT: 0px; FONT-SIZE: 15px; COLOR: #143780; FONT-FAMILY: arial
+}
+.text {
+	PADDING-RIGHT: 10px; FONT-SIZE: 11px; MARGIN-LEFT: 214px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.text .hd {
+	PADDING-RIGHT: 10px; FONT-SIZE: 12px; COLOR: #af280c; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.ftr {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px
+}
+.ftr-lk {
+	FONT-SIZE: 11px; COLOR: #646464; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.ftr-lk A {
+	COLOR: #646464; TEXT-DECORATION: none
+}
+.ftr-lk A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.ftr-lk B {
+	COLOR: #ff6000
+}
+.ftr-lk-mn {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.ftr-lk-mn A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.ftr-lk-mn A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.fact-bg {
+	FONT-WEIGHT: bold; BACKGROUND: url(gifs/travel-fact-rt-bg.gif) #c26958 no-repeat; FLOAT: right; WIDTH: 155px; COLOR: #ffffff; LINE-HEIGHT: 21px
+}
+.fact-txt .fact-bg B {
+	COLOR: #ffec86; TEXT-DECORATION: none
+}
+.fact-hd {
+	PADDING-LEFT: 6px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: url(gifs/travel-fact-bg.gif) repeat-x; PADDING-BOTTOM: 6px; COLOR: #e01000; LINE-HEIGHT: 22px; FONT-FAMILY: Ms Sans Serif,Verdana,Arial
+}
+.fact-txt {
+	PADDING-LEFT: 5px; FONT-SIZE: 11px; BACKGROUND: url(gifs/travel-fact-text-bg.gif) repeat-x; COLOR: #3c3c3c; LINE-HEIGHT: 22px; FONT-FAMILY: Ms Sans Serif,Verdana,Arial
+}
+.fact-txt B {
+	COLOR: #98493d
+}
+.fact-txt B.hd {
+	COLOR: #98493d
+}
+.fact-txt A {
+	FONT-WEIGHT: bold; COLOR: #772a00; TEXT-DECORATION: underline
+}
+.fact-txt A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.holiday-txt {
+	PADDING-LEFT: 5px; FONT-SIZE: 12px; BACKGROUND: #fffff6; COLOR: #3c3c3c; LINE-HEIGHT: 22px; FONT-FAMILY: Arial
+}
+.holiday-txt B {
+	COLOR: #98493d
+}
+.holiday-txt B.hd {
+	COLOR: #c34500
+}
+.holiday-txt A {
+	FONT-WEIGHT: bold; COLOR: #c34500; TEXT-DECORATION: underline
+}
+.holiday-txt A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.detail-bg {
+	FONT-SIZE: 11px; BACKGROUND-IMAGE: url(gifs/detail-bg.gif); COLOR: #1f51c2; LINE-HEIGHT: 22px; FONT-FAMILY: Ms Sans Serif,Verdana,Arial
+}
+.fact-txt2 {
+	FONT-SIZE: 12px; COLOR: #903a0b; LINE-HEIGHT: 19px; FONT-FAMILY: Arial
+}
+.cost-bg {
+	BORDER-RIGHT: #dc8574 1px solid; BORDER-TOP: #dc8574 1px solid; FONT-WEIGHT: bold; BACKGROUND: #ffcb2b; FLOAT: right; BORDER-LEFT: #dc8574 1px solid; WIDTH: 155px; COLOR: #000000; LINE-HEIGHT: 17px; BORDER-BOTTOM: #dc8574 1px solid; FONT-FAMILY: Ms Sans Serif,Verdana,Arial
+}
+.cost-ul {
+	MARGIN-TOP: 5px; PADDING-LEFT: 10px; MARGIN-LEFT: 10px; COLOR: #97301a; LIST-STYLE-TYPE: square
+}
+.guided-lk {
+	FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: url(gifs2/line-india-guide.gif) 50% bottom; COLOR: #000000; FONT-FAMILY: Ms Sans Serif,Verdana,Arial
+}
+.guided-lk UL {
+	PADDING-LEFT: 16px; MARGIN: 0px 0px 0px 6px; LINE-HEIGHT: 30px
+}
+.guided-lk LI {
+	MARGIN-TOP: 0px; LIST-STYLE-IMAGE: url(gifs/ind-guide-bt1.gif)
+}
+.book-lk {
+	BORDER-RIGHT: #dc8574 1px solid; BORDER-TOP: #dc8574 1px solid; FONT-SIZE: 12px; BORDER-LEFT: #dc8574 1px solid; WIDTH: 178px; COLOR: #e80101; MARGIN-RIGHT: 7px; BORDER-BOTTOM: #dc8574 1px solid
+}
+.book-lk A {
+	COLOR: #e80101; TEXT-DECORATION: underline
+}
+.book-lk A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.footer {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.footer A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.footer A:hover {
+	COLOR: #666666; TEXT-DECORATION: underline
+}
+.td-txt {
+	PADDING-LEFT: 5px; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: arial, verdana, ms sans serif; TEXT-ALIGN: left
+}
+.td-txt B {
+	COLOR: #ffffff
+}
+.td-txt .tdb {
+	COLOR: #b02b26
+}
+.tariff-chart {
+	FONT-SIZE: 11px; COLOR: #b00c01; FONT-FAMILY: arial, verdana, ms sans serif
+}
+.tariff-chart A {
+	COLOR: #b00c01; TEXT-DECORATION: underline
+}
+.tariff-chart A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.mh {
+	PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 13px; BACKGROUND: url(gifs/travel-fact-bg.gif) repeat-x; PADDING-BOTTOM: 6px; COLOR: #e01000; LINE-HEIGHT: 22px; FONT-FAMILY: Arial
+}
+.mh A {
+	COLOR: #e01000; TEXT-DECORATION: none
+}
+.mh A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.text1 {
+	PADDING-RIGHT: 10px; FONT-SIZE: 11px; MARGIN-LEFT: 214px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: arial
+}
+.text1 .sh {
+	PADDING-LEFT: 25px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: #fffdf5; COLOR: #b35800; FONT-FAMILY: Arial
+}
+.text1 .sh A {
+	COLOR: #b35800; TEXT-DECORATION: none
+}
+.text1 .sh A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.text1 .mh2 {
+	PADDING-LEFT: 25px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND-IMAGE: url(gifs/detail-bg.gif); COLOR: #b35800; LINE-HEIGHT: 22px; FONT-FAMILY: Arial
+}
+.text1 .mh2 A {
+	COLOR: #b35800; TEXT-DECORATION: none
+}
+.text1 .mh2 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.text1 .sh1 {
+	PADDING-LEFT: 43px; FONT-WEIGHT: bold; FONT-SIZE: 12px; BACKGROUND: #fff6b0; COLOR: #323232; FONT-FAMILY: Arial
+}
+.text1 .sh1 A {
+	COLOR: #323232; TEXT-DECORATION: none
+}
+.text1 .sh1 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.text1 .sh2 {
+	PADDING-LEFT: 63px; FONT-SIZE: 11px; COLOR: #323232; FONT-FAMILY: Arial
+}
+.text1 .sh2 A {
+	COLOR: #323232; TEXT-DECORATION: none
+}
+.text1 .sh2 A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.tp-lk-hm {
+	PADDING-RIGHT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 11px; BACKGROUND: url(gifs/tplklft.gif) no-repeat left top; MARGIN-LEFT: 334px; COLOR: #000000; LINE-HEIGHT: 22px; FONT-FAMILY: arial
+}
+.tp-lk-hm A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.tp-lk-hm A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.tptxt {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 10px; FONT-SIZE: 11px; PADDING-BOTTOM: 10px; COLOR: #000000; LINE-HEIGHT: 18px; PADDING-TOP: 10px; FONT-FAMILY: Arial
+}
+.lfttd {
+	FLOAT: left; WIDTH: 221px
+}
+.mn-hd {
+	FONT-SIZE: 16px; COLOR: #e14000; FONT-FAMILY: Arial
+}
+.mn-hd A {
+	COLOR: #e14000; TEXT-DECORATION: none
+}
+.mn-hd A:hover {
+	COLOR: #e14000; TEXT-DECORATION: none
+}
+.lfthd {
+	PADDING-LEFT: 45px; FONT-SIZE: 13px; BACKGROUND: url(gifs/lft-hd-bg.gif); COLOR: #a93300; LINE-HEIGHT: 29px; FONT-FAMILY: Arial
+}
+.lft-bg {
+	FONT-SIZE: 11px; BACKGROUND: url(gifs/lftbg.gif); COLOR: #000000; FONT-FAMILY: Arial
+}
+.lft-bg UL {
+	PADDING-BOTTOM: 8px; MARGIN: 0px; LINE-HEIGHT: 18px; LIST-STYLE-TYPE: none
+}
+.lft-bg UL LI {
+	PADDING-LEFT: 10px; BACKGROUND: url(gifs/lft-arrow.gif) no-repeat left 50%; MARGIN-LEFT: 20px
+}
+.lft-bg A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.lft-bg A:hover {
+	COLOR: #000000; TEXT-DECORATION: underline
+}
+.lftsh {
+	PADDING-LEFT: 20px; FONT-SIZE: 12px; COLOR: #04369a; FONT-FAMILY: Arial
+}
+.righttd {
+	PADDING-RIGHT: 5px; PADDING-LEFT: 5px; FLOAT: right; WIDTH: 195px; TEXT-ALIGN: center
+}
+.ht-st {
+	PADDING-RIGHT: 30px; PADDING-LEFT: 10px; FONT-SIZE: 12px; BACKGROUND: url(gifs/ht-st-bg.jpg) no-repeat; COLOR: #ffffff; LINE-HEIGHT: 19px; FONT-FAMILY: Arial; HEIGHT: 78px; TEXT-ALIGN: left
+}
+.ht-st B {
+	COLOR: #f6ff00
+}
+.ht-st B A {
+	COLOR: #f6ff00; TEXT-DECORATION: underline
+}
+.ht-st B A:hover {
+	COLOR: #f6ff00; TEXT-DECORATION: none
+}
+.form-lk {
+	FONT-SIZE: 11px; BACKGROUND: #edeefb; WIDTH: 184px; COLOR: #000000; LINE-HEIGHT: 19px; FONT-FAMILY: arial; TEXT-ALIGN: left
+}
+.form-hd {
+	FONT-SIZE: 12px; COLOR: #ffffff; FONT-FAMILY: arial
+}
+.mn-hd2 {
+	MARGIN-TOP: 10px; FONT-SIZE: 16px; COLOR: #0b0e5a; FONT-FAMILY: Arial
+}
+.tool-kit {
+	WIDTH: 184px; TEXT-ALIGN: left
+}
+.news-md {
+	BACKGROUND: url(gifs/news-md.gif); TEXT-ALIGN: left
+}
+.news-hd {
+	FONT-SIZE: 12px; BACKGROUND: url(gifs/news-hd.gif) no-repeat; COLOR: #000000; LINE-HEIGHT: 27px; FONT-FAMILY: verdana
+}
+.news-md-txt {
+	PADDING-LEFT: 10px; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: arial
+}
+.credit-card {
+	FONT-SIZE: 12px; BACKGROUND: url(gifs/credit-card.gif) no-repeat; COLOR: red; LINE-HEIGHT: 37px; FONT-FAMILY: arial
+}
+.royal-india-hm {
+	PADDING-LEFT: 10px; FONT-SIZE: 11px; BACKGROUND: url(gifs/royal-india-hm-bg.gif) no-repeat left top; COLOR: #273600; FONT-FAMILY: arial; TEXT-ALIGN: left
+}
+.royal-india-hm A {
+	COLOR: #273600; TEXT-DECORATION: underline
+}
+.royal-india-hm A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.cen {
+	PADDING-RIGHT: 10px; MARGIN-LEFT: 235px
+}
+.cen .tour-hd {
+	MARGIN-TOP: 10px; PADDING-LEFT: 10px; FONT-WEIGHT: bold; FONT-SIZE: 13px; PADDING-BOTTOM: 2px; COLOR: #000000; FONT-FAMILY: verdana
+}
+.cen .tour-lnk {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; COLOR: #730d00; LINE-HEIGHT: 18px; FONT-FAMILY: arial, verdana
+}
+.cen A {
+	TEXT-DECORATION: none
+}
+.cen A:hover {
+	TEXT-DECORATION: underline
+}
+.cen .tour-lnk A {
+	COLOR: #730d00
+}
+.cen .ker-tour-lnk {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; COLOR: #273600; LINE-HEIGHT: 18px; FONT-FAMILY: arial, verdana
+}
+.cen .ker-tour-lnk A {
+	COLOR: #273600
+}
+.cen .goa-tour-lnk {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; COLOR: #044297; LINE-HEIGHT: 18px; FONT-FAMILY: arial, verdana
+}
+.cen .goa-tour-lnk A {
+	COLOR: #044297
+}
+.cen .nor-tour-lnk {
+	PADDING-LEFT: 10px; FONT-SIZE: 12px; COLOR: #044297; LINE-HEIGHT: 18px; FONT-FAMILY: arial, verdana
+}
+.cen .nor-tour-lnk A {
+	COLOR: #044297
+}
+.dotline {
+	MARGIN-TOP: 5px; BACKGROUND: url(gifs/dot.gif) repeat-x; MARGIN-RIGHT: 201px
+}

@@ -1037,8 +1037,7 @@ namespace SouthernTravelIndiaAgent
                 lParam[1] = new SqlParameter("@TourID", pTourID);
 
 
-                DataSet lds = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString,
-                 "GetChildPaxCount_sp", lParam);
+                DataSet lds = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString,StoredProcedures.GetChildPaxCount_sp, lParam);
 
                 //---------------------Setting the child Fare--------------
                 try
@@ -1749,7 +1748,7 @@ namespace SouthernTravelIndiaAgent
             DataSet dsSpecialCar = null;
             int returnType = 0;
 
-            string SpecialCarSP = "GetSpecialTourCarType_sp";
+            string SpecialCarSP = StoredProcedures.GetSpecialTourCarType_sp;
             SqlParameter[] param = new SqlParameter[2];
 
             try
@@ -1781,7 +1780,7 @@ namespace SouthernTravelIndiaAgent
 
             try
             {
-                string VehiclePaxSP = "GetSplTourCarVehPax_New_sp";
+                string VehiclePaxSP = StoredProcedures.GetSplTourCarVehPax_New_sp;
                 SqlParameter[] param = new SqlParameter[3];
 
                 param[0] = new SqlParameter("@JDate", fldJourneyDate);
@@ -2228,7 +2227,7 @@ namespace SouthernTravelIndiaAgent
                 }
 
 
-                string GetServiceChargeDetails = "GST_GetStateByCountryId_SP";
+                string GetServiceChargeDetails = StoredProcedures.GST_GetStateByCountryId_SP;
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@i_CountryID", "1"); //to get the all service list
                 dscars = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, GetServiceChargeDetails, param);

@@ -115,936 +115,936 @@
         }
     </style>
 
-    <script type="text/javascript">
-
-        $(function() {
-            var checkInDate = $('#txtarr');
-            var checkOutDate = $('#txtdep');
-            var dt = '';
-            $("#txtarr").datepicker({
-
-                numberOfMonths: 2,
-                showOn: "button", autoSize: true,
-                buttonImage: "../Assets/images/cal.gif",
-                buttonImageOnly: true,
-                minDate: new Date(),
-                closeText: 'Close',
-                dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date',
-                onSelect: function(date) {
-
-                    dt = checkInDate.datepicker('getDate');
-                    var Tow = dt;
-                    Tow.setDate(dt.getDate() + 1); //get yesterday's date
-                    //alert(Tow);
-                    $('#txtdep').datepicker('option', 'defaultDate', new Date(dt));
-                    $("#txtdep").datepicker("option", "minDate", new Date(dt));
-                    $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
-                    $('img.ui-datepicker-trigger').addClass('DatePickerImage');
-                },
-                onClose: function clearEndDate(date, inst) {
-
-                    if (dt == '') {
-                        checkOutDate.val('');
-                    }
-                    else {
-                        var today = new Date(dt);
-                        var dd = today.getDate();
-                        var mm = today.getMonth() + 1; //January is 0!
-                        var yyyy = today.getFullYear();
-                        if (dd < 10) { dd = '0' + dd }
-                        if (mm < 10) { mm = '0' + mm }
-
-                        checkOutDate.val(dd + '/' + mm + '/' + yyyy);
-                    }
-                }
-            });
-
-
-            $("#txtdep").datepicker({
-                numberOfMonths: 2,
-                //  maxDate:"+4Y",
-                buttonImage: "../Assets/images/cal.gif",
-                buttonImageOnly: true,
-                minDate: new Date(), dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date',
-                showOn: 'button', autoSize: true,
-                closeText: 'Close', onSelect: function() { }
-
-            });
-            $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
-            $('img.ui-datepicker-trigger').addClass('DatePickerImage');
-        });
-
-        $(function() {
-
-
-            $("#txtpaydate").datepicker({
-
-                numberOfMonths: 1,
-                showOn: "button", autoSize: true,
-                buttonImage: "../Assets/images/cal.gif",
-                buttonImageOnly: true,
-                minDate: new Date(),
-                closeText: 'Close',
-                dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date'
-            });
-            $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
-            $('img.ui-datepicker-trigger').addClass('DatePickerImage');
-        });
-	
-	
-    </script>
-
-    <script language="javascript" type="text/javascript">
-        function isNumberKey(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 48 || charCode > 57))
-                return false;
-            return true;
-        }
-        function datecheck() {
-
-            document.getElementById('<%=txtdep.ClientID %>').value = "";
-            document.getElementById('<%=ddlarrivalhr.ClientID %>').value = '0';
-            document.getElementById('<%=ddlarrivalmin.ClientID %>').value = '0';
-            document.getElementById('<%=ddlDeparture.ClientID %>').value = '0';
-            document.getElementById('<%=ddlDeparturemin.ClientID %>').value = '0';
-
-        }
-
-
-
-        function calcamount(indexID) {
-            validate1();
-            //***********************************************************************
-            calcdays();
-            //******************************************************************************************* 
-
-            var sfareamount = 0;
-            var sTaxfareamount = 0;
-            var snooftotaldays = 1;
-            if (Trim(document.getElementById("txttotaldays").value) != "") {
-                snooftotaldays = parseInt(document.getElementById('txttotaldays').value);
-            }
-            //alert(document.getElementById("txttotaldays").value);
-            //alert(document.getElementById("txtnodays1").value);
-
-            var noofdays = document.getElementById("txtnodays1").value;
-            var TotalDays = document.getElementById("txtnodays1").value;
-
-            var grid = document.getElementById('<%= this.gvRoomType.ClientID %>');
-
-            var ddlRoom = document.getElementById("ddlNoRoom").value;
-            var ddlAdults = document.getElementById("ddlAdults").value;
-            var ddlChilds = document.getElementById("ddlChilds").value;
-
-            var hdFare = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[1];
-            var hdDisFare = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[3];
-            var Disnoofdays = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[4];
-            var hdOrgFare = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[5];
-
-            //alert(Disnoofdays.value);
-            var room = ddlRoom;
-
-            var val = hdFare.value;
-            var DisCountFare = 0;
-
-
-            // alert(DisCountFare);
-            var val = hdFare.value;
-
-            if (room != "0") {
-
-                var Extval = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[2].value;
-                debugger;
-                var lCWOBed = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[9].value;
-                debugger;
-                var chkval = 0;
-                if (ddlAdults != 0) {
-                    var Adults = ddlAdults;
-
-                    var SelValue = 0;
-                    var myindex = ddlAdults.length;
-                    for (var k = 0; k < ddlAdults.length; k++) {
-                        SelValue = ddlAdults;
-                        var SelText = ddlAdults;
-                    }
-                    if (parseInt(Adults) > (2 * parseInt(room))) {
-                        chkval = parseInt(Adults) % (2 * parseInt(room));
-                    }
-                }
-                if (parseInt(Disnoofdays.value) > 0) {
-                    noofdays = parseInt(noofdays) - parseInt(Disnoofdays.value);
-                    DisCountFare = parseInt(DisCountFare) + (parseInt(Disnoofdays.value) * parseInt(hdDisFare.value) * parseInt(room));
-                }
-                if (noofdays == 0) {
-                    sfareamount = DisCountFare + sfareamount;
-                    sTaxfareamount = sTaxfareamount + (parseInt(hdOrgFare.value) * parseInt(room) * parseInt(TotalDays));
-                }
-                else {
-                    sfareamount = DisCountFare + sfareamount + (parseInt(val) * parseInt(room)) * parseInt(noofdays);
-                    sTaxfareamount = sTaxfareamount + (parseInt(hdOrgFare.value) * parseInt(room)) * parseInt(TotalDays);
-                }
-                // alert(sTaxfareamount);
-                if (chkval > 0) {
-                    if (parseInt(Disnoofdays.value) > 0) {
-                        noofdays = parseInt(noofdays) + parseInt(Disnoofdays.value);
-                    }
-
-
-
-                    sfareamount = sfareamount + (parseInt(Extval) * parseInt(chkval) * parseInt(noofdays));
-                    sTaxfareamount = sTaxfareamount + (parseInt(Extval) * parseInt(chkval)) * parseInt(TotalDays);
-
-                }
-                // Add Child without bed calculation here in sfareamount and sTaxfareamount
-                if (document.getElementById('hdnIsCalCWBFare').value == "1") {
-                    sfareamount = sfareamount + (parseInt(lCWOBed) * parseInt(noofdays) * parseInt(document.getElementById('hdnTotalCWB').value));
-                    sTaxfareamount = sTaxfareamount;  //+ (parseInt(lCWOBed) * parseInt(TotalDays) * parseInt(document.getElementById('hdnTotalCWB').value));
-                }
-                // End of  Add Child without bed calculation here in sfareamount and sTaxfareamount
-            }
-            document.getElementById('txtamt').value = sfareamount;
-            var stPerCent = document.getElementById("stax").value;
-            var stLTPerCent = document.getElementById("LTstax").value;
-            var staxVal = Math.round(parseFloat((eval(sTaxfareamount) * eval(stPerCent)) / 100));
-            var LTstaxVal = Math.round(parseFloat((eval(sTaxfareamount) * eval(stLTPerCent)) / 100));
-
-            document.getElementById("txttax").value = parseFloat(LTstaxVal) + parseFloat(staxVal);
-            var staxvalue = document.getElementById("txttax").value;
-            var jtotalwithtax = parseFloat(sfareamount) + parseFloat(staxvalue);
-            document.getElementById("txttotalamtwithtax").value = Math.round(jtotalwithtax);
-
-
-        }
-
-        function paymenttype() {
-            if (document.getElementById('DDLPaymode')) {
-                if (document.getElementById('DDLPaymode').value == "1") {
-                    document.getElementById("txtBankname").value = "";
-                    document.getElementById("txtChequeNo").value = "";
-                    document.getElementById("txtpaydate").value = "";
-                    document.getElementById("txtBankname").readOnly = true;
-                    document.getElementById("txtChequeNo").readOnly = true;
-                    //document.getElementById("txtpaydate").readOnly = true;
-
-                }
-                else {
-                    if (document.getElementById('DDLPaymode').value == "2") {
-                        document.getElementById("paymnetNo").innerHTML = "Trans No :";
-                    }
-                    else {
-                        document.getElementById("paymnetNo").innerHTML = "Cheque/DD No:";
-                    }
-
-                    document.getElementById("txtBankname").readOnly = false;
-                    document.getElementById("txtChequeNo").readOnly = false;
-                    //document.getElementById("txtpaydate").readOnly = false;
-
-                }
-            }
-        }
-        function Emailvalid() {
-
-            if (document.getElementById("txtSearch").value == "") {
-                alert("Please Enter Email Id or Mobile No.");
-                document.getElementById("txtSearch").focus();
-                return false;
-            }
-            else {
-                if (isNaN(document.getElementById("txtSearch").value) == true) {
-                    if ((echeck(document.getElementById("txtSearch").value)) == false) {
-                        document.getElementById("txtSearch").value = "";
-                        document.getElementById("txtSearch").focus();
-                        return false;
-                    }
-                    else {
-                        document.frmbooking.type.value = "email";
-                    }
-
-                }
-                else {
-                    var a = document.getElementById("txtSearch").value;
-                    if ((a.length < 10) | (a.length > 11)) {
-                        alert("Invalid Mobile No")
-                        document.getElementById("txtSearch").value = "";
-                        document.getElementById("txtSearch").focus();
-                        return false;
-                    }
-                    else {
-                        document.frmbooking.type.value = "Mobile";
-                    }
-
-                }
-            }
-
-        }
-        function valid() {
-            var chek = true;
-            if (Trim(document.getElementById("S_name").value) == "") {
-                alert("Please Enter Name.");
-                document.getElementById("S_name").focus();
-                chek = false;
-                return false;
-            }
-
-
-            if (Trim(document.getElementById("S_streetaddress").value) == "") {
-                alert("Please Enter Address.");
-                document.getElementById("S_streetaddress").focus();
-                chek = false;
-                return false;
-            }
-            if (Trim(document.getElementById("txtcity").value) == "" && document.frmbooking.ddlCountry.value == "59") {
-                alert("Please Enter City Name.");
-                document.getElementById("txtcity").focus();
-                chek = false;
-                return false;
-            }
-            if (Trim(document.getElementById("txtcity").value) == "" && document.frmbooking.ddlCountry.value == "59") {
-                alert("Please Enter City Name.");
-                document.getElementById("txtcity").focus();
-                chek = false;
-                return false;
-            }
-            if (Trim(document.getElementById("ddlState").value) == "") {
-                alert("Please Select State Name.");
-                document.getElementById("ddlState").focus();
-                chek = false;
-                return false;
-            }
-            if (Trim(document.getElementById("txtmobile").value) == "") {
-                alert("Please Enter Mobile No.");
-                document.frmbooking.txtmobile.focus();
-                chek = false;
-                return false;
-            }
-            if (Trim(document.getElementById("txtAlternateMobileNo").value) == "") {
-                alert("Please Enter Emergency Contact No.");
-                document.frmbooking.txtAlternateMobileNo.focus();
-                chek = false;
-                return false;
-            }
-
-            /*if (Trim(document.getElementById("S_email").value) == "")
-            {
-            alert("Please Enter Email Id.");
-            document.getElementById("S_email").focus();		
-            chek = false;
-            return false;
-            }
-            if(echeck(document.getElementById("S_email").value)==false)
-            {
-            document.getElementById("S_email").value = "";
-            document.getElementById("S_email").focus();
-            chek = false;
-            return false;
-            }*/
-            if (Trim(document.getElementById("S_email").value) != "") {
-                if (echeck(document.getElementById("S_email").value) == false) {
-                    document.getElementById("S_email").value = "";
-                    document.getElementById("S_email").focus();
-                    chek = false;
-                    return false;
-                }
-            }
-            if (document.getElementById('chkPickUp').checked) {
-                //	
-
-                if ((!document.getElementById('RadFlight').checked) && (!document.getElementById('RadTrain').checked) && (!document.getElementById('RadBus').checked)) {
-                    alert("Please choose the pickUp option");
-                    chek = false;
-                    return false;
-                }
-                if ((document.getElementById('RadFlight').checked)) {
-
-                    if (document.getElementById("txtpickVehicleNo").value == "Select") {
-                        alert("Please choose flight type");
-                        document.getElementById("txtpickVehicleNo").focus();
-                        chek = false;
-                        return false;
-                    }
-                    if ((document.getElementById("ddlPkHrs").value == "") || (document.getElementById("ddlPkMints").value == "")) {
-                        alert("Please Select the  time.");
-                        if (document.getElementById("ddlPkMints").value == "")
-                            document.getElementById("ddlPkMints").focus();
-                        if (document.getElementById("ddlPkHrs").value == "")
-                            document.getElementById("ddlPkHrs").focus();
-
-                        chek = false;
-                        return false;
-                    }
-                    if (Trim(document.getElementById("txtFlightNo").value) == "") {
-                        alert("Please enter Flight No ");
-                        document.getElementById("txtFlightNo").focus();
-
-                        chek = false;
-                        return false;
-                    }
-                }
-                else if ((document.getElementById('RadTrain').checked)) {
-                    if (Trim(document.getElementById("txtRlyStationName").value) == "") {
-                        alert("Please enter station name");
-                        document.getElementById("txtRlyStationName").focus();
-
-                        chek = false;
-                        return false;
-                    }
-                    if ((document.getElementById("ddlTrainPkHr").value == "") || (document.getElementById("ddlTrainPkMin").value == "")) {
-                        alert("Please Select the  time.");
-                        if (document.getElementById("ddlTrainPkMin").value == "")
-                            document.getElementById("ddlTrainPkMin").focus();
-                        if (document.getElementById("ddlTrainPkHr").value == "")
-                            document.getElementById("ddlTrainPkHr").focus();
-
-                        chek = false;
-                        return false;
-                    }
-                    if (Trim(document.getElementById("txtTrainNo").value) == "") {
-                        alert("Please enter Train No ");
-                        document.getElementById("txtTrainNo").focus();
-
-                        chek = false;
-                        return false;
-                    }
-                }
-                else if ((document.getElementById('RadBus').checked)) {
-                    if (Trim(document.getElementById("txtAddr").value) == "") {
-                        alert("Please enter Pickup address");
-                        document.getElementById("txtAddr").focus();
-
-                        chek = false;
-                        return false;
-                    }
-                    if (Trim(document.getElementById("txtStreet").value) == "") {
-                        alert("Please enter Street");
-                        document.getElementById("txtStreet").focus();
-                        chek = false;
-
-                        return false;
-                    }
-                }
-            }
-
-            if (chek) {
-                document.getElementById('Submit').style.display = 'none';
-            }
-            return chek;
-        }
-
-
-        function validateRadioButtonList(radioButtonListId) {
-            var listItemArray = document.getElementsByName(radioButtonListId);
-            var isItemChecked = false;
-            for (var i = 0; i < listItemArray.length; i++) {
-                var listItem = listItemArray[i];
-
-                if (listItem.checked) {
-                    isItemChecked = true;
-                }
-            }
-            if (isItemChecked == false) {
-                alert("Please select Occupants.");
-                return false;
-            }
-            return true;
-        }
-        function validate() {
-
-            if (document.getElementById("ddlCity").value == "0") {
-                alert("Please select City.");
-                document.getElementById("ddlCity").focus();
-                return false;
-            }
-            if (document.getElementById("ddlHotel").value == "" || document.getElementById("ddlHotel").value == "0") {
-                alert("Please select Hotel.");
-                document.getElementById("ddlHotel").focus();
-                return false;
-            }
-
-            if (Trim(document.getElementById("txtarr").value) == "" || document.getElementById("txtarr").value == "dd/mm/yyyy") {
-                alert('Please Select CheckIn Date.');
-                document.getElementById("txtarr").focus();
-                return false;
-            }
-
-            if (Trim(document.getElementById("txtdep").value) == "" || document.getElementById("txtdep").value == "dd/mm/yyyy") {
-                alert('Please Select CheckOut Date.');
-                document.getElementById("txtdep").focus();
-                return false;
-            }
-            if (validateRadioButtonList('<%= rbtOccupants.ClientID %>') == false) {
-                return false;
-            }
-            if (Trim(document.getElementById("ddlNoRoom").value) == "0" || document.getElementById("ddlNoRoom").value == "") {
-                alert('Please Select No of Rooms.');
-                document.getElementById("ddlNoRoom").focus();
-                return false;
-            }
-            if (Trim(document.getElementById("ddlAdults").value) == "0" || document.getElementById("ddlAdults").value == "") {
-                alert('Please Select No of Adults.');
-                document.getElementById("ddlAdults").focus();
-                return false;
-            }
-        }
-        function validate1() {
-
-            if (document.getElementById("ddlCity").value == "0") {
-                alert("Please select City.");
-                document.getElementById("ddlCity").focus();
-                return false;
-            }
-            if (document.getElementById("ddlHotel").value == "" || document.getElementById("ddlHotel").value == "0") {
-                alert("Please select Hotel.");
-                document.getElementById("ddlHotel").focus();
-                return false;
-            }
-            if (Trim(document.getElementById("txtarr").value) == "" || document.getElementById("txtarr").value == "dd/mm/yyyy") {
-                alert('Please Select CheckIn Date.');
-                document.getElementById("txtarr").focus();
-                return false;
-            }
-
-            if (Trim(document.getElementById("txtdep").value) == "" || document.getElementById("txtdep").value == "dd/mm/yyyy") {
-                alert('Please Select CheckOut Date.');
-                document.getElementById("txtdep").focus();
-                return false;
-            }
-            if (validateRadioButtonList('<%= rbtOccupants.ClientID %>') == false) {
-                return false;
-            }
-            if (Trim(document.getElementById("ddlNoRoom").value) == "0" || document.getElementById("ddlNoRoom").value == "") {
-                alert('Please Select No of Rooms.');
-                document.getElementById("ddlNoRoom").focus();
-                return false;
-            }
-            if (Trim(document.getElementById("ddlAdults").value) == "0" || document.getElementById("ddlAdults").value == "") {
-                alert('Please Select No of Adults.');
-                document.getElementById("ddlAdults").focus();
-                return false;
-            }
-        }
-        function checknumber() {
-
-            var kk
-            kk = event.keyCode
-            if (event.shiftKey) return false;
-            //alert(kk);
-            if ((kk >= 96 && kk <= 105) || (kk >= 48 && kk <= 57) || kk == 8 || kk == 190 || kk == 110 || kk == 9 || kk == 35 || kk == 36 || kk == 37 || kk == 38 || kk == 39 || kk == 40 || kk == 46) {
-                return true;
-            }
-            return false;
-        }
-
-        function chkNumeric() {
-            if (event.shiftKey) return false;
-            if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40 && event.keyCode != 46 && event.keyCode != 13 && event.keyCode != 116 && event.keyCode != 16 && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 9 && event.keyCode != 110) event.returnValue = false;
-        }
-
-        function CheckOnlyCharacter() {
-            var kk
-            kk = event.keyCode
-            if ((kk >= 65 && kk <= 90) || kk == 32 || kk == 8 || kk == 9 || kk == 127 || kk == 16 || kk == 20 || kk == 46) {
-                return true;
-            }
-            alert("Please enter characters only.");
-            return false;
-        }
-        function echeck(str) {
-            var at = "@"
-            var dot = "."
-            var und = "_"
-            var lat = str.indexOf(at)
-            var lstr = str.length
-            var ldot = str.indexOf(dot)
-            if (str.indexOf(at) == -1) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if (str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if (str.indexOf(at, (lat + 1)) != -1) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if (str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if (str.indexOf(dot, (lat + 2)) == -1) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if (str.indexOf(" ") != -1) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if ((str.indexOf("..") > -1) || (str.substring(str.length - 1, str.length) == dot)) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            if ((str.substring(0, 1) == und)) {
-                alert("Invalid E-mail ID.")
-                return false
-            }
-            return true
-        }
-
-        function calcdaysold() {
-            var dbd;
-            var chrs;
-
-            if (Trim(document.getElementById("txtdep").value) != "") {
-                if ((document.getElementById("txtarr").value != "") && (document.getElementById("txtdep").value != "")) {
-                    var startDate = document.getElementById('txtarr').value;
-                    var startArr = new Array(3)
-                    startArr = startDate.split("/")
-                    var vdd = startArr[0];
-                    if (vdd.length == 1)
-                        vdd = "0" + vdd
-                    var vmm = startArr[1];
-                    if (vmm.length == 1)
-                        vmm = "0" + vmm
-                    var vyy = startArr[2];
-                    var yyyymmdd = vyy + '' + vmm + '' + vdd;
-
-                    var endDate = document.getElementById('txtdep').value;
-                    var endArr = new Array(3)
-                    endArr = endDate.split("/")
-                    var vdd1 = endArr[0];
-                    if (vdd1.length == 1)
-                        vdd1 = "0" + vdd1
-                    var vmm1 = endArr[1];
-                    if (vmm1.length == 1)
-                        vmm1 = "0" + vmm1
-                    var vyy1 = endArr[2];
-                    var yyyymmdd1 = vyy1 + '' + vmm1 + '' + vdd1;
-
-                    var depttime = document.getElementById('ddlDeparture').value;
-                    var deptampm = document.getElementById('ddlDepartuream').value;
-                    if (deptampm == "PM") {
-                        depttime = parseInt(depttime) + 12;
-                    }
-                    var arrtime = document.getElementById('ddlarrivalhr').value;
-                    var arrampm = document.getElementById('ddlarrivalam').value;
-                    if (arrampm == "PM") {
-                        arrtime = parseInt(arrtime) + 12;
-                    }
-                    if (yyyymmdd > yyyymmdd1) {
-                        alert('Sorry! CheckOut date is less than CheckIn Date. Please Select CheckOut Date again');
-                        document.getElementById('txtarr').focus();
-                        document.getElementById('txtdep').focus();
-
-                        return false;
-                    }
-                    else if (yyyymmdd == yyyymmdd1) {
-
-                        if (parseInt(depttime) == parseInt(arrtime)) {
-                            alert('Sorry! Both CheckIn & CheckOut Date Times Are Equal. Please Select CheckOut Date  Time again');
-                            document.getElementById('ddlarrivalhr').focus();
-                            document.getElementById('ddlDeparture').focus();
-                            return false;
-                        }
-                        if (parseInt(depttime) < parseInt(arrtime)) {
-                            alert('Sorry! CheckOut Time is less than CheckIn Time. Please Select CheckOut Time again');
-                            document.getElementById('ddlarrivalhr').focus();
-                            document.getElementById('ddlDeparture').focus();
-                            return false;
-                        }
-                    }
-
-                    var firstDate = Date.parse(vyy + '/' + vmm + '/' + vdd)
-                    var secondDate = Date.parse(vyy1 + '/' + vmm1 + '/' + vdd1)
-
-                    msPerDay = 24 * 60 * 60 * 1000
-                    dbd = Math.round((secondDate.valueOf() - firstDate.valueOf()) / msPerDay);
-
-                    //chrs=parseInt(depttime)-parseInt(arrtime);
-
-                    //alert('Days:'+dbd);                
-                    //alert('Arr'+arrtime);
-                    //alert('Dep'+depttime);
-                    var ndys = 0;
-                    if (parseInt(dbd) > 0)
-                        ndys = ndys + dbd;
-                    if ((parseInt(arrtime) >= 6) && (parseInt(arrtime) <= 9)) {
-                        //                 if((parseInt(dbd)==0)&&(parseInt(depttime)>8)&&(parseInt(depttime)<10))
-                        //                    ndys=ndys+1;
-                        //                if((parseInt(dbd)==0)&&(parseInt(depttime)>9))
-                        //                    ndys=ndys+1;              
-                        //                if((parseInt(dbd)==0)&&(parseInt(depttime)>13))
-                        //                    ndys=ndys+1;                
-                        if ((parseInt(dbd) == 0))
-                            ndys = ndys + 1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) < 8))
-                            ndys = ndys;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
-                            ndys = ndys;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 9))
-                            ndys = ndys + 1;
-                    }
-                    else if ((parseInt(arrtime) >= 10) && (parseInt(arrtime) <= 13)) {
-                        //ndys=ndys+1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 13))
-                            ndys = ndys;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 10) && (parseInt(depttime) < 13))
-                            ndys = ndys;
-                        //                if((parseInt(dbd)>0)&&(parseInt(depttime)>10))     
-                        //                    ndys=ndys+1;  
-
-
-                    }
-                    else if (parseInt(arrtime) < 6) {
-                        if ((parseInt(dbd) == 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
-                            ndys = ndys + 1;
-                        if ((parseInt(dbd) == 0) && (parseInt(depttime) > 9))
-                            ndys = ndys + 2;
-                        //                if((parseInt(dbd)==0)&&(parseInt(depttime)>13))
-                        //                    ndys=ndys+1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) <= 8))
-                            ndys = ndys + 1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
-                            ndys = ndys + 1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 9))
-                            ndys = ndys + 2;
-                    }
-                    else if (parseInt(arrtime) > 13) {
-                        //                 if((parseInt(dbd)==0)&&(parseInt(depttime)>8)&&(parseInt(depttime)<10))
-                        //                    ndys=ndys+1;
-                        if ((parseInt(dbd) == 0) && (parseInt(depttime) > 13))
-                            ndys = ndys + 1;
-                        //                if((parseInt(dbd)==0)&&(parseInt(depttime)>13))
-                        //                    ndys=ndys+1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) < 8))
-                            ndys = ndys + 1;
-                        if ((parseInt(dbd) > 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
-                            ndys = ndys + 1;
-                    }
-                    alert(ndys);
-                }
-            }
-        }
-
-        function calcdays()//calcdays24HrsSlot()
-        {
-            var dbd;
-            var chrs;
-            if (document.getElementById("txtdep").value != "") {
-                if ((document.getElementById("txtarr").value != "") && (document.getElementById("txtdep").value != "")) {
-                    var startDate = document.getElementById('txtarr').value;
-                    var startArr = new Array(3)
-                    startArr = startDate.split("/")
-                    var vdd = startArr[0];
-                    if (vdd.length == 1)
-                        vdd = "0" + vdd
-                    var vmm = startArr[1];
-                    if (vmm.length == 1)
-                        vmm = "0" + vmm
-                    var vyy = startArr[2];
-                    var yyyymmdd = vyy + '' + vmm + '' + vdd;
-
-                    var endDate = document.getElementById('txtdep').value;
-                    var endArr = new Array(3)
-                    endArr = endDate.split("/")
-                    var vdd1 = endArr[0];
-                    if (vdd1.length == 1)
-                        vdd1 = "0" + vdd1
-                    var vmm1 = endArr[1];
-                    if (vmm1.length == 1)
-                        vmm1 = "0" + vmm1
-                    var vyy1 = endArr[2];
-                    var yyyymmdd1 = vyy1 + '' + vmm1 + '' + vdd1;
-
-                    var depttime = document.getElementById('ddlDeparture').value;
-                    depttime = parseInt(depttime)
-                    var arrtime = document.getElementById('ddlarrivalhr').value;
-                    arrtime = parseInt(arrtime)
-                    if (yyyymmdd > yyyymmdd1) {
-                        alert('Sorry! CheckOut date is less than Checkin Date. Please Select CheckOut Date again');
-                        document.getElementById('txtarr').focus();
-                        document.getElementById('txtdep').focus();
-                        return false;
-                    }
-                    else if (yyyymmdd == yyyymmdd1) {
-                        if (parseInt(depttime) == parseInt(arrtime)) {
-                            alert('Sorry! Both Checkin & CheckOut Date Times Are Equal. Please Select Checkout Date  Time again');
-                            document.getElementById('ddlarrivalhr').focus();
-                            document.getElementById('ddlDeparture').focus();
-                            return false;
-                        }
-                        if (parseInt(depttime) < parseInt(arrtime)) {
-                            alert('Sorry! CheckOut Time is less than Checkin Time. Please Select Checkout Time again');
-                            document.getElementById('ddlarrivalhr').focus();
-                            document.getElementById('ddlDeparture').focus();
-                            return false;
-                        }
-                    }
-                    // *************************
-                    // START --Determine Check-In Check-Out Time Slot
-                    // *************************
-                    var HrsAlwdB4Checkin = 0;
-                    var ActualStartTime = 0;
-                    var lCheckOutBuffer = 0;
-
-                    if (document.getElementById('<%=hdnTimeSlot.ClientID%>').value == "" || document.getElementById('<%= hdnTimeSlot.ClientID%>').value == "812hrs") {
-                        if (arrtime >= 11 || arrtime <= 3) {
-                            ActualStartTime = 12;
-                            HrsAlwdB4Checkin = 1;
-                        }
-                        else {
-                            ActualStartTime = 8;
-                            HrsAlwdB4Checkin = 4;
-                        }
-                        lCheckOutBuffer = 2;
-                    }
-                    else {
-                        ActualStartTime = arrtime;
-                        HrsAlwdB4Checkin = 1;
-                        lCheckOutBuffer = 1;
-                    }
-                    // *************************
-                    // END --Determine Check-In Check-Out Time Slot
-                    // *************************                
-                    date1 = new Date();
-                    date2 = new Date();
-                    diff = new Date();
-
-                    date1temp = new Date(vmm + '/' + vdd + '/' + vyy + " " + ActualStartTime + ":00:00");
-                    date1.setTime(date1temp.getTime());
-
-                    date2temp = new Date(vmm1 + '/' + vdd1 + '/' + vyy1 + " " + ActualStartTime + ":00:00");
-                    date2.setTime(date2temp.getTime());
-
-                    diff.setTime(Math.abs(date1.getTime() - date2.getTime()));
-
-                    timediff = diff.getTime();
-
-                    days = Math.floor(timediff / (1000 * 60 * 60 * 24));
-                    timediff -= days * (1000 * 60 * 60 * 24);
-
-                    hours = Math.floor(timediff / (1000 * 60 * 60));
-                    timediff -= hours * (1000 * 60 * 60);
-                    //alert(days);
-                    //alert(hours);				
-                    //*******************
-                    var firstDate = Date.parse(vyy + '/' + vmm + '/' + vdd)
-                    var secondDate = Date.parse(vyy1 + '/' + vmm1 + '/' + vdd1)
-                    var TotalMS = (((days * 24) + hours) * 60 * 60 * 1000);
-                    msPerDay = 24 * 60 * 60 * 1000
-                    dbd = parseInt((TotalMS / msPerDay));
-
-                    if ((arrtime <= (ActualStartTime + lCheckOutBuffer)) && (arrtime >= (ActualStartTime - HrsAlwdB4Checkin))) {
-                        if (days > 0) {
-                            // On Time Arrival
-                            if (depttime > (ActualStartTime + lCheckOutBuffer)) {
-                                // Late Departure
-                                dbd = parseInt(dbd + 1);
-                            }
-                        }
-                        else {
-                            dbd = 1;
-                        }
-                    }
-                    else {
-                        // Late Arrival
-                        var TotalHrs = 0;
-                        var TotaDays = 0;
-                        if (arrtime < (ActualStartTime - HrsAlwdB4Checkin)) {
-                            TotaDays += 1;
-                        }
-                        if (depttime > (ActualStartTime + lCheckOutBuffer)) {
-                            // Late Departure
-                            TotalHrs += depttime - ActualStartTime;
-                            TotaDays += 1;
-                        }
-                        TotaDays += days;
-                        dbd = TotaDays;
-                    }
-                    document.getElementById("txtnodays1").value = dbd;
-                }
-            }
-        }
-    </script>
-
-    <script language="javascript" type="text/javascript">
-        function fnMd5(saltval) {
-            encpass = hex_md5(saltval);
-            document.getElementById('tmpEnValue').value = encpass;
-            return true;
-        }
-    </script>
-
-    <script type="text/javascript">
-        function VerifyGuestDeatils() {
-
-            var guestgrid = document.getElementById('<%= grdGuestDetails.ClientID %>');
-            var i = 1;
-            if (guestgrid.rows.length > 0) {
-                var controls = guestgrid.getElementsByTagName("*");
-                //Loop through the fetched controls.
-                for (var i = 0; i < controls.length; i++) {
-
-                    if (controls[i].id.indexOf("txtGuestType") != -1) {
-                        txtGuestType = controls[i];
-                        //alert(txtGuestType.value);
-                    }
-
-                    if (controls[i].id.indexOf("txtName") != -1) {
-                        txtName = controls[i];
-
-                        if (txtName.value == '') {
-                            alert('Please enter guest name');
-                            txtName.focus();
-                            return false;
-                            break;
-                        }
-
-                    }
-
-                    if (controls[i].id.indexOf("txtAge") != -1) {
-                        txtage = controls[i];
-                        if (txtage.value == '') {
-                            alert('Please enter guest age');
-                            txtage.focus();
-                            return false;
-                            break;
-                        }
-                    }
-
-                    if (controls[i].id.indexOf("ddlGender") != -1) {
-                        ddlGender = controls[i];
-                        if (ddlGender.value == '0') {
-                            alert('Please select  guest gender');
-                            ddlGender.focus();
-                            return false;
-                            break;
-                        }
-
-                    }
-
-                }
-            }
-        }
-    
-    </script>
-
-    <script type="text/javascript">
-        function chkNumericForage(evt) {
-            var charCode = (evt.which) ? evt.which : event.keyCode
-            if (charCode > 31 && (charCode < 45 || charCode > 57) || (charCode == 47 || charCode == 45 || charCode == 46))
-                return false;
-            return true;
-        }
-    </script>
-
 </head>
 <body>
     <form id="form1" runat="server" defaultbutton="Submit">
+         <script type="text/javascript">
+
+             $(function () {
+                 var checkInDate = $('#txtarr');
+                 var checkOutDate = $('#txtdep');
+                 var dt = '';
+                 $("#txtarr").datepicker({
+
+                     numberOfMonths: 2,
+                     showOn: "button", autoSize: true,
+                     buttonImage: "../Assets/images/cal.gif",
+                     buttonImageOnly: true,
+                     minDate: new Date(),
+                     closeText: 'Close',
+                     dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date',
+                     onSelect: function (date) {
+
+                         dt = checkInDate.datepicker('getDate');
+                         var Tow = dt;
+                         Tow.setDate(dt.getDate() + 1); //get yesterday's date
+                         //alert(Tow);
+                         $('#txtdep').datepicker('option', 'defaultDate', new Date(dt));
+                         $("#txtdep").datepicker("option", "minDate", new Date(dt));
+                         $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
+                         $('img.ui-datepicker-trigger').addClass('DatePickerImage');
+                     },
+                     onClose: function clearEndDate(date, inst) {
+
+                         if (dt == '') {
+                             checkOutDate.val('');
+                         }
+                         else {
+                             var today = new Date(dt);
+                             var dd = today.getDate();
+                             var mm = today.getMonth() + 1; //January is 0!
+                             var yyyy = today.getFullYear();
+                             if (dd < 10) { dd = '0' + dd }
+                             if (mm < 10) { mm = '0' + mm }
+
+                             checkOutDate.val(dd + '/' + mm + '/' + yyyy);
+                         }
+                     }
+                 });
+
+
+                 $("#txtdep").datepicker({
+                     numberOfMonths: 2,
+                     //  maxDate:"+4Y",
+                     buttonImage: "../Assets/images/cal.gif",
+                     buttonImageOnly: true,
+                     minDate: new Date(), dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date',
+                     showOn: 'button', autoSize: true,
+                     closeText: 'Close', onSelect: function () { }
+
+                 });
+                 $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
+                 $('img.ui-datepicker-trigger').addClass('DatePickerImage');
+             });
+
+             $(function () {
+
+
+                 $("#txtpaydate").datepicker({
+
+                     numberOfMonths: 1,
+                     showOn: "button", autoSize: true,
+                     buttonImage: "../Assets/images/cal.gif",
+                     buttonImageOnly: true,
+                     minDate: new Date(),
+                     closeText: 'Close',
+                     dateFormat: 'dd/mm/yy', buttonText: 'Choose a Date'
+                 });
+                 $('img.ui-datepicker-trigger').css({ 'cursor': 'pointer', "vertical-align": 'top' });
+                 $('img.ui-datepicker-trigger').addClass('DatePickerImage');
+             });
+
+
+         </script>
+
+ <script language="javascript" type="text/javascript">
+     function isNumberKey(evt) {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 48 || charCode > 57))
+             return false;
+         return true;
+     }
+     function datecheck() {
+
+         document.getElementById('<%=txtdep.ClientID %>').value = "";
+         document.getElementById('<%=ddlarrivalhr.ClientID %>').value = '0';
+         document.getElementById('<%=ddlarrivalmin.ClientID %>').value = '0';
+         document.getElementById('<%=ddlDeparture.ClientID %>').value = '0';
+         document.getElementById('<%=ddlDeparturemin.ClientID %>').value = '0';
+
+     }
+
+
+
+     function calcamount(indexID) {
+         validate1();
+         //***********************************************************************
+         calcdays();
+         //******************************************************************************************* 
+
+         var sfareamount = 0;
+         var sTaxfareamount = 0;
+         var snooftotaldays = 1;
+         if (Trim(document.getElementById("txttotaldays").value) != "") {
+             snooftotaldays = parseInt(document.getElementById('txttotaldays').value);
+         }
+         //alert(document.getElementById("txttotaldays").value);
+         //alert(document.getElementById("txtnodays1").value);
+
+         var noofdays = document.getElementById("txtnodays1").value;
+         var TotalDays = document.getElementById("txtnodays1").value;
+
+         var grid = document.getElementById('<%= this.gvRoomType.ClientID %>');
+
+         var ddlRoom = document.getElementById("ddlNoRoom").value;
+         var ddlAdults = document.getElementById("ddlAdults").value;
+         var ddlChilds = document.getElementById("ddlChilds").value;
+
+         var hdFare = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[1];
+         var hdDisFare = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[3];
+         var Disnoofdays = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[4];
+         var hdOrgFare = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[5];
+
+         //alert(Disnoofdays.value);
+         var room = ddlRoom;
+
+         var val = hdFare.value;
+         var DisCountFare = 0;
+
+
+         // alert(DisCountFare);
+         var val = hdFare.value;
+
+         if (room != "0") {
+
+             var Extval = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[2].value;
+             debugger;
+             var lCWOBed = grid.rows[indexID + 1].cells[1].getElementsByTagName("*")[9].value;
+             debugger;
+             var chkval = 0;
+             if (ddlAdults != 0) {
+                 var Adults = ddlAdults;
+
+                 var SelValue = 0;
+                 var myindex = ddlAdults.length;
+                 for (var k = 0; k < ddlAdults.length; k++) {
+                     SelValue = ddlAdults;
+                     var SelText = ddlAdults;
+                 }
+                 if (parseInt(Adults) > (2 * parseInt(room))) {
+                     chkval = parseInt(Adults) % (2 * parseInt(room));
+                 }
+             }
+             if (parseInt(Disnoofdays.value) > 0) {
+                 noofdays = parseInt(noofdays) - parseInt(Disnoofdays.value);
+                 DisCountFare = parseInt(DisCountFare) + (parseInt(Disnoofdays.value) * parseInt(hdDisFare.value) * parseInt(room));
+             }
+             if (noofdays == 0) {
+                 sfareamount = DisCountFare + sfareamount;
+                 sTaxfareamount = sTaxfareamount + (parseInt(hdOrgFare.value) * parseInt(room) * parseInt(TotalDays));
+             }
+             else {
+                 sfareamount = DisCountFare + sfareamount + (parseInt(val) * parseInt(room)) * parseInt(noofdays);
+                 sTaxfareamount = sTaxfareamount + (parseInt(hdOrgFare.value) * parseInt(room)) * parseInt(TotalDays);
+             }
+             // alert(sTaxfareamount);
+             if (chkval > 0) {
+                 if (parseInt(Disnoofdays.value) > 0) {
+                     noofdays = parseInt(noofdays) + parseInt(Disnoofdays.value);
+                 }
+
+
+
+                 sfareamount = sfareamount + (parseInt(Extval) * parseInt(chkval) * parseInt(noofdays));
+                 sTaxfareamount = sTaxfareamount + (parseInt(Extval) * parseInt(chkval)) * parseInt(TotalDays);
+
+             }
+             // Add Child without bed calculation here in sfareamount and sTaxfareamount
+             if (document.getElementById('hdnIsCalCWBFare').value == "1") {
+                 sfareamount = sfareamount + (parseInt(lCWOBed) * parseInt(noofdays) * parseInt(document.getElementById('hdnTotalCWB').value));
+                 sTaxfareamount = sTaxfareamount;  //+ (parseInt(lCWOBed) * parseInt(TotalDays) * parseInt(document.getElementById('hdnTotalCWB').value));
+             }
+             // End of  Add Child without bed calculation here in sfareamount and sTaxfareamount
+         }
+         document.getElementById('txtamt').value = sfareamount;
+         var stPerCent = document.getElementById("stax").value;
+         var stLTPerCent = document.getElementById("LTstax").value;
+         var staxVal = Math.round(parseFloat((eval(sTaxfareamount) * eval(stPerCent)) / 100));
+         var LTstaxVal = Math.round(parseFloat((eval(sTaxfareamount) * eval(stLTPerCent)) / 100));
+
+         document.getElementById("txttax").value = parseFloat(LTstaxVal) + parseFloat(staxVal);
+         var staxvalue = document.getElementById("txttax").value;
+         var jtotalwithtax = parseFloat(sfareamount) + parseFloat(staxvalue);
+         document.getElementById("txttotalamtwithtax").value = Math.round(jtotalwithtax);
+
+
+     }
+
+     function paymenttype() {
+         if (document.getElementById('DDLPaymode')) {
+             if (document.getElementById('DDLPaymode').value == "1") {
+                 document.getElementById("txtBankname").value = "";
+                 document.getElementById("txtChequeNo").value = "";
+                 document.getElementById("txtpaydate").value = "";
+                 document.getElementById("txtBankname").readOnly = true;
+                 document.getElementById("txtChequeNo").readOnly = true;
+                 //document.getElementById("txtpaydate").readOnly = true;
+
+             }
+             else {
+                 if (document.getElementById('DDLPaymode').value == "2") {
+                     document.getElementById("paymnetNo").innerHTML = "Trans No :";
+                 }
+                 else {
+                     document.getElementById("paymnetNo").innerHTML = "Cheque/DD No:";
+                 }
+
+                 document.getElementById("txtBankname").readOnly = false;
+                 document.getElementById("txtChequeNo").readOnly = false;
+                 //document.getElementById("txtpaydate").readOnly = false;
+
+             }
+         }
+     }
+     function Emailvalid() {
+
+         if (document.getElementById("txtSearch").value == "") {
+             alert("Please Enter Email Id or Mobile No.");
+             document.getElementById("txtSearch").focus();
+             return false;
+         }
+         else {
+             if (isNaN(document.getElementById("txtSearch").value) == true) {
+                 if ((echeck(document.getElementById("txtSearch").value)) == false) {
+                     document.getElementById("txtSearch").value = "";
+                     document.getElementById("txtSearch").focus();
+                     return false;
+                 }
+                 else {
+                     document.frmbooking.type.value = "email";
+                 }
+
+             }
+             else {
+                 var a = document.getElementById("txtSearch").value;
+                 if ((a.length < 10) | (a.length > 11)) {
+                     alert("Invalid Mobile No")
+                     document.getElementById("txtSearch").value = "";
+                     document.getElementById("txtSearch").focus();
+                     return false;
+                 }
+                 else {
+                     document.frmbooking.type.value = "Mobile";
+                 }
+
+             }
+         }
+
+     }
+     function valid() {
+         var chek = true;
+         if (Trim(document.getElementById("S_name").value) == "") {
+             alert("Please Enter Name.");
+             document.getElementById("S_name").focus();
+             chek = false;
+             return false;
+         }
+
+
+         if (Trim(document.getElementById("S_streetaddress").value) == "") {
+             alert("Please Enter Address.");
+             document.getElementById("S_streetaddress").focus();
+             chek = false;
+             return false;
+         }
+         if (Trim(document.getElementById("txtcity").value) == "" && document.frmbooking.ddlCountry.value == "59") {
+             alert("Please Enter City Name.");
+             document.getElementById("txtcity").focus();
+             chek = false;
+             return false;
+         }
+         if (Trim(document.getElementById("txtcity").value) == "" && document.frmbooking.ddlCountry.value == "59") {
+             alert("Please Enter City Name.");
+             document.getElementById("txtcity").focus();
+             chek = false;
+             return false;
+         }
+         if (Trim(document.getElementById("ddlState").value) == "") {
+             alert("Please Select State Name.");
+             document.getElementById("ddlState").focus();
+             chek = false;
+             return false;
+         }
+         if (Trim(document.getElementById("txtmobile").value) == "") {
+             alert("Please Enter Mobile No.");
+             document.frmbooking.txtmobile.focus();
+             chek = false;
+             return false;
+         }
+         if (Trim(document.getElementById("txtAlternateMobileNo").value) == "") {
+             alert("Please Enter Emergency Contact No.");
+             document.frmbooking.txtAlternateMobileNo.focus();
+             chek = false;
+             return false;
+         }
+
+         /*if (Trim(document.getElementById("S_email").value) == "")
+         {
+         alert("Please Enter Email Id.");
+         document.getElementById("S_email").focus();		
+         chek = false;
+         return false;
+         }
+         if(echeck(document.getElementById("S_email").value)==false)
+         {
+         document.getElementById("S_email").value = "";
+         document.getElementById("S_email").focus();
+         chek = false;
+         return false;
+         }*/
+         if (Trim(document.getElementById("S_email").value) != "") {
+             if (echeck(document.getElementById("S_email").value) == false) {
+                 document.getElementById("S_email").value = "";
+                 document.getElementById("S_email").focus();
+                 chek = false;
+                 return false;
+             }
+         }
+         if (document.getElementById('chkPickUp').checked) {
+             //	
+
+             if ((!document.getElementById('RadFlight').checked) && (!document.getElementById('RadTrain').checked) && (!document.getElementById('RadBus').checked)) {
+                 alert("Please choose the pickUp option");
+                 chek = false;
+                 return false;
+             }
+             if ((document.getElementById('RadFlight').checked)) {
+
+                 if (document.getElementById("txtpickVehicleNo").value == "Select") {
+                     alert("Please choose flight type");
+                     document.getElementById("txtpickVehicleNo").focus();
+                     chek = false;
+                     return false;
+                 }
+                 if ((document.getElementById("ddlPkHrs").value == "") || (document.getElementById("ddlPkMints").value == "")) {
+                     alert("Please Select the  time.");
+                     if (document.getElementById("ddlPkMints").value == "")
+                         document.getElementById("ddlPkMints").focus();
+                     if (document.getElementById("ddlPkHrs").value == "")
+                         document.getElementById("ddlPkHrs").focus();
+
+                     chek = false;
+                     return false;
+                 }
+                 if (Trim(document.getElementById("txtFlightNo").value) == "") {
+                     alert("Please enter Flight No ");
+                     document.getElementById("txtFlightNo").focus();
+
+                     chek = false;
+                     return false;
+                 }
+             }
+             else if ((document.getElementById('RadTrain').checked)) {
+                 if (Trim(document.getElementById("txtRlyStationName").value) == "") {
+                     alert("Please enter station name");
+                     document.getElementById("txtRlyStationName").focus();
+
+                     chek = false;
+                     return false;
+                 }
+                 if ((document.getElementById("ddlTrainPkHr").value == "") || (document.getElementById("ddlTrainPkMin").value == "")) {
+                     alert("Please Select the  time.");
+                     if (document.getElementById("ddlTrainPkMin").value == "")
+                         document.getElementById("ddlTrainPkMin").focus();
+                     if (document.getElementById("ddlTrainPkHr").value == "")
+                         document.getElementById("ddlTrainPkHr").focus();
+
+                     chek = false;
+                     return false;
+                 }
+                 if (Trim(document.getElementById("txtTrainNo").value) == "") {
+                     alert("Please enter Train No ");
+                     document.getElementById("txtTrainNo").focus();
+
+                     chek = false;
+                     return false;
+                 }
+             }
+             else if ((document.getElementById('RadBus').checked)) {
+                 if (Trim(document.getElementById("txtAddr").value) == "") {
+                     alert("Please enter Pickup address");
+                     document.getElementById("txtAddr").focus();
+
+                     chek = false;
+                     return false;
+                 }
+                 if (Trim(document.getElementById("txtStreet").value) == "") {
+                     alert("Please enter Street");
+                     document.getElementById("txtStreet").focus();
+                     chek = false;
+
+                     return false;
+                 }
+             }
+         }
+
+         if (chek) {
+             document.getElementById('Submit').style.display = 'none';
+         }
+         return chek;
+     }
+
+
+     function validateRadioButtonList(radioButtonListId) {
+         var listItemArray = document.getElementsByName(radioButtonListId);
+         var isItemChecked = false;
+         for (var i = 0; i < listItemArray.length; i++) {
+             var listItem = listItemArray[i];
+
+             if (listItem.checked) {
+                 isItemChecked = true;
+             }
+         }
+         if (isItemChecked == false) {
+             alert("Please select Occupants.");
+             return false;
+         }
+         return true;
+     }
+     function validate() {
+
+         if (document.getElementById("ddlCity").value == "0") {
+             alert("Please select City.");
+             document.getElementById("ddlCity").focus();
+             return false;
+         }
+         if (document.getElementById("ddlHotel").value == "" || document.getElementById("ddlHotel").value == "0") {
+             alert("Please select Hotel.");
+             document.getElementById("ddlHotel").focus();
+             return false;
+         }
+
+         if (Trim(document.getElementById("txtarr").value) == "" || document.getElementById("txtarr").value == "dd/mm/yyyy") {
+             alert('Please Select CheckIn Date.');
+             document.getElementById("txtarr").focus();
+             return false;
+         }
+
+         if (Trim(document.getElementById("txtdep").value) == "" || document.getElementById("txtdep").value == "dd/mm/yyyy") {
+             alert('Please Select CheckOut Date.');
+             document.getElementById("txtdep").focus();
+             return false;
+         }
+         if (validateRadioButtonList('<%= rbtOccupants.ClientID %>') == false) {
+             return false;
+         }
+         if (Trim(document.getElementById("ddlNoRoom").value) == "0" || document.getElementById("ddlNoRoom").value == "") {
+             alert('Please Select No of Rooms.');
+             document.getElementById("ddlNoRoom").focus();
+             return false;
+         }
+         if (Trim(document.getElementById("ddlAdults").value) == "0" || document.getElementById("ddlAdults").value == "") {
+             alert('Please Select No of Adults.');
+             document.getElementById("ddlAdults").focus();
+             return false;
+         }
+     }
+     function validate1() {
+
+         if (document.getElementById("ddlCity").value == "0") {
+             alert("Please select City.");
+             document.getElementById("ddlCity").focus();
+             return false;
+         }
+         if (document.getElementById("ddlHotel").value == "" || document.getElementById("ddlHotel").value == "0") {
+             alert("Please select Hotel.");
+             document.getElementById("ddlHotel").focus();
+             return false;
+         }
+         if (Trim(document.getElementById("txtarr").value) == "" || document.getElementById("txtarr").value == "dd/mm/yyyy") {
+             alert('Please Select CheckIn Date.');
+             document.getElementById("txtarr").focus();
+             return false;
+         }
+
+         if (Trim(document.getElementById("txtdep").value) == "" || document.getElementById("txtdep").value == "dd/mm/yyyy") {
+             alert('Please Select CheckOut Date.');
+             document.getElementById("txtdep").focus();
+             return false;
+         }
+         if (validateRadioButtonList('<%= rbtOccupants.ClientID %>') == false) {
+             return false;
+         }
+         if (Trim(document.getElementById("ddlNoRoom").value) == "0" || document.getElementById("ddlNoRoom").value == "") {
+             alert('Please Select No of Rooms.');
+             document.getElementById("ddlNoRoom").focus();
+             return false;
+         }
+         if (Trim(document.getElementById("ddlAdults").value) == "0" || document.getElementById("ddlAdults").value == "") {
+             alert('Please Select No of Adults.');
+             document.getElementById("ddlAdults").focus();
+             return false;
+         }
+     }
+     function checknumber() {
+
+         var kk
+         kk = event.keyCode
+         if (event.shiftKey) return false;
+         //alert(kk);
+         if ((kk >= 96 && kk <= 105) || (kk >= 48 && kk <= 57) || kk == 8 || kk == 190 || kk == 110 || kk == 9 || kk == 35 || kk == 36 || kk == 37 || kk == 38 || kk == 39 || kk == 40 || kk == 46) {
+             return true;
+         }
+         return false;
+     }
+
+     function chkNumeric() {
+         if (event.shiftKey) return false;
+         if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40 && event.keyCode != 46 && event.keyCode != 13 && event.keyCode != 116 && event.keyCode != 16 && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 9 && event.keyCode != 110) event.returnValue = false;
+     }
+
+     function CheckOnlyCharacter() {
+         var kk
+         kk = event.keyCode
+         if ((kk >= 65 && kk <= 90) || kk == 32 || kk == 8 || kk == 9 || kk == 127 || kk == 16 || kk == 20 || kk == 46) {
+             return true;
+         }
+         alert("Please enter characters only.");
+         return false;
+     }
+     function echeck(str) {
+         var at = "@"
+         var dot = "."
+         var und = "_"
+         var lat = str.indexOf(at)
+         var lstr = str.length
+         var ldot = str.indexOf(dot)
+         if (str.indexOf(at) == -1) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if (str.indexOf(at) == -1 || str.indexOf(at) == 0 || str.indexOf(at) == lstr) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if (str.indexOf(dot) == -1 || str.indexOf(dot) == 0 || str.indexOf(dot) == lstr) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if (str.indexOf(at, (lat + 1)) != -1) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if (str.substring(lat - 1, lat) == dot || str.substring(lat + 1, lat + 2) == dot) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if (str.indexOf(dot, (lat + 2)) == -1) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if (str.indexOf(" ") != -1) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if ((str.indexOf("..") > -1) || (str.substring(str.length - 1, str.length) == dot)) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         if ((str.substring(0, 1) == und)) {
+             alert("Invalid E-mail ID.")
+             return false
+         }
+         return true
+     }
+
+     function calcdaysold() {
+         var dbd;
+         var chrs;
+
+         if (Trim(document.getElementById("txtdep").value) != "") {
+             if ((document.getElementById("txtarr").value != "") && (document.getElementById("txtdep").value != "")) {
+                 var startDate = document.getElementById('txtarr').value;
+                 var startArr = new Array(3)
+                 startArr = startDate.split("/")
+                 var vdd = startArr[0];
+                 if (vdd.length == 1)
+                     vdd = "0" + vdd
+                 var vmm = startArr[1];
+                 if (vmm.length == 1)
+                     vmm = "0" + vmm
+                 var vyy = startArr[2];
+                 var yyyymmdd = vyy + '' + vmm + '' + vdd;
+
+                 var endDate = document.getElementById('txtdep').value;
+                 var endArr = new Array(3)
+                 endArr = endDate.split("/")
+                 var vdd1 = endArr[0];
+                 if (vdd1.length == 1)
+                     vdd1 = "0" + vdd1
+                 var vmm1 = endArr[1];
+                 if (vmm1.length == 1)
+                     vmm1 = "0" + vmm1
+                 var vyy1 = endArr[2];
+                 var yyyymmdd1 = vyy1 + '' + vmm1 + '' + vdd1;
+
+                 var depttime = document.getElementById('ddlDeparture').value;
+                 var deptampm = document.getElementById('ddlDepartuream').value;
+                 if (deptampm == "PM") {
+                     depttime = parseInt(depttime) + 12;
+                 }
+                 var arrtime = document.getElementById('ddlarrivalhr').value;
+                 var arrampm = document.getElementById('ddlarrivalam').value;
+                 if (arrampm == "PM") {
+                     arrtime = parseInt(arrtime) + 12;
+                 }
+                 if (yyyymmdd > yyyymmdd1) {
+                     alert('Sorry! CheckOut date is less than CheckIn Date. Please Select CheckOut Date again');
+                     document.getElementById('txtarr').focus();
+                     document.getElementById('txtdep').focus();
+
+                     return false;
+                 }
+                 else if (yyyymmdd == yyyymmdd1) {
+
+                     if (parseInt(depttime) == parseInt(arrtime)) {
+                         alert('Sorry! Both CheckIn & CheckOut Date Times Are Equal. Please Select CheckOut Date  Time again');
+                         document.getElementById('ddlarrivalhr').focus();
+                         document.getElementById('ddlDeparture').focus();
+                         return false;
+                     }
+                     if (parseInt(depttime) < parseInt(arrtime)) {
+                         alert('Sorry! CheckOut Time is less than CheckIn Time. Please Select CheckOut Time again');
+                         document.getElementById('ddlarrivalhr').focus();
+                         document.getElementById('ddlDeparture').focus();
+                         return false;
+                     }
+                 }
+
+                 var firstDate = Date.parse(vyy + '/' + vmm + '/' + vdd)
+                 var secondDate = Date.parse(vyy1 + '/' + vmm1 + '/' + vdd1)
+
+                 msPerDay = 24 * 60 * 60 * 1000
+                 dbd = Math.round((secondDate.valueOf() - firstDate.valueOf()) / msPerDay);
+
+                 //chrs=parseInt(depttime)-parseInt(arrtime);
+
+                 //alert('Days:'+dbd);                
+                 //alert('Arr'+arrtime);
+                 //alert('Dep'+depttime);
+                 var ndys = 0;
+                 if (parseInt(dbd) > 0)
+                     ndys = ndys + dbd;
+                 if ((parseInt(arrtime) >= 6) && (parseInt(arrtime) <= 9)) {
+                     //                 if((parseInt(dbd)==0)&&(parseInt(depttime)>8)&&(parseInt(depttime)<10))
+                     //                    ndys=ndys+1;
+                     //                if((parseInt(dbd)==0)&&(parseInt(depttime)>9))
+                     //                    ndys=ndys+1;              
+                     //                if((parseInt(dbd)==0)&&(parseInt(depttime)>13))
+                     //                    ndys=ndys+1;                
+                     if ((parseInt(dbd) == 0))
+                         ndys = ndys + 1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) < 8))
+                         ndys = ndys;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
+                         ndys = ndys;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 9))
+                         ndys = ndys + 1;
+                 }
+                 else if ((parseInt(arrtime) >= 10) && (parseInt(arrtime) <= 13)) {
+                     //ndys=ndys+1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 13))
+                         ndys = ndys;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 10) && (parseInt(depttime) < 13))
+                         ndys = ndys;
+                     //                if((parseInt(dbd)>0)&&(parseInt(depttime)>10))     
+                     //                    ndys=ndys+1;  
+
+
+                 }
+                 else if (parseInt(arrtime) < 6) {
+                     if ((parseInt(dbd) == 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
+                         ndys = ndys + 1;
+                     if ((parseInt(dbd) == 0) && (parseInt(depttime) > 9))
+                         ndys = ndys + 2;
+                     //                if((parseInt(dbd)==0)&&(parseInt(depttime)>13))
+                     //                    ndys=ndys+1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) <= 8))
+                         ndys = ndys + 1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
+                         ndys = ndys + 1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 9))
+                         ndys = ndys + 2;
+                 }
+                 else if (parseInt(arrtime) > 13) {
+                     //                 if((parseInt(dbd)==0)&&(parseInt(depttime)>8)&&(parseInt(depttime)<10))
+                     //                    ndys=ndys+1;
+                     if ((parseInt(dbd) == 0) && (parseInt(depttime) > 13))
+                         ndys = ndys + 1;
+                     //                if((parseInt(dbd)==0)&&(parseInt(depttime)>13))
+                     //                    ndys=ndys+1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) < 8))
+                         ndys = ndys + 1;
+                     if ((parseInt(dbd) > 0) && (parseInt(depttime) > 8) && (parseInt(depttime) < 10))
+                         ndys = ndys + 1;
+                 }
+                 alert(ndys);
+             }
+         }
+     }
+
+     function calcdays()//calcdays24HrsSlot()
+     {
+         var dbd;
+         var chrs;
+         if (document.getElementById("txtdep").value != "") {
+             if ((document.getElementById("txtarr").value != "") && (document.getElementById("txtdep").value != "")) {
+                 var startDate = document.getElementById('txtarr').value;
+                 var startArr = new Array(3)
+                 startArr = startDate.split("/")
+                 var vdd = startArr[0];
+                 if (vdd.length == 1)
+                     vdd = "0" + vdd
+                 var vmm = startArr[1];
+                 if (vmm.length == 1)
+                     vmm = "0" + vmm
+                 var vyy = startArr[2];
+                 var yyyymmdd = vyy + '' + vmm + '' + vdd;
+
+                 var endDate = document.getElementById('txtdep').value;
+                 var endArr = new Array(3)
+                 endArr = endDate.split("/")
+                 var vdd1 = endArr[0];
+                 if (vdd1.length == 1)
+                     vdd1 = "0" + vdd1
+                 var vmm1 = endArr[1];
+                 if (vmm1.length == 1)
+                     vmm1 = "0" + vmm1
+                 var vyy1 = endArr[2];
+                 var yyyymmdd1 = vyy1 + '' + vmm1 + '' + vdd1;
+
+                 var depttime = document.getElementById('ddlDeparture').value;
+                 depttime = parseInt(depttime)
+                 var arrtime = document.getElementById('ddlarrivalhr').value;
+                 arrtime = parseInt(arrtime)
+                 if (yyyymmdd > yyyymmdd1) {
+                     alert('Sorry! CheckOut date is less than Checkin Date. Please Select CheckOut Date again');
+                     document.getElementById('txtarr').focus();
+                     document.getElementById('txtdep').focus();
+                     return false;
+                 }
+                 else if (yyyymmdd == yyyymmdd1) {
+                     if (parseInt(depttime) == parseInt(arrtime)) {
+                         alert('Sorry! Both Checkin & CheckOut Date Times Are Equal. Please Select Checkout Date  Time again');
+                         document.getElementById('ddlarrivalhr').focus();
+                         document.getElementById('ddlDeparture').focus();
+                         return false;
+                     }
+                     if (parseInt(depttime) < parseInt(arrtime)) {
+                         alert('Sorry! CheckOut Time is less than Checkin Time. Please Select Checkout Time again');
+                         document.getElementById('ddlarrivalhr').focus();
+                         document.getElementById('ddlDeparture').focus();
+                         return false;
+                     }
+                 }
+                 // *************************
+                 // START --Determine Check-In Check-Out Time Slot
+                 // *************************
+                 var HrsAlwdB4Checkin = 0;
+                 var ActualStartTime = 0;
+                 var lCheckOutBuffer = 0;
+
+                 if (document.getElementById('<%=hdnTimeSlot.ClientID%>').value == "" || document.getElementById('<%= hdnTimeSlot.ClientID%>').value == "812hrs") {
+                     if (arrtime >= 11 || arrtime <= 3) {
+                         ActualStartTime = 12;
+                         HrsAlwdB4Checkin = 1;
+                     }
+                     else {
+                         ActualStartTime = 8;
+                         HrsAlwdB4Checkin = 4;
+                     }
+                     lCheckOutBuffer = 2;
+                 }
+                 else {
+                     ActualStartTime = arrtime;
+                     HrsAlwdB4Checkin = 1;
+                     lCheckOutBuffer = 1;
+                 }
+                 // *************************
+                 // END --Determine Check-In Check-Out Time Slot
+                 // *************************                
+                 date1 = new Date();
+                 date2 = new Date();
+                 diff = new Date();
+
+                 date1temp = new Date(vmm + '/' + vdd + '/' + vyy + " " + ActualStartTime + ":00:00");
+                 date1.setTime(date1temp.getTime());
+
+                 date2temp = new Date(vmm1 + '/' + vdd1 + '/' + vyy1 + " " + ActualStartTime + ":00:00");
+                 date2.setTime(date2temp.getTime());
+
+                 diff.setTime(Math.abs(date1.getTime() - date2.getTime()));
+
+                 timediff = diff.getTime();
+
+                 days = Math.floor(timediff / (1000 * 60 * 60 * 24));
+                 timediff -= days * (1000 * 60 * 60 * 24);
+
+                 hours = Math.floor(timediff / (1000 * 60 * 60));
+                 timediff -= hours * (1000 * 60 * 60);
+                 //alert(days);
+                 //alert(hours);				
+                 //*******************
+                 var firstDate = Date.parse(vyy + '/' + vmm + '/' + vdd)
+                 var secondDate = Date.parse(vyy1 + '/' + vmm1 + '/' + vdd1)
+                 var TotalMS = (((days * 24) + hours) * 60 * 60 * 1000);
+                 msPerDay = 24 * 60 * 60 * 1000
+                 dbd = parseInt((TotalMS / msPerDay));
+
+                 if ((arrtime <= (ActualStartTime + lCheckOutBuffer)) && (arrtime >= (ActualStartTime - HrsAlwdB4Checkin))) {
+                     if (days > 0) {
+                         // On Time Arrival
+                         if (depttime > (ActualStartTime + lCheckOutBuffer)) {
+                             // Late Departure
+                             dbd = parseInt(dbd + 1);
+                         }
+                     }
+                     else {
+                         dbd = 1;
+                     }
+                 }
+                 else {
+                     // Late Arrival
+                     var TotalHrs = 0;
+                     var TotaDays = 0;
+                     if (arrtime < (ActualStartTime - HrsAlwdB4Checkin)) {
+                         TotaDays += 1;
+                     }
+                     if (depttime > (ActualStartTime + lCheckOutBuffer)) {
+                         // Late Departure
+                         TotalHrs += depttime - ActualStartTime;
+                         TotaDays += 1;
+                     }
+                     TotaDays += days;
+                     dbd = TotaDays;
+                 }
+                 document.getElementById("txtnodays1").value = dbd;
+             }
+         }
+     }
+ </script>
+
+ <script language="javascript" type="text/javascript">
+     function fnMd5(saltval) {
+         encpass = hex_md5(saltval);
+         document.getElementById('tmpEnValue').value = encpass;
+         return true;
+     }
+ </script>
+
+ <script type="text/javascript">
+     function VerifyGuestDeatils() {
+
+         var guestgrid = document.getElementById('<%= grdGuestDetails.ClientID %>');
+         var i = 1;
+         if (guestgrid.rows.length > 0) {
+             var controls = guestgrid.getElementsByTagName("*");
+             //Loop through the fetched controls.
+             for (var i = 0; i < controls.length; i++) {
+
+                 if (controls[i].id.indexOf("txtGuestType") != -1) {
+                     txtGuestType = controls[i];
+                     //alert(txtGuestType.value);
+                 }
+
+                 if (controls[i].id.indexOf("txtName") != -1) {
+                     txtName = controls[i];
+
+                     if (txtName.value == '') {
+                         alert('Please enter guest name');
+                         txtName.focus();
+                         return false;
+                         break;
+                     }
+
+                 }
+
+                 if (controls[i].id.indexOf("txtAge") != -1) {
+                     txtage = controls[i];
+                     if (txtage.value == '') {
+                         alert('Please enter guest age');
+                         txtage.focus();
+                         return false;
+                         break;
+                     }
+                 }
+
+                 if (controls[i].id.indexOf("ddlGender") != -1) {
+                     ddlGender = controls[i];
+                     if (ddlGender.value == '0') {
+                         alert('Please select  guest gender');
+                         ddlGender.focus();
+                         return false;
+                         break;
+                     }
+
+                 }
+
+             }
+         }
+     }
+ 
+ </script>
+
+ <script type="text/javascript">
+     function chkNumericForage(evt) {
+         var charCode = (evt.which) ? evt.which : event.keyCode
+         if (charCode > 31 && (charCode < 45 || charCode > 57) || (charCode == 47 || charCode == 45 || charCode == 46))
+             return false;
+         return true;
+     }
+ </script>
+
     <div>
         <asp:ScriptManager ID="ScriptManager1" runat="server">
         </asp:ScriptManager>
@@ -1942,7 +1942,7 @@
                                                                                                 <asp:Label ID="lblGuetType" runat="server" Text=""></asp:Label>
                                                                                             </HeaderTemplate>
                                                                                             <ItemTemplate>
-                                                                                                <asp:TextBox ID="txtGuestType" ReadOnly runat="server" Text='<%#bind("GuestType") %>'
+                                                                                                <asp:TextBox ID="txtGuestType" ReadOnly runat="server" Text='<%#Bind("GuestType") %>'
                                                                                                     BorderWidth="0" BackColor="Transparent"></asp:TextBox>
                                                                                             </ItemTemplate>
                                                                                         </asp:TemplateField>
@@ -2029,20 +2029,20 @@
                                                                                                 <asp:Label ID="lbl1" runat="server" Text="Room Type"></asp:Label>
                                                                                             </HeaderTemplate>
                                                                                             <ItemTemplate>
-                                                                                                <asp:Label ID="lblrtype" runat="server" Text='<%#bind("roomtype") %>'></asp:Label>
-                                                                                                <asp:HiddenField ID="hdFare" runat="server" Value='<%#bind("fare") %>' />
-                                                                                                <asp:HiddenField ID="hdExFare" runat="server" Value='<%#bind("ExtraBedFare") %>' />
-                                                                                                <asp:HiddenField ID="hdDisFare" runat="server" Value='<%#bind("fare") %>' />
+                                                                                                <asp:Label ID="lblrtype" runat="server" Text='<%#Bind("roomtype") %>'></asp:Label>
+                                                                                                <asp:HiddenField ID="hdFare" runat="server" Value='<%#Bind("fare") %>' />
+                                                                                                <asp:HiddenField ID="hdExFare" runat="server" Value='<%#Bind("ExtraBedFare") %>' />
+                                                                                                <asp:HiddenField ID="hdDisFare" runat="server" Value='<%#Bind("fare") %>' />
                                                                                                 <asp:HiddenField ID="hdDisDays" runat="server" Value="0" />
-                                                                                                <asp:HiddenField ID="hdOrgFare" runat="server" Value='<%#bind("fare") %>' />
+                                                                                                <asp:HiddenField ID="hdOrgFare" runat="server" Value='<%#Bind("fare") %>' />
                                                                                                 <asp:HiddenField ID="hdRoom" runat="server" />
                                                                                                 <asp:HiddenField ID="hdAdults" runat="server" />
-                                                                                                <asp:Label ID="lblroomtypeId" runat="server" Text='<%#bind("roomtypeId") %>' Visible="false"></asp:Label>
+                                                                                                <asp:Label ID="lblroomtypeId" runat="server" Text='<%#Bind("roomtypeId") %>' Visible="false"></asp:Label>
                                                                                                 <asp:HiddenField ID="hdDisType" Value="None" runat="server" />
-                                                                                                <asp:HiddenField ID="hdnCWBFare" runat="server" Value='<%#bind("ChildWithoutBedFare") %>' />
+                                                                                                <asp:HiddenField ID="hdnCWBFare" runat="server" Value='<%#Bind("ChildWithoutBedFare") %>' />
                                                                                                 <asp:HiddenField ID="hdISAMT" runat="server" />
                                                                                                 <asp:HiddenField ID="hdAmountDis" runat="server" />
-                                                                                                <asp:HiddenField ID="hdfareid" runat="server" Value='<%#bind("fareid") %>' />
+                                                                                                <asp:HiddenField ID="hdfareid" runat="server" Value='<%#Bind("fareid") %>' />
                                                                                             </ItemTemplate>
                                                                                         </asp:TemplateField>
                                                                                         <asp:TemplateField>
@@ -2050,7 +2050,7 @@
                                                                                                 <asp:Label ID="l1" runat="server" Text="Adult"></asp:Label>
                                                                                             </HeaderTemplate>
                                                                                             <ItemTemplate>
-                                                                                                <asp:Label ID="lblFare" runat="server" Text='<%#bind("fare") %>'></asp:Label>
+                                                                                                <asp:Label ID="lblFare" runat="server" Text='<%#Bind("fare") %>'></asp:Label>
                                                                                                 <asp:Label ID="lblDFare" runat="server" Text=""></asp:Label>
                                                                                             </ItemTemplate>
                                                                                         </asp:TemplateField>
@@ -2059,7 +2059,7 @@
                                                                                                 <asp:Label ID="l2" runat="server" Text="Extra Bed"></asp:Label>
                                                                                             </HeaderTemplate>
                                                                                             <ItemTemplate>
-                                                                                                <asp:Label ID="lblFareextraBed" runat="server" Text='<%#bind("ExtraBedFare") %>'></asp:Label>
+                                                                                                <asp:Label ID="lblFareextraBed" runat="server" Text='<%#Bind("ExtraBedFare") %>'></asp:Label>
                                                                                                 <asp:Label ID="lblDFareextraBed" runat="server" Text=""></asp:Label>
                                                                                             </ItemTemplate>
                                                                                         </asp:TemplateField>
@@ -2068,7 +2068,7 @@
                                                                                                 <asp:Label ID="l3" runat="server" Text="ChildWithout Bed"></asp:Label>
                                                                                             </HeaderTemplate>
                                                                                             <ItemTemplate>
-                                                                                                <asp:Label ID="lblFareChildWBed" runat="server" Text='<%#bind("ChildWithoutBedFare") %>'></asp:Label>
+                                                                                                <asp:Label ID="lblFareChildWBed" runat="server" Text='<%#Bind("ChildWithoutBedFare") %>'></asp:Label>
                                                                                                 <asp:Label ID="lblDFareChildWBed" runat="server" Text=""></asp:Label>
                                                                                             </ItemTemplate>
                                                                                         </asp:TemplateField>
@@ -2125,6 +2125,9 @@
         </table>
         <uc1:AgentFooter ID="AFooter" runat="server"></uc1:AgentFooter>
     </div>
+
+
+
     </form>
 
     <script language="javascript" type="text/javascript">

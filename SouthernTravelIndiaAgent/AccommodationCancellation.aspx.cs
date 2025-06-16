@@ -1,5 +1,6 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.DAL;
+using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -1429,7 +1430,7 @@ namespace SouthernTravelIndiaAgent
             gueststr.Append("<td align='center' valign='middle' style='font-family: Verdana, Arial, Helvetica; line-height: 1.4;color: #000000; font-size: 12px' ><span class='cgi'>Age</span>&nbsp;&nbsp;</td>");
             gueststr.Append("<td align='center' valign='middle' style='font-family: Verdana, Arial, Helvetica; line-height: 1.4;color: #000000; font-size: 12px' ><span class='cgi'>Sex</span>&nbsp;&nbsp;</td></tr>");
 
-            string GetTickeDetailsForExtraServicetax = "GetGuestDetails_sp";
+            string GetTickeDetailsForExtraServicetax = StoredProcedures.GetGuestDetails_sp;
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@I_OrderNo", txtpNRo.Text.Trim());
             DataTable dt = new DataTable();

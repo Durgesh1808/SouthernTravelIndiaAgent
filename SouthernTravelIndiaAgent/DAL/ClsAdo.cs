@@ -6781,5 +6781,109 @@ namespace SouthernTravelIndiaAgent.DAL
         }
 
 
+
+        /// <summary>
+        /// // Retrieves the revised tour fare based on the provided tour ID.
+        /// </summary>
+        /// <param name="tourid"></param>
+        /// <returns></returns>
+
+        public DataTable fnGetRevisedTourFare(int tourid)
+        {
+            DataTable tourDatable = null;
+
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+                        new SqlParameter("@tourId", SqlDbType.Int)
+                        {
+                            Value = tourid
+                        }
+                };
+
+                tourDatable = SqlData.GetDataTableSP(StoredProcedures.GetRevisedTourFare, param);
+                return tourDatable;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception
+                return null;
+            }
+        }
+
+
+        /// <summary>
+        /// /// Retrieves the discount tour master information based on the provided tour ID.
+        /// </summary>
+        /// <param name="tourid"></param>
+        /// <returns></returns>
+
+        public string fnGetDiscountTourMaster(int tourid)
+        {
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+                    new SqlParameter("@tourId", SqlDbType.Int) { Value = tourid }
+                };
+
+                object result = SqlData.ExecuteScalarSP(StoredProcedures.GetDiscountTourMaster, param);
+                return result != null ? result.ToString() : null;
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception
+                return null;
+            }
+        }
+
+
+
+        /// <summary>
+        /// /// Retrieves the revised fare with category based on the provided tour ID.
+        /// </summary>
+        /// <param name="tourid"></param>
+        /// <returns></returns>
+        public DataTable fnGetRevisedFareWithCategory(int tourid)
+        {
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+                    new SqlParameter("@tourid", SqlDbType.Int) { Value = tourid }
+                };
+
+                return SqlData.GetDataTableSP(StoredProcedures.GetRevisedFareWithCategory, param);
+            }
+            catch (Exception ex)
+            {
+                // Optionally log the exception
+                return null;
+            }
+        }
+        /// <summary>
+        /// /// Retrieves the fare with category based on the provided tour ID.
+        /// </summary>
+        /// <param name="tourid"></param>
+        /// <returns></returns>
+        public DataTable fnGetFareWithCategory(int tourid)
+        {
+            try
+            {
+                SqlParameter[] param = new SqlParameter[]
+                {
+            new SqlParameter("@tourid", SqlDbType.Int) { Value = tourid }
+                };
+
+                return SqlData.GetDataTableSP("GetFareWithCategory", param);
+            }
+            catch (Exception ex)
+            {
+                // Optionally log or handle the exception
+                return null;
+            }
+        }
+
     }
 }

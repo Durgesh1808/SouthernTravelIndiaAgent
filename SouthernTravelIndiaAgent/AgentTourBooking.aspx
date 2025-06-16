@@ -23,8 +23,8 @@
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="/Assets/css/rupee.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet">
-    <style>
+    <link href="/css/style.css" rel="stylesheet"/>
+    <style type="text/css">
         .rupee
         {
             font-family: 'RupeeForadian';

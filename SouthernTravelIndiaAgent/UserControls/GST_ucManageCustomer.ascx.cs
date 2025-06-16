@@ -1,5 +1,6 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.DAL;
+using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -953,7 +954,7 @@ namespace SouthernTravelIndiaAgent.UserControls
             DataSet dscars = null;
             try
             {
-                string GetServiceChargeDetails = "GetOccupationList_sp";
+                string GetServiceChargeDetails = StoredProcedures.GetOccupationList_sp;
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@IsActive", 'Y'); //to get the all service list
                 dscars = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, GetServiceChargeDetails, param);
@@ -988,7 +989,7 @@ namespace SouthernTravelIndiaAgent.UserControls
             {
                 //if (Convert.ToInt32(ddlNationality.SelectedValue) > 0)
                 //{
-                string GetServiceChargeDetails = "GST_GetStateByCountryId_SP";
+                string GetServiceChargeDetails = StoredProcedures.GST_GetStateByCountryId_SP;
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@i_CountryID", "1"); //to get the all service list
                 dscars = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, GetServiceChargeDetails, param);
@@ -1030,7 +1031,7 @@ namespace SouthernTravelIndiaAgent.UserControls
         {
             DataTable dt = new DataTable();
             DataSet dataset = new DataSet();
-            string GetCustomerDetails = "ExistCustomerDetail_sp";
+            string GetCustomerDetails = StoredProcedures.ExistCustomerDetail_sp;
             SqlParameter[] param = new SqlParameter[2];
             param[0] = new SqlParameter("@i_OrderID", lOrdeID);
             param[1] = new SqlParameter("@i_RowID", lRowID);
@@ -1067,7 +1068,7 @@ namespace SouthernTravelIndiaAgent.UserControls
 
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@I_SectionID", "3");
-                ldtResult = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, "GetApprovalHierarchyUserList", param);
+                ldtResult = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString,StoredProcedures.GetApprovalHierarchyUserList, param);
 
                 ddlReferred.DataSource = ldtResult;
                 ddlReferred.DataTextField = "FullName";
@@ -1094,7 +1095,7 @@ namespace SouthernTravelIndiaAgent.UserControls
             {
                 SqlParameter[] lParam = new SqlParameter[1];
                 lParam[0] = new SqlParameter("@i_RowID", pCustomerID);
-                dsResult = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, "AllowCreditBookingCHK_SP", lParam);
+                dsResult = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, StoredProcedures.AllowCreditBookingCHK_SP, lParam);
                 dtResult = dsResult.Tables[0];
 
                 if (dtResult != null && dtResult.Rows.Count > 0)
