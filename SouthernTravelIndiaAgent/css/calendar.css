@@ -1,0 +1,96 @@
+.calcontainer {
+	HEIGHT: 1%
+}
+.calbordered {
+	BORDER-RIGHT: #03325f 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #0c558e 1px solid; PADDING-LEFT: 5px; FLOAT: left; PADDING-BOTTOM: 5px; BORDER-LEFT: #0c558e 1px solid; PADDING-TOP: 5px; BORDER-BOTTOM: #0c558e 1px solid; BACKGROUND-COLOR: #5aa1ea;
+}
+.calbordered .title {
+	MARGIN-BOTTOM: 5px; font-weight:bold; font-size:8pt;font-family:verdana,Arial,Helvetica,sans-serif;  COLOR: #ffffff; POSITION: relative; HEIGHT: auto;width:304;
+}
+.title .close-icon {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; RIGHT: 0px; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none; POSITION: absolute; TOP: 0px;
+}
+.cal2up {
+	FLOAT: left
+}
+.calnavleft {
+	LEFT: 2px; BOTTOM: 0px; POSITION: absolute; TOP: 0px; HEIGHT: 10px;width:15;
+}
+.calnavright {
+	RIGHT: 2px; BOTTOM: 0px; POSITION: absolute; TOP: 0px;HEIGHT: 10px;width:15;
+}
+.calendar {
+	FONT: 70% Arial,Helvetica,sans-serif; TEXT-ALIGN: center; border-spacing: 0
+}
+.calcell {
+	BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; WIDTH: 1.5em; BORDER-BOTTOM: #e0e0e0 1px solid; HEIGHT: 1em; BACKGROUND-COLOR: #fff
+}
+.calcell A {
+	COLOR: #05518c; TEXT-DECORATION: none
+}
+.today {
+	BORDER-RIGHT: #000 1px solid; BORDER-TOP: #000 1px solid; BORDER-LEFT: #000 1px solid; BORDER-BOTTOM: #000 1px solid
+}
+.oom {
+	BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; CURSOR: default; COLOR: #5d6195; BORDER-BOTTOM: #e0e0e0 1px solid; BACKGROUND-COLOR: #eee
+}
+.oom:hover {
+	BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; BORDER-LEFT: #e0e0e0 1px solid; CURSOR: default; COLOR: #999; BORDER-BOTTOM: #e0e0e0 1px solid; BACKGROUND-COLOR: #eee
+}
+.selected {
+	BORDER-RIGHT: #f68a24 1px solid; BORDER-TOP: #f68a24 1px solid; BORDER-LEFT: #f68a24 1px solid; COLOR: #ff7d08; BORDER-BOTTOM: #f68a24 1px solid; BACKGROUND-COLOR: #f8a72e
+}
+.calcell:hover {
+	BORDER-RIGHT: #f8a72e 1px solid; BORDER-TOP: #f8a72e 1px solid; BORDER-LEFT: #f8a72e 1px solid; CURSOR: pointer; COLOR: #fff; BORDER-BOTTOM: #f8a72e 1px solid; BACKGROUND-COLOR: #f8a72e
+}
+.calcellhover {
+	BORDER-RIGHT: #f8a72e 1px solid; BORDER-TOP: #f8a72e 1px solid; BORDER-LEFT: #f8a72e 1px solid; CURSOR: pointer; COLOR: #fff; BORDER-BOTTOM: #f8a72e 1px solid; BACKGROUND-COLOR: #f8a72e
+}
+.calcellhover A {
+	COLOR: #fff
+}
+.calcell:hover A {
+	COLOR: #fff
+}
+.restricted {
+	TEXT-DECORATION: line-through
+}
+.previous {
+	COLOR: #ccc
+}
+.highlight1 {
+	BACKGROUND-COLOR: #ccff99
+}
+.highlight2 {
+	BACKGROUND-COLOR: #99ccff
+}
+.highlight3 {
+	BACKGROUND-COLOR: #ffcccc
+}
+.highlight4 {
+	BACKGROUND-COLOR: #ccff99
+}
+.calhead {
+	BORDER-RIGHT: #e0e0e0 1px solid; BORDER-TOP: #e0e0e0 1px solid; VERTICAL-ALIGN: middle; BORDER-LEFT: #e0e0e0 1px solid; BORDER-BOTTOM: #e0e0e0 1px solid; BACKGROUND-COLOR: #fff
+}
+.calheader {
+	WIDTH: 100%; COLOR: #000; POSITION: relative;
+}
+.calheader IMG {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+.calweekdaycell {
+	FONT-WEIGHT: normal; COLOR: #000000;
+}
+.calfoot {
+	BACKGROUND-COLOR: #CCCCCC;
+}
+.calrowhead {
+	FONT-WEIGHT: normal; FONT-SIZE: 8px; WIDTH: 15px; COLOR: #666666; FONT-STYLE: italic
+}
+.calrowfoot {
+	FONT-WEIGHT: normal; FONT-SIZE: 8px; WIDTH: 15px; COLOR: #666666; FONT-STYLE: italic
+}
+.calrowhead {
+	BORDER-RIGHT-WIDTH: 2px
+}

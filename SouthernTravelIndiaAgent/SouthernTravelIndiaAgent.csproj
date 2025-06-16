@@ -144,6 +144,7 @@
     <Content Include="AmexPGReceipt.aspx" />
     <Content Include="CityWisetours.aspx" />
     <Content Include="css\style.css" />
+    <Content Include="Fixedenquiryform.aspx" />
     <Content Include="getAllSplTours.aspx" />
     <Content Include="getTransferTypes.aspx" />
     <Content Include="Global.asax" />
@@ -498,6 +499,13 @@
     <Compile Include="DTO\sp_GetPaymentModeResult.cs" />
     <Compile Include="DTO\sp_HotelRoomTypesResult.cs" />
     <Compile Include="DTO\tbl_CarTailermade_log.cs" />
+    <Compile Include="Fixedenquiryform.aspx.cs">
+      <DependentUpon>Fixedenquiryform.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Fixedenquiryform.aspx.designer.cs">
+      <DependentUpon>Fixedenquiryform.aspx</DependentUpon>
+    </Compile>
     <Compile Include="getAllSplTours.aspx.cs">
       <DependentUpon>getAllSplTours.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

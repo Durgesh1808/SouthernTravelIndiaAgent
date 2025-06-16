@@ -1,11 +1,13 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.DAL;
+using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.UI;
@@ -1247,10 +1249,12 @@ namespace SouthernTravelIndiaAgent
         /// <param name="tourid"></param>
         public void getfaregrid(DateTime jd, Int32 tourid)
         {
+            ClsAdo clsAdo = new ClsAdo();
             DataTable date;
             DataTable cfare;
             DataTable rfare;
-            date = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select * from revisedtourfare where tourno=" + tourid + " and isaffected='Y'");
+            date = clsAdo.fnGetRevisedTourFare(tourid);
+            //date = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select * from revisedtourfare where tourno=" + tourid + " and isaffected='Y'");
             if (date.Rows.Count > 0)
             {
                 if (jd.Date != null)
@@ -1259,10 +1263,13 @@ namespace SouthernTravelIndiaAgent
                     {
                         if (discount.Value != "4")
                         {
-                            string strDis = "select discount from tourmaster where tourno=" + tourid + " and IsDiscountActive='Y' and Activated='Y' and isAgent='Y'";
+                            string strDis = clsAdo.fnGetDiscountTourMaster(tourid); 
+                            //string strDis = "select discount from tourmaster where tourno=" + tourid + " and IsDiscountActive='Y' and Activated='Y' and isAgent='Y'";
                             strValue = DataLib.GetStringData(DataLib.Connection.ConnectionString, strDis);
                         }
-                        rfare = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select a.tourid,a.acfare,a.nonacfare,b.Rowid,b.category,b.isaccommodation from tbl_revisedfaremaster a,tbl_tourcategory b where a.tourid=" + tourid + " and a.activated='Y' and a.categoryid=b.rowid");
+
+                        rfare = clsAdo.fnGetRevisedFareWithCategory(tourid);
+                        //rfare = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select a.tourid,a.acfare,a.nonacfare,b.Rowid,b.category,b.isaccommodation from tbl_revisedfaremaster a,tbl_tourcategory b where a.tourid=" + tourid + " and a.activated='Y' and a.categoryid=b.rowid");
 
                         decimal newAcFare = 0.0m, newAcValue = 0.0m, newNonAcfare = 0.0m, newNonAcValue = 0.0m;
 
@@ -1659,12 +1666,14 @@ namespace SouthernTravelIndiaAgent
                         //string strValue = "";
                         if (discount.Value != "4")
                         {
-                            string strDis = "select discount from tourmaster where tourno=" + tourid + " and IsDiscountActive='Y' and Activated='Y' and isAgent='Y'";
+                            string strDis = clsAdo.fnGetDiscountTourMaster(tourid);
+                            //string strDis = "select discount from tourmaster where tourno=" + tourid + " and IsDiscountActive='Y' and Activated='Y' and isAgent='Y'";
                             strValue = DataLib.GetStringData(DataLib.Connection.ConnectionString, strDis);
                         }
 
                         //  End
-                        cfare = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select b.category,b.Rowid,a.acfare,a.nonacfare from tbl_faremaster a,tbl_tourcategory b where a.tourid=" + tourid + " and a.activated='Y' and a.categoryid=b.rowid");
+                        cfare = clsAdo.fnGetFareWithCategory(tourid);
+                        //cfare = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select b.category,b.Rowid,a.acfare,a.nonacfare from tbl_faremaster a,tbl_tourcategory b where a.tourid=" + tourid + " and a.activated='Y' and a.categoryid=b.rowid");
 
 
                         decimal newAcFare = 0.0m, newAcValue = 0.0m, newNonAcfare = 0.0m, newNonAcValue = 0.0m;
@@ -2066,12 +2075,15 @@ namespace SouthernTravelIndiaAgent
             {
                 if (discount.Value != "4")
                 {
-                    string strDis = "select discount from tourmaster where tourno=" + tourid + " and IsDiscountActive='Y' and Activated='Y' and isAgent='Y'";
+                    string strDis = clsAdo.fnGetDiscountTourMaster(tourid);
+
+                    //string strDis = "select discount from tourmaster where tourno=" + tourid + " and IsDiscountActive='Y' and Activated='Y' and isAgent='Y'";
                     strValue = DataLib.GetStringData(DataLib.Connection.ConnectionString, strDis);
                 }
 
                 decimal newAcFare = 0.0m, newAcValue = 0.0m, newNonAcfare = 0.0m, newNonAcValue = 0.0m;
-                cfare = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select b.category,b.Rowid,a.acfare,a.nonacfare from tbl_faremaster a,tbl_tourcategory b where a.tourid=" + tourid + " and a.activated='Y' and a.categoryid=b.rowid");
+                cfare = clsAdo.fnGetFareWithCategory(tourid);
+                //cfare = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "select b.category,b.Rowid,a.acfare,a.nonacfare from tbl_faremaster a,tbl_tourcategory b where a.tourid=" + tourid + " and a.activated='Y' and a.categoryid=b.rowid");
                 if (cfare.Rows.Count > 0)
                 {
                     for (int i = 0; i < cfare.Rows.Count; i++)
@@ -3967,7 +3979,7 @@ namespace SouthernTravelIndiaAgent
 
                 try
                 {
-                    string helNotavsp = "HelNotAvail_sp";
+                    string helNotavsp = StoredProcedures.HelNotAvail_sp;
                     SqlParameter[] param = new SqlParameter[2];
 
                     param[0] = new SqlParameter("@TourId", TourId);

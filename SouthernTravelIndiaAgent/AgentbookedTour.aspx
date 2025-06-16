@@ -94,435 +94,7 @@
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
 
-    <script language="javascript" type="text/javascript">
-        function CheckMail(str) {
-            if (str.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1) {
-                return true;
-            }
-            else {
-                alert("Invalid E-mail ID");
-                return false;
-            }
-        }
-
-        function OnChangeCountry(value) {
-            if (value != 59) {
-                document.getElementById('<%=TxtForeignState.ClientID %>').style.display = 'block';
-                document.getElementById('<%=txtForeignCity.ClientID %>').style.display = 'block';
-                document.getElementById('<%=ddlState.ClientID %>').style.display = 'none';
-                document.getElementById('<%=txtCity.ClientID %>').style.display = 'none';
-                document.getElementById('<%=TxtForeignState.ClientID %>').value = "";
-                document.getElementById('<%=txtForeignCity.ClientID %>').value = "";
-            }
-            else {
-                document.getElementById('<%=TxtForeignState.ClientID %>').style.display = 'none';
-                document.getElementById('<%=txtForeignCity.ClientID %>').style.display = 'none';
-                document.getElementById('<%=ddlState.ClientID %>').style.display = 'block';
-                document.getElementById('<%=txtCity.ClientID %>').style.display = 'block';
-                document.getElementById('<%=TxtForeignState.ClientID %>').value = "";
-                document.getElementById('<%=txtForeignCity.ClientID %>').value = "";
-            }
-        }
-
-        function chk1() {
-            if (document.Form1.emailid.value == "") {
-                alert("Enter your Email-ID or Mobile No");
-                document.Form1.emailid.focus();
-                return false;
-            }
-            else {
-                if (isNaN(document.Form1.emailid.value) == true) {
-                    if ((CheckMail(document.Form1.emailid.value)) == false) {
-                        document.Form1.emailid.value = "";
-                        document.Form1.emailid.focus();
-                        return false;
-                    }
-                    else {
-                        document.Form1.type.value = "email";
-                    }
-                }
-                else {
-                    var a = document.Form1.emailid.value;
-                    if ((a.length < 10) | (a.length > 11)) {
-                        alert("Invalid Mobile No")
-                        document.Form1.emailid.value = "";
-                        document.Form1.emailid.focus();
-                        return false;
-                    }
-                    else {
-                        document.Form1.type.value = "Mobile";
-                    }
-                }
-            }
-        }
-
-        function doValidate2() {
-            debugger;
-            if (Trim(document.Form1.txtName.value) == "") {
-                alert("Please fill the Firstname .It is mandatory.");
-                document.Form1.txtName.focus();
-                return false;
-            }
-            var nam = document.Form1.txtName.value;
-            if ((nam.length) < 3) {
-                alert("Please Enter Minimum Three Characters in the name field");
-                document.Form1.txtName.focus();
-                return false;
-            }
-            //		    if (Trim(document.Form1.txtMail.value)== "" )	
-            //		    {
-            //			    alert("Please fill the e-mail field.It is mandatory.");
-            //			    document.Form1.txtMail.focus();
-            //			    return false;
-            //		    }		    
-            //		    else
-            //		    {
-            if (Trim(document.Form1.txtMail.value) != "") {
-                if (CheckMail(document.Form1.txtMail.value) == false) {
-                    //alert("Please enter your valid email Id.");
-                    document.Form1.txtMail.value = "";
-                    document.Form1.txtMail.focus();
-                    return false;
-                }
-            }
-            //		    }						
-            if (Trim(document.Form1.txtAddress.value) == "") {
-                alert("Please fill the address in address field.It is mandatory.");
-                document.Form1.txtAddress.focus();
-                return false;
-            }
-            if (Trim(document.Form1.ddlNationality.value) == "" || document.Form1.ddlNationality.value == "0") {
-                alert("Please select Nationality.");
-                document.Form1.ddlNationality.focus();
-                return false;
-            }
-            if (Trim(document.Form1.ddlCountry.value) == "" || document.Form1.ddlCountry.value == "0") {
-                alert("Please select Country.");
-                document.Form1.ddlCountry.focus();
-                return false;
-            }
-            debugger
-
-            // if (Trim(document.Form1.ddlState.value) == "" || document.Form1.ddlState.value == "0") {
-            // alert("Please select State.");
-            // document.Form1.ddlState.focus();
-            // return false;
-            // }
-
-            if (document.Form1.ddlState.value == "0" && document.Form1.ddlCountry.value == "59") {
-                alert('Please Select the State');
-                document.Form1.ddlState.focus();
-                chek = false;
-                return false;
-            }
-
-            if (document.Form1.TxtForeignState.value == "" && document.Form1.ddlCountry.value != "59") {
-                alert('Please Enter the State');
-                document.Form1.TxtForeignState.focus();
-                //                document.getElementById('<%= TxtForeignState.ClientID%>').focus();
-                chek = false;
-                return false;
-            }
-
-            //if (Trim(document.Form1.ddlCity.value) == "" || document.Form1.ddlCity.value == "0") {
-            if (Trim(document.Form1.txtCity.value) == "" && document.Form1.ddlCountry.value == "59") {
-                alert("Please select City.");
-                document.Form1.txtCity.focus();
-                chek = false;
-                return false;
-            }
-
-            if (Trim(document.Form1.txtForeignCity.value) == "" && document.Form1.ddlCountry.value != "59") {
-                alert("Please Enter City.");
-                document.Form1.txtForeignCity.focus();
-                chek = false;
-                return false;
-            }
-
-            if (Trim(document.Form1.txtPhoneCountryCode.value) != "") {
-                //                alert("Please fill the country code field.It is mandatory.");
-                //                document.Form1.txtPhoneCountryCode.focus();
-                //                return false;
-                if (validateOnlyNumber1(Trim(document.Form1.txtPhoneCountryCode.value)) == false) {
-                    alert("country code field should have numeric value only.");
-                    document.Form1.txtPhoneCountryCode.value = "";
-                    document.Form1.txtPhoneCountryCode.focus();
-                    return false;
-                }
-            }
-
-            if (Trim(document.Form1.txtPhone.value) != "") {
-                var pho = document.Form1.txtPhone.value;
-                if (validateOnlyNumber1(Trim(document.Form1.txtPhone.value)) == false) {
-                    alert("Phone no. should have numeric value only.");
-                    document.Form1.txtPhone.value = "";
-                    document.Form1.txtPhone.focus();
-                    return false;
-                }
-                else if ((pho.length) < 6) {
-                    alert("Phone no. should have minimum 6 numbers");
-                    document.Form1.txtPhone.focus();
-                    return false;
-                }
-            }
-
-            var txtmobile = document.getElementById('txtMobile');
-            if (Trim(txtmobile.value) == "") {
-                alert("Please enter Mobile No..");
-                txtmobile.value = "";
-                txtmobile.focus();
-                return false;
-            }
-            if (Trim(document.Form1.txtMobile.value) != "") {
-                if (validateOnlyNumber1(Trim(document.Form1.txtMobile.value)) == false) {
-                    alert("Mobile no. should have numeric value only.");
-                    document.Form1.txtMobile.value = "";
-                    document.Form1.txtMobile.focus();
-                    return false;
-                }
-                else {
-                    var a = document.Form1.txtMobile.value;
-                    if ((a.length < 10) | (a.length > 11)) {
-                        alert("Invalid Mobile No")
-                        document.Form1.txtMobile.value = "";
-                        document.Form1.txtMobile.focus();
-                        return false;
-                    }
-                }
-            }
-            var txtmobile = document.getElementById('txtAlternateMobileno');
-            if (Trim(txtmobile.value) == "") {
-                alert("Please enter Emergency Contact No..");
-                txtmobile.value = "";
-                txtmobile.focus();
-                return false;
-            }
-            if (Trim(document.Form1.txtAlternateMobileno.value) != "") {
-                if (validateOnlyNumber1(Trim(document.Form1.txtAlternateMobileno.value)) == false) {
-                    alert("Emergency Contact No should have numeric value only.");
-                    document.Form1.txtAlternateMobileno.value = "";
-                    document.Form1.txtAlternateMobileno.focus();
-                    return false;
-                }
-
-            }
-
-            if (document.getElementById('rdbIsGSTApplicableYes').checked == true) {
-                if (document.getElementById('txtCustomerGSTIN').value == "") {
-                    alert('Please Enter Customer GSTIN.');
-                    document.getElementById('txtCustomerGSTIN').focus();
-                    return false;
-                }
-                else {
-                    var GSTINNO = document.getElementById("txtCustomerGSTIN").value;
-                    //if (!/([A-Z,a-z]){3}([A,B,C,F,G,H,J,L,P,T,a,b,c,f,g,h,j,l,p,t]){1}([A-Z,a-z]){1}([0-9]){4}([A-Z,a-z]){1}/.test(GSTINNO)) {
-                    if (!/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9]{1}Z[0-9A-Z]{1}$/.test(GSTINNO)) {
-                        alert('Please enter Valid Customer GSTIN');
-                        document.getElementById("txtCustomerGSTIN").focus();
-                        return false;
-                    }
-                }
-                if (document.getElementById('txtGstHolderName').value == "") {
-                    alert('Please Enter GST Holder Name.');
-                    document.getElementById('txtGstHolderName').focus();
-                    return false;
-                }
-            }
-            return validateruntime();
-        }
-
-        function checkout() {
-            location.href = "logIn.aspx?orderid=" + document.getElementById("orderid").value
-        }
-        function checkonsubmit() {
-            if (document.getElementById("ddlTour").value == "0") {
-                alert("Please choose a tour.");
-                document.getElementById("ddlTour").focus();
-                return false
-            }
-        }
-        function chkNumeric() {
-            if (event.shiftKey) return false;
-            if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40 && event.keyCode != 46 && event.keyCode != 13 && event.keyCode != 116 && event.keyCode != 16 && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 9 && event.keyCode != 110) event.returnValue = false
-        }
-        function changeSex(num) {
-            var SexCtl = document.getElementsByName('Radio' + num);
-            var TitleCtl = document.getElementById('Title' + num);
-            if (TitleCtl.selectedIndex == 2 || TitleCtl.selectedIndex == 1 || TitleCtl.selectedIndex == 5) {
-                SexCtl[0].checked = true;
-            }
-            else if ((TitleCtl.selectedIndex == 3) || (TitleCtl.selectedIndex == 4)) {
-                SexCtl[1].checked = true;  //check female
-            }
-            else {
-                SexCtl[1].checked = false;
-                SexCtl[0].checked = false;
-            }
-        }
-        function Left(str, n) {
-            if (n <= 0)
-                return "";
-            else if (n >= String(str).length)
-                return str;
-            else
-                return String(str).substring(0, n);
-        }
-
-        function validateruntime() {
-            var chekSex = false;
-            var chek = true;
-            var i, len;
-            len = document.Form1.length;
-            var nchilds = 0;
-            for (i = 1; i < len; i++) {
-                var chk = "";
-                if (document.Form1.elements[i].type == "text") {
-                    var Cname = document.Form1.elements[i].name;
-                    if ((Cname != "txtAddress") && (Cname != "txtName") && (Cname != "txtCity") && (Cname != "TxtLName") && (Cname != "txtPhone") && (Cname != "txtMobile") && (Cname != "txtMail") && (Cname != "txtDOB")) {
-                        if (Left(Cname, 6) == "txtONa") {
-                            if (document.Form1.elements[i].value == "") {
-
-                                alert("Passenger's name should not be null.");
-                                document.Form1.elements[i].focus();
-                                chek = false;
-                                return false;
-                            }
-
-                            if (validateOnlyNumber1(parseInt(document.Form1.elements[i].value)) == true) {
-                                alert("Passenger's name should not be numeric.");
-                                document.Form1.elements[i].value = "";
-                                document.Form1.elements[i].focus();
-                                chek = false;
-                                return false;
-                            }
-                            if (Trim(document.Form1.elements[i].value) == "") {
-                                alert("Please enter Proper Passenger Name");
-                                document.Form1.elements[i].value = "";
-                                document.Form1.elements[i].focus();
-                                chek = false;
-                                return false;
-                            }
-                        }
-
-                        if (Left(Cname, 6) == "txtAge") {
-                            if (document.Form1.elements[i].value == "") {
-                                alert('Age field must have any value. It is mandatory.');
-                                document.Form1.elements[i].focus();
-                                chek = false;
-                                return false;
-                            }
-
-                            if (document.Form1.elements[i].value == 0) {
-                                alert('Age should not be zero.');
-                                document.Form1.elements[i].value = ""
-                                document.Form1.elements[i].focus();
-                                chek = false;
-                                return false;
-                            }
-                            if (validateOnlyNumber1(parseInt(document.Form1.elements[i].value)) == false) {
-                                alert("Age value should be numeric.");
-                                document.Form1.elements[i].value = "";
-                                document.Form1.elements[i].focus();
-                                chek = false;
-                                return false;
-                            }
-                            if ((parseInt(document.Form1.elements[i].value) > 0) && (parseInt(document.Form1.elements[i].value) < 12)) {
-                                nchilds = nchilds + 1;
-                            }
-                        }
-                    }
-                }
-
-                if (document.Form1.elements[i].type == "select-one") {
-
-
-                    var Cname2 = document.Form1.elements[i].name;
-                    if (Left(Cname2, 13) == "contact_title") {
-
-                        if (document.Form1.elements[i].value == "") {
-                            alert("Select any title from focused field.");
-                            document.Form1.elements[i].focus();
-                            chek = false;
-                            return false;
-                        }
-                    }
-                }
-                /*if(document.Form1.elements[i].type=="radio")
-                {
-                alert(document.Form1.elements[i].checked);
-				  
-					var Cname2=document.Form1.elements[i].name;	
-                if (Left(Cname2,5)=="Radio")
-                {
-                if(document.Form1.elements[i].checked==false)
-                {
-                var Cname3=document.Form1.elements[i].id;
-    					      
-                if( chekSex==false && (Left(Cname3,4)=='RadM' || Left(Cname3,4)=='RadF'))
-                {
-                //alert('+++');
-                if(document.Form1.elements[i].checked==false)
-                {
-                alert("Please select gender.");
-                chek = false;
-                return false;
-                }
-                else
-                {
-                chekSex=true;
-                }
-                }
-                if( Left(Cname3,4)=='RadF')
-                {
-                //alert('---');
-                if(document.Form1.elements[i].checked==false)
-                {
-                alert("Please select gender.");
-                chek = false;
-                return false;
-                }
-                }
-                }   
-                }
-                }	*/
-            }
-
-            if (parseInt(document.getElementById("Child1").value) > nchilds) {
-                alert("Please Enter the Child's Age less than or equal to 11 years");
-                chek = false;
-                return false;
-            }
-            else if (parseInt(document.getElementById("Child1").value) < nchilds) {
-                alert("Please Enter Adults Age Greater than 11 years");
-                chek = false;
-                return false;
-            }
-            if (chek) {
-                document.getElementById('Submit1').style.display = 'none';
-            }
-            return chek;
-
-        }
-        function CheckOnlyCharacter() {
-            var kk
-            kk = event.keyCode
-            //alert(kk);
-            if ((kk >= 65 && kk <= 90) || kk == 32 || kk == 8 || kk == 9 || kk == 127 || kk == 16 || kk == 20 || kk == 46) {
-                return true;
-            }
-            alert("Please enter characters only.");
-            return false;
-        }
-        function GSTHideUnhide(val) {
-            if (val == "yes") {
-                document.getElementById('divGSTDetails').style.display = "";
-            }
-            else {
-                document.getElementById('divGSTDetails').style.display = "none";
-            }
-        }
-	
-    </script>
+   
 
     <script language="javascript" src="../includes/md5.js" type="text/javascript"></script>
 
@@ -534,59 +106,490 @@
         }
     </script>
 
-    <script>
-        function clearCitylist() {
-            document.getElementById('txtCity').value = "";
-            document.getElementById('txtPincode').value = "";
-            document.getElementById('hdnCity').value = "";
-            document.getElementById('hdnCityId').value = "";
-            document.getElementById('hdnStateIdBasedOnCity').value = "";
-            return false;
-        }
-        function SetContextKey() {
-            $find('<%=AutoCompleteExtender2.ClientID%>').set_contextKey($get("<%=ddlState.ClientID %>").value);
-        }
-        function ShowProcessImage(sender, e) {
-            sender._element.className = "loading";
-        }
-        function HideProcessImage(sender, e) {
-            sender._element.className = "";
-        }
-        function OnClientSelectedCity(source, eventArgs) {
-            if (source) {
-                // Get the HiddenField ID.
-                var hdHACCity = source.get_id().replace("AutoCompleteExtender2", "hdnCity");
-                $get(hdHACCity).value = eventArgs.get_text(); //.get_value();
-                //alert(document.getElementById(hdHACCity).value);  //
-                debugger;
-                var hdnCityId = source.get_id().replace("AutoCompleteExtender2", "hdnCityId");
-                var hdnStateIdBasedOnCity = source.get_id().replace("AutoCompleteExtender2", "hdnStateIdBasedOnCity");
-                $get(hdnCityId).value = eventArgs.get_value().split("##")[0];
-                $get(hdnStateIdBasedOnCity).value = eventArgs.get_value().split("##")[1];
 
-                var stateid = document.getElementById("ddlState");
-                var state = stateid.options[stateid.selectedIndex].value;
-                if (state == "" || state == "0" || state == "--Select--" || state == "Select") {
-                    //alert(document.getElementById(hdnStateIdBasedOnCity).value);
-                    setSelectedValue(stateid, document.getElementById(hdnStateIdBasedOnCity).value);
-                }
-            }
-        }
-
-        function setSelectedValue(selectObj, valueToSet) {
-            //alert('');
-            for (var i = 0; i < selectObj.options.length; i++) {
-                if (selectObj.options[i].value == valueToSet) {
-                    selectObj.options[i].selected = true;
-                    return;
-                }
-            }
-        }
-    </script>
 
 </head>
 <body>
     <form id="Form1" method="post" runat="server">
+
+         <script language="javascript" type="text/javascript">
+             function CheckMail(str) {
+                 if (str.search(/^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/) != -1) {
+                     return true;
+                 }
+                 else {
+                     alert("Invalid E-mail ID");
+                     return false;
+                 }
+             }
+
+             function OnChangeCountry(value) {
+                 if (value != 59) {
+                     document.getElementById('<%=TxtForeignState.ClientID %>').style.display = 'block';
+             document.getElementById('<%=txtForeignCity.ClientID %>').style.display = 'block';
+             document.getElementById('<%=ddlState.ClientID %>').style.display = 'none';
+             document.getElementById('<%=txtCity.ClientID %>').style.display = 'none';
+             document.getElementById('<%=TxtForeignState.ClientID %>').value = "";
+             document.getElementById('<%=txtForeignCity.ClientID %>').value = "";
+         }
+         else {
+             document.getElementById('<%=TxtForeignState.ClientID %>').style.display = 'none';
+             document.getElementById('<%=txtForeignCity.ClientID %>').style.display = 'none';
+             document.getElementById('<%=ddlState.ClientID %>').style.display = 'block';
+             document.getElementById('<%=txtCity.ClientID %>').style.display = 'block';
+             document.getElementById('<%=TxtForeignState.ClientID %>').value = "";
+             document.getElementById('<%=txtForeignCity.ClientID %>').value = "";
+         }
+     }
+
+     function chk1() {
+         if (document.Form1.emailid.value == "") {
+             alert("Enter your Email-ID or Mobile No");
+             document.Form1.emailid.focus();
+             return false;
+         }
+         else {
+             if (isNaN(document.Form1.emailid.value) == true) {
+                 if ((CheckMail(document.Form1.emailid.value)) == false) {
+                     document.Form1.emailid.value = "";
+                     document.Form1.emailid.focus();
+                     return false;
+                 }
+                 else {
+                     document.Form1.type.value = "email";
+                 }
+             }
+             else {
+                 var a = document.Form1.emailid.value;
+                 if ((a.length < 10) | (a.length > 11)) {
+                     alert("Invalid Mobile No")
+                     document.Form1.emailid.value = "";
+                     document.Form1.emailid.focus();
+                     return false;
+                 }
+                 else {
+                     document.Form1.type.value = "Mobile";
+                 }
+             }
+         }
+     }
+
+     function doValidate2() {
+         debugger;
+         if (Trim(document.Form1.txtName.value) == "") {
+             alert("Please fill the Firstname .It is mandatory.");
+             document.Form1.txtName.focus();
+             return false;
+         }
+         var nam = document.Form1.txtName.value;
+         if ((nam.length) < 3) {
+             alert("Please Enter Minimum Three Characters in the name field");
+             document.Form1.txtName.focus();
+             return false;
+         }
+         //		    if (Trim(document.Form1.txtMail.value)== "" )	
+         //		    {
+         //			    alert("Please fill the e-mail field.It is mandatory.");
+         //			    document.Form1.txtMail.focus();
+         //			    return false;
+         //		    }		    
+         //		    else
+         //		    {
+         if (Trim(document.Form1.txtMail.value) != "") {
+             if (CheckMail(document.Form1.txtMail.value) == false) {
+                 //alert("Please enter your valid email Id.");
+                 document.Form1.txtMail.value = "";
+                 document.Form1.txtMail.focus();
+                 return false;
+             }
+         }
+         //		    }						
+         if (Trim(document.Form1.txtAddress.value) == "") {
+             alert("Please fill the address in address field.It is mandatory.");
+             document.Form1.txtAddress.focus();
+             return false;
+         }
+         if (Trim(document.Form1.ddlNationality.value) == "" || document.Form1.ddlNationality.value == "0") {
+             alert("Please select Nationality.");
+             document.Form1.ddlNationality.focus();
+             return false;
+         }
+         if (Trim(document.Form1.ddlCountry.value) == "" || document.Form1.ddlCountry.value == "0") {
+             alert("Please select Country.");
+             document.Form1.ddlCountry.focus();
+             return false;
+         }
+         debugger
+
+         // if (Trim(document.Form1.ddlState.value) == "" || document.Form1.ddlState.value == "0") {
+         // alert("Please select State.");
+         // document.Form1.ddlState.focus();
+         // return false;
+         // }
+
+         if (document.Form1.ddlState.value == "0" && document.Form1.ddlCountry.value == "59") {
+             alert('Please Select the State');
+             document.Form1.ddlState.focus();
+             chek = false;
+             return false;
+         }
+
+         if (document.Form1.TxtForeignState.value == "" && document.Form1.ddlCountry.value != "59") {
+             alert('Please Enter the State');
+             document.Form1.TxtForeignState.focus();
+             //                document.getElementById('<%= TxtForeignState.ClientID%>').focus();
+                     chek = false;
+                     return false;
+                 }
+
+                 //if (Trim(document.Form1.ddlCity.value) == "" || document.Form1.ddlCity.value == "0") {
+                 if (Trim(document.Form1.txtCity.value) == "" && document.Form1.ddlCountry.value == "59") {
+                     alert("Please select City.");
+                     document.Form1.txtCity.focus();
+                     chek = false;
+                     return false;
+                 }
+
+                 if (Trim(document.Form1.txtForeignCity.value) == "" && document.Form1.ddlCountry.value != "59") {
+                     alert("Please Enter City.");
+                     document.Form1.txtForeignCity.focus();
+                     chek = false;
+                     return false;
+                 }
+
+                 if (Trim(document.Form1.txtPhoneCountryCode.value) != "") {
+                     //                alert("Please fill the country code field.It is mandatory.");
+                     //                document.Form1.txtPhoneCountryCode.focus();
+                     //                return false;
+                     if (validateOnlyNumber1(Trim(document.Form1.txtPhoneCountryCode.value)) == false) {
+                         alert("country code field should have numeric value only.");
+                         document.Form1.txtPhoneCountryCode.value = "";
+                         document.Form1.txtPhoneCountryCode.focus();
+                         return false;
+                     }
+                 }
+
+                 if (Trim(document.Form1.txtPhone.value) != "") {
+                     var pho = document.Form1.txtPhone.value;
+                     if (validateOnlyNumber1(Trim(document.Form1.txtPhone.value)) == false) {
+                         alert("Phone no. should have numeric value only.");
+                         document.Form1.txtPhone.value = "";
+                         document.Form1.txtPhone.focus();
+                         return false;
+                     }
+                     else if ((pho.length) < 6) {
+                         alert("Phone no. should have minimum 6 numbers");
+                         document.Form1.txtPhone.focus();
+                         return false;
+                     }
+                 }
+
+                 var txtmobile = document.getElementById('txtMobile');
+                 if (Trim(txtmobile.value) == "") {
+                     alert("Please enter Mobile No..");
+                     txtmobile.value = "";
+                     txtmobile.focus();
+                     return false;
+                 }
+                 if (Trim(document.Form1.txtMobile.value) != "") {
+                     if (validateOnlyNumber1(Trim(document.Form1.txtMobile.value)) == false) {
+                         alert("Mobile no. should have numeric value only.");
+                         document.Form1.txtMobile.value = "";
+                         document.Form1.txtMobile.focus();
+                         return false;
+                     }
+                     else {
+                         var a = document.Form1.txtMobile.value;
+                         if ((a.length < 10) | (a.length > 11)) {
+                             alert("Invalid Mobile No")
+                             document.Form1.txtMobile.value = "";
+                             document.Form1.txtMobile.focus();
+                             return false;
+                         }
+                     }
+                 }
+                 var txtmobile = document.getElementById('txtAlternateMobileno');
+                 if (Trim(txtmobile.value) == "") {
+                     alert("Please enter Emergency Contact No..");
+                     txtmobile.value = "";
+                     txtmobile.focus();
+                     return false;
+                 }
+                 if (Trim(document.Form1.txtAlternateMobileno.value) != "") {
+                     if (validateOnlyNumber1(Trim(document.Form1.txtAlternateMobileno.value)) == false) {
+                         alert("Emergency Contact No should have numeric value only.");
+                         document.Form1.txtAlternateMobileno.value = "";
+                         document.Form1.txtAlternateMobileno.focus();
+                         return false;
+                     }
+
+                 }
+
+                 if (document.getElementById('rdbIsGSTApplicableYes').checked == true) {
+                     if (document.getElementById('txtCustomerGSTIN').value == "") {
+                         alert('Please Enter Customer GSTIN.');
+                         document.getElementById('txtCustomerGSTIN').focus();
+                         return false;
+                     }
+                     else {
+                         var GSTINNO = document.getElementById("txtCustomerGSTIN").value;
+                         //if (!/([A-Z,a-z]){3}([A,B,C,F,G,H,J,L,P,T,a,b,c,f,g,h,j,l,p,t]){1}([A-Z,a-z]){1}([0-9]){4}([A-Z,a-z]){1}/.test(GSTINNO)) {
+                         if (!/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9]{1}Z[0-9A-Z]{1}$/.test(GSTINNO)) {
+                             alert('Please enter Valid Customer GSTIN');
+                             document.getElementById("txtCustomerGSTIN").focus();
+                             return false;
+                         }
+                     }
+                     if (document.getElementById('txtGstHolderName').value == "") {
+                         alert('Please Enter GST Holder Name.');
+                         document.getElementById('txtGstHolderName').focus();
+                         return false;
+                     }
+                 }
+                 return validateruntime();
+             }
+
+             function checkout() {
+                 location.href = "logIn.aspx?orderid=" + document.getElementById("orderid").value
+             }
+             function checkonsubmit() {
+                 if (document.getElementById("ddlTour").value == "0") {
+                     alert("Please choose a tour.");
+                     document.getElementById("ddlTour").focus();
+                     return false
+                 }
+             }
+             function chkNumeric() {
+                 if (event.shiftKey) return false;
+                 if ((event.keyCode < 48 || event.keyCode > 57) && event.keyCode != 8 && event.keyCode != 37 && event.keyCode != 38 && event.keyCode != 39 && event.keyCode != 40 && event.keyCode != 46 && event.keyCode != 13 && event.keyCode != 116 && event.keyCode != 16 && (event.keyCode < 96 || event.keyCode > 105) && event.keyCode != 9 && event.keyCode != 110) event.returnValue = false
+             }
+             function changeSex(num) {
+                 var SexCtl = document.getElementsByName('Radio' + num);
+                 var TitleCtl = document.getElementById('Title' + num);
+                 if (TitleCtl.selectedIndex == 2 || TitleCtl.selectedIndex == 1 || TitleCtl.selectedIndex == 5) {
+                     SexCtl[0].checked = true;
+                 }
+                 else if ((TitleCtl.selectedIndex == 3) || (TitleCtl.selectedIndex == 4)) {
+                     SexCtl[1].checked = true;  //check female
+                 }
+                 else {
+                     SexCtl[1].checked = false;
+                     SexCtl[0].checked = false;
+                 }
+             }
+             function Left(str, n) {
+                 if (n <= 0)
+                     return "";
+                 else if (n >= String(str).length)
+                     return str;
+                 else
+                     return String(str).substring(0, n);
+             }
+
+             function validateruntime() {
+                 var chekSex = false;
+                 var chek = true;
+                 var i, len;
+                 len = document.Form1.length;
+                 var nchilds = 0;
+                 for (i = 1; i < len; i++) {
+                     var chk = "";
+                     if (document.Form1.elements[i].type == "text") {
+                         var Cname = document.Form1.elements[i].name;
+                         if ((Cname != "txtAddress") && (Cname != "txtName") && (Cname != "txtCity") && (Cname != "TxtLName") && (Cname != "txtPhone") && (Cname != "txtMobile") && (Cname != "txtMail") && (Cname != "txtDOB")) {
+                             if (Left(Cname, 6) == "txtONa") {
+                                 if (document.Form1.elements[i].value == "") {
+
+                                     alert("Passenger's name should not be null.");
+                                     document.Form1.elements[i].focus();
+                                     chek = false;
+                                     return false;
+                                 }
+
+                                 if (validateOnlyNumber1(parseInt(document.Form1.elements[i].value)) == true) {
+                                     alert("Passenger's name should not be numeric.");
+                                     document.Form1.elements[i].value = "";
+                                     document.Form1.elements[i].focus();
+                                     chek = false;
+                                     return false;
+                                 }
+                                 if (Trim(document.Form1.elements[i].value) == "") {
+                                     alert("Please enter Proper Passenger Name");
+                                     document.Form1.elements[i].value = "";
+                                     document.Form1.elements[i].focus();
+                                     chek = false;
+                                     return false;
+                                 }
+                             }
+
+                             if (Left(Cname, 6) == "txtAge") {
+                                 if (document.Form1.elements[i].value == "") {
+                                     alert('Age field must have any value. It is mandatory.');
+                                     document.Form1.elements[i].focus();
+                                     chek = false;
+                                     return false;
+                                 }
+
+                                 if (document.Form1.elements[i].value == 0) {
+                                     alert('Age should not be zero.');
+                                     document.Form1.elements[i].value = ""
+                                     document.Form1.elements[i].focus();
+                                     chek = false;
+                                     return false;
+                                 }
+                                 if (validateOnlyNumber1(parseInt(document.Form1.elements[i].value)) == false) {
+                                     alert("Age value should be numeric.");
+                                     document.Form1.elements[i].value = "";
+                                     document.Form1.elements[i].focus();
+                                     chek = false;
+                                     return false;
+                                 }
+                                 if ((parseInt(document.Form1.elements[i].value) > 0) && (parseInt(document.Form1.elements[i].value) < 12)) {
+                                     nchilds = nchilds + 1;
+                                 }
+                             }
+                         }
+                     }
+
+                     if (document.Form1.elements[i].type == "select-one") {
+
+
+                         var Cname2 = document.Form1.elements[i].name;
+                         if (Left(Cname2, 13) == "contact_title") {
+
+                             if (document.Form1.elements[i].value == "") {
+                                 alert("Select any title from focused field.");
+                                 document.Form1.elements[i].focus();
+                                 chek = false;
+                                 return false;
+                             }
+                         }
+                     }
+                     /*if(document.Form1.elements[i].type=="radio")
+                     {
+                     alert(document.Form1.elements[i].checked);
+              
+                var Cname2=document.Form1.elements[i].name;	
+                     if (Left(Cname2,5)=="Radio")
+                     {
+                     if(document.Form1.elements[i].checked==false)
+                     {
+                     var Cname3=document.Form1.elements[i].id;
+                                      
+                     if( chekSex==false && (Left(Cname3,4)=='RadM' || Left(Cname3,4)=='RadF'))
+                     {
+                     //alert('+++');
+                     if(document.Form1.elements[i].checked==false)
+                     {
+                     alert("Please select gender.");
+                     chek = false;
+                     return false;
+                     }
+                     else
+                     {
+                     chekSex=true;
+                     }
+                     }
+                     if( Left(Cname3,4)=='RadF')
+                     {
+                     //alert('---');
+                     if(document.Form1.elements[i].checked==false)
+                     {
+                     alert("Please select gender.");
+                     chek = false;
+                     return false;
+                     }
+                     }
+                     }   
+                     }
+                     }	*/
+                 }
+
+                 if (parseInt(document.getElementById("Child1").value) > nchilds) {
+                     alert("Please Enter the Child's Age less than or equal to 11 years");
+                     chek = false;
+                     return false;
+                 }
+                 else if (parseInt(document.getElementById("Child1").value) < nchilds) {
+                     alert("Please Enter Adults Age Greater than 11 years");
+                     chek = false;
+                     return false;
+                 }
+                 if (chek) {
+                     document.getElementById('Submit1').style.display = 'none';
+                 }
+                 return chek;
+
+             }
+             function CheckOnlyCharacter() {
+                 var kk
+                 kk = event.keyCode
+                 //alert(kk);
+                 if ((kk >= 65 && kk <= 90) || kk == 32 || kk == 8 || kk == 9 || kk == 127 || kk == 16 || kk == 20 || kk == 46) {
+                     return true;
+                 }
+                 alert("Please enter characters only.");
+                 return false;
+             }
+             function GSTHideUnhide(val) {
+                 if (val == "yes") {
+                     document.getElementById('divGSTDetails').style.display = "";
+                 }
+                 else {
+                     document.getElementById('divGSTDetails').style.display = "none";
+                 }
+             }
+
+         </script>
+            <script>
+                function clearCitylist() {
+                    document.getElementById('txtCity').value = "";
+                    document.getElementById('txtPincode').value = "";
+                    document.getElementById('hdnCity').value = "";
+                    document.getElementById('hdnCityId').value = "";
+                    document.getElementById('hdnStateIdBasedOnCity').value = "";
+                    return false;
+                }
+                function SetContextKey() {
+                    $find('<%=AutoCompleteExtender2.ClientID%>').set_contextKey($get("<%=ddlState.ClientID %>").value);
+                }
+                function ShowProcessImage(sender, e) {
+                    sender._element.className = "loading";
+                }
+                function HideProcessImage(sender, e) {
+                    sender._element.className = "";
+                }
+                function OnClientSelectedCity(source, eventArgs) {
+                    if (source) {
+                        // Get the HiddenField ID.
+                        var hdHACCity = source.get_id().replace("AutoCompleteExtender2", "hdnCity");
+                        $get(hdHACCity).value = eventArgs.get_text(); //.get_value();
+                        //alert(document.getElementById(hdHACCity).value);  //
+                        debugger;
+                        var hdnCityId = source.get_id().replace("AutoCompleteExtender2", "hdnCityId");
+                        var hdnStateIdBasedOnCity = source.get_id().replace("AutoCompleteExtender2", "hdnStateIdBasedOnCity");
+                        $get(hdnCityId).value = eventArgs.get_value().split("##")[0];
+                        $get(hdnStateIdBasedOnCity).value = eventArgs.get_value().split("##")[1];
+
+                        var stateid = document.getElementById("ddlState");
+                        var state = stateid.options[stateid.selectedIndex].value;
+                        if (state == "" || state == "0" || state == "--Select--" || state == "Select") {
+                            //alert(document.getElementById(hdnStateIdBasedOnCity).value);
+                            setSelectedValue(stateid, document.getElementById(hdnStateIdBasedOnCity).value);
+                        }
+                    }
+                }
+
+                function setSelectedValue(selectObj, valueToSet) {
+                    //alert('');
+                    for (var i = 0; i < selectObj.options.length; i++) {
+                        if (selectObj.options[i].value == valueToSet) {
+                            selectObj.options[i].selected = true;
+                            return;
+                        }
+                    }
+                }
+            </script>
     <asp:ScriptManager ID="script1" runat="server">
     </asp:ScriptManager>
     <input type="hidden" id="type" value="" runat="server" />

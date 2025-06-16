@@ -190,6 +190,18 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string InsertOnlinePassengerAgent_sp = "InsertOnlinePassengerAgent_sp";    
         public const string insert_SmsSend_tbl= "insert_SmsSend_tbl";
         public const string GST_InsertUpdateCustomerDetail_sp = "GST_InsertUpdateCustomerDetail_sp";
-        public const string GetCustRowID_sp = "GetCustRowID_sp";  
+        public const string GetCustRowID_sp = "GetCustRowID_sp";
+        public const string GetSpecialTourCarType_sp = "GetSpecialTourCarType_sp";
+        public const string GetSplTourCarVehPax_New_sp = "GetSplTourCarVehPax_New_sp";
+        public const string GST_GetStateByCountryId_SP = "GST_GetStateByCountryId_SP";
+        public const string GetGuestDetails_sp = "GetGuestDetails_sp";
+        public const string ExistCustomerDetail_sp = "ExistCustomerDetail_sp";
+        public const string GetOccupationList_sp = "GetOccupationList_sp";
+        public const string AllowCreditBookingCHK_SP = "AllowCreditBookingCHK_SP";
+        public const string GetApprovalHierarchyUserList = "GetApprovalHierarchyUserList";
+        public const string HelNotAvail_sp = "HelNotAvail_sp";
+        public const string GetRevisedTourFare = "GetRevisedTourFare";
+        public const string GetDiscountTourMaster = "GetDiscountTourMaster";
+        public const string GetRevisedFareWithCategory = "GetRevisedFareWithCategory";
     }
 }

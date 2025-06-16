@@ -1,6 +1,7 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.DAL;
 using SouthernTravelIndiaAgent.DTO;
+using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -2617,7 +2618,7 @@ namespace SouthernTravelIndiaAgent
             {
                 //if (Convert.ToInt32(ddlNationality.SelectedValue) > 0)
                 //{
-                string GetServiceChargeDetails = "GST_GetStateByCountryId_SP";
+                string GetServiceChargeDetails = StoredProcedures.GST_GetStateByCountryId_SP;
                 SqlParameter[] param = new SqlParameter[1];
                 param[0] = new SqlParameter("@i_CountryID", "1"); //to get the all service list
                 dscars = DataLib.GetStoredProcData(DataLib.Connection.ConnectionString, GetServiceChargeDetails, param);
