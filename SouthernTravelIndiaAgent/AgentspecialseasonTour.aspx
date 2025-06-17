@@ -16,9 +16,10 @@
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
     <link href="../images/style.css" rel="stylesheet" type="text/css" />
-    <link href="../Images/stylesheet.css" type="text/css" rel="stylesheet" />
+    <link href="../images/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../indexResources/font-style.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .Throug
         {
@@ -100,7 +101,7 @@
     <script language="javascript" src="../Assets/js/GST_OnlineSplSeason.js" type="text/javascript"></script>
 
     <link href="../css/demos.css" rel="stylesheet" type="text/css" />
-    <link type="text/css" href="../css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
+    <link type="text/css" href="/css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
 
@@ -213,13 +214,24 @@
         function doValidate2() {
             debugger;
             if (Trim(document.Form1.txtName.value) == "") {
-                alert("Please fill the Firstname .It is mandatory.");
+
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please fill the Firstname .It is mandatory.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.txtName.focus();
                 return false;
             }
             var nam = document.Form1.txtName.value;
             if ((nam.length) < 3) {
-                alert("Please Enter Minimum Three Characters in the name field");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter Minimum Three Characters in the name field.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.txtName.focus();
                 return false;
             }
@@ -241,29 +253,54 @@
             }
             //		    }						
             if (Trim(document.Form1.txtAddress.value) == "") {
-                alert("Please fill the address in address field.It is mandatory.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please fill the address in address field.It is mandatory.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.txtAddress.focus();
                 return false;
             }
             if (Trim(document.Form1.ddlNationality.value) == "" || document.Form1.ddlNationality.value == "0") {
-                alert("Please select Nationality.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please select Nationality.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.ddlNationality.focus();
                 return false;
             }
             if (Trim(document.Form1.ddlCountry.value) == "" || document.Form1.ddlCountry.value == "0") {
-                alert("Please select Country.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please select Country.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.ddlCountry.focus();
                 return false;
             }
             if (document.Form1.ddlState.value == "0" && document.Form1.ddlCountry.value == "59") {
-                alert('Please Select the State');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Select the State.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.ddlState.focus();
                 chek = false;
                 return false;
             }
 
             if (document.Form1.TxtForeignState.value == "" && document.Form1.ddlCountry.value != "59") {
-                alert('Please Enter the State');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the State.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.TxtForeignState.focus();
                 //                document.getElementById('<%= TxtForeignState.ClientID%>').focus();
                 chek = false;
@@ -272,14 +309,24 @@
 
             //if (Trim(document.Form1.ddlCity.value) == "" || document.Form1.ddlCity.value == "0") {
             if (Trim(document.Form1.txtCity.value) == "" && document.Form1.ddlCountry.value == "59") {
-                alert("Please select City.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please select City.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.txtCity.focus();
                 chek = false;
                 return false;
             }
 
             if (Trim(document.Form1.txtForeignCity.value) == "" && document.Form1.ddlCountry.value != "59") {
-                alert("Please Enter City.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter City.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.Form1.txtForeignCity.focus();
                 chek = false;
                 return false;
@@ -290,7 +337,12 @@
                 //                document.Form1.txtPhoneCountryCode.focus();
                 //                return false;
                 if (validateOnlyNumber1(Trim(document.Form1.txtPhoneCountryCode.value)) == false) {
-                    alert("country code field should have numeric value only.");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Country code field should have numeric value only.',
+                        confirmButtonColor: '#f2572b'
+                    });
                     document.Form1.txtPhoneCountryCode.value = "";
                     document.Form1.txtPhoneCountryCode.focus();
                     return false;
@@ -300,13 +352,23 @@
             if (Trim(document.Form1.txtPhone.value) != "") {
                 var pho = document.Form1.txtPhone.value;
                 if (validateOnlyNumber1(Trim(document.Form1.txtPhone.value)) == false) {
-                    alert("Phone no. should have numeric value only.");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Phone no. should have numeric value only.',
+                        confirmButtonColor: '#f2572b'
+                    });
                     document.Form1.txtPhone.value = "";
                     document.Form1.txtPhone.focus();
                     return false;
                 }
                 else if ((pho.length) < 6) {
-                    alert("Phone no. should have minimum 6 numbers");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Phone no. should have minimum 6 numbers.',
+                        confirmButtonColor: '#f2572b'
+                    });
                     document.Form1.txtPhone.focus();
                     return false;
                 }
@@ -314,14 +376,25 @@
 
             var txtmobile = document.getElementById('txtMobile');
             if (Trim(txtmobile.value) == "") {
-                alert("Please enter Mobile No..");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please enter Mobile No..',
+                    confirmButtonColor: '#f2572b'
+                });
                 txtmobile.value = "";
                 txtmobile.focus();
                 return false;
             }
             if (Trim(document.Form1.txtMobile.value) != "") {
+               ;
                 if (validateOnlyNumber1(Trim(document.Form1.txtMobile.value)) == false) {
-                    alert("Mobile no. should have numeric value only.");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Mobile no. should have numeric value only..',
+                        confirmButtonColor: '#f2572b'
+                    })
                     document.Form1.txtMobile.value = "";
                     document.Form1.txtMobile.focus();
                     return false;
@@ -329,7 +402,12 @@
                 else {
                     var a = document.Form1.txtMobile.value;
                     if ((a.length < 10) | (a.length > 11)) {
-                        alert("Invalid Mobile No")
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Mobile No..',
+                            confirmButtonColor: '#f2572b'
+                        });
                         document.Form1.txtMobile.value = "";
                         document.Form1.txtMobile.focus();
                         return false;
@@ -338,14 +416,24 @@
             }
             var txtmobile = document.getElementById('txtAlternateMobileno');
             if (Trim(txtmobile.value) == "") {
-                alert("Please enter Emergency Contact No..");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please enter Emergency Contact No..',
+                    confirmButtonColor: '#f2572b'
+                });
                 txtmobile.value = "";
                 txtmobile.focus();
                 return false;
             }
             if (Trim(document.Form1.txtAlternateMobileno.value) != "") {
                 if (validateOnlyNumber1(Trim(document.Form1.txtAlternateMobileno.value)) == false) {
-                    alert("Emergency Contact No should have numeric value only.");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Emergency Contact No should have numeric value only..',
+                        confirmButtonColor: '#f2572b'
+                    });
                     document.Form1.txtAlternateMobileno.value = "";
                     document.Form1.txtAlternateMobileno.focus();
                     return false;
@@ -355,7 +443,12 @@
 
             if (document.getElementById('rdbIsGSTApplicableYes').checked == true) {
                 if (document.getElementById('txtCustomerGSTIN').value == "") {
-                    alert('Please Enter Customer GSTIN.');
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Enter Customer GSTIN..',
+                        confirmButtonColor: '#f2572b'
+                    });
                     document.getElementById('txtCustomerGSTIN').focus();
                     return false;
                 }
@@ -363,13 +456,23 @@
                     var GSTINNO = document.getElementById("txtCustomerGSTIN").value;
                     //if (!/([A-Z,a-z]){3}([A,B,C,F,G,H,J,L,P,T,a,b,c,f,g,h,j,l,p,t]){1}([A-Z,a-z]){1}([0-9]){4}([A-Z,a-z]){1}/.test(GSTINNO)) {
                     if (!/^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9]{1}Z[0-9A-Z]{1}$/.test(GSTINNO)) {
-                        alert('Please enter Valid Customer GSTIN');
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Please enter Valid Customer GSTIN.',
+                            confirmButtonColor: '#f2572b'
+                        });
                         document.getElementById("txtCustomerGSTIN").focus();
                         return false;
                     }
                 }
                 if (document.getElementById('txtGstHolderName').value == "") {
-                    alert('Please Enter GST Holder Name.');
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Enter GST Holder Name.',
+                        confirmButtonColor: '#f2572b'
+                    });
                     document.getElementById('txtGstHolderName').focus();
                     return false;
                 }
@@ -422,7 +525,7 @@
             }
         }
         
-            </script>
+    </script>
      <script type="text/javascript">
 
         $(function() {
@@ -602,7 +705,12 @@
              var ddlPax = document.getElementById('<%=ddlNoOfPax.ClientID %>');
              var ddlSelectedPax = ddlPax.options[ddlPax.selectedIndex].value;
              if (ddlSelectedPax == "0") {
-                 alert("Please select No of Pax.");
+                 Swal.fire({
+                     icon: 'warning',
+                     title: 'Oops...',
+                     text: 'Please select No of Pax.',
+                     confirmButtonColor: '#f2572b'
+                 });
                  document.getElementById('<%=ddlNoOfPax.ClientID %>').focus();
                  document.getElementById('<%=chkSingle.ClientID %>').checked = false;
                  //ExtrafareCal();
@@ -625,7 +733,12 @@
      }
      function fnchkSingle2() {
          if ((!document.getElementById('chkSingle').checked) && (document.getElementById('txtSinglePax').value > 0)) {
-             alert("Please Check the Check box also");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Check the Check box also',
+                 confirmButtonColor: '#f2572b'
+             });
              return false;
          }
      }
@@ -665,13 +778,23 @@
      function ValidateJourneyDate() {
 
          if (document.getElementById('txtDate').value == "") {
-             alert('Please first select a journey date.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please first select a journey date',
+                 confirmButtonColor: '#f2572b'
+             });
              return false;
          }
          if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
          (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
          (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
-             alert('Please first select Category Type.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please first select Category Type',
+                 confirmButtonColor: '#f2572b'
+             });
              return false;
          }
          return true;
@@ -681,14 +804,24 @@
              if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
              (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
              (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {
-                 alert('Please first select Category Type.');
+                 Swal.fire({
+                     icon: 'warning',
+                     title: 'Oops...',
+                     text: 'Please first select Category Type.',
+                     confirmButtonColor: '#f2572b'
+                 });
                  return false;
              }
              if (document.getElementById('<%= ddlCarType.ClientID %>').selectedIndex != "0") {
                  return true;
              }
              else {
-                 alert('Please select car type.');
+                 Swal.fire({
+                     icon: 'warning',
+                     title: 'Oops...',
+                     text: 'Please select car type.',
+                     confirmButtonColor: '#f2572b'
+                 });
                  document.getElementById('<%= ddlCarType.ClientID %>').focus();
                  return false;
              }
@@ -714,7 +847,12 @@
          var TotalPaxSelected = VehiclePaxSelected + ChildWithoutMatress + ChildWithMatress
          if (TotalPaxSelected > MaxPax) {
              document.getElementById(obj).value = '0';
-             alert('Total pax selected should be less then the vehicle max pax');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Total pax selected should be less then the vehicle max pax.',
+                 confirmButtonColor: '#f2572b'
+             });
              return false;
          }
          else if (TotalPaxSelected <= MaxPax) {
@@ -723,7 +861,7 @@
          }
      }
 
-         </script>
+     </script>
         
     <script language="javascript" src="../includes/md5.js" type="text/javascript"></script>
 

@@ -151,7 +151,7 @@ namespace SouthernTravelIndiaAgent
 
         void sendMail()
         {
-
+            ClsAdo clsAdo = new ClsAdo();
             //  bool issomedel=false;
             foreach (DataGridItem di in dgDuplicateTickets.Items)
             {
@@ -163,7 +163,9 @@ namespace SouthernTravelIndiaAgent
                     if (CheckSelected == true)
                     {
                         string tkCode = Convert.ToString(dgDuplicateTickets.DataKeys[di.ItemIndex].ToString());
-                        DataTable dtTicketDetails = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "SELECT  * FROM tbl_CarBookings_Log WHERE TicketNo ='" + tkCode + "'");
+                        DataTable dtTicketDetails = clsAdo.GetCarBookingDetails(tkCode);
+
+                        //DataTable dtTicketDetails = DataLib.GetDataTable(DataLib.Connection.ConnectionString, "SELECT  * FROM tbl_CarBookings_Log WHERE TicketNo ='" + tkCode + "'");
                         int i;
 
                         for (i = 0; i < dtTicketDetails.Rows.Count; i++)
@@ -424,8 +426,9 @@ namespace SouthernTravelIndiaAgent
                 //sendMail.Subject = "Duplicate ticket- Southern Travels";
                 //SmtpMail.Send(sendMail);
 
+                string eTicketEmail= ConfigurationSettings.AppSettings["eTicketEmail"].ToString();
                 if (Toemail == "")
-                    Toemail = "support@southerntravels.in";
+                    Toemail = ConfigurationSettings.AppSettings["SupportEmail"].ToString();
 
                 string tickeMailBCC = string.Empty;
                 if ((BranchCode == "EBK0001") && (Convert.ToInt32(agentid) == 0))
@@ -436,7 +439,7 @@ namespace SouthernTravelIndiaAgent
                 {
                     tickeMailBCC = ConfigurationSettings.AppSettings["ticketemail"].ToString();
                 }
-                ClsCommon.sendmail(Toemail, tickeMailBCC, "", "etickets@southerntravels.in", "Duplicate ticket- Southern Travels", lMailHtml.ToString(), "");
+                ClsCommon.sendmail(Toemail, tickeMailBCC, "", eTicketEmail, "Duplicate ticket- Southern Travels", lMailHtml.ToString(), "");
 
             }
             catch (Exception ex)
@@ -453,10 +456,12 @@ namespace SouthernTravelIndiaAgent
 
         protected string groupleader(string orderid)
         {
+            ClsAdo cls = new ClsAdo();
             string grp = "";
             try
             {
-                grp = DataLib.GetStringData(DataLib.Connection.ConnectionString, "select FirstName + ' ' + isnull(LastName,'') as Name1 from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid='" + orderid + "'");
+                grp = cls.GetCustomerFullName(orderid);
+                //grp = DataLib.GetStringData(DataLib.Connection.ConnectionString, "select FirstName + ' ' + isnull(LastName,'') as Name1 from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid='" + orderid + "'");
             }
             catch
             {
@@ -471,13 +476,15 @@ namespace SouthernTravelIndiaAgent
 
         protected string CustAddress(string orderid)
         {
+            ClsAdo cls = new ClsAdo();
             string add = "";
             try
             {
                 //grp = DataLib.GetStringData(DataLib.Connection.ConnectionString, "select FirstName + ' ' + isnull(LastName,'') as Name1 from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid='" + orderid + "'");
-                SqlParameter[] param = new SqlParameter[1];
-                param[0] = new SqlParameter("@orderid", orderid);
-                add = DataLib.GetStringDataWithParam(DataLib.Connection.ConnectionString, "select Addr1 + ', ' + isnull(addr2,'') +', '+isnull(city,'')+', '+isnull(state,'') as address from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid=@orderid", param);
+                //SqlParameter[] param = new SqlParameter[1];
+                //param[0] = new SqlParameter("@orderid", orderid);
+                //add = DataLib.GetStringDataWithParam(DataLib.Connection.ConnectionString, "select Addr1 + ', ' + isnull(addr2,'') +', '+isnull(city,'')+', '+isnull(state,'') as address from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid=@orderid", param);
+                add = cls.GetCustomerAddress(orderid);
                 add = add.Replace(", ,", "");
             }
             catch

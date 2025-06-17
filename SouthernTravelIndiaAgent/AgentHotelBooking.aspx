@@ -13,7 +13,7 @@
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="../css/demos.css" rel="stylesheet" type="text/css" />
-    <link type="text/css" href="../css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
+    <link type="text/css" href="/css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
 

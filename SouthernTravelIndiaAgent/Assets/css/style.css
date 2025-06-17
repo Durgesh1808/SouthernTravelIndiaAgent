@@ -408,3 +408,24 @@ text-decoration:underline;
 .TB_selctd { width:39px; height:35px; background: url(../images/set_arngnt.gif) 0 -70px no-repeat;padding-right:10px; text-align:center; line-height:35px; color:#fff; font-size:16px;}
 .Rfnt { font-size:17px; color:#df411a; padding-left:7px;}
 /*------------------------------------------------tourbooking Css End-----------------------------------------------*/
+
+
+
+/*------------------------------------------------Swal Alert Css-----------------------------------------------*/
+.swal2-popup.swal2-modal.swal2-icon-warning.swal2-show {
+    width: 90vw;               /* Responsive width */
+    max-width: 250px;          /* Limit max size on larger screens */
+    height: auto;              /* Let height adjust based on content */
+    font-size: 12px;           /* Smaller text size */
+    padding: 1rem;             /* Positive padding for spacing */
+    box-sizing: border-box;
+    border-radius: 10px;       /* Optional: rounded corners for better look */
+}
+
+
+@media (max-width: 400px) {
+    .swal2-popup.swal2-modal.swal2-icon-warning.swal2-show {
+        font-size: 11px;
+        padding: 0.8rem;
+    }
+}

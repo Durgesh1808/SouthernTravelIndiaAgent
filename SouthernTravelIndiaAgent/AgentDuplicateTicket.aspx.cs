@@ -926,15 +926,16 @@ namespace SouthernTravelIndiaAgent
                 MailSubject.Append("	</table>");
                 MailSubject.Append("</DIV>");
                 lMailHtml.Append(MailSubject);
+                string supportEmail = ConfigurationSettings.AppSettings["SupportEmail"].ToString();
                 if (Toemail == orderid + "@temp.com")
                 {
-                    Toemail = "support@southerntravels.in";
+                    Toemail = supportEmail;
                 }
                 else if (Toemail.Length > 23)
                 {
                     string k = Toemail.Substring(19, 4);
                     if (k == "temp")
-                        Toemail = "support@southerntravels.in";
+                        Toemail = supportEmail;
                 }
                 try
                 {
@@ -952,8 +953,9 @@ namespace SouthernTravelIndiaAgent
 
                     // ClsCommon.sendmail(Toemail, ConfigurationSettings.AppSettings["ticketemailCar"].ToString(), "", "etickets@southerntravels.in", "Duplicate ticket- Southern Travels", MailSubject.ToString(), "");
                     #endregion
+                    string eTicketsEmail= ConfigurationSettings.AppSettings["eTicketEmail"].ToString();
                     if (Toemail == "")
-                        Toemail = "support@southerntravels.in";
+                        Toemail = ConfigurationSettings.AppSettings["SupportEmail"].ToString(); 
 
                     string tickeMailBCC = string.Empty;
                     if ((BranchCode == "EBK0001") && (Convert.ToInt32(agentid) == 0))
@@ -964,7 +966,7 @@ namespace SouthernTravelIndiaAgent
                     {
                         tickeMailBCC = ConfigurationSettings.AppSettings["ticketemailCar"].ToString();
                     }
-                    ClsCommon.sendmail(Toemail, tickeMailBCC, "", "etickets@southerntravels.in", "Duplicate ticket- Southern Travels", lMailHtml.ToString(), "");
+                    ClsCommon.sendmail(Toemail, tickeMailBCC, "", eTicketsEmail, "Duplicate ticket- Southern Travels", lMailHtml.ToString(), "");
 
 
 
@@ -1044,10 +1046,13 @@ namespace SouthernTravelIndiaAgent
         }
         protected string groupleader(string orderid)
         {
+            ClsAdo cls = new ClsAdo();
+
             string grp = "";
             try
             {
-                grp = DataLib.GetStringData(DataLib.Connection.ConnectionString, "select FirstName + ' ' + isnull(LastName,'') as Name1 from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid='" + orderid + "'");
+                grp = cls.GetCustomerFullName(orderid);
+                //grp = DataLib.GetStringData(DataLib.Connection.ConnectionString, "select FirstName + ' ' + isnull(LastName,'') as Name1 from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid='" + orderid + "'");
             }
             catch
             {
@@ -1064,9 +1069,11 @@ namespace SouthernTravelIndiaAgent
             string add = "";
             try
             {
-                SqlParameter[] param = new SqlParameter[1];
-                param[0] = new SqlParameter("@orderid", orderid);
-                add = DataLib.GetStringDataWithParam(DataLib.Connection.ConnectionString, "select Addr1 + ', ' + isnull(addr2,'') +', '+isnull(city,'')+', '+isnull(state,'') as address from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid=@orderid", param);
+                ClsAdo cls = new ClsAdo();
+                //SqlParameter[] param = new SqlParameter[1];
+                //param[0] = new SqlParameter("@orderid", orderid);
+                add = cls.GetCustomerAddress(orderid);
+                //add = DataLib.GetStringDataWithParam(DataLib.Connection.ConnectionString, "select Addr1 + ', ' + isnull(addr2,'') +', '+isnull(city,'')+', '+isnull(state,'') as address from OnlineCustomer inner join OnlineCustByOrder on OnlineCustomer.RowID=OnlineCustByOrder.OCustRowID where OnlineCustByOrder.orderid=@orderid", param);
                 add = add.Replace(", ,", "");
             }
             catch

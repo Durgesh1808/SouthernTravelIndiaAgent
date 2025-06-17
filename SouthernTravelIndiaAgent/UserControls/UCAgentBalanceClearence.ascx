@@ -9,7 +9,12 @@
     {
         if(document.getElementById('<%=txtticketno.ClientID  %>').value=="")
         {
-            alert('Please Enter Ticket Number');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please Enter Ticket Number',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('<%=txtticketno.ClientID  %>').focus();
             return false;
         }
@@ -25,15 +30,25 @@
         }
      // var exceedingAmt = parseFloat(document.getElementById('txtExceedingAmt.ClientID  %>').value);
       if(document.getElementById('<%=txtticketno.ClientID  %>').value=="")
-        {
-            alert('Please Enter Ticket Number');
+      {
+          Swal.fire({
+              icon: 'warning',
+              title: 'Oops...',
+              text: 'Please Enter Ticket Number',
+              confirmButtonColor: '#f2572b'
+          });
             document.getElementById('<%=txtticketno.ClientID  %>').focus();
             che=false;
             return false;
         } 
         if(document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value=="")
-         {
-            alert('Please Enter Balance Paid Amount');
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please Enter Balance Paid Amount',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').focus();
             che=false;
             return false;
@@ -41,8 +56,13 @@
         else
         {
             if(parseInt(document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value)==0)
-             {
-                alert('Please Enter Balance Paid Amount');
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter Balance Paid Amount',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('<%=txtbalancepaidnow.ClientID  %>').focus();
                 che=false;
                 return false;
@@ -55,7 +75,12 @@
        
         if (parseFloat(total) < (parseFloat(advance) + parseFloat(presentamt) - parseFloat(PrevCan)))
         {
-            alert('Amount Paid is greater Than Balance Pending Amount');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Amount Paid is greater Than Balance Pending Amount',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value="";
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value="0";
             document.getElementById('<%=txtbalancepending.ClientID  %>').value="0";
@@ -77,7 +102,13 @@
     {    
         if(isNaN(document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value)==true)
         {
-            alert('Please Enter Numeric value');
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please Enter Numeric value',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value="0";
             document.getElementById('<%=txtbalancepending.ClientID  %>').value="0";
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').focus();
@@ -97,7 +128,12 @@
         }
         if(parseFloat(balance+ exceedingAmt)<parseFloat(paid))
         {
-            alert('Amount Paid is greater Than Balance Pending Amount');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Amount Paid is greater Than Balance Pending Amount',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').value="0";
             document.getElementById('<%=txtbalancepending.ClientID  %>').value="0";
             document.getElementById('<%=txtbalancepaidnow.ClientID  %>').focus();
@@ -130,7 +166,12 @@
          
           if(Cid=="")
           {
-               alert("please enter ticket no");
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Oops...',
+                  text: '"please enter ticket no',
+                  confirmButtonColor: '#f2572b'
+              });
                return false;
           }
           

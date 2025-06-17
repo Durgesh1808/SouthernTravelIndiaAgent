@@ -546,8 +546,9 @@ namespace SouthernTravelIndiaAgent
                     TicketStr.Append(dtterm.Rows[0]["HotelTermsCondition"].ToString());
 
                 }
+                string eTicketEmail= ConfigurationSettings.AppSettings["eTicketEmail"].ToString();
                 TicketStr.Append("</DIV></TD></TR></Table>"); lMailHtml.Append(TicketStr);
-                SendMail(dtFare.Tables[0].Rows[0]["email"].ToString(), "etickets@southerntravels.in", "", "Duplicate Accommodation Reservation - Southern Travels", lMailHtml.ToString(), "");
+                SendMail(dtFare.Tables[0].Rows[0]["email"].ToString(), eTicketEmail, "", "Duplicate Accommodation Reservation - Southern Travels", lMailHtml.ToString(), "");
                 return TicketStr;
             }
             finally
@@ -659,7 +660,9 @@ namespace SouthernTravelIndiaAgent
                         ticketMailBCC = ss.TrimStart(',').TrimEnd(',');
                     }
                 }
-                ClsCommon.sendmail(To, ticketMailBCC, "", "etickets@southerntravels.in", subject, body, "");
+                string eTicketEmail = ConfigurationSettings.AppSettings["eTicketEmail"].ToString();
+
+                ClsCommon.sendmail(To, ticketMailBCC, "", eTicketEmail, subject, body, "");
             }
             catch (Exception)
             {

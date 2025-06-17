@@ -78,8 +78,17 @@ namespace SouthernTravelIndiaAgent.UserControls
                     }
                     else
                     {
+                        string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Please Enter valid Ticket Number.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                         //ClientScript.RegisterStartupScript(GetType(), "invalid", "<script>alert('Please Enter valid Ticketno');</script>");
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Please Enter valid Ticket Number.');", true);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Please Enter valid Ticket Number.');", true);
                     }
                 }
                 else
@@ -87,7 +96,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                     clear();
                     btnpay.Enabled = false;
                     //ClientScript.RegisterStartupScript(GetType(), "Warning", "<script>alert('Please Enter Ticket Number');</script>");
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Please Enter Ticket Number.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Please Enter Ticket Number.');", true);
+                    string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Please Enter Ticket Number.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                 }
             }
             finally
@@ -121,7 +139,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                     if ((Convert.ToDecimal(txtbalancetill.Value) < Convert.ToDecimal(txtbalancepaidnow.Value)))
                     {
                         //ClientScript.RegisterStartupScript(GetType(), "exc1", "<script>alert('Amount Paid is greater than Balance Amount');</script>");
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Amount Paid is greater than Balance Amount.');", true);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Amount Paid is greater than Balance Amount.');", true);
+                                string script2 = @"
+                            Swal.fire({
+                              title: 'Oops...',
+                              text: 'Amount Paid is greater than Balance Amount.',
+                              icon: 'warning',
+                              confirmButtonText: 'OK',
+                              confirmButtonColor: '#f2572b'
+                            });";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script2, true);
                     }
                     else
                     {
@@ -133,7 +160,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                     if ((Convert.ToDecimal(txtbalancetill.Value) < Convert.ToDecimal(txtbalancepaidnow.Value)))
                     {
                         //ClientScript.RegisterStartupScript(GetType(), "exc1", "<script>alert('Amount Paid is greater than Balance Amount');</script>");
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Amount Paid is greater than Balance Amount.');", true);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Amount Paid is greater than Balance Amount.');", true);
+                        string script1 = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Amount Paid is greater than Balance Amount.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script1, true);
                     }
                     else
                     {
@@ -142,7 +178,21 @@ namespace SouthernTravelIndiaAgent.UserControls
                 }
                 //this.RegisterStartupScript("payment", "<script>alert('Payment submitted successfully.');window.location.href='BranchBalanceClearence.aspx';</script>");
                 //ScriptManager.RegisterStartupScript(this, typeof(Page), "UniqueID", "alert('Payment submitted successfully.')", true);
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Payment submitted successfully.');window.location.href='" + fldPageName + "';", true);
+                string script = $@"
+                Swal.fire({{
+                  title: 'Success!',
+                  text: 'Payment submitted successfully.',
+                  icon: 'success',
+                  confirmButtonText: 'OK',
+                  confirmButtonColor: '#f2572b'
+                }}).then((result) => {{
+                  if (result.isConfirmed) {{
+                    window.location.href = '{fldPageName}';
+                  }}
+                }});";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "swalSuccess", script, true);
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Payment submitted successfully.');window.location.href='" + fldPageName + "';", true);
 
                 clear();
                 btnpay.Enabled = true;
@@ -153,7 +203,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                 clear();
                 btnpay.Enabled = false;
                 //ClientScript.RegisterStartupScript(GetType(), "Warning", "<script>alert('Please Enter Proper Ticket Number');</script>");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Please Enter Proper Ticket Number.');", true);
+                string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Please Enter Proper Ticket Number.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                   ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
+
             }
         }
         protected void btnPrint_Click(object sender, EventArgs e)
@@ -205,7 +264,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                     btnpay.Enabled = false;
                     //ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Invalid Ticket Details');</script>");
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Invalid Ticket Details.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Invalid Ticket Details.');", true);
+                    string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Invalid Ticket Details.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                 }
             }
             finally
@@ -287,7 +355,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                     clear();
                     btnpay.Enabled = false;
                     //ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Invalid Ticket Details');</script>");
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Invalid Ticket Details.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Invalid Ticket Details.');", true);
+                    string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Invalid Ticket Details.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                 }
             }
             finally
@@ -410,7 +487,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                 {
                     //ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Insufficient funds.');</script>");
                     //RegisterStartupScript("Error", "<Script>alert('Insufficient funds');</Script>");
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Insufficient funds.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Insufficient funds.');", true);
+                    string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Insufficient funds.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                 }
             }
             finally
@@ -448,7 +534,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                 {
                     //ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Insufficient funds.');</script>");
                     //RegisterStartupScript("Error", "<Script>alert('Insufficient funds');</Script>");
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Insufficient funds.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Insufficient funds.');", true);
+                    string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Insufficient funds.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                 }
             }
             finally
@@ -484,7 +579,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Insufficient funds.');", true);
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alrtmsg", "alert('Insufficient funds.');", true);
+                    string script = @"
+                    Swal.fire({
+                      title: 'Oops...',
+                      text: 'Insufficient funds.',
+                      icon: 'warning',
+                      confirmButtonText: 'OK',
+                      confirmButtonColor: '#f2572b'
+                    });";
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "swalmsg", script, true);
                 }
             }
             finally
