@@ -6885,5 +6885,64 @@ namespace SouthernTravelIndiaAgent.DAL
             }
         }
 
+
+        public  string GetCustomerFullName(string orderId)
+        {
+            string result = string.Empty;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCustomerFullNameByOrderID, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@OrderID", orderId);
+
+                conn.Open();
+                object res = cmd.ExecuteScalar();
+                if (res != null && res != DBNull.Value)
+                    result = res.ToString();
+            }
+
+            return result;
+        }
+
+
+        public  string GetCustomerAddress(string orderId)
+        {
+            string address = string.Empty;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCustomerAddressByOrderID, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@OrderID", orderId);
+
+                conn.Open();
+                object res = cmd.ExecuteScalar();
+                if (res != null && res != DBNull.Value)
+                    address = res.ToString();
+            }
+
+            return address;
+        }
+
+        public  DataTable GetCarBookingDetails(string ticketNo)
+        {
+            DataTable dtResult = new DataTable();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            using (SqlCommand cmd = new SqlCommand(StoredProcedures.GetCarBookingDetailsByTicketNo, conn))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@TicketNo", ticketNo);
+
+                using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                {
+                    da.Fill(dtResult);
+                }
+            }
+
+            return dtResult;
+        }
+
     }
 }

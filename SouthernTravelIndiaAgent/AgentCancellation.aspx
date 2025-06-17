@@ -32,7 +32,7 @@
     <script language="javascript" src="Assets/js/agentcancellation.js" type="text/javascript"></script>
      <link href="Assets/css/demos.css" rel="stylesheet
     " type="text/css" />
-    <link type="text/css" href="../Assets/css/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
+    <link type="text/css" href="/Assets/css/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
 
     <script src="../Assets/js/jquery-1.3.2.min.js" type="text/javascript"></script>
 

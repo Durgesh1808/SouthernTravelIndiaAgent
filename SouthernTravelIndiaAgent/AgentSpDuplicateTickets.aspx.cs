@@ -442,7 +442,7 @@ namespace SouthernTravelIndiaAgent
                         string AgentName = Convert.ToString(Session["AgentFname"]).Trim() + " " + Convert.ToString(Session["AgentLname"]).Trim();
                         MailSubject.Append("<TD width=\"69%\"><font color=\"#666666\" size=\"1\" face=\"Verdana, Arial, Helvetica, sans-serif\"><string>'" + AgentName + "'</string><br/>" + address1 + "," + ph + "</font></td>");
                     }
-                    MailSubject.Append("<td width=\"31%\" valign=\"top\"><img src=\"../Images/southerntravels_logo.gif\" width=\"231\" height=\"64\" /></td>");
+                    MailSubject.Append("<td width=\"31%\" valign=\"top\"><img src=\"../Assets/images/logo.webp\" width=\"231\" height=\"64\" /></td>");
                     MailSubject.Append("</TR></table></td></tr></table></td></tr>");
 
                     MailSubject.Append("<TR>");

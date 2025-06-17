@@ -73,11 +73,11 @@
                     <table width="100%" cellspacing="0" cellpadding="0" border="0">
                         <tr>
                             <td align="left">
-                                <img width="8" height="8" src="Assets/images/left_corner.gif" /></td>
+                                <img width="8" height="8" src="Assets/images/left_corner.gif" loading="lazy" alt="left_corner" /></td>
                             <td bgcolor="#e7e7e7">
-                                <img width="380" height="1" src="Assets/images/trans.gif" /></td>
+                                <img width="380" height="1" src="Assets/images/trans.gif" loading="lazy" alt="trans" /></td>
                             <td align="right">
-                                <img width="8" height="8" src="Assets/images/rgt_corner.gif" /></td>
+                                <img width="8" height="8" src="Assets/images/rgt_corner.gif" loading="lazy" alt="rgt_corner" /></td>
                         </tr>
                         <tr>
                             <td width="8" bgcolor="#E7E7E7">
@@ -106,7 +106,7 @@
                                                 </tr>
                                                 <tr>
                                                     <td>
-                                                        <img src="/Assets/images/bottom.gif" width="138" height="1" /></td>
+                                                        <img src="/Assets/images/bottom.gif" width="138" height="1" loading="lazy" alt="bottom" /></td>
                                                 </tr>
                                             </table>
                                         </td>
@@ -144,7 +144,7 @@
                                             <input name="txtjdate" type="text" class="verdana11bk" readonly="readonly" runat="server"
                                                 id="txtjdate" onfocus="objCal('JICON','txtjdate','390','160');" /><a href="javascript:void(null)"
                                                     onclick="objCal('JICON','txtjdate','390','160');" hidefocus=""><img src="Assets/images/calendar.gif"
-                                                        border="0" id="JICON" tabindex="-1" style="padding-bottom: 0px; visibility: visible;" /></a>
+                                                        border="0" id="JICON" tabindex="-1" style="padding-bottom: 0px; visibility: visible;"  loading="lazy" alt="calendar"/></a>
                                         </td>
                                         <td>
                                             <input name="txtEmail" type="text" class="verdana11bk" runat="server" id="txtEmail" />
@@ -230,11 +230,11 @@
                         </tr>
                         <tr>
                             <td align="left">
-                                <img width="8" height="8" src="Assets/images/left_d_corner.gif" alt="image" /></td>
+                                <img width="8" height="8" src="Assets/images/left_d_corner.gif" alt="image"   loading="lazy" /></td>
                             <td bgcolor="#e7e7e7">
-                                <img width="1" height="1" src="Assets/images/trans.gif" alt="image" /></td>
+                                <img width="1" height="1" src="Assets/images/trans.gif" alt="image" loading="lazy"/></td>
                             <td align="right">
-                                <img width="8" height="8" src="Assets/images/rgt_d_corner.gif" alt="image" /></td>
+                                <img width="8" height="8" src="Assets/images/rgt_d_corner.gif" alt="image" loading="lazy"/></td>
                         </tr>
                     </table>
                 </td>

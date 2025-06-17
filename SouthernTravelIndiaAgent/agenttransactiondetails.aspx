@@ -12,8 +12,9 @@
     <link href="../Assets/css/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/Calenderall.css" rel="Stylesheet" type="text/css" />
     <script language="javascript" src="../Assets/js/calenderall.js" type="text/javascript"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script language="javascript" type="text/javascript">
-    
+
     function validation()
     {
     
@@ -21,24 +22,43 @@
 	    var et=document.getElementById("txtToDate");	    
 	    if((st.value=="")&&(et.value!="") )
          {
-              alert("Please enter the Date Range");
+               Swal.fire({
+                     icon: 'warning',
+                     title: 'Oops...',
+                     text: 'Please enter the Date Range.',
+                     confirmButtonColor: '#f2572b'
+                 });
               return false;
          }
 	    
         if((st.value!="")&&(et.value==""))
-         {
-              alert("Please enter the Date Range");
+         { Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please enter the Date Range.',
+                 confirmButtonColor: '#f2572b'
+             });
               return false;
          }
          
          if((st.value!="")&&(et.value!="")&&(st.value.length < 8))
          {
-              alert("Please enter in dd/mm/yyyy format");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please enter in dd/mm/yyyy format.',
+                 confirmButtonColor: '#f2572b'
+             });
               return false;
          }
          if((st.value!="")&&(et.value!="")&&(et.value.length < 8))
          {
-              alert("Please enter in dd/mm/yyyy format");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please enter in dd/mm/yyyy format.',
+                 confirmButtonColor: '#f2572b'
+             });
               return false;
          }
        
@@ -66,18 +86,33 @@
                 
                     if( Date.parse(d1) > Date.parse(d2) )
                     {
-	                     alert("Invalid Date Range. Reason: From Date is greater than To Date.");
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Date Range. Reason: From Date is greater than To Date.',
+                            confirmButtonColor: '#f2572b'
+                        });
          	             return false;
 	                }
 	                else if( Date.parse(dt) < Date.parse(d1) )
 	                {
-	                     alert("Invalid Date Range. Reason: Current Date is less than From Date.");
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Date Range. Reason: Current Date is less than From Date.',
+                            confirmButtonColor: '#f2572b'
+                        });
          	             return false;
     	            
 	                }
 	                else if( Date.parse(dt) < Date.parse(d2) ) 
 	                {
-	                     alert("Invalid Date Range. Reason: To Date is greater than Current Date.");
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Date Range. Reason: To Date is greater than Current Date.',
+                            confirmButtonColor: '#f2572b'
+                        });
          	             return false;
 	                }  
 	       

@@ -12,37 +12,63 @@
     <link href="../Assets/css/stylesheet.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/Calenderall.css" rel="Stylesheet" type="text/css" />
     <script language="javascript" src="../Assets/js/calenderall.js" type="text/javascript"></script>  
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script language="javascript" type="text/javascript">
     function validation()
-    {       
+    {    
+        debugger;  
         var st=document.getElementById("txtFromDate");	   
 	    var et=document.getElementById("txtToDate");	    
 	    if((st.value=="")&&(et.value==""))
-         {
-              alert("Please enter the Date Range");
+        {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please enter the Date Range.',
+                confirmButtonColor: '#f2572b'
+            });
               return false;
          }	    
          if((st.value=="")&&(et.value!=""))
          {
-              alert("Please enter the Date Range");
-              return false;
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please enter the Date Range.',
+                 confirmButtonColor: '#f2572b'
+             });
+             return false;
          }	    
         if((st.value!="")&&(et.value==""))
          {
-              alert("Please enter the Date Range");
-              return false;
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please enter the Date Range.',
+                confirmButtonColor: '#f2572b'
+            });
+            return false;
          }
          
          if((st.value!="")&&(et.value!="")&&(st.value.length < 8))
          {
-              alert("Please enter in dd/mm/yyyy format");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please enter in dd/mm/yyyy format.',
+                 confirmButtonColor: '#f2572b'
+             });
               return false;
          }
          if((st.value!="")&&(et.value!="")&&(et.value.length < 8))
          {
-              alert("Please enter in dd/mm/yyyy format");
-              return false;
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please enter in dd/mm/yyyy format.',
+                 confirmButtonColor: '#f2572b'
+             });
+             return false;
          }
 	         else
 	         {
@@ -67,26 +93,44 @@
                 
                     if( Date.parse(d1) > Date.parse(d2) )
                     {
-	                     alert("Invalid Date Range. Reason: From Date is greater than To Date.");
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Date Range. Reason: From Date is greater than To Date.',
+                            confirmButtonColor: '#f2572b'
+                        });
          	             return false;
 	                }
 	                else if( Date.parse(dt) < Date.parse(d1) )
-	                {
-	                     alert("Invalid Date Range. Reason: Current Date is less than From Date.");
+                    {
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Date Range. Reason: Current Date is less than From Date.',
+                            confirmButtonColor: '#f2572b'
+                        });
          	             return false;
     	            
 	                }
 	                else if( Date.parse(dt) < Date.parse(d2) ) 
 	                {
-	                    ///alert(Date.parse(dt));
-	                    //alert(Date.parse(d2));
-	                     alert("Invalid Date Range. Reason: To Date is greater than Current Date.");
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Invalid Date Range. Reason: To Date is greater than Current Date.',
+                            confirmButtonColor: '#f2572b'
+                        });
          	             return false;
-	                }
-        	                    
+             }
+              
                     else if(document.form1.ddlType.value == "Select")
                     {
-                        alert('Please choose the type');
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Please choose the type.',
+                            confirmButtonColor: '#f2572b'
+                        });
                         document.form1.ddlType.focus();
                         return false;
                     }
@@ -125,11 +169,11 @@
                         <table width="780" height="449" border="0" cellpadding="0" cellspacing="0">
                             <tr height="8">
                                 <td align="left">
-                                    <img src="Assets/images/left_corner.gif" width="8" height="8" /></td>
+                                    <img src="Assets/images/left_corner.gif" width="8" height="8"  loading="lazy"/></td>
                                 <td bgcolor="#E7E7E7">
-                                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                                    <img src="Assets/images/trans.gif" width="1" height="1" loading="lazy"/></td>
                                 <td align="right">
-                                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" /></td>
+                                    <img src="Assets/images/rgt_corner.gif" width="8" height="8" loading="lazy"/></td>
                             </tr>
                             <tr height="433">
                                 <td align="left" bgcolor="#E7E7E7">
@@ -140,16 +184,16 @@
                                             <td width="283" align="left">
                                                 <table width="220" border="0" cellspacing="0" cellpadding="0">
                                                     <tr>
-                                                      <td width="13"><img src="Assets/images/left_.gif" width="13" height="42" /></td>
+                                                      <td width="13"><img src="Assets/images/left_.gif" width="13" height="42" loading="lazy"/></td>
                                                       <td align="center" background="Assets/images/bg1.gif" class="verdana14w"> Agent Commission Report </td>
-                                                      <td width="13"><img src="Assets/images/right_.gif" width="13" height="42" /></td>
+                                                      <td width="13"><img src="Assets/images/right_.gif" width="13" height="42" loading="lazy"/></td>
                                                     </tr>
                                                   </table>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td align="right">
-                                                <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                                                <img src="Assets/images/trans.gif" width="1" height="1" loading="lazy"/></td>
                                         </tr>
                                         <tr>
                                             <td align="center">
@@ -159,7 +203,7 @@
                                                         <td align="left" class="cgi1" background="Assets/images/bg1.gif" width="10%" valign="middle">From Date </td>
                                                            <td align="left" class="cgi1" background="Assets/images/bg1.gif" width="15%" valign="middle">
                                                                 <asp:TextBox ID="txtFromDate" width="70%" runat="server" onclick="showCalendarControl(this);"></asp:TextBox>
-                                                                <img id="btn1" style="cursor: hand" alt="View calendar" src="Assets/images/calendar.gif"
+                                                                <img id="btn1" style="cursor: hand" alt="View calendar" src="Assets/images/calendar.gif" loading="lazy"
                                                                 onclick="showCalendarControl(document.getElementById('txtFromDate'));">
                                                          </td>
                                                          <td align="right" class="cgi1" background="Assets/images/bg1.gif" width="10%" valign="middle">
@@ -168,7 +212,7 @@
                                                           <td align="left" class="cgi1" background="Assets/images/bg1.gif" width="15%" valign="middle">  
                                                             <asp:TextBox ID="txtToDate" runat="server" Width="70%"  onclick="showCalendarControl(this);"></asp:TextBox>
                                                             
-                                                            <img id="btn2" style="cursor: hand" alt="View calendar" src="Assets/images/calendar.gif"
+                                                            <img id="btn2" style="cursor: hand" alt="View calendar" src="Assets/images/calendar.gif" loading="lazy" 
                                                                onclick="showCalendarControl(document.getElementById('txtToDate'));">
                                                             </td>
                                                             <td align="right" class="cgi1" background="Assets/images/bg1.gif" width="6%" valign="middle">
@@ -266,11 +310,11 @@
                             </tr>
                             <tr height="8">
                                 <td align="left">
-                                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" /></td>
+                                    <img src="Assets/images/left_d_corner.gif" width="8" height="8" loading="lazy" alt="left_d_corner"/></td>
                                 <td bgcolor="#E7E7E7">
-                                    <img src="Assets/images/trans.gif" width="1" height="1" /></td>
+                                    <img src="Assets/images/trans.gif" width="1" height="1" loading="lazy" alt="trans"/></td>
                                 <td align="right">
-                                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" /></td>
+                                    <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" loading="lazy"  alt="rgt_d_corner"/></td>
                             </tr>
                         </table>
                     </td>

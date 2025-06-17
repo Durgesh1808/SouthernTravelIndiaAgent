@@ -203,5 +203,8 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string GetRevisedTourFare = "GetRevisedTourFare";
         public const string GetDiscountTourMaster = "GetDiscountTourMaster";
         public const string GetRevisedFareWithCategory = "GetRevisedFareWithCategory";
+        public const string GetCustomerFullNameByOrderID = "GetCustomerFullNameByOrderID";
+        public const string GetCustomerAddressByOrderID = "GetCustomerAddressByOrderID";
+        public const string GetCarBookingDetailsByTicketNo = "GetCarBookingDetailsByTicketNo";
     }
 }

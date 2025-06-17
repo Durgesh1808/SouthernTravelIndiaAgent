@@ -25,6 +25,7 @@
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
 
     <script language="javascript" src="../Assets/js/ST_calendar.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <meta http-equiv="Pragma" content="no-cache">
     <meta content="MSHTML 6.00.2900.2180" name="GENERATOR" />
@@ -41,7 +42,12 @@
     {
         if(document.getElementById('txtticketno').value=="")
         {
-            alert('Please Enter Ticket Number');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please Enter Ticket Number.',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('txtticketno').focus();
             return false;
         }
@@ -57,15 +63,27 @@
         }
      // var exceedingAmt = parseFloat(document.getElementById('txtExceedingAmt').value);
       if(document.getElementById('txtticketno').value=="")
-        {
-            alert('Please Enter Ticket Number');
+      {
+
+          Swal.fire({
+              icon: 'warning',
+              title: 'Oops...',
+              text: 'Please Enter Ticket Number.',
+              confirmButtonColor: '#f2572b'
+          });
             document.getElementById('txtticketno').focus();
             che=false;
             return false;
         } 
         if(document.getElementById('txtbalancepaidnow').value=="")
-         {
-            alert('Please Enter Balance Paid Amount');
+        {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please Enter Balance Paid Amount',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('txtbalancepaidnow').focus();
             che=false;
             return false;
@@ -73,8 +91,13 @@
         else
         {
             if(parseInt(document.getElementById('txtbalancepaidnow').value)==0)
-             {
-                alert('Please Enter Balance Paid Amount');
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter Balance Paid Amount',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtbalancepaidnow').focus();
                 che=false;
                 return false;
@@ -87,7 +110,12 @@
        
         if (parseFloat(total) < (parseFloat(advance) + parseFloat(presentamt) - parseFloat(PrevCan)))
         {
-            alert('Amount Paid is greater Than Balance Pending Amount');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Amount Paid is greater Than Balance Pending Amount',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('txtbalancepaidnow').value="";
             document.getElementById('txtbalancepaidnow').value="0";
             document.getElementById('txtbalancepending').value="0";
@@ -109,19 +137,34 @@
         { 
             if(document.getElementById('txtBankname').value=="")
             {
-                alert('Please Enter the Bank Name');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Bank Name',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtBankname').focus();
                 return false;
             }
             if(document.getElementById('txtChequeNo').value=="")
             {
-                alert('Please Enter the Transaction No');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Transaction No',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtChequeNo').focus();
                 return false;
             }
             if(document.getElementById('txtpaydate').value=="")
             {
-                alert('Please Select The PaymentDate');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Select The PaymentDate',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtpaydate').focus();
                 return false;
             }
@@ -130,19 +173,34 @@
         { 
             if(document.getElementById('txtBankname').value=="")
             {
-                alert('Please Enter the Bank Name');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Bank Name',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtBankname').focus();
                 return false;
             }
             if(document.getElementById('txtChequeNo').value=="")
             {
-                alert('Please Enter the Cheque/DD No');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Cheque/DD No',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtChequeNo').focus();
                 return false;
             }
             if(document.getElementById('txtpaydate').value=="")
             {
-                alert('Please Select The Cheque/DD Date');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Select The Cheque/DD Date',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtpaydate').focus();
                 return false;
             }
@@ -151,19 +209,34 @@
         { 
             if(document.getElementById('txtBankname').value=="")
             {
-                alert('Please Enter the Bank Name');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Bank Name',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtBankname').focus();
                 return false;
             }
             if(document.getElementById('txtChequeNo').value=="")
             {
-                alert('Please Enter the Cheque/DD/Trans No');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Cheque/DD/Trans No',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtChequeNo').focus();
                 return false;
             }
             if(document.getElementById('txtpaydate').value=="")
             {
-                alert('Please Select The Transaction Date');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Select The Transaction Date',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.getElementById('txtpaydate').focus();
                 return false;
             }            
@@ -180,7 +253,12 @@
     {    
         if(isNaN(document.getElementById('txtbalancepaidnow').value)==true)
         {
-            alert('Please Enter Numeric value');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Please Enter Numeric value',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('txtbalancepaidnow').value="0";
             document.getElementById('txtbalancepending').value="0";
             document.getElementById('txtbalancepaidnow').focus();
@@ -200,7 +278,12 @@
         }
         if(parseFloat(balance+ exceedingAmt)<parseFloat(paid))
         {
-            alert('Amount Paid is greater Than Balance Pending Amount');
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Amount Paid is greater Than Balance Pending Amount',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('txtbalancepaidnow').value="0";
             document.getElementById('txtbalancepending').value="0";
             document.getElementById('txtbalancepaidnow').focus();
@@ -239,7 +322,13 @@
          
           if(Cid=="")
           {
-               alert("please enter ticket no");
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Oops...',
+                  text: 'please enter ticket no',
+                  confirmButtonColor: '#f2572b'
+              });
+             
                return false;
           }
           
