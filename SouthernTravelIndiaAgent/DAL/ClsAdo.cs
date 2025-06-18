@@ -6876,7 +6876,7 @@ namespace SouthernTravelIndiaAgent.DAL
             new SqlParameter("@tourid", SqlDbType.Int) { Value = tourid }
                 };
 
-                return SqlData.GetDataTableSP("GetFareWithCategory", param);
+                return SqlData.GetDataTableSP(StoredProcedures.GetFareWithCategory, param);
             }
             catch (Exception ex)
             {
@@ -6886,6 +6886,11 @@ namespace SouthernTravelIndiaAgent.DAL
         }
 
 
+        /// <summary>
+        /// //Retrieve Customer FullName
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public  string GetCustomerFullName(string orderId)
         {
             string result = string.Empty;
@@ -6906,6 +6911,11 @@ namespace SouthernTravelIndiaAgent.DAL
         }
 
 
+        /// <summary>
+        /// //Retrieve the Customer Address
+        /// </summary>
+        /// <param name="orderId"></param>
+        /// <returns></returns>
         public  string GetCustomerAddress(string orderId)
         {
             string address = string.Empty;
@@ -6925,6 +6935,12 @@ namespace SouthernTravelIndiaAgent.DAL
             return address;
         }
 
+
+        /// <summary>
+        /// // Retrieve the Car Booking Details
+        /// </summary>
+        /// <param name="ticketNo"></param>
+        /// <returns></returns>
         public  DataTable GetCarBookingDetails(string ticketNo)
         {
             DataTable dtResult = new DataTable();
@@ -6942,6 +6958,128 @@ namespace SouthernTravelIndiaAgent.DAL
             }
 
             return dtResult;
+        }
+
+        /// <summary>
+        /// /// Inserts a new record into the Enq_tbl table with the provided Enq_tbl object.
+        /// </summary>
+        /// <param name="pclsEnq_tbl"></param>
+        /// <returns></returns>
+        public int fnins_Enq_tbl(Enq_tbl pclsEnq_tbl)
+        {
+            int lStatus = 1;
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.ins_Enq_tbl, conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    // Input parameters
+                    cmd.Parameters.AddWithValue("@Desc", (object)pclsEnq_tbl.Description ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@uName", (object)pclsEnq_tbl.Name ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Email", (object)pclsEnq_tbl.Email ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Phone", (object)pclsEnq_tbl.Phone ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Fax", (object)pclsEnq_tbl.Fax ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Street", (object)pclsEnq_tbl.Street ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@City", (object)pclsEnq_tbl.City ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Zip", (object)pclsEnq_tbl.Zip ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Country", (object)pclsEnq_tbl.Country ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Adults", (object)pclsEnq_tbl.Adults ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@Child", (object)pclsEnq_tbl.Child ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@ArrivDate", (object)pclsEnq_tbl.ArrivalDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@DepDate", (object)pclsEnq_tbl.DepDate ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@type", (object)pclsEnq_tbl.EnqType ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@refno", (object)pclsEnq_tbl.Refno ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@captcha", (object)pclsEnq_tbl.captcha ?? DBNull.Value);
+                    cmd.Parameters.AddWithValue("@I_PanNo", (object)pclsEnq_tbl.PanNo ?? DBNull.Value);
+
+                    // Output parameter
+                    SqlParameter outParam = new SqlParameter("@res", SqlDbType.Int);
+                    outParam.Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add(outParam);
+
+                    try
+                    {
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+
+                        // Read output parameter value
+                        if (outParam.Value != DBNull.Value)
+                        {
+                            lStatus = Convert.ToInt32(outParam.Value);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        lStatus = 2;
+                        // Log exception (optional)
+                    }
+                }
+            }
+
+            return lStatus;
+        }
+
+        /// <summary>
+        /// /// Retrieves the payment gateway response based on the provided order ID.
+        /// </summary>
+        /// <param name="lOrderID"></param>
+        /// <returns></returns>
+        public List<Get_PgResponse_SPResult> fnGet_PgResponse(string lOrderID)
+        {
+            List<Get_PgResponse_SPResult> result = new List<Get_PgResponse_SPResult>();
+
+            using (SqlConnection conn = new SqlConnection(DataLib.getConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand("Get_PgResponse_SP", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@I_OrderID", lOrderID);
+
+                    try
+                    {
+                        conn.Open();
+                        using (SqlDataReader reader = cmd.ExecuteReader())
+                        {
+                            while (reader.Read())
+                            {
+                                Get_PgResponse_SPResult item = new Get_PgResponse_SPResult
+                                {
+                                    RowID = reader["RowID"] != DBNull.Value ? Convert.ToInt32(reader["RowID"]) : 0,
+                                    PaymentID = reader["PaymentID"]?.ToString(),
+                                    OrderID = reader["OrderID"]?.ToString(),
+                                    EmailID = reader["EmailID"]?.ToString(),
+                                    Auth = reader["Auth"]?.ToString(),
+                                    Amount = reader["Amount"] != DBNull.Value ? (decimal?)Convert.ToDecimal(reader["Amount"]) : null,
+                                    Ref = reader["Ref"]?.ToString(),
+                                    TranID = reader["TranID"]?.ToString(),
+                                    TrackID = reader["TrackID"]?.ToString(),
+                                    PostDate = reader["PostDate"]?.ToString(),
+                                    Result = reader["Result"]?.ToString(),
+                                    ErrorText = reader["ErrorText"]?.ToString(),
+                                    Udf1 = reader["Udf1"]?.ToString(),
+                                    Udf2 = reader["Udf2"]?.ToString(),
+                                    Udf3 = reader["Udf3"]?.ToString(),
+                                    Udf4 = reader["Udf4"]?.ToString(),
+                                    Udf5 = reader["Udf5"]?.ToString(),
+                                    PaymentOn = reader["PaymentOn"] != DBNull.Value ? Convert.ToDateTime(reader["PaymentOn"]) : DateTime.MinValue,
+                                    tempOrderId = reader["tempOrderId"]?.ToString(),
+                                    SectionName = reader["SectionName"]?.ToString()
+                                };
+                                result.Add(item);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        // Log error if needed
+                        return null;
+                    }
+                }
+            }
+
+            return result;
         }
 
     }

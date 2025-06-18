@@ -23,6 +23,7 @@
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script language="javascript" src="../Assets/js/ST_calendar.js" type="text/javascript"></script>
 
@@ -193,34 +194,61 @@
 	                
 	            if ((document.getElementById("pick_hrs").value=="")||(document.getElementById("pick_min").value==""))
 		        {
-		        
-			        alert("Please Select the  time.");
+		            Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Select the  time.',
+                        confirmButtonColor: '#f2572b'
+                    });
 			        document.getElementById("pick_hrs").focus();
 				   
 			        return false;
 			    }
 			    if (document.getElementById("numPax").value=="0")
-		        {
-			    alert("Please Select the No of passenger.");
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Select the No of passenger.',
+                        confirmButtonColor: '#f2572b'
+                    });
+			    //alert("Please Select the No of passenger.");
 			    document.getElementById("numPax").focus();
 			    return false;
 		        }
 			    if (document.getElementById("txtPickAddress").value=="")
-		        {
-		          alert("Please enter the pickup address");
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please enter the pickup address.',
+                        confirmButtonColor: '#f2572b'
+                    });
+		          //alert("Please enter the pickup address");
 		          document.getElementById("txtPickAddress").focus();
 		          return false;
 		         }    				     
 	            if (document.getElementById("txtDropAddress1").value=="")
-	            {
-	              alert("Please Enter the Drop address");
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Enter the Drop address',
+                        confirmButtonColor: '#f2572b'
+                    });
+	              //alert("Please Enter the Drop address");
 	              document.getElementById("txtDropAddress1").focus();
 	              return false;
 	             } 
 	             
 	              if (Trim(document.getElementById('txtEmail').value)== "" )	
-		            {
-			            alert("Plese fill the e-mail/Mobile no.");
+                  {
+                      Swal.fire({
+                          icon: 'warning',
+                          title: 'Oops...',
+                          text: 'Please Enter the  E-mail/Mobile no',
+                          confirmButtonColor: '#f2572b'
+                      });
 			            document.getElementById('txtEmail').focus();
 			            return false;
 		            }

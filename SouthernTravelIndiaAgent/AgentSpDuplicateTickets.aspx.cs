@@ -724,7 +724,7 @@ namespace SouthernTravelIndiaAgent
                         //SmtpMail.Send(mObj);
 
 
-                        ClsCommon.sendmail(mail, "etickets@southerntravels.in", "", ConfigurationSettings.AppSettings["splTourEnquiryMailId"].ToString(), "Special Tour Ticket ", lMailHtml.ToString(), "");
+                        ClsCommon.sendmail(mail, ConfigurationSettings.AppSettings["eTicketEmail"].ToString(), "", ConfigurationSettings.AppSettings["splTourEnquiryMailId"].ToString(), "Special Tour Ticket ", lMailHtml.ToString(), "");
 
 
 

@@ -11,7 +11,12 @@
             return true;
         }
         else {
-            alert("Invalid E-mail ID");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Invalid E-mail ID.',
+                confirmButtonColor: '#f2572b'
+            });
             return false;
         }
     }
@@ -45,7 +50,12 @@
     function chk1() {
         var chek = true;
         if (document.getElementById('<%=emailid.ClientID %>').value == "") {
-            alert("Enter your Email-ID or Mobile No");
+            Swal.fire({
+                icon: 'warning',
+                title: 'Oops...',
+                text: 'Enter your Email-ID or Mobile No.',
+                confirmButtonColor: '#f2572b'
+            });
             document.getElementById('<%=emailid.ClientID %>').focus();
             chek = false;
             return false;

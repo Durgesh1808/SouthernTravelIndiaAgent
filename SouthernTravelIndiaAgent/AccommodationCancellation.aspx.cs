@@ -931,7 +931,7 @@ namespace SouthernTravelIndiaAgent
                     //string htdup = Request.QueryString["duplicate"].Replace("'", "''").Replace("<", "").Replace(">", "").Replace("alert", "");
                     if (Convert.ToString(Session["Mail"]) != "Yes")
                     {
-                        SendMail(dtFare.Tables[0].Rows[0]["email"].ToString(), "etickets@southerntravels.in", "", "CANCELLED RECEIPT FOR ACCOMMODATION", strTable.ToString(), "", orderid, Convert.ToString(ldtRecSet.Rows[0]["CityName"]));
+                        SendMail(dtFare.Tables[0].Rows[0]["email"].ToString(), ConfigurationSettings.AppSettings["eTicketEmail"].ToString(), "", "CANCELLED RECEIPT FOR ACCOMMODATION", strTable.ToString(), "", orderid, Convert.ToString(ldtRecSet.Rows[0]["CityName"]));
                     }
                     return TicketStr;
                 }
@@ -1054,7 +1054,8 @@ namespace SouthernTravelIndiaAgent
                 }
                 else
                 {
-                    To = "support@southerntravels.in";
+                    To = ConfigurationSettings.AppSettings["SupportEmail"].ToString();
+                    
                     if (lCityName.ToUpper().Trim() == "VIJAYAWADA")
                     {
                         if ((Convert.ToString(ViewState["branchcode"]) == "EBK0001") && (Convert.ToInt32(Convert.ToString(ViewState["agentid"])) == 0))
@@ -1082,7 +1083,7 @@ namespace SouthernTravelIndiaAgent
                         }
                     }
                 }
-                ClsCommon.sendmail(To, ticketmailBCC, "", "etickets@southerntravels.in", subject, body, "");
+                ClsCommon.sendmail(To, ticketmailBCC, "", ConfigurationSettings.AppSettings["eTicketEmail"].ToString(), subject, body, "");
             }
             catch (Exception)
             {

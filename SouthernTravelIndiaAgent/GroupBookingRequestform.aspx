@@ -14,6 +14,7 @@
     <script language="javascript" src="../Assets/js/ST_calendar.js" type="text/javascript"></script>
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script language="javascript" type="text/javascript">
     
@@ -25,7 +26,12 @@
                 }
                 else
                 {
-                    alert("Invalid E-mail ID");
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Invalid E-mail ID.',
+                        confirmButtonColor: '#f2572b'
+                    });
                     return false;
                 }						
 		    }
@@ -43,37 +49,62 @@
     function validate()
 		{	
 		    if((document.getElementById("ddlTour").value=="0")||(document.getElementById("ddlTour").value==""))
-		    {
-		        alert("Please select Tour name");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please select Tour name.',
+                    confirmButtonColor: '#f2572b'
+                });
 			    document.getElementById("ddlTour").focus();
 			    return false;
 		    }
 		    if(document.getElementById("ddlTour").value==00)
 		    {
 		        if(document.getElementById("othertour").value=="")
-		        {
-		            alert("Please Enter the tour Name.");
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Enter the tour Name.',
+                        confirmButtonColor: '#f2572b'
+                    });
 				    document.getElementById("othertour").focus();
 				    return false;  
 		        }
 		    }			    
 			if(document.getElementById("txtgroupleadername").value=="")
-			{
-			    alert("Please Enter the Group Leader Name.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the Group Leader Name.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtgroupleadername").focus();
 				return false; 
 			}				   
            
 			if (validateOnlyNumber1(parseInt(document.getElementById("txtgroupleadername").value))==true)
-			{
-				alert("Group Leader name should not be numeric.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Group Leader name should not be numeric.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtgroupleadername").value="";
 				document.getElementById("txtgroupleadername").focus();
 				return false;
 			}
 			if (validateOnlyNumber1(parseInt(document.getElementById("txtadults").value))==false)
-			{
-				alert("No Of Adults should be numeric.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'No Of Adults should be numeric.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtadults").value="";
 				document.getElementById("txtadults").focus();
 				return false;
@@ -97,26 +128,46 @@
 	            tot=tot+eval(document.getElementById("txtchild").value);	           		    
 	        }
 			if(tot==0)
-			{	
-			alert("Please Enter No of Passengers");		
+            {	
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please enter number of passengers.',
+                    confirmButtonColor: '#f2572b'
+                });
 			return false;
 			}
 						
 		 if((document.getElementById("ddlbustype").value==0)||(document.getElementById("ddlbustype").value==""))
-		    {
-		        alert("Please select Bus Type name");
+         {
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please select Bus Type name.',
+                 confirmButtonColor: '#f2572b'
+             });
 			    document.getElementById("ddlbustype").focus();
 			    return false;
 		    }
 		    if(document.getElementById("departure").value=="")
-		    {
-		        alert("Please Select the Departure Date.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Select the Departure Date.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("departure").focus();
 				return false; 
 		    }  
 		    if(document.getElementById("arrival").value=="")
-		    {
-		        alert("Please Select the Arrival Date.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Select the Arrival Date.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("arrival").focus();
 				return false; 
 		    } 
@@ -147,28 +198,48 @@
 				var yyyymmdd1	=		vyy1 + '' + vmm1 + '' + vdd1;
 				
 				if(yyyymmdd > yyyymmdd1)
-				{
-					alert('Sorry! Arrival Date is less than Departure Date. Please Select Arrival Date again');
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Sorry! Arrival Date is less than Departure Date. Please Select Arrival Date again',
+                        confirmButtonColor: '#f2572b'
+                    });
 					document.getElementById('departure').focus();
 					document.getElementById('arrival').focus();
 					return false;
 				}  				
 			}
 		  if(document.getElementById("txtaddress").value=="")    
-			{				
-				alert("Address should not be Empty.");
+          {
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Oops...',
+                  text: 'Address should not be Empty.',
+                  confirmButtonColor: '#f2572b'
+              });			
 				document.getElementById("txtaddress").focus();
 				return false;
 			}
 			if(document.getElementById("txtcity").value=="")    
-			{				
-				alert("City should not be Empty.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'City should not be Empty.',
+                    confirmButtonColor: '#f2572b'
+                });		
 				document.getElementById("txtcity").focus();
 				return false;
 			}
 			if((document.getElementById("ddlState").value==0)||(document.getElementById("ddlState").value==""))
-		    {
-		        alert("Please select State");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please select State.',
+                    confirmButtonColor: '#f2572b'
+                });
 			    document.getElementById("ddlState").focus();
 			    return false;
 		    }
@@ -179,16 +250,26 @@
 			{
 			      var k=document.getElementById("txtZip").value;
 			    if(k.length<6)   
-			    {
-				    alert("Pin Code should be 6 digits.");
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Pin Code should be 6 digits.',
+                        confirmButtonColor: '#f2572b'
+                    });
 				    document.getElementById("txtZip").focus();
 				    return false;
 			    }
 			}
 			
 			if (document.getElementById("txtPhone").value=="" && document.getElementById("txtMobile").value=="" )   
-			{				
-				alert("Mobile /Phone No should not be Empty.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Mobile /Phone No should not be Empty.',
+                    confirmButtonColor: '#f2572b'
+                });	
 				document.getElementById("txtMobile").focus();
 				return false;
 			}
@@ -197,8 +278,13 @@
 			{
 			        var k=document.getElementById("txtPhone").value;
 			    if(k.length<6)   
-			    {
-				    alert("Phone No should be 6 digits.");
+                {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Phone No should be 6 digits.',
+                        confirmButtonColor: '#f2572b'
+                    });
 				    document.getElementById("txtPhone").focus();
 				    return false;
 			    }
@@ -209,8 +295,13 @@
 			{
 			        var k=document.getElementById("txtMobile").value;
 			   if(k.length<10)   
-			    {
-				    alert("Mobile No should be 10 digits.");
+               {
+                   Swal.fire({
+                       icon: 'warning',
+                       title: 'Oops...',
+                       text: 'Mobile No should be 10 digits.',
+                       confirmButtonColor: '#f2572b'
+                   });
 				    document.getElementById("txtMobile").focus();
 				    return false;
 			    }
@@ -218,8 +309,13 @@
 			
 			
 			if (Trim(document.getElementById("txtMail").value)== "" )	
-			{
-				alert("Plese fill the e-mail field.It is mandatory.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Plese fill the e-mail field.It is mandatory.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtMail").focus();
 				return false;
 			}

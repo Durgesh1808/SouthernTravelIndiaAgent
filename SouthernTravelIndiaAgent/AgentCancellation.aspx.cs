@@ -1,6 +1,7 @@
 ﻿using SouthernTravelIndiaAgent.BAL;
 using SouthernTravelIndiaAgent.Common;
 using SouthernTravelIndiaAgent.DAL;
+using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -1382,7 +1383,7 @@ namespace SouthernTravelIndiaAgent
                         //sendMail.Subject = "Cancelled Ticket - Southern Travels";
                         //SmtpMail.Send(sendMail);
 
-                        ClsCommon.sendmail(Toemail, ConfigurationSettings.AppSettings["cancelticketemail"].ToString(), "", "etickets@southerntravels.in", "Cancelled Ticket - Southern Travels", MailSubject.ToString(), "");
+                        ClsCommon.sendmail(Toemail, ConfigurationSettings.AppSettings["cancelticketemail"].ToString(), "", ConfigurationSettings.AppSettings["eTicketEmail"].ToString(), "Cancelled Ticket - Southern Travels", MailSubject.ToString(), "");
 
 
 
@@ -4979,7 +4980,7 @@ namespace SouthernTravelIndiaAgent
             {
                 String strCn = System.Configuration.ConfigurationManager.AppSettings["southernconn"];
                 lConn = new SqlConnection(strCn);// For  Live
-                lCommand = new SqlCommand("GetSeatChange_SP", lConn);
+                lCommand = new SqlCommand(StoredProcedures.GetSeatChange_SP, lConn);
                 lCommand.CommandTimeout = 20 * 1000;
                 lCommand.CommandType = CommandType.StoredProcedure;
                 lCommand.Parameters.AddWithValue("@I_TicketNo", txtticketno.Text.Trim());

@@ -730,66 +730,81 @@ namespace SouthernTravelIndiaAgent.UserControls
         {
             if (ddlTitle.SelectedValue.Trim().ToLower() == "title")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select name title.');", true);
+                ClsCommon.ShowAlert("Please select name title"); ;
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select name title.');", true);
                 ddlTitle.Focus();
                 return false;
             }
             if (txtName.Value.Trim() == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter Full Name.');", true);
+                ClsCommon.ShowAlert("Please enter Full Name"); 
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter Full Name.');", true);
                 txtName.Focus();
                 return false;
             }
             if (ddlNationality.SelectedValue == "0")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select Nationality.');", true);
+                ClsCommon.ShowAlert("Please select Nationality"); 
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select Nationality.');", true);
                 ddlNationality.Focus();
                 return false;
             }
 
             if (ddlCountry.SelectedValue == "0")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select Country.');", true);
+                ClsCommon.ShowAlert("Please select Country"); 
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select Country.');", true);
                 ddlNationality.Focus();
                 return false;
             }
 
             if (ddlState.SelectedValue == "0" && ddlCountry.SelectedValue == "59")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select State.');", true);
+                ClsCommon.ShowAlert("Please select State"); 
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please select State.');", true);
                 ddlState.Focus();
                 return false;
             }
 
             if (TxtForeignState.Text == "" && ddlCountry.SelectedValue != "59")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please Enter State.');", true);
+                ClsCommon.ShowAlert("Please Enter State."); 
+
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please Enter State.');", true);
                 TxtForeignState.Focus();
                 return false;
             }
 
             if (txtAddress.Text.Trim() == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter Address.');", true);
+                ClsCommon.ShowAlert("Please enter Address.");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter Address.');", true);
                 txtAddress.Focus();
                 return false;
             }
 
             if (txtCity.Text.Trim() == "" && ddlCountry.SelectedValue == "59")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter City.');", true);
+                ClsCommon.ShowAlert("Please enter City.");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter City.');", true);
                 txtCity.Focus();
                 return false;
             }
             if (txtForeignCity.Text.Trim() == "" && ddlCountry.SelectedValue != "59")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter City.');", true);
+                ClsCommon.ShowAlert("Please enter City.");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter City.');", true);
                 txtForeignCity.Focus();
                 return false;
             }
             if (txtPinCode.Text.Trim() == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter Pincode.');", true);
+                ClsCommon.ShowAlert("Please enter Pincode.");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter Pincode.');", true);
                 txtPinCode.Focus();
                 return false;
             }
@@ -802,13 +817,15 @@ namespace SouthernTravelIndiaAgent.UserControls
             //}
             if (txtMobile.Value.Trim() == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provide mobile number.');", true);
+                ClsCommon.ShowAlert("Please provide mobile number.");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provide mobile number.');", true);
                 txtMobile.Focus();
                 return false;
             }
             if (txtAlternateMobileNo.Value.Trim() == "")
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provide emergency contact number.');", true);
+                ClsCommon.ShowAlert("Please provide emergency contact number.");
+                //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provide emergency contact number.');", true);
                 txtAlternateMobileNo.Focus();
                 return false;
             }
@@ -816,13 +833,15 @@ namespace SouthernTravelIndiaAgent.UserControls
             {
                 if (txtPassportNo.Value.Trim() == "")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provide passport number.');", true);
+                    ClsCommon.ShowAlert("Please provide passport number");
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provide passport number.');", true);
                     txtPassportNo.Focus();
                     return false;
                 }
                 if (txtPassportValidity.Text.Trim() == "")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provider passport validity.');", true);
+                    ClsCommon.ShowAlert("'Please provider passport validity");
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please provider passport validity.');", true);
                     txtPassportValidity.Focus();
                     return false;
                 }
@@ -832,7 +851,8 @@ namespace SouthernTravelIndiaAgent.UserControls
             {
                 if (txtCustomerGSTIN.Text.Trim() == "")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter customer GSTIN.');", true);
+                    ClsCommon.ShowAlert("Please enter customer GSTIN.");
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter customer GSTIN.');", true);
                     txtCustomerGSTIN.Focus();
                     return false;
                 }
@@ -843,14 +863,16 @@ namespace SouthernTravelIndiaAgent.UserControls
                     bool isval = r.IsMatch(txtCustomerGSTIN.Text.Trim());
                     if (!isval)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter valid GSTIN.');", true);
+                        ClsCommon.ShowAlert("Please enter valid GSTIN");
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter valid GSTIN.');", true);
                         txtCustomerGSTIN.Focus();
                         return false;
                     }
                 }
                 if (txtGstHolderName.Text.Trim() == "")
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter GST holder name.');", true);
+                    ClsCommon.ShowAlert("Please enter GST holder name");
+                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "GropuLeaderValidate", "alert('Please enter GST holder name.');", true);
                     txtGstHolderName.Focus();
                     return false;
                 }

@@ -566,7 +566,8 @@ namespace SouthernTravelIndiaAgent
                         {
                             if (Convert.ToDecimal(Convert.ToString(Session["Balance"])) <= 0)
                             {
-                                RegisterStartupScript("Error", "<Script>alert('Insufficient funds.');</Script>");
+                                ClsCommon.ShowAlert("Insufficient funds");
+                                //RegisterStartupScript("Error", "<Script>alert('Insufficient funds.');</Script>");
                                 return;
                             }
                             if (Convert.ToDecimal(Convert.ToString(Session["Balance"])) >= pAdvance/*(totalAmount + servicetax)*/)
@@ -1295,7 +1296,8 @@ namespace SouthernTravelIndiaAgent
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(GetType(), "Warning", "<script>alert('Sorry!.. Currently there is no fares for this tour');</script>");
+                    ClsCommon.ShowAlert("Sorry!.. Currently there is no fares for this tour");
+                    //ClientScript.RegisterStartupScript(GetType(), "Warning", "<script>alert('Sorry!.. Currently there is no fares for this tour');</script>");
                     Submit.Enabled = false;
                 }
             }

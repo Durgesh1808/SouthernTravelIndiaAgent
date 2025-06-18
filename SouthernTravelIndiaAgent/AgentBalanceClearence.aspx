@@ -325,7 +325,7 @@
               Swal.fire({
                   icon: 'warning',
                   title: 'Oops...',
-                  text: 'please enter ticket no',
+                  text: 'Please enter ticket no',
                   confirmButtonColor: '#f2572b'
               });
              

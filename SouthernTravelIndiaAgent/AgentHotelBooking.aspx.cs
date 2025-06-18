@@ -242,17 +242,21 @@ namespace SouthernTravelIndiaAgent
             }
             if (Convert.ToDecimal(Convert.ToString(Session["Balance"])) <= 0)
             {
-                ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Insufficient funds');</script>");
+                ClsCommon.ShowAlert("Insufficient funds");
+                //ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Insufficient funds');</script>");
                 return;
             }
             if (Convert.ToDecimal(txttotalamtwithtax.Text) > Convert.ToDecimal(Convert.ToString(Session["Balance"])))
             {
-                ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Insufficient funds');</script>");
+                ClsCommon.ShowAlert("Insufficient funds");
+
+                //ClientScript.RegisterStartupScript(GetType(), "Error", "<script>alert('Insufficient funds');</script>");
 
             }
             else if (DateTime.Now >= Convert.ToDateTime(lArrivalDate))
             {
-                ClientScript.RegisterStartupScript(GetType(), "Lessdate", "<script>alert('Checkin Date & Time Should be greaterthan Todays Date & Time');</script>");
+                ClsCommon.ShowAlert("Checkin Date & Time Should be greaterthan Todays Date & Time");
+
             }
             else
             {
@@ -646,7 +650,9 @@ namespace SouthernTravelIndiaAgent
                     }
                     else
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "Alert", "<script>alert('Please Provide all the Information');</script>");
+                        ClsCommon.ShowAlert("Please Provide all the Information");
+
+                        //ClientScript.RegisterStartupScript(GetType(), "Alert", "<script>alert('Please Provide all the Information');</script>");
                         return;
                     }
                 }
@@ -968,7 +974,9 @@ namespace SouthernTravelIndiaAgent
             if (!lFlag)
             {
                 ddlNoRoom.SelectedIndex = -1;
-                ClientScript.RegisterStartupScript(GetType(), "Lessdate", "<script>alert('Please select Occupants.');</script>");
+                ClsCommon.ShowAlert("Please select Occupants.");
+
+                //ClientScript.RegisterStartupScript(GetType(), "Lessdate", "<script>alert('Please select Occupants.');</script>");
             }
         }
         protected void btnbook_Click(object sender, EventArgs e)
@@ -984,7 +992,7 @@ namespace SouthernTravelIndiaAgent
             lArrivalDate = lArrivalDate + " " + lArrTime;
             if (DateTime.Now >= Convert.ToDateTime(lArrivalDate))
             {
-                ClientScript.RegisterStartupScript(GetType(), "Lessdate", "<script>alert('Checkin Date & Time Should be greaterthan Todays Date & Time');</script>");
+                ClsCommon.ShowAlert("Checkin Date & Time Should be greater than Todays Date & Time");
                 return;
             }
             ControlReadOnly();

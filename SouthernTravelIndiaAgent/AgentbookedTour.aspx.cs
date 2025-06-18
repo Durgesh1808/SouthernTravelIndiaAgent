@@ -374,7 +374,8 @@ namespace SouthernTravelIndiaAgent
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(this.GetType(), "Alert", "<script>alert('Please Enter the Email Id / Mobile No');</script>");
+                    ClsCommon.ShowAlert("Please Enter the Email Id / Mobile No");
+                    //ClientScript.RegisterStartupScript(this.GetType(), "Alert", "<script>alert('Please Enter the Email Id / Mobile No');</script>");
                 }
             }
             catch (Exception ex)
@@ -485,7 +486,8 @@ namespace SouthernTravelIndiaAgent
                         }
                         else
                         {
-                            RegisterStartupScript("Error", "<Script>alert('Insufficient funds');</Script>");
+                            ClsCommon.ShowAlert("Insufficient funds");
+                            //RegisterStartupScript("Error", "<Script>alert('Insufficient funds');</Script>");
                         }
                     }
                 }
@@ -852,14 +854,16 @@ namespace SouthernTravelIndiaAgent
                     #endregion
                     int val = pClsLinq.fnUpdaterTourDeatil(pRowid1, Convert.ToDateTime(journdate), Convert.ToString(tourserial), Convert.ToString(busserialno), seat);
 
-                    RegisterStartupScript("startupUpdate", "<script>alert('Updated Successfully !')</script>");
+                    ClsCommon.SuccessShowAlert("Updated Successfully !");
+                    //RegisterStartupScript("startupUpdate", "<script>alert('Updated Successfully !')</script>");
 
                     dgtourdt.EditItemIndex = -1;
                     FillDgtour();
                 }
                 else
                 {
-                    RegisterStartupScript("startupUpdate", "<script>alert('Seats Are Not Available!')</script>");
+                    ClsCommon.ShowAlert("Seats Are Not Available!");
+                    //RegisterStartupScript("startupUpdate", "<script>alert('Seats Are Not Available!')</script>");
                     dgtourdt.EditItemIndex = -1;
                     FillDgtour();
                 }
@@ -1502,12 +1506,15 @@ namespace SouthernTravelIndiaAgent
 
                     if (val == -1)
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Email already exists');</script>");
+                        ClsCommon.ShowAlert("Email already exists");
+                        //ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Email already exists');</script>");
                         return false;
                     }
                     else if (val > 0)
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Customer Record Successfully Updated.');</script>");
+                        ClsCommon.SuccessShowAlert("Customer Record Successfully Updated");
+
+                        //ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Customer Record Successfully Updated.');</script>");
                     }
                 }
                 else
@@ -1537,7 +1544,19 @@ namespace SouthernTravelIndiaAgent
                     }
                     else if (val > 0)
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Customer Record Successfully Added.');</script>");
+                        string script = $@"
+                            Swal.fire({{
+                              title: 'Success!',
+                              text: 'Customer Record Successfully Added.',
+                              icon: 'success',
+                              confirmButtonText: 'OK',
+                              confirmButtonColor: '#f2572b'
+                            }});
+                            ";
+
+                          ScriptManager.RegisterStartupScript(this, this.GetType(), "swalSuccess", script, true);
+
+                        //ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Customer Record Successfully Added.');</script>");
 
                         string filepath = Server.MapPath("../" + ConfigurationManager.AppSettings["mailerTemplatesPath"].ToString() + "\\forgotpass.html");
                         System.IO.StreamReader sr = new System.IO.StreamReader(filepath);
@@ -1849,12 +1868,15 @@ namespace SouthernTravelIndiaAgent
 
                     if (val == -1)
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Email already exists');</script>");
+                        ClsCommon.ShowAlert("Email already exists");
+
+                        //ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Email already exists');</script>");
                         return false;
                     }
                     else if (val > 0)
                     {
-                        ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Customer Record Successfully Updated.');</script>");
+                        ClsCommon.SuccessShowAlert("Customer Record Successfully Updated");
+                        //ClientScript.RegisterStartupScript(GetType(), "error1", "<script>alert('Customer Record Successfully Updated.');</script>");
                     }
                 }
                 else
@@ -2253,7 +2275,7 @@ namespace SouthernTravelIndiaAgent
                                 //sendMail.Subject = "Bus Seat Full Alert.";
                                 //SmtpMail.Send(sendMail);
                                 #endregion
-                                ClsCommon.sendmail(ConfigurationSettings.AppSettings["seatfullalert"].ToString(), "", "", "support@southerntravels.in", "Bus Seat Full Alert.", strToSend, "");
+                                ClsCommon.sendmail(ConfigurationSettings.AppSettings["seatfullalert"].ToString(), "", "", ConfigurationSettings.AppSettings["SupportEmail"].ToString(), "Bus Seat Full Alert.", strToSend, "");
                             }
                             catch (Exception ex)
                             {

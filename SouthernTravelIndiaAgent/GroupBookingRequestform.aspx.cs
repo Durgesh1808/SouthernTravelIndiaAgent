@@ -109,7 +109,18 @@ namespace SouthernTravelIndiaAgent
                         tourname = DataLib.funClear(othertour.Value);
                     else
                     {
-                        ClientScript.RegisterStartupScript(typeof(string), "Notourname", "<script>alert('Please enter the tourname');</script>");
+                        //string script = $@"
+                        //    Swal.fire({{
+                        //      icon: 'warning',
+                        //      title: 'Oops...!',
+                        //      text: 'Please enter the tour name.',
+                        //      confirmButtonColor: '#f2572b'
+                        //    }});
+                        //    ";
+
+                        //   ClientScript.RegisterStartupScript(typeof(string), "warning", script, true);
+                        ClsCommon.ShowAlert("'Please enter the tour name");
+                        //ClientScript.RegisterStartupScript(typeof(string), "Notourname", "<script>alert('Please enter the tourname');</script>");
                         return;
                     }
                 }
@@ -169,7 +180,16 @@ namespace SouthernTravelIndiaAgent
 
                     if ((strQueryId != "0") && (strQueryId != "2"))
                     {
-                        ClientScript.RegisterStartupScript(typeof(string), "Success", "<script>alert('Thank you.your request id is RST" + strQueryId + ", keep this for future reference')</script>");
+                        //ClientScript.RegisterStartupScript(typeof(string), "Success", "<script>alert('Thank you.your request id is RST" + strQueryId + ", keep this for future reference')</script>");
+                        string script = $@"
+                            Swal.fire({{
+                              icon: 'success',
+                              title: 'Thank you!',
+                              text: 'Your request ID is RST{strQueryId}, please keep this for future reference.',
+                              confirmButtonColor: '#f2572b'
+                            }});";
+
+                           ClientScript.RegisterStartupScript(typeof(string), "Success", script, true);
 
                         System.Text.StringBuilder sb = new System.Text.StringBuilder();
                         sb.Append("Dear Manager,<br>");

@@ -648,7 +648,7 @@ namespace SouthernTravelIndiaAgent
                 }
                 else
                 {
-                    To = "support@southerntravels.in";
+                    To = ConfigurationSettings.AppSettings["SupportEmail"].ToString();
                     if ((Convert.ToString(ViewState["branchcode"]) == "EBK0001") && (Convert.ToInt32(Convert.ToString(ViewState["agentid"])) == 0))
                     {
                         ticketMailBCC = ConfigurationSettings.AppSettings["iticketemailAcc"].ToString();

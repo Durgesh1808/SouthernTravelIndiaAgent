@@ -128,6 +128,7 @@
     <Content Include="AgentProfilePage.aspx" />
     <Content Include="AgentProfileUpdate.aspx" />
     <Content Include="Agentrecentbookings.aspx" />
+    <Content Include="AgentSeatRequestForm.aspx" />
     <Content Include="AgentSpDuplicateTickets.aspx" />
     <Content Include="AgentSpecial.aspx" />
     <Content Include="AgentspecialseasonTour.aspx" />
@@ -142,17 +143,27 @@
     <Content Include="Agent_CarLumpsumBooking.aspx" />
     <Content Include="Agent_CarPerKMBooking.aspx" />
     <Content Include="AmexPGReceipt.aspx" />
+    <Content Include="Assets\js\agenttourbooking.js" />
+    <Content Include="Assets\js\GST_OnlineSplSeason.js" />
+    <Content Include="AtomPayment.aspx" />
     <Content Include="CityWisetours.aspx" />
     <Content Include="css\style.css" />
+    <Content Include="download.aspx" />
     <Content Include="Fixedenquiryform.aspx" />
     <Content Include="getAllSplTours.aspx" />
     <Content Include="getTransferTypes.aspx" />
     <Content Include="Global.asax" />
     <Content Include="GroupBookingRequestform.aspx" />
+    <Content Include="HDFCCreditCardPayment.aspx" />
+    <Content Include="Hotel_Reciept.aspx" />
     <Content Include="Index.aspx" />
+    <Content Include="InstaMojoPayment.aspx" />
     <Content Include="JpegImage.aspx" />
+    <Content Include="PaymentError.aspx" />
+    <Content Include="PayUPaymet.aspx" />
     <Content Include="StatFarePanel.aspx" />
     <Content Include="SubgetTransferTypes.aspx" />
+    <Content Include="TechProcessPayment_Request.aspx" />
     <Content Include="UserControls\GST_ucManageCustomer.ascx" />
     <Content Include="UserControls\UCAgentBalanceClearence.ascx" />
     <Content Include="UserControls\UcAgentFooter.ascx" />
@@ -348,6 +359,13 @@
     <Compile Include="Agentrecentbookings.aspx.designer.cs">
       <DependentUpon>Agentrecentbookings.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentSeatRequestForm.aspx.cs">
+      <DependentUpon>AgentSeatRequestForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentSeatRequestForm.aspx.designer.cs">
+      <DependentUpon>AgentSeatRequestForm.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentSpDuplicateTickets.aspx.cs">
       <DependentUpon>AgentSpDuplicateTickets.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -447,6 +465,13 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="AtomPayment.aspx.cs">
+      <DependentUpon>AtomPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AtomPayment.aspx.designer.cs">
+      <DependentUpon>AtomPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BAL\ClsBal.cs" />
     <Compile Include="BAL\clsBLL.cs" />
     <Compile Include="BAL\ClsCommon.cs" />
@@ -468,13 +493,23 @@
     <Compile Include="Common\SqlData.cs" />
     <Compile Include="DAL\ClsAdo.cs" />
     <Compile Include="DAL\DataLib.cs" />
+    <Compile Include="download.aspx.cs">
+      <DependentUpon>download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="download.aspx.designer.cs">
+      <DependentUpon>download.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DTO\AesCryptUtil.cs" />
     <Compile Include="DTO\AgentTransaction_RPT_SPResult.cs" />
     <Compile Include="DTO\Agent_ForgotPasswordResult.cs" />
     <Compile Include="DTO\Agent_ProfileResult.cs" />
     <Compile Include="DTO\Agent_TransactiontypesResult.cs" />
     <Compile Include="DTO\BranchHotel_Tbl.cs" />
     <Compile Include="DTO\Car_FixedTourDetails_spResult.cs" />
+    <Compile Include="DTO\CCACrypto.cs" />
     <Compile Include="DTO\clsTransactionTable.cs" />
+    <Compile Include="DTO\Enq_tbl.cs" />
     <Compile Include="DTO\GetAgentPayDetail_spResult.cs" />
     <Compile Include="DTO\GetCityName_SPResult.cs" />
     <Compile Include="DTO\GetCountryName_SPResult.cs" />
@@ -485,6 +520,7 @@
     <Compile Include="DTO\GetRoomTypeOccupancy_SPResult.cs" />
     <Compile Include="DTO\GetSPLTourMaster_spResult.cs" />
     <Compile Include="DTO\GetSubLedgerHead_SPResult.cs" />
+    <Compile Include="DTO\Get_PgResponse_SPResult.cs" />
     <Compile Include="DTO\Get_SPL_Fare_Panel_spResult.cs" />
     <Compile Include="DTO\Group_GroupBookingRequest.cs" />
     <Compile Include="DTO\GST_GetCityListByStateIdAndSearchedCityText.cs" />
@@ -530,6 +566,20 @@
     <Compile Include="GroupBookingRequestform.aspx.designer.cs">
       <DependentUpon>GroupBookingRequestform.aspx</DependentUpon>
     </Compile>
+    <Compile Include="HDFCCreditCardPayment.aspx.cs">
+      <DependentUpon>HDFCCreditCardPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="HDFCCreditCardPayment.aspx.designer.cs">
+      <DependentUpon>HDFCCreditCardPayment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Hotel_Reciept.aspx.cs">
+      <DependentUpon>Hotel_Reciept.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Hotel_Reciept.aspx.designer.cs">
+      <DependentUpon>Hotel_Reciept.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -537,12 +587,35 @@
     <Compile Include="Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Instamojo.cs" />
+    <Compile Include="InstamojoImplementation.cs" />
+    <Compile Include="InstaMojoPayment.aspx.cs">
+      <DependentUpon>InstaMojoPayment.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InstaMojoPayment.aspx.designer.cs">
+      <DependentUpon>InstaMojoPayment.aspx</DependentUpon>
+    </Compile>
     <Compile Include="JpegImage.aspx.cs">
       <DependentUpon>JpegImage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="JpegImage.aspx.designer.cs">
       <DependentUpon>JpegImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PaymentError.aspx.cs">
+      <DependentUpon>PaymentError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PaymentError.aspx.designer.cs">
+      <DependentUpon>PaymentError.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PayUPaymet.aspx.cs">
+      <DependentUpon>PayUPaymet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PayUPaymet.aspx.designer.cs">
+      <DependentUpon>PayUPaymet.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SProcedure\StoredProcedures.cs" />
@@ -559,6 +632,13 @@
     </Compile>
     <Compile Include="SubgetTransferTypes.aspx.designer.cs">
       <DependentUpon>SubgetTransferTypes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TechProcessPayment_Request.aspx.cs">
+      <DependentUpon>TechProcessPayment_Request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TechProcessPayment_Request.aspx.designer.cs">
+      <DependentUpon>TechProcessPayment_Request.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\GST_ucManageCustomer.ascx.cs">
       <DependentUpon>GST_ucManageCustomer.ascx</DependentUpon>
@@ -628,7 +708,6 @@
     <Folder Include="Assets\fonts\" />
     <Folder Include="Assets\HtmlPages\" />
     <Folder Include="Assets\images\" />
-    <Folder Include="Assets\js\" />
     <Folder Include="Includes\" />
     <Folder Include="mailer\" />
   </ItemGroup>
