@@ -1,4 +1,5 @@
-﻿using SouthernTravelIndiaAgent.DAL;
+﻿using SouthernTravelIndiaAgent.BAL;
+using SouthernTravelIndiaAgent.DAL;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -165,7 +166,8 @@ namespace SouthernTravelIndiaAgent
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(GetType(), "Warning", "<script>alert('Sorry!.. Currently there is no fares for this tour');</script>");
+                    ClsCommon.ShowAlert("Sorry!.. Currently there is no fares for this tour");
+                    //ClientScript.RegisterStartupScript(GetType(), "Warning", "<script>alert('Sorry!.. Currently there is no fares for this tour');</script>");
                     Submit.Enabled = false;
                 }
             }

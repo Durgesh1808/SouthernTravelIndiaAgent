@@ -772,8 +772,8 @@ namespace SouthernTravelIndiaAgent.UserControls
             litSpecialTourFarePanel.Text = lFarePanel.ToString();
 
             HiddenField hdnTourFare = this.Page.FindControl("hdnTourFare") as HiddenField;
-            hdnTourFare.Value = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + lFarePanel.ToString() + "</div>";
-
+            string html= hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + lFarePanel.ToString() + "</div>";
+            hdnTourFare.Value = Server.HtmlEncode(html);
         }
         #endregion
         #region "New Implementation"
@@ -1566,7 +1566,9 @@ namespace SouthernTravelIndiaAgent.UserControls
                 lFarePanel = lFarePanelCopy;
             }
             HiddenField hdnTourFare = this.Page.FindControl("hdnTourFare") as HiddenField;
-            hdnTourFare.Value = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + litSpecialTourFarePanel.Text + "</div>";
+            string html = "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + litSpecialTourFarePanel.Text + "</div>";
+            hdnTourFare.Value = Server.HtmlEncode(html);
+
         }
 
 
@@ -1876,7 +1878,8 @@ namespace SouthernTravelIndiaAgent.UserControls
             litSpecialTourFarePanel.Text = lFarePanel.ToString();
 
             HiddenField hdnTourFare = this.Page.FindControl("hdnTourFare") as HiddenField;
-            hdnTourFare.Value = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + lFarePanel.ToString() + "</div>";
+            string html = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + lFarePanel.ToString() + "</div>";
+            hdnTourFare.Value = Server.HtmlEncode(html);
         }
 
 
@@ -2254,7 +2257,8 @@ namespace SouthernTravelIndiaAgent.UserControls
                 lFarePanel = lFarePanelCopy;
             }
             HiddenField hdnTourFare = this.Page.FindControl("hdnTourFare") as HiddenField;
-            hdnTourFare.Value = hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + litSpecialTourFarePanel.Text + "</div>";
+           string html= hdnTourFare.Value + "<h3 class='title'>Tour <span>Price</span></h3><div class='tablewrap'>" + litSpecialTourFarePanel.Text + "</div>";
+            hdnTourFare.Value = Server.HtmlEncode(html);
         }
 
         #endregion

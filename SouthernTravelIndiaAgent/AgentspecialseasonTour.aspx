@@ -801,6 +801,7 @@
      }
      function ValidateNoOfPax() {
          if (ValidateJourneyDate()) {
+             debugger;
              if ((!document.getElementById('<%=rdoStandard.ClientID %>').checked) &&
              (!document.getElementById('<%=rdoDeluxe.ClientID %>').checked) &&
              (!document.getElementById('<%=rdoLuxury.ClientID %>').checked)) {

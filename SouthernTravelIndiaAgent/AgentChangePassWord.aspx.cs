@@ -1,4 +1,5 @@
-﻿using SouthernTravelIndiaAgent.Common;
+﻿using SouthernTravelIndiaAgent.BAL;
+using SouthernTravelIndiaAgent.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,19 +33,23 @@ namespace SouthernTravelIndiaAgent
                     if (ClsAgentTransaction.Agent_ChangePassword(Convert.ToString(Session["UserId"]), stxtoldpwd, sPassword) == 1)
                     {
                         Session["IsForgot"] = "N";
-                        ClientScript.RegisterStartupScript(typeof(string), "startupAdd", "<script>alert('Password updated Sussessfully !');window.location.href='agenthomepage.aspx'</script>");
+                        ClsCommon.SuccessShowAlert("Password updated Sussessfully !");
+                        //ClientScript.RegisterStartupScript(typeof(string), "startupAdd", "<script>alert('Password updated Sussessfully !');window.location.href='agenthomepage.aspx'</script>");
                     }
                     else
                     {
                         txtoldpwd.Text = "";
-                        ClientScript.RegisterStartupScript(typeof(string), "startupAdd1", "<script>alert('Your password is Wrong !');</script>");
+                        ClsCommon.ShowAlert("Your password is Wrong !");
+                        //ClientScript.RegisterStartupScript(typeof(string), "startupAdd1", "<script>alert('Your password is Wrong !');</script>");
                     }
                 }
                 else
-                    ClientScript.RegisterStartupScript(typeof(string), "startupAdd", "<script>alert('Both password must be Same !');</script>");
+                    ClsCommon.ShowAlert("Both password must be Same !");
+                    //ClientScript.RegisterStartupScript(typeof(string), "startupAdd", "<script>alert('Both password must be Same !');</script>");
             }
             else
-                ClientScript.RegisterStartupScript(typeof(string), "startuperr", "<script>alert('password can not be blank !');</script>");
+                ClsCommon.ShowAlert("Password can not be blank !");
+            //ClientScript.RegisterStartupScript(typeof(string), "startuperr", "<script>alert('password can not be blank !');</script>");
         }
         protected void btnCancel_Click(object sender, ImageClickEventArgs e)
         {

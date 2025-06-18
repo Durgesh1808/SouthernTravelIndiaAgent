@@ -1,4 +1,5 @@
-﻿using SouthernTravelIndiaAgent.DAL;
+﻿using SouthernTravelIndiaAgent.BAL;
+using SouthernTravelIndiaAgent.DAL;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -106,7 +107,8 @@ namespace SouthernTravelIndiaAgent
             #endregion
             if (DateTime.Now >= Convert.ToDateTime(dtPickUp1))
             {
-                ClientScript.RegisterStartupScript(GetType(), "Lessdate", "<script>alert('Pickup Date & Time Should be greater than Todays Date & Time');</script>");
+                ClsCommon.ShowAlert("Pickup Date & Time Should be greater than Todays Date & Time");
+                //ClientScript.RegisterStartupScript(GetType(), "Lessdate", "<script>alert('Pickup Date & Time Should be greater than Todays Date & Time');</script>");
 
             }
             else
@@ -198,7 +200,9 @@ namespace SouthernTravelIndiaAgent
                         }
                         else
                         {
-                            ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "alert('Cab could not booked, please try again later');", true);
+                            ClsCommon.ShowAlert("Cab could not booked, please try again later");
+
+                            //ClientScript.RegisterStartupScript(this.GetType(), Guid.NewGuid().ToString(), "alert('Cab could not booked, please try again later');", true);
                         }
                     }
                     catch { }
@@ -212,7 +216,9 @@ namespace SouthernTravelIndiaAgent
                 }
                 else
                 {
-                    ClientScript.RegisterStartupScript(typeof(string), "Error", "<Script>alert('Insufficient funds');</Script>");
+                    ClsCommon.ShowAlert("Insufficient funds");
+
+                    //ClientScript.RegisterStartupScript(typeof(string), "Error", "<Script>alert('Insufficient funds');</Script>");
                     return;
                 }
             }

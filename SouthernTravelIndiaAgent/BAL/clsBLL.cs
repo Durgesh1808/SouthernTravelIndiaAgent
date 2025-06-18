@@ -1,4 +1,5 @@
 ﻿using SouthernTravelIndiaAgent.DAL;
+using SouthernTravelIndiaAgent.DTO;
 using SouthernTravelIndiaAgent.SProcedure;
 using System;
 using System.Collections.Generic;
@@ -230,6 +231,92 @@ namespace SouthernTravelIndiaAgent.BAL
                 if (pclsObj != null)
                 {
                     pclsObj = null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// /// This method inserts a new entry into the Enquiry table with the provided details.
+        /// </summary>
+        /// <param name="pDescription"></param>
+        /// <param name="pName"></param>
+        /// <param name="pEmail"></param>
+        /// <param name="pPhone"></param>
+        /// <param name="pFax"></param>
+        /// <param name="pStreet"></param>
+        /// <param name="pCity"></param>
+        /// <param name="pZIP"></param>
+        /// <param name="pCountry"></param>
+        /// <param name="pAdults"></param>
+        /// <param name="pChild"></param>
+        /// <param name="pArrivalDate"></param>
+        /// <param name="pDeptDate"></param>
+        /// <param name="pRequestType"></param>
+        /// <param name="pRefNo"></param>
+        /// <param name="pCaptcha"></param>
+        /// <returns></returns>
+
+        public static int EnquiryTable_Entry(string pDescription, string pName, string pEmail, string pPhone,
+   string pFax, string pStreet, string pCity, string pZIP, string pCountry, int pAdults, int pChild, DateTime pArrivalDate,
+   DateTime pDeptDate, string pRequestType, string pRefNo, string pCaptcha)
+        {
+            #region Optimize Code
+            /*SqlParameter[] param = new SqlParameter[17];
+            param[0] = new SqlParameter("@Desc", pDescription);
+            param[1] = new SqlParameter("@uName", pName);
+            param[2] = new SqlParameter("@Email", pEmail);
+            param[3] = new SqlParameter("@Phone", pPhone);
+            param[4] = new SqlParameter("@Fax", pFax);
+            param[5] = new SqlParameter("@Street", pStreet);
+            param[6] = new SqlParameter("@City", pCity);
+            param[7] = new SqlParameter("@Zip", pZIP);
+            param[8] = new SqlParameter("@Country", pCountry);
+            param[9] = new SqlParameter("@Adults", pAdults);
+            param[10] = new SqlParameter("@Child", pChild);
+            param[11] = new SqlParameter("@ArrivDate", pArrivalDate);
+            param[12] = new SqlParameter("@DepDate", pDeptDate);
+            param[13] = new SqlParameter("@type", pRequestType);
+            param[14] = new SqlParameter("@refno", pRefNo);
+            param[15] = new SqlParameter("@captcha", pCaptcha);
+            param[16] = new SqlParameter("@res", 0);
+            param[16].Direction = ParameterDirection.Output;
+            return DataLib.InsStoredProcData("ins_Enq_tbl", param);*/
+            #endregion
+            ClsAdo pClsObj = null;
+            Enq_tbl ObjTbl = null;
+            try
+            {
+                pClsObj = new ClsAdo();
+                ObjTbl = new Enq_tbl();
+                ObjTbl.Description = pDescription;
+                ObjTbl.Name = pName;
+                ObjTbl.Email = pEmail;
+                ObjTbl.Phone = pPhone;
+                ObjTbl.Fax = pFax;
+                ObjTbl.Street = pStreet;
+                ObjTbl.City = pCity;
+                ObjTbl.Zip = pZIP;
+                ObjTbl.Country = pCountry;
+                ObjTbl.Adults = pAdults;
+                ObjTbl.Child = pChild;
+                ObjTbl.ArrivalDate = pArrivalDate;
+                ObjTbl.DepDate = pDeptDate;
+                ObjTbl.EnqType = pRequestType;
+                ObjTbl.Refno = pRefNo;
+                ObjTbl.captcha = pCaptcha;
+                ObjTbl.PanNo = "";
+                int val = pClsObj.fnins_Enq_tbl(ObjTbl);
+                return val;
+            }
+            finally
+            {
+                if (pClsObj != null)
+                {
+                    pClsObj = null;
+                }
+                if (ObjTbl != null)
+                {
+                    ObjTbl = null;
                 }
             }
         }

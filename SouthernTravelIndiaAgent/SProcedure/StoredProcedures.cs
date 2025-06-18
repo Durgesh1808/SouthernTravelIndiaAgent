@@ -206,5 +206,11 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string GetCustomerFullNameByOrderID = "GetCustomerFullNameByOrderID";
         public const string GetCustomerAddressByOrderID = "GetCustomerAddressByOrderID";
         public const string GetCarBookingDetailsByTicketNo = "GetCarBookingDetailsByTicketNo";
+        public const string GetFareWithCategory = "GetFareWithCategory";
+        public const string CheackSeatsForFD_Tour_SP = "CheackSeatsForFD_Tour_SP";
+        public const string GetSeatChange_SP = "GetSeatChange_SP";
+        public const string InsertPGResponseAndRequest_SP = "InsertPGResponseAndRequest_SP";
+        public const string Get_PgResponse_SP = "Get_PgResponse_SP";
+        public const string LogError_sp = "LogError_sp";
     }
 }

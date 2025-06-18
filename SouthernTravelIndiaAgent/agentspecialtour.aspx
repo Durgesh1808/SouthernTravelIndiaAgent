@@ -13,6 +13,8 @@
     <script language="javascript" src="Assets/js/AgentsplCalender.js" type="text/javascript"></script>
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
     <script language="javascript" src="Assets/js/AgntSplTour.js" type="text/javascript"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script language="javascript" type="text/javascript">
     function approve()
      {       

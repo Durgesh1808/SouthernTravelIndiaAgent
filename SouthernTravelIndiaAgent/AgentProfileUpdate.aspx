@@ -399,7 +399,7 @@ function ClearTxtF()
                                             <td height="22" align="left" bgcolor="#F2F9FF" class="verdana11bk">
                                                 <a href="agenthomepage.aspx">
                                                     <asp:ImageButton ID="btnUpdate" runat="server" ImageUrl="Assets/images/update.gif" OnClick="btnUpdate_Click" /></a>&nbsp;&nbsp;&nbsp;&nbsp;<a
-                                                        href="agenthomepage.aspx"><img  loading="lazy" alt="cancel1" id="ImageButton2" alt="" border="0" runat="server"
+                                                        href="agenthomepage.aspx"><img  loading="lazy" alt="cancel1" id="ImageButton2"  border="0" runat="server"
                                                             src="Assets/images/cancel1.gif" />
                                                     </a>
                                             </td>

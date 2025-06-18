@@ -25,6 +25,7 @@
     <meta name="CODE_LANGUAGE" content="C#" />
     <meta name="vs_defaultClientscript" content="Javascript" />
     <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script language="javascript" src="../Assets/js/md5.js" type="text/javascript"></script>
 
@@ -35,19 +36,37 @@
 
             // check for minimum length
             if (document.form1.txtNewpwd.value.length < minLength) {
-                alert('Your password must be at least ' + minLength + ' characters long. Try again.');
+                //alert('Your password must be at least ' + minLength + ' characters long. Try again.');
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: ' Your password must be at least ' + minLength + ' characters long. Try again.',
+                    confirmButtonColor: '#f2572b'
+                });
                 return false;
             }
             // check for spaces
             if (document.form1.txtNewpwd.value.indexOf(invalid) > -1) {
-                alert("Sorry, spaces are not allowed.");
+                //alert("Sorry, spaces are not allowed.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: ' Sorry, spaces are not allowed.',
+                    confirmButtonColor: '#f2572b'
+                });
                 return false;
             }
         }
 
         function validate() {
             if (Trim(document.form1.txtoldpwd.value) == "") {
-                alert("Please Enter the old password");
+                //alert("Please Enter the old password");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter the old password.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.form1.txtoldpwd.focus();
                 return false;
             }
@@ -59,7 +78,13 @@
             //					return false;
             //				}
             if (Trim(document.form1.txtNewpwd.value) == "") {
-                alert("Please enter the new password");
+                //alert("Please enter the new password");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please enter the new password.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.form1.txtNewpwd.value = "";
                 document.form1.txtNewpwd.focus();
                 return false;
@@ -70,13 +95,25 @@
                 return false;
             }
             if (Trim(document.form1.txtrepwd.value) == "") {
-                alert("Please Re-enter Password.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Re-enter Password.',
+                    confirmButtonColor: '#f2572b'
+                });
+                //alert("Please Re-enter Password.");
                 document.form1.txtrepwd.value = "";
                 document.form1.txtrepwd.focus();
                 return false;
             }
             if (Trim(document.form1.txtNewpwd.value) != Trim(document.form1.txtrepwd.value)) {
-                alert("New Password and Re-enter Password mismatch.");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'New Password and Re-enter Password mismatch..',
+                    confirmButtonColor: '#f2572b'
+                });
+                //alert("New Password and Re-enter Password mismatch.");
                 document.form1.txtNewpwd.value = "";
                 document.form1.txtrepwd.value = "";
                 document.form1.txtNewpwd.focus();

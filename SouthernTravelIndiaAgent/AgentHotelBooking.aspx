@@ -16,6 +16,7 @@
     <link type="text/css" href="/css/smoothness/jquery-ui-1.7.1.custom_blue.css" rel="stylesheet" />
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script src="../css/Js/jquery-1.3.2.min.js" type="text/javascript"></script>
 
@@ -546,7 +547,12 @@
              }
          }
          if (isItemChecked == false) {
-             alert("Please select Occupants.");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please select Occupants.',
+                 confirmButtonColor: '#f2572b'
+             });
              return false;
          }
          return true;
@@ -554,18 +560,33 @@
      function validate() {
 
          if (document.getElementById("ddlCity").value == "0") {
-             alert("Please select City.");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please select City.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlCity").focus();
              return false;
          }
          if (document.getElementById("ddlHotel").value == "" || document.getElementById("ddlHotel").value == "0") {
-             alert("Please select Hotel.");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please select Hotel.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlHotel").focus();
              return false;
          }
 
          if (Trim(document.getElementById("txtarr").value) == "" || document.getElementById("txtarr").value == "dd/mm/yyyy") {
-             alert('Please Select CheckIn Date.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Select CheckIn Date.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("txtarr").focus();
              return false;
          }
@@ -579,12 +600,22 @@
              return false;
          }
          if (Trim(document.getElementById("ddlNoRoom").value) == "0" || document.getElementById("ddlNoRoom").value == "") {
-             alert('Please Select No of Rooms.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Select No of Rooms.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlNoRoom").focus();
              return false;
          }
          if (Trim(document.getElementById("ddlAdults").value) == "0" || document.getElementById("ddlAdults").value == "") {
-             alert('Please Select No of Adults.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Select No of Adults.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlAdults").focus();
              return false;
          }
@@ -592,17 +623,32 @@
      function validate1() {
 
          if (document.getElementById("ddlCity").value == "0") {
-             alert("Please select City.");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please select City.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlCity").focus();
              return false;
          }
          if (document.getElementById("ddlHotel").value == "" || document.getElementById("ddlHotel").value == "0") {
-             alert("Please select Hotel.");
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please select Hotel.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlHotel").focus();
              return false;
          }
          if (Trim(document.getElementById("txtarr").value) == "" || document.getElementById("txtarr").value == "dd/mm/yyyy") {
-             alert('Please Select CheckIn Date.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Select CheckIn Date.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("txtarr").focus();
              return false;
          }
@@ -616,12 +662,22 @@
              return false;
          }
          if (Trim(document.getElementById("ddlNoRoom").value) == "0" || document.getElementById("ddlNoRoom").value == "") {
-             alert('Please Select No of Rooms.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Select No of Rooms.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlNoRoom").focus();
              return false;
          }
          if (Trim(document.getElementById("ddlAdults").value) == "0" || document.getElementById("ddlAdults").value == "") {
-             alert('Please Select No of Adults.');
+             Swal.fire({
+                 icon: 'warning',
+                 title: 'Oops...',
+                 text: 'Please Select No of Adults.',
+                 confirmButtonColor: '#f2572b'
+             });
              document.getElementById("ddlAdults").focus();
              return false;
          }
@@ -1001,7 +1057,12 @@
                      txtName = controls[i];
 
                      if (txtName.value == '') {
-                         alert('Please enter guest name');
+                         Swal.fire({
+                             icon: 'warning',
+                             title: 'Oops...',
+                             text: 'Please enter guest name.',
+                             confirmButtonColor: '#f2572b'
+                         });
                          txtName.focus();
                          return false;
                          break;
@@ -1012,7 +1073,12 @@
                  if (controls[i].id.indexOf("txtAge") != -1) {
                      txtage = controls[i];
                      if (txtage.value == '') {
-                         alert('Please enter guest age');
+                         Swal.fire({
+                             icon: 'warning',
+                             title: 'Oops...',
+                             text: 'Please enter guest age.',
+                             confirmButtonColor: '#f2572b'
+                         });
                          txtage.focus();
                          return false;
                          break;
@@ -1022,7 +1088,12 @@
                  if (controls[i].id.indexOf("ddlGender") != -1) {
                      ddlGender = controls[i];
                      if (ddlGender.value == '0') {
-                         alert('Please select  guest gender');
+                         Swal.fire({
+                             icon: 'warning',
+                             title: 'Oops...',
+                             text: 'Please select  guest gender.',
+                             confirmButtonColor: '#f2572b'
+                         });
                          ddlGender.focus();
                          return false;
                          break;
@@ -1076,13 +1147,13 @@
                                 <table width="296" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td align="left" style="width: 9px">
-                                            <img src="Assets/images/left_corner.gif" width="8" height="8" />
+                                            <img src="Assets/images/left_corner.gif" width="8" height="8"  loading="lazy" alt="left_corner"/>
                                         </td>
                                         <td bgcolor="#E7E7E7">
-                                            <img src="Assets/images/trans.gif" width="280" height="1" />
+                                            <img src="Assets/images/trans.gif" width="280" height="1" loading="lazy" alt="trans"/>
                                         </td>
                                         <td align="right">
-                                            <img src="Assets/images/rgt_corner.gif" width="8" height="8" />
+                                            <img src="Assets/images/rgt_corner.gif" width="8" height="8" loading="lazy" alt="rgt_corner"
                                         </td>
                                     </tr>
                                     <tr>
@@ -2103,13 +2174,13 @@
                                     </tr>
                                     <tr>
                                         <td align="left">
-                                            <img src="Assets/images/left_d_corner.gif" width="8" height="8" />
+                                            <img src="Assets/images/left_d_corner.gif" width="8" height="8"  loading="lazy" alt="left_corner"/>
                                         </td>
                                         <td bgcolor="#E7E7E7">
-                                            <img src="Assets/images/trans.gif" width="1" height="1" />
+                                            <img src="Assets/images/trans.gif" width="1" height="1"  loading="lazy" alt="trans"/>
                                         </td>
                                         <td align="right">
-                                            <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" />
+                                            <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" loading="lazy" alt="rgt_d_corner"/>
                                         </td>
                                     </tr>
                                 </table>

@@ -109,7 +109,13 @@ var fareType = 'Dl';
 function FareTypeCheck(type) {
 
     if (document.getElementById('txtDate').value == "") {
-        alert('Please first select a journey date.');
+        //alert('Please first select a journey date.');
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Please first select a journey date.',
+            confirmButtonColor: '#f2572b'
+        });
         return false;
     }
     else {
@@ -628,7 +634,13 @@ function Validationcheck() {
     var lCarType = document.getElementById('ddlCarType');
     var lSelectedCarType = lCarType.options[lCarType.selectedIndex].value;
     if (parseInt(lSelectedCarType) <= 0) {
-        alert("please select type of car");
+        //alert("please select type of car");
+        Swal.fire({
+            icon: 'warning',
+            title: 'Oops...',
+            text: 'Please select type of car.',
+            confirmButtonColor: '#f2572b'
+        });
         document.getElementById('ddlCarType').focus();
         return false;
     }
@@ -725,8 +737,8 @@ function Validationcheck() {
         document.form1.txtAddress.focus();
         return false;
     }
-    
-    
+
+
     if (Trim(document.form1.txtAddress.value) == "") {
         alert("Please enter the address");
         document.form1.txtAddress.focus();
@@ -746,7 +758,7 @@ function Validationcheck() {
         chek = false;
         return false;
     }
-    
+
     //**************************************************************************************************
     if ((document.form1.txtphone.value == "") && (document.form1.txtMobile.value == "")) {
         alert("Please enter the Mobile/Phone no");

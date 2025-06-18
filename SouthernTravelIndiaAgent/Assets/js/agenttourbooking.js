@@ -41,7 +41,12 @@ function alterValue(chkBoxObject, divSelected) {
                 var chek = true;	
                 if((currentOptedSeats)!= parseInt(document.getElementById('maxSeatAllowed').value))
                 {                
-                    alert('Please Select The Correct Number Of seats');                   
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please Select The Correct Number Of seats.',
+                        confirmButtonColor: '#f2572b'
+                    });
                     chek = false;
                 }
                  if(chek)
@@ -203,7 +208,12 @@ function alterValue(chkBoxObject, divSelected) {
 			}	
 			if(tot==0)
 			{	
-			alert("Please Enter No of Passengers");		
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please Enter Number of Passengers.',
+                    confirmButtonColor: '#f2572b'
+                });	
 			return false;
 			}
 			if(adult==0)
@@ -216,7 +226,12 @@ function alterValue(chkBoxObject, divSelected) {
 			{
 		       var value4 = CheckPayment(document.getElementById('rbtnPaymentOption'), 'HALF');
 		       if (value4 == false) {
-               alert("Please select Payment option.")
+                   Swal.fire({
+                       icon: 'warning',
+                       title: 'Oops...',
+                       text: 'Please select Payment option.',
+                       confirmButtonColor: '#f2572b'
+                   });
                 return false;
                }
 			}
@@ -1957,7 +1972,8 @@ function daydiff(first, second) {
 }
   var jdate ='';
 	function Getfare()
-			{			
+    {		
+                
 			 	var  CtlTable8 = document.getElementById('table8');                    
 			    CtlTable8.style.display.none;     
 			    
@@ -2019,7 +2035,8 @@ function daydiff(first, second) {
 			function stateChanged1() 
 			{ 
 				if( (xmlHttp.readyState == 4 || xmlHttp.readyState=="complete"))
-				{ 				
+                {
+                    debugger;
                    document.body.innerHTML = xmlHttp.responseText;                                                  
                    document.getElementById("ddlJdate").value=jdate;
                     var  CtlTable8 = document.getElementById('table8');                    

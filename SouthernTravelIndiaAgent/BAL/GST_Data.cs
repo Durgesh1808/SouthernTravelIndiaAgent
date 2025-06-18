@@ -286,7 +286,7 @@ namespace SouthernTravelIndiaAgent.BAL
 
             using (SqlConnection con = new SqlConnection(connStr))
             {
-                using (SqlCommand cmd = new SqlCommand("GST_InsertFinalAccBookingInfo_sp", con))
+                using (SqlCommand cmd = new SqlCommand(StoredProcedures.GST_InsertFinalAccBookingInfo_sp, con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
 

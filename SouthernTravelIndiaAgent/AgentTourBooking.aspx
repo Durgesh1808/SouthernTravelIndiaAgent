@@ -20,10 +20,12 @@
     <meta name="CODE_LANGUAGE" content="c#" />
     <meta name="vs_defaultClientscript" content="Javascript" />
     <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
-    <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
+    <link href="/Assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="/Assets/css/rupee.css" rel="stylesheet" type="text/css" />
     <link href="/css/style.css" rel="stylesheet"/>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style type="text/css">
         .rupee
         {
@@ -31,11 +33,11 @@
         }
     </style>
 
-    <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
+    <script language="javascript" src="/Assets/js/MyScript.js" type="text/javascript"></script>
 
     <script language="javascript" src="Assets/js/agenttourbooking.js" type="text/javascript"></script>
 
-    <script language="javascript" type="text/javascript" src="../Includes/query_string.js"></script>
+    <script language="javascript" type="text/javascript" src="/Includes/query_string.js"></script>
 
     <script language="javascript" type="text/javascript">
      function fillTransfer(MasterId) {
@@ -119,8 +121,13 @@
             var k = document.getElementById('BuschkType').value;
             if (k == "N") {
                 document.getElementById('RadAC').selected = false;
-                alert("OOPs....!, Selected journey date is not available in AC,Try another date or choose NoN-AC");
-                
+                //alert("OOPs....!, Selected journey date is not available in AC,Try another date or choose NoN-AC");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: ' Selected journey date is not available in AC,Try another date or choose NoN-AC.',
+                    confirmButtonColor: '#f2572b'
+                });
                 clearColor(0);
                 //SetColor(1);
                 return false;
@@ -134,7 +141,13 @@
             var k = document.getElementById('BuschkType').value;
             if (k == "Y") {
                 document.getElementById('RadNAC').selected = false;
-                alert("OOPs...! Selected journey date is not available in NON-AC,Try another date or choose AC");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: ' Selected journey date is not available in NON-AC,Try another date or choose AC.',
+                    confirmButtonColor: '#f2572b'
+                });
+                //alert("OOPs...! Selected journey date is not available in NON-AC,Try another date or choose AC");
                 clearColor(1);
                 //SetColor(0);
                 return false;

@@ -343,7 +343,8 @@ namespace SouthernTravelIndiaAgent
             }
             if (totpax == 0)
             {
-                Response.Write("<script>alert('Please Enter No OF Passengers')</script>");
+                ClsCommon.ShowAlert("Please Enter No OF Passengers");
+                //Response.Write("<script>alert('Please Enter No OF Passengers')</script>");
                 btncheckavail.Enabled = true;
                 return;
             }
@@ -894,7 +895,7 @@ namespace SouthernTravelIndiaAgent
             try
             {
                 lConn = new SqlConnection(DataLib.getConnectionString());
-                lCommand = new SqlCommand("CheackSeatsForFD_Tour_SP", lConn);
+                lCommand = new SqlCommand(StoredProcedures.CheackSeatsForFD_Tour_SP, lConn);
                 lCommand.CommandTimeout = 20 * 1000;
                 lCommand.CommandType = CommandType.StoredProcedure;
 

@@ -10,6 +10,7 @@
     <link href="../Assets/css/Calenderall.css" rel="Stylesheet" type="text/css" />
     <script language="javascript" src="../Assets/js/calenderall.js" type="text/javascript"></script> 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script language="javascript" type="text/javascript">
         function CheckMail(str) 
@@ -20,7 +21,12 @@
             }
             else
             {
-                alert("Invalid E-mail ID");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Invalid E-mail ID.',
+                    confirmButtonColor: '#f2572b'
+                });
                 return false;
             }				
         }  function isNumberKey(evt)
@@ -30,37 +36,58 @@
                 return false;
              return true;
         }   
-        	function CheckOnlyCharacter(evt)
-	{
-			var kk
-			kk= (evt.which) ? evt.which : event.keyCode
+            function CheckOnlyCharacter(evt)
+	        {
+			        var kk
+			        kk= (evt.which) ? evt.which : event.keyCode
 			
-			if((kk>=65 && kk<=90)|| kk==8 ||kk==32 || kk==9 || kk==127 || kk==16 || kk==20|| kk==46)
-			 {
-				return true;
-			 }
-				alert("Please enter characters only.");
-				return false;
-    }		
+			        if((kk>=65 && kk<=90)|| kk==8 ||kk==32 || kk==9 || kk==127 || kk==16 || kk==20|| kk==46)
+			         {
+				        return true;
+                }
+
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Oops...',
+                            text: 'Please enter characters only.',
+                            confirmButtonColor: '#f2572b'
+                        });
+				        return false;
+            }		
         function validate()
 		{	   
             if(Trim(document.getElementById("txtfirstname").value)=="")    
-			{			
-				alert("First name should not be Empty.");
+            {		
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: ' First name should not be Empty.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtfirstname").focus();				
 				return false;
 			}
 			if (validateOnlyNumber1(parseInt(document.getElementById("txtfirstname").value))==true)
-			{
-				alert("First name should not be numeric.");
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'First name should not be numeric.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtfirstname").value="";
 				document.getElementById("txtfirstname").focus();
 				return false;
 			}
 			
 			if (Trim(document.getElementById("txtlastname").value)=="")    
-			{			
-				alert("Last name should not be Empty.");
+            {		
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Last name should not be Empty.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtlastname").focus();				
 				return false;
 			}
@@ -75,20 +102,35 @@
 			    }			    
 			}			
 			if(!vargenderChecked)
-			{
-			    alert('Select Gender');			    
+            {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Select Gender.',
+                    confirmButtonColor: '#f2572b'
+                });
 			    return false;
 			}
 		  if(Trim(document.getElementById("txtaddress").value)=="")    
-			{				
-				alert("Address should not be Empty.");
+          {		
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Oops...',
+                  text: 'Address should not be Empty.',
+                  confirmButtonColor: '#f2572b'
+              });
 				document.getElementById("txtaddress").focus();
 				return false;
 			}
 			
 			if (document.getElementById("txtphone").value=="")   
-			{				
-				alert("Phone No should not be Empty.");
+            {		
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Phone No should not be Empty.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtphone").focus();
 				return false;
 			}
@@ -97,16 +139,26 @@
 			{
 			    var k=document.getElementById("txtphone").value;
 			   if(k.length<6)   
-			    {
-				    alert("Phone No should be 6 digits.");
+               {
+                   Swal.fire({
+                       icon: 'warning',
+                       title: 'Oops...',
+                       text: 'Phone No should be 6 digits.',
+                       confirmButtonColor: '#f2572b'
+                   });
 				    document.getElementById("txtphone").focus();
 				    return false;
 			    }
 			}
 			
 		    if (document.getElementById("txtmobile").value=="")   
-			{				
-				alert("Mobile No should not be Empty.");
+            {		
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Mobile No should not be Empty.',
+                    confirmButtonColor: '#f2572b'
+                });
 				document.getElementById("txtmobile").focus();
 				return false;
 			}
@@ -114,15 +166,25 @@
 			{
 			        var k=document.getElementById("txtmobile").value;
 			   if(k.length<10)   
-			    {
-				    alert("Mobile No should be 10 digits.");
+               {
+                   Swal.fire({
+                       icon: 'warning',
+                       title: 'Oops...',
+                       text: 'Mobile No should be 10 digits.',
+                       confirmButtonColor: '#f2572b'
+                   });
 				    document.getElementById("txtmobile").focus();
 				    return false;
 			    }
 			}
 			 if (document.getElementById('txtemail').value== "" )	
              {
-                alert("Please fill the e-mail field.It is Mandatory.");
+                 Swal.fire({
+                     icon: 'warning',
+                     title: 'Oops...',
+                     text: 'Please fill the e-mail field.It is Mandatory.',
+                     confirmButtonColor: '#f2572b'
+                 });
                 document.getElementById('txtemail').focus();
                 return false;
              }
@@ -147,8 +209,13 @@
 //				return false; 
 //		  }	
 		  if(document.form1.txtCaptchImage.value=="")
-			{
-				alert("Please enter verification code.");
+          {
+              Swal.fire({
+                  icon: 'warning',
+                  title: 'Oops...',
+                  text: 'Please enter verification code.',
+                  confirmButtonColor: '#f2572b'
+              });
 				document.form1.txtCaptchImage.focus();
 				return false; 
 			}				

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -16,6 +17,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Web;
 using System.Web.Mail;
+using System.Web.Services.Description;
 using System.Web.UI;
 
 namespace SouthernTravelIndiaAgent.BAL
@@ -214,16 +216,55 @@ namespace SouthernTravelIndiaAgent.BAL
         /// /// Show alert message on the current page using ScriptManager
         /// </summary>
         /// <param name="Msg"></param>
-        public static void ShowAlert(string Msg)
+        public static void ShowAlert(string msg)
         {
+            string title = "Oops...";
+            string icon = "warning"; // Must be lowercase
+            string buttonColor = "#f2572b";
+
             Page page = HttpContext.Current.Handler as Page;
             if (page != null)
             {
-                Msg = Msg.Replace("'", "\'");
-                ScriptManager.RegisterStartupScript(page, page.GetType(),
-                 "err_msg", "alert('" + Msg + "');", true);
+                // Sanitize inputs
+                title = title.Replace("'", "\\'");
+                msg = msg.Replace("'", "\\'");
+
+                string script = $@"
+                    Swal.fire({{
+                        icon: '{icon}',
+                        title: '{title}',
+                        text: '{msg}',
+                        confirmButtonColor: '{buttonColor}'
+                    }});";
+
+                ScriptManager.RegisterStartupScript(page, page.GetType(), "swal_alert", script, true);
             }
         }
+        public static void SuccessShowAlert(string msg)
+        {
+            string title = "Success!";
+            string icon = "success"; // Must be lowercase
+            string buttonColor = "#f2572b";
+
+            Page page = HttpContext.Current.Handler as Page;
+            if (page != null)
+            {
+                // Sanitize inputs
+                title = title.Replace("'", "\\'");
+                msg = msg.Replace("'", "\\'");
+
+                string script = $@"
+                        Swal.fire({{
+                            icon: '{icon}',
+                            title: '{title}',
+                            text: '{msg}',
+                            confirmButtonColor: '{buttonColor}'
+                        }});";
+
+                ScriptManager.RegisterStartupScript(page, page.GetType(), "swal_alert", script, true);
+            }
+        }
+
 
 
         /// <summary>
@@ -1338,5 +1379,82 @@ namespace SouthernTravelIndiaAgent.BAL
             }
         }
 
+        /// <summary>
+        /// /// This method sends a seat request email with the provided details.
+        /// </summary>
+        /// <param name="pRefno"></param>
+        /// <param name="pTourName"></param>
+        /// <param name="pGroupLeader"></param>
+        /// <param name="pJdate"></param>
+        /// <param name="pAdults"></param>
+        /// <param name="pChild"></param>
+        /// <param name="pBusType"></param>
+        /// <param name="pAddress"></param>
+        /// <param name="pCity"></param>
+        /// <param name="pState"></param>
+        /// <param name="pLandLine"></param>
+        /// <param name="pMobile"></param>
+        /// <param name="pEmail"></param>
+        public static void SeatRequest(string pRefno, string pTourName, string pGroupLeader, DateTime pJdate, string pAdults, string pChild, string pBusType, string pAddress, string pCity, string pState, string pLandLine, string pMobile, string pEmail)
+        {
+            System.Text.StringBuilder lsb = new System.Text.StringBuilder();
+            lsb.Append("Reference No: " + pRefno + ",<br />");
+            lsb.Append("Dear Manager,<br />");
+            lsb.Append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Southern Travels<br />");
+            lsb.Append("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subject - Request for Seats  - " + pTourName + "<br />");
+            lsb.Append("&nbsp;&nbsp;&nbsp;Sir I am " + pGroupLeader + ",<br />");
+            lsb.Append("I was Requesting You to Please Arrange Seats. Details are as follows:<br />");
+            lsb.Append("Tour Name: " + pTourName + "<br />");
+            lsb.Append("Journey date: " + pJdate + "<br />");
+            lsb.Append("No Of Adults: " + pAdults + "<br />");
+            lsb.Append("No Of Childs: " + pChild + "<br />");
+            lsb.Append("Bus Type(AC/NonAC): " + pBusType + "<br />");
+            lsb.Append("Address: " + pAddress + "<br />");
+            lsb.Append("City: " + pCity + "<br />");
+            lsb.Append("State: " + pState + "<br />");
+            lsb.Append("Phone No: " + pLandLine + "<br />");
+            lsb.Append("Mobile No: " + pMobile + "<br />");
+            lsb.Append("e-Mail: " + pEmail + "<br />");
+            if (pEmail == "")
+                pEmail = "request@seat.com";
+            string lToEmail = ConfigurationSettings.AppSettings["SeatRequestTO"].ToString();
+            sendmail(lToEmail, ConfigurationSettings.AppSettings["SeatRequestBCC"].ToString(), "", pEmail, pRefno + ": Request For Arrangement of Seats: - " + pTourName, lsb.ToString(), "");
+        }
+
+
+
+        public static void LogAndSendError(string error)
+        {
+            string connectionString = DataLib.getConnectionString(); // Ensure this returns a valid connection string
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    using (SqlCommand cmd = new SqlCommand(StoredProcedures.LogError_sp, conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@Error", error);
+
+                        conn.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                // Send the error mail after logging
+                string toMail = ConfigurationManager.AppSettings["errormail"];
+                ClsCommon.sendmail(
+                    toMail, "", "",
+                     ConfigurationManager.AppSettings["TicketEmail"],
+                    "Error Has Been Caught in Application_Error event",
+                    error, ""
+                );
+            }
+            catch (Exception ex)
+            {
+                // Log to file, event log, or ignore to avoid recursion
+                // Optional: log to fallback location
+            }
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using SouthernTravelIndiaAgent.Common;
+﻿using SouthernTravelIndiaAgent.BAL;
+using SouthernTravelIndiaAgent.Common;
 using SouthernTravelIndiaAgent.DAL;
 using System;
 using System.Collections.Generic;
@@ -61,7 +62,8 @@ namespace SouthernTravelIndiaAgent
             }
             else
             {
-                ClientScript.RegisterStartupScript(GetType(), "SelectTour", "<script>alert('Please selct the tour From the List');</script>");
+                ClsCommon.ShowAlert("Please selct the tour From the List");
+                //ClientScript.RegisterStartupScript(GetType(), "SelectTour", "<script>alert('Please selct the tour From the List');</script>");
                 Response.Redirect("AgentHomepage.aspx");
             }
         }

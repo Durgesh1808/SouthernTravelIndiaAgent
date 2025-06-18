@@ -22,6 +22,8 @@
     <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
     <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <style>
         .Throug
         {
@@ -528,7 +530,12 @@
                  if ((kk >= 65 && kk <= 90) || kk == 32 || kk == 8 || kk == 9 || kk == 127 || kk == 16 || kk == 20 || kk == 46) {
                      return true;
                  }
-                 alert("Please enter characters only.");
+                 Swal.fire({
+                     icon: 'warning',
+                     title: 'Oops...',
+                     text: 'Please enter characters only.',
+                     confirmButtonColor: '#f2572b'
+                 });
                  return false;
              }
              function GSTHideUnhide(val) {

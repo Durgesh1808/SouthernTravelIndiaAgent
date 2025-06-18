@@ -1,16 +1,25 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="agenttour.aspx.cs" Inherits="SouthernTravelIndiaAgent.agenttour" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="agenttour.aspx.cs" Inherits="SouthernTravelIndiaAgent.agenttour"  enableEventValidation="false" %>
 
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
      <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
     <title>Southern India Travel,South India Travel Packages,Travel Packages to South India</title>
+         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script language="javascript" type="text/javascript">
     function validation()
-	    {
-	            if ((document.form1.ddlTourName.value=="Select")||(document.form1.ddlTourName.value=="0"))
-		        {
-			        alert("Please choose a tour.");
+    {
+        debugger;
+        var ddl = document.getElementById('<%= ddlTourName.ClientID %>');
+        if (ddl.value == "Select" || ddl.value == "0") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Oops...',
+                        text: 'Please choose a tour.',
+                        confirmButtonColor: '#f2572b'
+                    });
+			        //alert("Please choose a tour.");
 			        document.getElementById("ddlTourName").focus();
 			        return false;
 		        }
@@ -199,7 +208,7 @@
                                         <tr class="verdana11bk">
                                             <td colspan="2" align="right">
                                                 <asp:ImageButton ID="btnBooking" runat="server" ImageUrl="Assets/images/book_now.gif" Width="67"
-                                                    Height="20" OnClick="btnBooking_Click" />&nbsp;&nbsp;
+                                                    Height="20" OnClick="btnBooking_Click" CausesValidation="false"/>&nbsp;&nbsp;
                                             </td>
                                         </tr>
                                         
@@ -230,9 +239,9 @@
         <script>
             <!--
                 Search();
-function IMG1_onclick() {
+            function IMG1_onclick() {
 
-}
+            }
 
             -->
         </script>
