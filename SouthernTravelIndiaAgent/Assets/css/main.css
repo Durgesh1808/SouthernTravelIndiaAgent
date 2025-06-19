@@ -1,0 +1,1013 @@
+
+/* ************************************** Header and Footer Style ******************************************* */
+
+.tp-lk {
+	font-family:arial; 
+	font-size:11px; 
+	font-weight:bold; 
+	color:#000000; 
+	padding-right:10px;
+	}
+.tp-lk a{
+	color:#000000; 
+	text-decoration: none;}
+.tp-lk a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.mn-lk {
+	font-family:arial; 
+	font-size:12px; font-weight:bold; 
+	color:#DD4503; 
+	padding-right:10px; 
+	line-height:19px;
+	}
+.mn-lk a{
+	color:#DD4503; 
+	text-decoration: none;}
+.mn-lk a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.mn-lk1 {
+	font-family:arial; 
+	font-size:12px; font-weight:bold; 
+	color:#DD4503; 
+	padding-right:10px; 
+	line-height:19px;
+	}
+.mn-lk1 a{
+	color:#DD4503; 
+	text-decoration: none;}
+.mn-lk1 a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.lft-td {
+	width:193px;
+	margin-left:7px;
+	float:left;
+	}
+.mn-tr-hd {
+	background:url('../images/ip-hd-bg.gif'); 
+	font-family:arial; 
+	font-size:12px;
+	color:#E14000;
+	padding-left:15px;
+	}
+.mn-tr-hd a{
+	color:#E14000; 
+	text-decoration: none;}
+.mn-tr-hd a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.tour-bg {
+	background:url('../images/tour-bg.gif'); 
+	font-family:arial; 
+	font-size:11px;
+	color:#273600;
+	}
+.tour-bg a{
+	color:#273600; 
+	text-decoration:underline;}
+.tour-bg a:hover{
+	color:#000000;
+	text-decoration:none;}
+
+.tour-bg B{
+	color:#730D00;
+	}
+.tour-bg B a{
+	color:#730D00; 
+	text-decoration:underline;}
+.tour-bg B a:hover{
+	color:#000000;
+	text-decoration:none;}
+
+.tour-lk {
+	padding-left:10px; line-height:19px;
+	}
+
+.royal-india {
+	background:url('../images/royal-india-bg.gif') no-repeat top left; 
+	font-family:arial; 
+	font-size:11px;
+	color:#273600;
+	}
+.royal-india a{
+	color:#273600; 
+	text-decoration: underline;}
+.royal-india a:hover{
+	color:#000000;
+	text-decoration: none;}
+
+.mn-ht-hd {
+	background:url('../images/hotel-hd-bg.jpg'); 
+	font-family:arial; 
+	font-size:12px;
+	color:#E14000;
+	padding-left:15px;
+	}
+.mn-ht-hd a{
+	color:#E14000; 
+	text-decoration: none;}
+.mn-ht-hd a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.hotel-lk {
+	background:url('../images/ht-bg.gif'); 
+	font-family:arial; 
+	font-size:11px;
+	color:#000000;
+	line-height:19px;
+	}
+.hotel-lk a{
+	color:#E14000; 
+	text-decoration: none;}
+.hotel-lk a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.ht-lk {
+	padding-left:5px;
+	padding-right:5px;
+	}
+.ht-lk1 {
+	padding-left:5px;
+	}
+.ht-lk .ht-southern{
+	color:#EF4900;
+	}
+.ht-lk1 .ht-southern{
+	color:#EF4900;
+	}
+.travel-kit-hd {
+	background:url('../images/travel-kit-bg.gif') #FD8E00; 
+	font-family:arial; 
+	font-size:13px;
+	color:#ffffff;
+	padding-left:20px;
+	}
+.travel-kit-hd a{
+	color:#ffffff; 
+	text-decoration: none;}
+.travel-kit-hd a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.travel-kit-lk {
+	background:#FFE763; 
+	font-family:arial; 
+	font-size:12px;
+	color:#000000;
+	}
+.travel-kit-lk a{
+	color:#000000; 
+	text-decoration: none;}
+.travel-kit-lk a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.tp-nav {
+	font-family:arial; 
+	font-size:11px;
+	color:#000000;
+	padding-right:10px;
+	margin-top:5px;
+	}
+.tp-nav a{
+	color:#000000; 
+	text-decoration: none;}
+.tp-nav a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+H1 {
+	padding-left:218px;
+	font-family:arial; 
+	font-size:17px;
+	color:#E14000;
+	}
+
+.pg-hd {
+	font-family:arial; 
+	float:left;
+	font-size:17px;
+	color:#E14000;
+	}
+.page-hd {
+	padding-left:218px;
+	font-family:arial; 
+	font-size:15px;
+	color:#143780;
+	padding-top:10px;
+	padding-bottom:10px;
+	}
+
+.page-hd H1 {
+	padding-left:0px;
+	font-family:arial; 
+	display: inline; 
+	font-size:15px;
+	color:#143780;
+	}
+
+
+.text {
+	font-family:arial; 
+	font-size:11px;
+	color:#000000;
+	margin-left:214px;
+	line-height:19px;
+	padding-right:10px;
+	}
+.text .hd{
+	font-family:arial; 
+	font-size:12px;
+	color:#AF280C;
+	line-height:19px;
+	padding-right:10px;
+	}
+.ftr {
+	padding-left:10px;
+	padding-right:10px;
+	}
+
+.ftr-lk {
+	font-family:arial; 
+	font-size:11px;
+	color:#646464;
+	line-height:19px;
+	}
+.ftr-lk a{
+	color:#646464; 
+	text-decoration: none;}
+.ftr-lk a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.ftr-lk b{
+	color:#FF6000;
+	}
+
+.ftr-lk-mn {
+	font-family:arial; 
+	font-size:11px;
+	color:#000000;
+	font-weight:bold;
+	line-height:19px;
+	}
+.ftr-lk-mn a{
+	color:#000000; 
+	text-decoration: none;}
+.ftr-lk-mn a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.fact-bg {background:url('../images/travel-fact-rt-bg.gif') no-repeat #C26958; float:right; width:155px; line-height:21px; color:#ffffff; font-weight:bold; }
+.fact-txt  .fact-bg b{color:#FFEC86; text-decoration:none; }
+
+.fact-hd {background:url('../images/travel-fact-bg.gif') repeat-x; font-family:Ms Sans Serif,Verdana,Arial; font-size:12px; color:#E01000; font-weight:bold; line-height:22px;padding-bottom:6px; padding-left:6px; }
+.fact-txt {background:url('../images/travel-fact-text-bg.gif') repeat-x; font-family:Ms Sans Serif,Verdana,Arial; font-size:11px; color:#3C3C3C; padding-left:5px; line-height:22px;}
+.fact-txt b{color:#98493D;}
+.fact-txt b.hd{color:#98493D;}
+.fact-txt a{color:#772A00; text-decoration: underline; font-weight:bold;}
+.fact-txt a:hover{color:#000000;text-decoration: none;}
+
+.holiday-txt {background:#FFFFF6; font-family:Arial; font-size:12px; color:#3C3C3C; padding-left:5px; line-height:22px;}
+.holiday-txt b{color:#98493D;}
+.holiday-txt b.hd{color:#C34500;}
+.holiday-txt a{color:#C34500; text-decoration: underline; font-weight:bold;}
+.holiday-txt a:hover{color:#000000;text-decoration: none;}
+
+.detail-bg {background-image:url('../images/detail-bg.gif'); font-family:Ms Sans Serif,Verdana,Arial; font-size:11px; color:#1F51C2; line-height:22px;}
+
+.fact-txt2 {color:#903A0B; font-size:12px; font-family:Arial; line-height:19px;}
+.cost-bg {background:#FFCB2B; font-family:Ms Sans Serif,Verdana,Arial; color:#000000; border: 1px solid #DC8574; width:155px;  float:right;line-height:17px;font-weight:bold; }
+.cost-ul {list-style:square; margin-left:10px; padding-left:10px; color:#97301A; margin-top:5px;} 
+
+	
+.guided-lk {background:#F5C70B; font-family:Ms Sans Serif,Verdana,Arial; font-size:12px; color:#000000; font-weight:bold; background:url('gifs2/line-india-guide.gif') bottom; }
+.guided-lk Ul{margin:0px; padding-left:16px; margin-left:6px; line-height:30px;}
+.guided-lk LI{list-style-image:url('../images/ind-guide-bt1.gif');  margin-top:0px; }
+
+.book-lk {color:#E80101; border: 1px solid #DC8574; width:178px;margin-right:7px; font-size:12px;}
+.book-lk a{color:#E80101; text-decoration:underline;}
+.book-lk a:hover{color:#000000; text-decoration:none;}
+
+.footer{color:#000000;font-family:arial, verdana, ms sans serif;font-size:12px;}
+.footer A {color:#000000; text-decoration: none;}
+.footer A:hover { color: #666666; text-decoration: underline; }
+
+.td-txt {padding-left:5px; color:#000000;font-family:arial, verdana, ms sans serif;font-size:11px; text-align:left;}
+.td-txt b{color:#ffffff; }
+.td-txt .tdb{color:#B02B26;}
+
+.tariff-chart {color:#B00C01;font-family:arial, verdana, ms sans serif;font-size:11px;}
+.tariff-chart a{color:#B00C01;text-decoration:underline;}
+.tariff-chart a:hover{color:#000000;text-decoration:none;}
+
+/*.text1 {
+	font-family:arial; 
+	font-size:11px;
+	color:#000000;
+	margin-left:214px;
+	line-height:19px;
+	padding-right:10px;
+	}*/
+
+.mh{background:url('../images/travel-fact-bg.gif') repeat-x; font-family:Arial; font-size:13px; color:#E01000; font-weight:bold; line-height:22px;padding-bottom:6px; padding-left:10px;}
+.mh a{color:#E01000; text-decoration:none;}
+.mh a:hover{color:#000000; text-decoration:underline;}
+
+
+.text1 .sh {background:#FFFDF5; font-family:Arial; font-size:12px; color:#B35800; padding-left:25px; font-weight:bold;}
+.text1 .sh a{color:#B35800; text-decoration:none;}
+.text1 .sh a:hover{color:#000000; text-decoration:underline;}
+
+.text1 .mh2 {background-image:url('../images/detail-bg.gif'); font-family:Arial; font-size:12px; color:#B35800; font-weight:bold; line-height:22px;padding-left:25px}
+.text1 .mh2 a{color:#B35800; text-decoration:none;}
+.text1 .mh2 a:hover{color:#000000; text-decoration:underline;}
+
+.text1 .sh1 {background:#FFF6B0; font-family:Arial; font-size:12px; color:#323232; padding-left:43px; font-weight:bold;}
+.text1 .sh1 a{color:#323232; text-decoration:none;}
+.text1 .sh1 a:hover{color:#000000; text-decoration:underline;}
+
+.text1 .sh2 { font-family:Arial; font-size:11px; color:#323232; padding-left:63px;}
+.text1 .sh2 a{color:#323232; text-decoration:none;}
+.text1 .sh2 a:hover{color:#000000; text-decoration:underline;}
+
+
+.tp-lk-hm {
+	font-family:arial; 
+	font-size:11px; 
+	font-weight:bold; 
+	color:#000000; 
+	padding-right:10px;
+	line-height:20px;
+	}
+.tp-lk-hm a{
+	color:#000000; 
+	text-decoration: none;}
+.tp-lk-hm a:hover{
+	color:#000000;
+	text-decoration: underline;}
+
+.tptxt {font-family:Arial; font-size:11px; color:#000000; line-height:18px; padding:10px;}
+.lfttd {width:221px; float:left;}
+.mn-hd {font-family:Arial; font-size:16px; color:#E14000; }
+.mn-hd a{color:#E14000; Text-decoration:none;}
+.mn-hd a:hover{color:#E14000; Text-decoration:none;}
+
+.lfthd {background:URL('../images/lft-hd-bg.gif'); line-height:29px; padding-left:45px; font-family:Arial; font-size:13px; color:#A93300;}
+.lft-bg {background:URL('../images/lftbg.gif');  font-family:Arial; font-size:11px; color:#000000;}
+.lft-bg UL{margin:0px; line-height:18px; list-style:none; padding-bottom:8px; }
+
+.lft-bg UL LI{ margin-left:20px; padding-left:10px; background:URL('../images/lft-arrow.gif') no-repeat left;}
+
+.lft-bg A{
+color:#000000;
+text-decoration:none;
+}
+
+.lft-bg A:hover{
+color:#000000;
+text-decoration:underline;
+}
+
+.lftsh {font-family:Arial; font-size:12px; color:#04369A; padding-left:20px;}
+
+.righttd {width:195px; padding-right:5px; padding-left:5px; text-align:center; float:right;}
+.ht-st {padding-right:30px; padding-left:10px; text-align:left;  line-height:19px; background:URL('../images/ht-st-bg.jpg') no-repeat; font-family:Arial; font-size:12px; color:#ffffff; height:78px;}
+.ht-st b{color:#F6FF00;}
+.ht-st b a{color:#F6FF00; text-decoration:underline;}
+.ht-st b a:hover{color:#F6FF00; text-decoration:none;}
+
+.form-lk {	background:#EDEEFB; font-family:arial; 	font-size:11px;	text-align:left; color:#000000;	line-height:19px; width:184px;}
+.form-hd {font-family:arial; 	font-size:12px;	 color:#ffffff;}
+.mn-hd2 {font-family:Arial; font-size:16px; color:#0B0E5A; margin-top:10px; }
+.tool-kit {width:184px;text-align:left;}
+
+.news-md {text-align:left;  background:URL('../images/news-md.gif');}
+.news-hd { line-height:27px; background:URL('../images/news-hd.gif') no-repeat; font-family:verdana; font-size:12px; color:#000000; }
+
+.news-md-txt {font-family:arial; padding-left:10px; font-size:11px; color:#000000;}
+
+.credit-card { line-height:37px; background:URL('../images/credit-card.gif') no-repeat; font-family:arial; font-size:12px; color:red; }
+
+
+.royal-india-hm {text-align:left; 	background:url('../images/royal-india-hm-bg.gif') no-repeat top left; font-family:arial; padding-left:10px; font-size:11px;	color:#273600;	}
+
+.royal-india-hm a{	color:#273600; 	text-decoration: underline;}
+.royal-india-hm a:hover{	color:#000000;	text-decoration: none;}
+
+.cen {margin-left:235px; padding-right:10px;}
+
+.cen .tour-hd{
+font-family:verdana;
+font-size:13px;
+color:#000000;
+padding-left:10px;
+margin-top:10px;
+font-weight:bold;
+padding-bottom:2px;
+}
+
+.cen .tour-lnk {
+font-family:arial, verdana;
+font-size:12px;
+color:#730D00;
+padding-left:10px;
+line-height:18px;
+}
+.cen a{text-decoration:none;}
+.cen a:hover{text-decoration:underline;}
+
+.cen .tour-lnk a{color:#730D00;}
+
+.cen .ker-tour-lnk {
+font-family:arial, verdana;
+font-size:12px;
+color:#273600;
+padding-left:10px;
+line-height:18px;
+}
+
+.cen .ker-tour-lnk a{color:#273600;}
+
+.cen .goa-tour-lnk {
+font-family:arial, verdana;
+font-size:12px;
+color:#044297;
+padding-left:10px;
+line-height:18px;
+}
+
+.cen .goa-tour-lnk a{color:#044297;}
+
+.cen .nor-tour-lnk {
+font-family:arial, verdana;
+font-size:12px;
+color:#044297;
+padding-left:10px;
+line-height:18px;
+}
+.cen .nor-tour-lnk a{color:#044297;}
+
+.dotline{background:URL('../images/dot.gif') repeat-x ;  margin-top:5px; margin-right:201px;}
+
+
+
+/* ************************************** End Header and Footer Style ******************************************* */
+
+
+
+
+/* ************************************** Left Panel Style ******************************************* */
+
+TD.left {
+	color: #000000;
+}
+.bg1-left {
+	background-color: #ffffff;
+}
+.bg2-left {
+	background-color: #ffffff;
+}
+.h1-left {
+	font-size: 11px;
+	color: #DC590F;
+	font-weight: bold;
+}
+.h2-left {
+	font-size: 11px;
+	color: #DC590F;
+	font-weight: bold;
+}
+.h3-left {
+	font-size: 11px;
+	color: #A31708;
+}
+.color1-left {
+	font-size: 11px;
+	color: #000000;
+}
+HR.hr-left {
+	color: #DC590F;
+	size="1";
+	noshade; 
+}
+A.link-left {
+	color: #DC590F;
+	text-decoration:underline;
+}
+A.link-left:hover {
+	color: #A31708;
+	text-decoration:underline;
+}
+INPUT.submit-left {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid; 
+	FONT-SIZE: 10px; 
+	BORDER-LEFT: #000000 1px solid; 
+	COLOR: #000000; 
+	BORDER-BOTTOM: #000000 1px solid; 
+	FONT-FAMILY: Verdana, Arial, Helvetica; 
+	BACKGROUND-COLOR: #ECEBEB
+}
+
+
+/* ************************************** End of Left Panel Style *************************************/
+
+
+
+
+/* ************************************** Center Style ******************************************* */
+
+/* CSS Document 
+BODY {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	scrollbar-base-color: none;
+	scrollbar-arrow-color: none;
+}*/
+TD {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	color: #000000;
+	clip: rect( )
+}
+.hilighted-text {
+	color: #DC590F;
+}
+.error {
+	color: #164316;
+}
+.special-rate{
+	color: #DC590F;
+	font-size: 12px;
+	font-weight: bold;
+}
+p {
+
+border: 0px none #ffffff;
+font-family: Arial;
+font-size: 11;
+color: #000000;
+clip: rect( )
+}
+
+i {
+border: 0px none #ffffff;
+font-family: Arial;
+font-size: 11;
+color: #000000;
+text-decoration: none
+}
+.h1 {
+	font-size: 16px;
+	color: #DC590F;
+	font-weight: bold;
+}
+.h2 {
+	font-family: Arial;
+	font-size: 14px;
+	color: #DC590F;
+	font-weight: bold;
+}
+.h3 {
+	font-family: Arial;
+	font-size: 12px;
+	color: #DC590F;
+	font-weight: bold;
+}
+.affiliate-name {
+	font-family: Arial;
+	font-size: 12px;
+	color: #000000;
+	font-weight: bold;
+}
+.star {
+	color: #C60803;
+	font-size: 16px;
+}
+.text-hilighted {
+	color: #000000;
+}
+.text-error {
+	color: #000000;
+}
+HR {
+	color: #FFD697;
+	size="1";
+	noshade; 
+}
+A {
+	font-size: 11;
+	color: #DC590F;
+	text-decoration: none;
+}
+
+A:hover {
+	color:#E76C04;
+	text-decoration: underline
+}
+
+.input {
+	border: 1px solid;
+	height: 18px;
+	font-family: Arial;
+	font-size: 11px;
+	border-top:1px;
+	border-left:1px;
+	border-right:1px;
+	border-bottom:1px;
+	border-style:solid;
+	border-color: #000000;
+}
+
+textarea {
+border-width: 1;
+font-family: Arial;
+font-size: 11;
+color: #000000;
+}
+
+.textarea {
+border-width: 2;
+font-family: Arial;
+font-size: 11;
+color: #000000
+}
+
+select {
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	height: 18px;
+	font-size: 10px;
+	font-family: Arial;
+	margin: 0px;
+}
+
+.select {
+	background-color: #FFFFFF;
+	border: 1px solid #000000;
+	height: 18px;
+	font-size: 10px;
+	font-family: Arial;
+	margin: 0px;
+}
+
+option {
+padding:1
+}
+
+.button {
+border: 1px solid #000000;
+background-color: #D77601;
+font-family: Arial;
+font-size: 11;
+color: #000000
+}
+
+.input1 {
+border:0px solid #ffffff;
+font-family: Arial;
+font-size: 11;
+color: #000000
+}
+
+INPUT.submit {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid; 
+	FONT-SIZE: 10px; 
+	BORDER-LEFT: #000000 1px solid; 
+	COLOR: #000000; 
+	BORDER-BOTTOM: #000000 1px solid; 
+	FONT-FAMILY: Verdana, Arial, Helvetica; 
+	BACKGROUND-COLOR: #D77601;
+}
+
+INPUT.radio {
+	display:block;
+	width:2em;
+	float:left;  
+	color: black;   
+}
+
+.table1-heading-bg {
+	background-image: url(../images/yl-bg.gif);
+	color: #000000;
+	font-weight: bold;
+	font-size: 12px;
+	height : 23px;
+}
+
+.resultsPane_carbl
+{
+	background-color: #ffffff;
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFC72A;
+    border-collapse:collapse;
+	color: #B95613;
+	font-weight: bold;
+	font-size: 12px;
+}
+.resultsPane-carb-more
+{
+	background-color: #ffffff;
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFC72A;
+    border-collapse:collapse;
+	color: #B95613;
+	font-weight: bold;
+	font-size: 12px;
+}
+.resultsPane-carb-facility
+{
+	background-color: #FDEED3;
+	color: #1F6296;
+	font-weight: bold;
+	font-size: 12px;
+}
+.resultsPane-photo-border
+{
+	background-color: #FFF8EC;
+	color: #FDEED3;
+	font-weight: bold;
+	font-size: 12px;
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFC72A;
+}
+.resultsPane-photo-bg
+{
+	background-color: #FDEED3;
+	font-weight: normal;
+	font-size: 11px;
+}
+.resultsPane-facility-list
+{
+	background-color: #FFF8EC;
+	font-weight: normal;
+	font-size: 11px;
+}
+.table1-border {
+	background-color: #D4E1BF;
+	margin-top : 4px;
+	margin-bottom : 4px;
+	background-image: url(../images/yl-bg.gif);
+
+}
+.table1-border2 {
+    background-color: #FDEED3;
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFC72A;
+    border-collapse:collapse;
+}
+.table1-light-bg {
+	background-color: #FFFEEC;
+}
+
+.table1-light-border {
+	background-color: #F3FCF3;
+}
+.resultsPane {
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFC72A;
+    border-collapse:collapse;
+    background-color: #FFFEEC;
+}
+.resultsPane2 {
+    border-width:1px;
+    border-style:solid;
+    border-color:#FFC72A;
+    border-collapse:collapse;
+    background-color: #FFFEEC;
+}
+.noborder {
+    border: 0px solid;
+}
+
+/* ************************************** End of Center Style ************************************ */
+
+/*********************** CSS for more info *****************************/
+
+#LeftCellMoreInfo {
+	width: 169px;
+	background-image: url(/partners/pages/booking/PalaceOnWheel/images/left_border.gif);
+	border-bottom:#FFFFFF 2px solid;
+}
+#RightCellMoreInfo{
+	width: 609px;
+}
+.moreinfo-table1-border {
+	background-color: #FDEED3;
+}
+.moreinfo-table1-heading-bg {
+	background-color: #FFF8EC;
+	color: #A31708;
+	font-weight: bold;
+	font-size: 12px;
+}
+.moreinfo-facility {
+background:#FFF8EC;
+border:#FDEED3 1px solid;
+border-collapse:collapse;
+}
+.moreinfo-booking {
+	border:1px #FDEED3 solid;
+    border-collapse:collapse;
+	background-color: #FFF8EC;
+}
+.moreinfo-h1 {
+	font-size: 16px;
+	color: #A31708;
+	font-weight: bold;
+}
+.moreinfo-special-rate {
+	font-family: Arial;
+	font-size: 16px;
+	color:#CB3301;
+	font-weight: bold;
+}
+.moreinfo-rate-small {
+	color: #CA1B04;
+}
+.moreinfo-h2 {
+	font-family: Arial;
+	font-size: 18px;
+	color: #A31708;
+}
+.moreinfo-h3 {
+	font-family: Arial;
+	font-size: 12px;
+	color: #A31708;
+	font-weight: bold;
+}
+.moreinfo-hr {
+	color:#DC590F
+}
+.a {
+	FONT-SIZE: 11px;
+	COLOR: #31349b;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: underline;
+}
+.a:hover {
+	COLOR: #ff6600;
+	TEXT-DECORATION: underline;
+}
+.a-red {
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none;
+}
+.a-red:hover {
+	COLOR: #de3107;
+	TEXT-DECORATION: underline;
+}
+.bigfont {
+	BORDER-RIGHT: #ffffff 0px;
+	BORDER-TOP: #ffffff 0px;
+	FONT-SIZE: 12px;
+	BORDER-LEFT: #ffffff 0px;
+	COLOR: #000000;
+	BORDER-BOTTOM: #ffffff 0px;
+	FONT-FAMILY: Arial;
+}
+.table {
+	BORDER-RIGHT: #000000 1px solid;
+	BORDER-TOP: #000000 1px solid;
+	BORDER-LEFT: #000000 1px solid;
+	BORDER-BOTTOM: #000000 1px solid;
+	BACKGROUND-COLOR: #fbb56e;
+	cellpadding: 1;
+	cellspacing: 1;
+}
+.td {
+	BORDER-RIGHT: #ffffff 0px;
+	BORDER-TOP: #ffffff 0px;
+	FONT-SIZE: 11px;
+	BORDER-LEFT: #ffffff 0px;
+	COLOR: #000000;
+	BORDER-BOTTOM: #ffffff 0px;
+	FONT-FAMILY: Arial;
+}
+.resultsPane_blpt {
+	BORDER-RIGHT: #7baeed 1px solid;
+	BORDER-TOP: #7baeed 1px solid;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	BORDER-LEFT: #7baeed 1px solid;
+	COLOR: #010082;
+	BORDER-BOTTOM: #7baeed 1px solid;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	BORDER-COLLAPSE: collapse;
+	BACKGROUND-COLOR: #dae6ff;
+	TEXT-DECORATION: none;
+}
+.resultsPane_bl {
+	BORDER-RIGHT: #7baeed 1px solid;
+	BORDER-TOP: #7baeed 1px solid;
+	BORDER-LEFT: #7baeed 1px solid;
+	BORDER-BOTTOM: #7baeed 1px solid;
+	BORDER-COLLAPSE: collapse;
+}
+.tab-oth {
+	BORDER-RIGHT: #f2922c 1px solid;
+	BORDER-TOP: #f2922c 1px solid;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 11px;
+	BACKGROUND-IMAGE: url(/partners/pages/booking/PalaceOnWheel/images/tabbg.gif);
+	BORDER-LEFT: #f2922c 1px solid;
+	COLOR: #880609;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: #f2922c 1px solid;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none;
+}
+.tab-oth:hover {
+	BORDER-RIGHT: #f2922c 1px solid;
+	BORDER-TOP: #f2922c 1px solid;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 11px;
+	BACKGROUND-IMAGE: url(/partners/pages/booking/PalaceOnWheel/images/tabbg.gif);
+	BORDER-LEFT: #f2922c 1px solid;
+	COLOR: #880609;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: #f2922c 1px solid;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none;
+}
+.tab-actv {
+	BORDER-RIGHT: #ffffff 1px solid;
+	BORDER-TOP: #f2922c 1px solid;
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 11px;
+	BORDER-LEFT: #f2922c 1px solid;
+	COLOR: #A31708;
+	LINE-HEIGHT: normal;
+	BORDER-BOTTOM: #f2922c 1px solid;
+	FONT-STYLE: normal;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none;
+}
+.tab-table {
+	BORDER-RIGHT: #f2922c 1px solid;
+	BORDER-TOP: #f2922c 1px;
+	BORDER-LEFT: #f2922c 1px;
+	BORDER-BOTTOM: #f2922c 1px;
+}
+.h4 {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 11px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+.h5 {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #010082;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none;
+}
+.infotbl {
+	BORDER-RIGHT: #ffffff 1px solid;
+	BORDER-TOP: #ffffff 1px;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 11px;
+	BORDER-LEFT: #ffffff 1px;
+	BORDER-BOTTOM: #ffffff 1px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	BACKGROUND-COLOR: #FFF8EC;
+}
+.moreinfo-email-link {
+	color: #D34C02;
+	text-decoration: none;
+}
+.moreinfo-email-link:hover {
+	color: #D34C02;
+	text-decoration: none;
+}
+.moreinfo-input {
+	border: 1px solid #C0C0C0;
+	height: 18px;
+	font-family: Arial;
+	font-size: 12px;
+}
+
+.moreinfo-textarea {
+border-width: 1;
+font-family: Arial;
+font-size: 12;
+}

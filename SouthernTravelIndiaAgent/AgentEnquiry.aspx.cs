@@ -99,9 +99,8 @@ namespace SouthernTravelIndiaAgent
                 mailbody += "</table>";
 
                 string Toemail = ConfigurationManager.AppSettings["agentRegistrationMails"].ToString();
-                string enquireyEmail = ConfigurationManager.AppSettings["EnquiryEmailIn"].ToString();
                 //ClsCommon.sendmail(Toemail, "", "", txtemail.Text, refno + ": Agent Registration Request", mailbody.ToString());
-                ClsCommon.sendmail(Toemail, "", "", enquireyEmail, refno + ": Agent Registration Request", mailbody.ToString(), txtemail.Text);
+                ClsCommon.sendmail(Toemail, "", "", txtemail.Text, refno + ": Agent Registration Request", mailbody.ToString(), txtemail.Text);
 
             }
             catch (Exception ex)

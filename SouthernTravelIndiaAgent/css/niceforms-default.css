@@ -1,0 +1,20 @@
+/*##########################################Script: Niceforms 2.0,Theme: StandardBlue,Author: Lucian Slatineanu,URL: http://www.emblematiq.com/##########################################*/
+/*Selects*/
+.NFSelect {height:19px; position:absolute; border:1px solid transparent; left:auto !important; top:4px !important;}
+.NFSelectLeft {float:left; width:9px; height:19px; background:url(../Assets/images/select-left.png) no-repeat 0 0; vertical-align:middle; position:relative; z-index:3}
+.NFSelectRight {height:19px; width:auto; background:url(../Assets/images/select-right.png) no-repeat 100% 0; cursor:pointer; font-size:11px; line-height:19px; font-family:Tahoma, Arial, Helvetica, sans-serif; color:#333; padding-left:3px; margin-left:3px; position:relative; z-index:2}
+.NFSelectTarget {position:absolute; background:none; margin-left:-13px; margin-top:17px; z-index:3; left:0; top:0; padding-bottom:13px;}
+.NFSelectOptions {position:relative; background:#cbcbcb; border:1px solid #333; border-top:none; margin-left:18px; margin-top:0; list-style:none; padding:4px 0; color:#333; font-size:11px; line-height:13px; font-family:Tahoma, Arial, Helvetica, sans-serif; z-index:4; /*max-height:200px;*/ overflow-y:auto; overflow-x:hidden; left:0; top:0; width:83px !important;}
+.NFSelectOptions li {padding-bottom:1px;}
+.NFSelectOptions a {display:block; text-decoration:none; color:#333; padding:2px 3px; background:none;}
+.NFSelectOptions a.NFOptionActive {background:#464646; color:#FFF !important;}
+.NFSelectOptions a:hover {background:#333; color:#FFF !important;}
+/*Focused*/
+.NFfocused {border:1px dotted #666;}
+/*Hovered*/
+.NFh {background-position:0 100%;}
+.NFhr {background-position:100% 100%;}
+/*Hidden*/
+.NFhidden {opacity:0; z-index:-1; position:relative;}
+/*Safari*/
+select, input, textarea, button {outline:none; resize:none;}

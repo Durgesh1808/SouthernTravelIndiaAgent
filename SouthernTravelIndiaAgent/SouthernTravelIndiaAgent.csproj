@@ -120,7 +120,9 @@
     <Content Include="AgentForgotPassword.aspx" />
     <Content Include="agenthomepage.aspx" />
     <Content Include="AgentHotelAccDuplicateTicket.aspx" />
+    <Content Include="AgentHotelBook.aspx" />
     <Content Include="AgentHotelBooking.aspx" />
+    <Content Include="AgenthotelMoreInfo.aspx" />
     <Content Include="AgentHotelSearch.aspx" />
     <Content Include="Agenthotels_iframe.aspx" />
     <Content Include="AgentLogin.aspx" />
@@ -150,6 +152,7 @@
     <Content Include="css\style.css" />
     <Content Include="download.aspx" />
     <Content Include="Fixedenquiryform.aspx" />
+    <Content Include="frmterms.aspx" />
     <Content Include="getAllSplTours.aspx" />
     <Content Include="getTransferTypes.aspx" />
     <Content Include="Global.asax" />
@@ -171,6 +174,9 @@
     <Content Include="UserControls\UcAgentHeader1.ascx" />
     <Content Include="UserControls\UcAgentRightUsc.ascx" />
     <Content Include="UserControls\UcAjentmenu.ascx" />
+    <Content Include="UserControls\UcFooter.ascx" />
+    <Content Include="UserControls\Ucheader.ascx" />
+    <Content Include="UserControls\UCPaymentOptionNetBanking.ascx" />
     <Content Include="UserControls\UcSpecialFarePaneltable.ascx" />
     <Content Include="UserControls\UcSpecialTourFarePanel.ascx" />
     <Content Include="Web.config" />
@@ -303,12 +309,26 @@
     <Compile Include="AgentHotelAccDuplicateTicket.aspx.designer.cs">
       <DependentUpon>AgentHotelAccDuplicateTicket.aspx</DependentUpon>
     </Compile>
+    <Compile Include="AgentHotelBook.aspx.cs">
+      <DependentUpon>AgentHotelBook.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgentHotelBook.aspx.designer.cs">
+      <DependentUpon>AgentHotelBook.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AgentHotelBooking.aspx.cs">
       <DependentUpon>AgentHotelBooking.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="AgentHotelBooking.aspx.designer.cs">
       <DependentUpon>AgentHotelBooking.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AgenthotelMoreInfo.aspx.cs">
+      <DependentUpon>AgenthotelMoreInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AgenthotelMoreInfo.aspx.designer.cs">
+      <DependentUpon>AgenthotelMoreInfo.aspx</DependentUpon>
     </Compile>
     <Compile Include="AgentHotelSearch.aspx.cs">
       <DependentUpon>AgentHotelSearch.aspx</DependentUpon>
@@ -512,9 +532,11 @@
     <Compile Include="DTO\Enq_tbl.cs" />
     <Compile Include="DTO\GetAgentPayDetail_spResult.cs" />
     <Compile Include="DTO\GetCityName_SPResult.cs" />
+    <Compile Include="DTO\GetCompanyTermsCondition_spResult.cs" />
     <Compile Include="DTO\GetCountryName_SPResult.cs" />
     <Compile Include="DTO\GetCountryWiseStateName_SPResult.cs" />
     <Compile Include="DTO\GetDiscount_spResult.cs" />
+    <Compile Include="DTO\GetFbDetail_spResult.cs" />
     <Compile Include="DTO\GetHotelNames_SPResult.cs" />
     <Compile Include="DTO\GetHotelRooms_Fare_SPResult.cs" />
     <Compile Include="DTO\GetRoomTypeOccupancy_SPResult.cs" />
@@ -541,6 +563,13 @@
     </Compile>
     <Compile Include="Fixedenquiryform.aspx.designer.cs">
       <DependentUpon>Fixedenquiryform.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="frmterms.aspx.cs">
+      <DependentUpon>frmterms.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="frmterms.aspx.designer.cs">
+      <DependentUpon>frmterms.aspx</DependentUpon>
     </Compile>
     <Compile Include="getAllSplTours.aspx.cs">
       <DependentUpon>getAllSplTours.aspx</DependentUpon>
@@ -688,6 +717,27 @@
     </Compile>
     <Compile Include="UserControls\UcAjentmenu.ascx.designer.cs">
       <DependentUpon>UcAjentmenu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UcFooter.ascx.cs">
+      <DependentUpon>UcFooter.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UcFooter.ascx.designer.cs">
+      <DependentUpon>UcFooter.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Ucheader.ascx.cs">
+      <DependentUpon>Ucheader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\Ucheader.ascx.designer.cs">
+      <DependentUpon>Ucheader.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UCPaymentOptionNetBanking.ascx.cs">
+      <DependentUpon>UCPaymentOptionNetBanking.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UCPaymentOptionNetBanking.ascx.designer.cs">
+      <DependentUpon>UCPaymentOptionNetBanking.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UcSpecialFarePaneltable.ascx.cs">
       <DependentUpon>UcSpecialFarePaneltable.ascx</DependentUpon>

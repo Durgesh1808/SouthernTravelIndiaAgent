@@ -76,6 +76,30 @@ namespace SouthernTravelIndiaAgent.BAL
         [Description("Date collapsing with previous date range.")]
         ERR_DATE_COLLAPSE = 1013
     }
+    /// <summary>
+    /// Current End User Section
+    /// </summary>
+    public enum Current_Section
+    {
+        FIXED_DEPARTURE = 1,
+        HOLIDAY_PACKAGE_CAR = 2,
+        HOLIDAY_PACKAGE_INTERNATIONAL = 3,
+        HOLIDAY_PACKAGE_CRUISE = 4,
+        HOTEL_DELHI = 5,
+        HOTEL_IN_INDIA = 6,
+        CAR_COACH_RENTAL = 7,
+        DOMESTIC_FLIGHT = 8,
+        LTC_LFC_TOUR = 9,
+        ENQUIRY = 10,
+        CONTACT_US = 11,
+        HOME = 12,
+        AGENT_LOGIN = 13,
+        CUST_Login = 14,
+        E_BROCHURE = 16,
+        HOLIDAY_PACKAGE_INTERNATIONAL_CUSTOMIZED = 17,
+        HOLIDAY_PACKAGE_INTERNATIONAL_FIXED = 18,
+        CRUISE_PACKAGES = 19
+    }
 
     /// <summary>
     /// /// This struct is used to encapsulate the status of a request, including whether it was successful, an error number, and a description of the error.
@@ -1416,7 +1440,7 @@ namespace SouthernTravelIndiaAgent.BAL
             lsb.Append("Mobile No: " + pMobile + "<br />");
             lsb.Append("e-Mail: " + pEmail + "<br />");
             if (pEmail == "")
-                pEmail = "request@seat.com";
+                pEmail = ConfigurationSettings.AppSettings["RequestEmail"].ToString(); 
             string lToEmail = ConfigurationSettings.AppSettings["SeatRequestTO"].ToString();
             sendmail(lToEmail, ConfigurationSettings.AppSettings["SeatRequestBCC"].ToString(), "", pEmail, pRefno + ": Request For Arrangement of Seats: - " + pTourName, lsb.ToString(), "");
         }

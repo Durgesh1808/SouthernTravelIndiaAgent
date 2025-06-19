@@ -6,156 +6,95 @@
 <!DOCTYPE html PUBLIC "-//W3C//Dtd XHTML 1.0 transitional//EN" "http://www.w3.org/tr/xhtml1/Dtd/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server" id="AgentID">
-    <title>Southern India Travel,South India Travel Packages,Travel Packages to South India
-    </title>
+    <title>Southern India Travel</title>
     <meta http-equiv="Content-Type" content="text/html; charset=windows-1252" />
-    <meta content="Southern India Travel - South India Travel guides offering southern india travel, south india travel packages, travel packages to south india, travel holidays package to south india, south india travel, southern india travel packages for south india, southern india travel packages, travel package for south india, south india pilgrimage travel package."
-        name="Description" />
-    <meta content="southern india travel, south india travel packages, travel packages to south india, travel holidays package to south india, south india travel, southern india travel packages for south india, southern india travel packages, travel package for south india, south india pilgrimage travel package, south india beaches travel packages, south india holiday travel packages, holiday travel package to south india, southern india package travel, south india tourism, tourism in south india, holidays travel in southern india, kerala backwater travel packages in india, north india tour packages, north india tours, tours to north india, tourism in north india, golden triangle tours, kathamandu tours, kashmir tour package, chennai tours, delhi tours, hyderabad tours, pilgrimage tours in india, kerala backwater tours, southern travels india, southerntravelsindia, Sirez"
-        name="Keywords" />
-    <meta content="index,follow" name="robots" />
-    <meta content="Designed  www.Sirez.com" name="Author" />
-    <meta content="MSHTML 6.00.2900.2180" name="GENERATOR" />
+    <meta name="Description" content="Southern India Travel..." />
+    <meta name="Keywords" content="south india travel packages..." />
+    <meta name="robots" content="index,follow" />
+    <meta name="Author" content="Designed www.Sirez.com" />
     <meta name="GENERATOR" content="Microsoft Visual Studio .NET 8" />
     <meta name="CODE_LANGUAGE" content="c#" />
     <meta name="vs_defaultClientscript" content="Javascript" />
     <meta name="vs_targetSchema" content="http://schemas.microsoft.com/intellisense/ie5" />
-    <link href="/Assets/css/style.css" rel="stylesheet" type="text/css" />
-    <link href="/Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
-    <link href="/Assets/css/rupee.css" rel="stylesheet" type="text/css" />
-    <link href="/css/style.css" rel="stylesheet"/>
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <style type="text/css">
-        .rupee
-        {
+
+    <!-- CSS -->
+    <link href="/Assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/css/stylesheet.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/css/rupee.css" rel="stylesheet" type="text/css" />
+    <link href="/css/style.css" rel="stylesheet" />
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Inline Style -->
+    <style>
+        .rupee {
             font-family: 'RupeeForadian';
         }
     </style>
 
-    <script language="javascript" src="/Assets/js/MyScript.js" type="text/javascript"></script>
+    <!-- JS -->
+    <script src="/Assets/js/MyScript.js" type="text/javascript"></script>
+    <script src="/Assets/js/agenttourbooking.js" type="text/javascript"></script>
+    <script src="/Includes/query_string.js" type="text/javascript"></script>
 
-    <script language="javascript" src="Assets/js/agenttourbooking.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var xmlHttp;
 
-    <script language="javascript" type="text/javascript" src="/Includes/query_string.js"></script>
-
-    <script language="javascript" type="text/javascript">
-     function fillTransfer(MasterId) {
-        xmlHttp = GetXmlHttpObject()
-        var url = '../getaddress.aspx?RowId=';
-        url = url + MasterId;
-        url = url + "&sid=" + Math.random();
-        // alert(url);
-        xmlHttp.onreadystatechange = stateChanged5;
-        xmlHttp.open("GET", url, true);
-        xmlHttp.send(null);
-    }
-    function stateChanged5() {
-
-        if ((xmlHttp.readyState == 4 || xmlHttp.readyState == "complete")) {
-            var k = xmlHttp.responseText;
-
-            var aa = k.split("^");
-            var sd = aa[0];
-            document.getElementById('lblPickupPlace').innerHTML = sd;
-            var sd1 = aa[1];
-            //alert(sd1);
-            document.getElementById('lblDepTime').innerHTML = sd1;
-            document.getElementById('hidPickupPlace').value = sd;
-            document.getElementById('hidDepTime').value = sd1;
-            var pAFare=aa[2];
-            var pCFare=aa[3];
-            document.getElementById('hdAServiceChargeFare').value=pAFare;
-            document.getElementById('hdCServiceChargeFare').value=pCFare;
-           if (pAFare > 0)
-           {
-              document.getElementById('lblFare').innerHTML='<b>Current selected Pickup Point`s Service charge is  (Adult / Child) : <span class="rupee">`</span> ' + pAFare +' /- <span class="rupee">`</span> '+ pCFare + '/-.</b>';
-          }
-          else
-          {
-            document.getElementById('lblFare').innerHTML='';
-          }
+        function GetXmlHttpObject() {
+            var objXMLHttp = null;
+            if (window.XMLHttpRequest) {
+                objXMLHttp = new XMLHttpRequest();
+            } else if (window.ActiveXObject) {
+                try {
+                    objXMLHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    objXMLHttp = null;
+                }
+            }
+            return objXMLHttp;
         }
-    } 
-    <!--
-        var backColorOver = "#9bc7f4";
-        var backColorOut = "#ffffff";
-        function SetColor(val) {
-            var tdNo = 4;
-            //alert(val);
-            tdNo = tdNo + val
-            chkValidObj(document.getElementById('td' + (val + 1)), backColorOver);
-            chkValidObj(document.getElementById('td' + tdNo), backColorOver);
-            chkValidObj(document.getElementById('td' + (tdNo + 2)), backColorOver);
-            chkValidObj(document.getElementById('td' + tdNo + 'twin'), backColorOver);
-            chkValidObj(document.getElementById('td' + tdNo + 'triple'), backColorOver);
-            chkValidObj(document.getElementById('td' + tdNo + 'childbed'), backColorOver);
-            chkValidObj(document.getElementById('td' + tdNo + 'single'), backColorOver);
-            chkValidObj(document.getElementById('td' + tdNo + 'dormitory'), backColorOver);
-            chkValidObj(document.getElementById('tdAWF' + tdNo), backColorOver);
-            chkValidObj(document.getElementById('tdCWF' + (tdNo + 2)), backColorOver);
-            val++;
-            clearColor(val);
 
+        function fillTransfer(MasterId) {
+            xmlHttp = GetXmlHttpObject();
+            if (xmlHttp == null) {
+                alert("Browser does not support HTTP Request");
+                return;
+            }
+            var url = "getaddress.aspx?RowId=" + MasterId + "&sid=" + Math.random();
+            xmlHttp.onreadystatechange = stateChanged5;
+            xmlHttp.open("GET", url, true);
+            xmlHttp.send(null);
         }
-        function chkValidObj(obj, color) {
-            if (obj != null) {
-                obj.style.backgroundColor = color;
+
+        function stateChanged5() {
+            if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+                var response = xmlHttp.responseText;
+                var aa = response.split("^");
+
+                var sd = aa[0];
+                var sd1 = aa[1];
+                var pAFare = aa[2];
+                var pCFare = aa[3];
+
+                document.getElementById('lblPickupPlace').innerHTML = sd;
+                document.getElementById('lblDepTime').innerHTML = sd1;
+                document.getElementById('hidPickupPlace').value = sd;
+                document.getElementById('hidDepTime').value = sd1;
+                document.getElementById('hdAServiceChargeFare').value = pAFare;
+                document.getElementById('hdCServiceChargeFare').value = pCFare;
+
+                if (pAFare > 0) {
+                    document.getElementById('lblFare').innerHTML =
+                        '<b>Current selected Pickup Point`s Service charge is (Adult / Child): <span class="rupee">`</span> ' +
+                        pAFare + ' /- <span class="rupee">`</span> ' + pCFare + ' /-.</b>';
+                } else {
+                    document.getElementById('lblFare').innerHTML = '';
+                }
             }
         }
-        function clearColor(c) {
-            var tdNo = (4 + (c % 2));
-            chkValidObj(document.getElementById('td' + (3 - c)), backColorOut);
-            chkValidObj(document.getElementById('td' + tdNo), backColorOut);
-            chkValidObj(document.getElementById('td' + (tdNo + 2)), backColorOut);
-            chkValidObj(document.getElementById('td' + tdNo + 'twin'), backColorOut);
-            chkValidObj(document.getElementById('td' + tdNo + 'triple'), backColorOut);
-            chkValidObj(document.getElementById('td' + tdNo + 'childbed'), backColorOut);
-            chkValidObj(document.getElementById('td' + tdNo + 'single'), backColorOut);
-            chkValidObj(document.getElementById('td' + tdNo + 'dormitory'), backColorOut);
-            chkValidObj(document.getElementById('tdAWF' + tdNo), backColorOut);
-            chkValidObj(document.getElementById('tdCWF' + (tdNo + 2)), backColorOut);
-        }
-
-        function chkTypeAc() {
-            var k = document.getElementById('BuschkType').value;
-            if (k == "N") {
-                document.getElementById('RadAC').selected = false;
-                //alert("OOPs....!, Selected journey date is not available in AC,Try another date or choose NoN-AC");
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    text: ' Selected journey date is not available in AC,Try another date or choose NoN-AC.',
-                    confirmButtonColor: '#f2572b'
-                });
-                clearColor(0);
-                //SetColor(1);
-                return false;
-
-            }
-        }
-
-        function chkTypeNAc() {
-        //alert(document.getElementById('RadNAC').selected );
-        //alert(document.getElementById('RadAC').selected );
-            var k = document.getElementById('BuschkType').value;
-            if (k == "Y") {
-                document.getElementById('RadNAC').selected = false;
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Oops...',
-                    text: ' Selected journey date is not available in NON-AC,Try another date or choose AC.',
-                    confirmButtonColor: '#f2572b'
-                });
-                //alert("OOPs...! Selected journey date is not available in NON-AC,Try another date or choose AC");
-                clearColor(1);
-                //SetColor(0);
-                return false;
-            }
-        }     
-    -->
     </script>
-
 </head>
 <body>
     <form id="Form1" method="post" runat="server">
