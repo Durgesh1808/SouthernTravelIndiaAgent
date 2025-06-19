@@ -7082,5 +7082,142 @@ namespace SouthernTravelIndiaAgent.DAL
             return result;
         }
 
+
+        /// <summary>
+        /// /// Retrieves the company terms and conditions from the database.
+        /// </summary>
+        /// <returns></returns>
+        public DataTable fnGetCompanyTermsCondition()
+        {
+            SqlConnection connection = null;
+            SqlCommand command = null;
+            SqlDataAdapter adapter = null;
+            DataTable dt = new DataTable();
+
+            try
+            {
+                connection = new SqlConnection(DataLib.getConnectionString());
+                command = new SqlCommand(StoredProcedures.GetCompanyTermsCondition_sp, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                adapter = new SqlDataAdapter(command);
+                adapter.Fill(dt);
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                // Log exception if needed
+                return null;
+            }
+            finally
+            {
+                if (adapter != null)
+                    adapter.Dispose();
+
+                if (command != null)
+                    command.Dispose();
+
+                if (connection != null)
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+                    connection.Dispose();
+                }
+
+                if (dt != null)
+                {
+                    dt.Dispose(); // Optional: comment this out if you still need dt elsewhere
+                }
+            }
+        }
+
+
+
+        /// <summary>
+        /// /// Retrieves the Facebook details based on the provided email/mobile number and Facebook ID.
+        /// </summary>
+        /// <param name="lEmailMob"></param>
+        /// <param name="lFaceBookID"></param>
+        /// <returns></returns>
+        public List<GetFbDetail_spResult> fnGetFaceBookDetail(string lEmailMob, string lFaceBookID)
+        {
+            List<GetFbDetail_spResult> resultList = new List<GetFbDetail_spResult>();
+            SqlConnection connection = null;
+            SqlCommand command = null;
+            SqlDataReader reader = null;
+
+            try
+            {
+                connection = new SqlConnection(DataLib.getConnectionString());
+                command = new SqlCommand("GetFbDetail_sp", connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                command.Parameters.AddWithValue("@FaceBookId", lFaceBookID);
+                command.Parameters.AddWithValue("@i_EmailorMbNo", lEmailMob);
+
+                connection.Open();
+                reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    GetFbDetail_spResult item = new GetFbDetail_spResult
+                    {
+                        RowId = reader["RowId"] != DBNull.Value ? Convert.ToInt32(reader["RowId"]) : 0,
+                        FirstName = reader["FirstName"]?.ToString(),
+                        LastName = reader["LastName"]?.ToString(),
+                        email = reader["email"]?.ToString(),
+                        password = reader["password"]?.ToString(),
+                        Addr1 = reader["Addr1"]?.ToString(),
+                        addr2 = reader["addr2"]?.ToString(),
+                        City = reader["City"]?.ToString(),
+                        state = reader["state"]?.ToString(),
+                        Country = reader["Country"]?.ToString(),
+                        zipcode = reader["zipcode"]?.ToString(),
+                        PhoneNo = reader["PhoneNo"]?.ToString(),
+                        AlternativeName = reader["AlternativeName"]?.ToString(),
+                        RelativePhoneNo = reader["RelativePhoneNo"]?.ToString(),
+                        AlternativeNo = reader["AlternativeNo"]?.ToString(),
+                        Mobile = reader["Mobile"]?.ToString(),
+                        Fax = reader["Fax"]?.ToString(),
+                        DOB = reader["DOB"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["DOB"]) : null,
+                        company = reader["company"]?.ToString(),
+                        occupation = reader["occupation"]?.ToString(),
+                        remark = reader["remark"]?.ToString(),
+                        maritalstatus = reader["maritalstatus"]?.ToString(),
+                        DOA = reader["DOA"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["DOA"]) : null,
+                        Sex = reader["Sex"] != DBNull.Value ? Convert.ToChar(reader["Sex"]) : (char?)null,
+                        CallerID = reader["CallerID"]?.ToString(),
+                        CreateedOn = reader["CreateedOn"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["CreateedOn"]) : null,
+                        CreatedOn = reader["CreatedOn"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["CreatedOn"]) : null,
+                        Title = reader["Title"]?.ToString(),
+                        FaceBookID = reader["FaceBookID"]?.ToString()
+                    };
+
+                    resultList.Add(item);
+                }
+
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                // Optional: Log exception here
+                return null;
+            }
+            finally
+            {
+                if (reader != null && !reader.IsClosed)
+                    reader.Close();
+                if (command != null)
+                    command.Dispose();
+                if (connection != null)
+                {
+                    if (connection.State == ConnectionState.Open)
+                        connection.Close();
+                    connection.Dispose();
+                }
+            }
+        }
+
     }
 }

@@ -7,18 +7,18 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
     <title>Southern Travels :-: Agent Special Tour Booking</title>   
-    <link href="../StyleSheets/style.css" rel="stylesheet" type="text/css" />
+    <link href="../Assets/css//style.css" rel="stylesheet" type="text/css" />
     <link href="../Assets/css/stylesheet.css" type="text/css" rel="stylesheet" />
     <link href="../Assets/css/calendar.css" rel="stylesheet" type="text/css" />
     <script language="javascript" src="Assets/js/AgentsplCalender.js" type="text/javascript"></script>
-    <script language="javascript" src="../Assets/js/MyScript.js" type="text/javascript"></script>
+    <script language="javascript" src="/Assets/js/MyScript.js" type="text/javascript"></script>
     <script language="javascript" src="Assets/js/AgntSplTour.js" type="text/javascript"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script language="javascript" type="text/javascript">
     function approve()
      {       
-          window.open('../frmterms.aspx?','pops','width=418,height=249,scrollbars=yes');
+          window.open('frmterms.aspx?','pops','width=418,height=249,scrollbars=yes');
      }    
     function fnDrophide()
     {

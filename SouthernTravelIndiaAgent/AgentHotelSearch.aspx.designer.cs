@@ -165,7 +165,7 @@ namespace SouthernTravelIndiaAgent
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl AgentHeader1;
+        protected global::SouthernTravelIndiaAgent.UserControls.UcAgentHeader AgentHeader1;
 
         /// <summary>
         /// Table2 control.
@@ -318,6 +318,6 @@ namespace SouthernTravelIndiaAgent
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UserControl BranchFooter1;
+        protected global::SouthernTravelIndiaAgent.UserControls.UcAgentFooter BranchFooter1;
     }
 }

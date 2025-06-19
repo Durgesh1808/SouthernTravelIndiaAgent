@@ -1,0 +1,822 @@
+/*########### Global CSS start ###########*/
+html{height:100%;}
+body{height:100%; min-width:1002px; background:#ffffff; font-size:12px; font-family:"Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif;  color:#333333; padding:0; margin:0;}
+*{outline:0 none;}
+img{border:0 none;}
+
+a{text-decoration:none; color:#df411a;}
+a:hover{text-decoration:underline;}
+
+.inverse{text-decoration:underline;}
+.inverse:hover{text-decoration:none;}
+
+p, h1, h2, h3, h4, h5, h6, ul, li, dl, dd, dt, form{padding:0; margin:0;}
+
+input, select, textarea{font-family:Tahoma, Arial, Helvetica, sans-serif;}
+
+.row{float:left; width:100%;}
+.row1{float:right; width:100%;}
+.floatleft{float:left!important;}
+.floatright{float:right!important;}
+.alignRgt{text-align:right!important;}
+.alignCenter{text-align:center;}
+/*########### Global CSS End ###########*/
+
+/*########### Wrapper CSS start ###########*/
+html>body #wrapper {height: auto;}
+#wrapper{width:100%; float:left; min-height:100%; height:100%; position:relative; top:0; left:0; }
+.pageWidth{width:951px; margin:0 auto; position:relative;}
+/*########### Wrapper CSS End ###########*/
+
+/*########### Header CSS start ###########*/
+#header{width:100%; float:left; padding-bottom:15px; background:url(../Assets/images/bg_header.gif) 0 30px repeat-x; position:relative; z-index:21;}
+#logo{float:left; padding:11px 38px 20px 39px; position:absolute; top:30px; left:-15px; background:url(../Assets/images/bg_logo.gif) 0 0 no-repeat; }
+#headRight{float:right; width:730px;}
+#langRow, #loginRow{float:left; width:100%; height:30px; font-family:Tahoma, Arial, Helvetica, sans-serif;}
+#langRow #phone{float:right; height:30px; line-height:29px;}
+#langRow #lang{float:right; padding-top:1px; padding-left:7px;}
+#langRow #lang #langL, #langRow #lang #langR{float:left; background:url(../Assets/images/bg_lang.gif) 0 0 no-repeat;  padding:4px  0 4px 10px; height:19px; line-height:17px;}
+#langRow #lang #langR{background:url(../Assets/images/bg_lang.gif) 100% 0 no-repeat; padding:4px 1px 4px 0;}
+#langRow #lang #langR span{padding-right:5px;}
+#langRow #lang #langR .langSel{border:1px solid #333333; background:url(../Assets/images/bg_langSel.gif) 0 0 repeat-x;}
+#langRow #lang a{color:#333333;}
+#trophy{float:left; width:220px; position:relative; font-size:10px; line-height:12px; padding:3px 0 0 45px;}
+#trophy span{color:#df411a; font-family:"Trebuchet MS", Tahoma, Arial, Helvetica, sans-serif; font-size:12px;}
+#trophy img{position:absolute; left:23px; top:-27px;}
+#loginLinks{float:right; width:430px; text-align:right; line-height:30px;}
+#loginLinks a.act{color:#333333;}
+#hotDeals{float:right; padding:3px 0 0 5px;}
+.vImg{vertical-align:-4px;}
+/* Navigation Start */
+#nav{float:left; width:100%; height:45px; font-family:Tahoma, Arial, Helvetica, sans-serif;}
+#nav ul{float:right;}
+#nav ul li{float:left; background:url(../Assets/images/bg_navSep.gif) 0 0 no-repeat; height:45px; list-style:none; padding-left:2px; position:relative; z-index:20}
+#nav ul li.first{background:none; padding-left:0;}
+#nav ul li.secondon{padding-left:0;}
+#nav ul li a {color:#FFFFFF; font-size:13px; line-height:45px; display:block; float:left; padding:0 10px; height:45px; text-decoration:none;}
+#nav ul li a:hover, #nav ul li.navHover a{background:url(../Assets/images/bg_navact.gif) 0 0 repeat-x; color:#333333; }
+#nav ul li a.active {background:url(../Assets/images/bg_navact.gif) 0 0 repeat-x; text-decoration:none; color:#333333; height:55px; }
+#nav ul li.first a{line-height:8px; padding:12px 7px 0; text-align:center;  height:33px;}
+#nav ul li.first div.coach{font-size:9px; position:absolute; top:27px; left:6px;}
+#nav ul li.secondon a{line-height:8px; padding:12px 9px 0; text-align:center;  height:33px;}
+#nav ul li.secondon div.coach{font-size:9px; position:absolute; top:27px; left:7px;}
+#nav ul li div.subNav{display:none; position:absolute; top:45px; left:2px; border:1px solid #20a5e4; border-bottom:none; float:left; z-index:21}
+#nav ul li.navHover div.subNav{display:block;}
+#nav ul li div.subNav ul{float:left;}
+#nav ul li div.subNav li{background:#ffffff; border-bottom:1px solid #20a5e4; padding: 0; width:100%; float:left; height:auto;}
+#nav ul li div.subNav li a{font-size:12px; line-height:25px; height:auto; padding:5px 15px 7px; white-space:nowrap; float:none; display:block; width:150px; text-align:left; color:#df411a; background:none;}
+#nav ul li div.subNav li a:hover{background:url(../Assets/images/bg_subnav.gif) 0 100% repeat-x; color:#333333}
+/* Navigation End */
+#ticker{float:left; width:100%; text-align:right; padding:18px 0 0 0;}
+/*########### Header CSS end ###########*/
+
+/*########### Footer CSS start ###########*/
+#footer{width:100%; float:left; font-size:12px; background:url(../Assets/images/bg_footGrad.gif) 0 100% repeat-x #ffffff; font-family:Tahoma, Arial, Helvetica, sans-serif; position:relative; z-index:1;
+	top: 0px;
+	left: 0px;
+}
+#footLink{width:100%; float:left; padding:10px 0;}
+#footLink ul{float:left; width:162px; padding: 15px 0 15px 10px; background:url(../Assets/images/bg_footLinkSep.gif) 0 0 no-repeat; height:240px;}
+#footLink ul.first{background:none;}
+#footLink ul li{display:block; list-style:none; line-height:15px; padding-bottom:5px;}
+#footLink ul li.head{color:#df411a;}
+#footLink ul li a{color:#333333;}
+#footLink ul li a:hover{color:#df411a;}
+#footBtm{ width:100%; float:left; height:87px;}
+#footBtm #cards{float:left; padding:0 17px 0 0; margin-top:5px; border-right:#BFBFBF solid 1px;}
+#footBtm #cards img{padding:10px 0 0;}
+#footBtm #airlines{float:right; padding-top:20px;}
+#copyright{ width:100%; float:left; height:30px; line-height:30px; color:#FFFFFF;}
+#copyright a{color:#ffffff;}
+/*########### Footer CSS End ###########*/
+
+/*########### Home Page CSS start ###########*/
+#page-content{width:100%; float:left; background:url(../Assets/images/bg_pageShad.png) 0 100% repeat-x; padding-bottom:30px; position:relative;}
+.pLeft{float:left; width:325px;}
+.pRight{float:right; width:595px;}
+#booking{float:left; width:325px; background:url(../Assets/images/bg_tabBoxShad.gif) center 100% no-repeat; padding-bottom:23px; margin-bottom:7px; font-family:Tahoma, "Trebuchet MS", Arial, Helvetica, sans-serif;}
+#booking ul{float:left; width:325px;}
+#booking ul li{float:left; list-style:none; background:url(../Assets/images/bg_tabSep.gif) 0 0 no-repeat; padding-left:2px;}
+#booking ul li.fd{background:none; padding:0;}
+#booking ul li.fd a{width:63px;}
+#booking ul li.fd a{background:url(../Assets/images/bg_tab.gif) 0px 0 no-repeat;}
+#booking ul li.fd a.active, #booking ul li.fd a:hover{background:url(../Assets/images/bg_tab.gif) 0px 100% no-repeat;}
+#booking ul li.hp a{width:58px;}
+#booking ul li.cr a{width:46px;}
+#booking ul li.hotels a{width:39px;}
+#booking ul li.flights a{width:41px;}
+#booking ul li.flights a{background:url(../Assets/images/bg_tab.gif) 100% 0 no-repeat;}
+#booking ul li.flights a.active, #booking ul li.flights a:hover{background:url(../Assets/images/bg_tab.gif) 100% 100% no-repeat;}
+#booking ul li a{float:left; background:url(../Assets/images/bg_tab.gif) -20px 0 no-repeat; height:37px; color:#FFF; padding:5px 7px 0;}
+#booking ul li a.active, #booking ul li a:hover{background:url(../Assets/images/bg_tab.gif) -20px 100% no-repeat; color:#333333; text-decoration:none;}
+#bookContent{float:left; width:323px; border:1px solid #bf3411; border-top:none; min-height:330px; position:relative; }
+#hdeal, .hdeal2{position:absolute; right:0px; top:0px;}
+.hdeal2{z-index:5!important;}
+#hdLink{position:absolute; right:0; top:0px; width:106px; height:52px; display:block; overflow:hidden; text-indent:-999px; z-index:5;}
+#bookContent .t1, #bookContent .t2, #bookContent .t3, #bookContent .t4, #bookContent .t5{display:none; float:left; padding:20px; width:283px; position:relative; z-index:4;}
+#bookContent .left_ico{float:left; width:30px; padding-right:6px;}
+#bookContent .rhtForm{float:left; width:247px; }
+#bookContent .rhtForm .head{color:#df411a; padding-bottom:2px; font-size:14px;}
+#bookContent .rhtForm .subHead, #bookContent .field{padding:5px 0 2px;}
+
+
+#bookContent .hotels{display:none; float:left; padding:10px; width:303px;}
+
+#bookContent .subTab{float:left; width:303px;}
+#bookContent .subTab .sTab{float:left; width:303px;}
+#bookContent .subTab .sTab li{float:left; list-style:none; background:none; padding:0; height:30px; position:relative;}
+#bookContent .subTab .sTab li a{float:left; height:30px; line-height:29px; font-size:12px; color:#333; text-decoration:none; padding:0 0 0 12px; background:none;}
+#bookContent .subTab .sTab li a span{float:left; height:30px; padding:0 12px 0 0;}
+#bookContent .subTab .sTab li a.subact, #bookContent .subTab .sTab li a.subact span{height:31px;}
+#bookContent .subTab .sTab .subTab1 a{background:url(../Assets/images/bg_subTab.gif) 0 -31px no-repeat;}
+#bookContent .subTab .sTab .subTab1 a span{background:url(../Assets/images/bg_subTab.gif) 100% -31px no-repeat;}
+#bookContent .subTab .sTab .subTab1 a.subact{background:url(../Assets/images/bg_subTab.gif) 0 0 no-repeat;}
+#bookContent .subTab .sTab .subTab1 a.subact span{background:url(../Assets/images/bg_subTab.gif) 100% 0 no-repeat;}
+#bookContent .subTab .sTab .subTab2 a{background:url(../Assets/images/bg_subTab.gif) 0 -62px no-repeat;}
+#bookContent .subTab .sTab .subTab2 a span{background:url(../Assets/images/bg_subTab.gif) 100% -62px no-repeat;}
+#bookContent .subTab .sTab .subTab2 a.subact{background:url(../Assets/images/bg_subTab.gif) 0 -93px no-repeat;}
+#bookContent .subTab .sTab .subTab2 a.subact span{background:url(../Assets/images/bg_subTab.gif) 100% -93px no-repeat;}
+
+#bookContent .subTab .subcontent{float:left; padding:10px; min-height:200px; width:283px; background:url(../Assets/images/bg_subContent.gif) 0 0 no-repeat; display:none;}
+#bookContent .subTab .subcontent2{background:url(../Assets/images/bg_subContent2.gif) 0 0 no-repeat; }
+#bookContent .col, #bookContent .col4, #bookContent .col3{width:92px; float:left;}
+#bookContent .col4{width:191px;} #bookContent .col3{width:141px;}
+
+#packages	{float:left; width:100%;}
+#packages	ul{width:625px; margin-left:-30px; float:left;}
+#packages	li{float:left; padding-left:30px; width:282px; list-style:none; padding-bottom:30px; height:107px; position:relative;}
+#packages	li .images{float:left; width:110px; padding-top:3px;}
+#packages	li .desc{float:left; width:172px; line-height:17px;}
+#packages	li .desc span{font-size:12px;}
+#packages	li .desc a{font-weight:bold; text-decoration:underline;}
+#packages	li .desc a:hover{text-decoration:none;}
+
+#packages	li .btn{float:left; width:21px; padding-top:86px; position:relative;}
+#packages	li .more{position:absolute; right:22px; bottom:22px; text-decoration:underline;}
+#packages	li .more:hover{text-decoration:none;}
+
+.more{position:absolute; right:22px; bottom:22px; text-decoration:underline;}
+.more:hover{text-decoration:none;}
+
+.button_wrap{position:absolute; width:225px; right:0; height:21px; overflow:hidden; font-weight:bold; font-size:12px;}
+.button_wrap a{text-decoration:none;}
+.button_aLeft{width:14px; height:21px; background:url(../Assets/images/btnRed_l.png) 0 0 no-repeat; color:#fff; top:0px; right:0px; position:absolute; line-height:21px; text-align:left; padding-left:7px;}
+.button_aLeft span{display:block; padding-left:3px; background:url(../Assets/images/btnRed_r.png) 0 0 no-repeat;  margin-right:10px;}
+.button_bLeft{width:14px; height:21px; position:absolute; top:0; right:0; line-height:21px; text-align:center; cursor:pointer; background:url(../Assets/images/btnRed_r.png) 100% 0 no-repeat;}
+.button_aRight{width:21px; height:21px; background-color:#093d6f; color:#fff; top:0px; left:0px; position:absolute; line-height:21px; text-align:right;}
+.button_aRight span{display:none; padding-right:20px;}
+.button_bRight{width:14px; height:21px; background-color:#fff; color:#000; position:absolute; top:0; left:0; text-transform:uppercase; line-height:21px; text-align:center; cursor:pointer;}
+.button_bRight span{color:#008ddd;}
+
+#mainSlider{float:left; width:595px; background:url(../Assets/images/bg_sliderShad.gif) center 225px no-repeat; height:225px; padding:0 0 37px 0;}
+#mainSlider2{float:left; width:461px; background:url(../Assets/images/bg_sliderShad2.gif) center 225px no-repeat; height:225px; padding:0 0 37px 0; overflow:hidden;}
+.nivoSlider{float:left; width:595px; height:225px;}
+.nivoSlider2{float:left; width:461px; height:225px;}
+/*########### Home Page CSS End ###########*/
+
+/*########### Hotel Southern page CSS start ###########*/
+.bkmark{float:left; width:100%; padding:10px 0;}
+.bkmark a{color:#333; text-decoration:underline;}
+.bkmark a:hover{color:#df411a;}
+
+.infoRow{float:left; width:100%; padding:10px 0 15px ;}
+.infoRow .heading{float:left; width:100%; border-bottom:1px solid #abadb3; font-size:24px; color:#df411a;}
+.infoRow .information{float:right; width:370px; height:125px; padding:15px 10px 10px 45px; line-height:18px; background:url(../Assets/images/bg_quote.gif) 0 0 no-repeat;}
+.infoRow .details{float:left; width:100%; padding-top:7px; line-height:18px;}
+.infoRow .details .txt{float:left; width:240px;}
+.infoRow .details li{list-style:none; background:url(../Assets/images/bullet1.gif) 0 9px no-repeat; line-height:16px; padding:0px 0 4px 7px;}
+.infoRow .details .image{float:right; width:345px; padding-top:3px;}
+
+.infoRow .details .roomTariff{float:left; width:200px; border:1px solid #df411a; padding:0px 1px 1px 0;}
+.infoRow .details .roomTariff .odd{float:left; width:100%; border-top:1px solid #fff; background:#def5ff;}
+.infoRow .details .roomTariff .even{float:left; width:100%; border-top:1px solid #fff; background:#c7edff;}
+
+.infoRow .details .roomTariff .odd div, .infoRow .details .roomTariff .even div{float:left; border-left:1px solid #fff; padding:8px;}
+.infoRow .details .roomTariff .col1{width:90px;}
+.infoRow .details .roomTariff .col2{width:29px;}
+/*########### Hotel Southern page CSS End ###########*/
+
+/*########### Fixed Departure page CSS start ###########*/
+.fDep{width:947px; float:left; border:#BF3411 solid 1px; padding:1px;}
+.fDep .finner{width:911px; padding:19px; float:left;}
+.fDep .col1{width:205px; float:left; background:url(../Assets/images/modify_bg.gif); height:26px; font-size:14px; color:#FFF; padding:0 0 0 14px; line-height:26px; font-family:Tahoma, Geneva, sans-serif;}
+.fDep .col2{width:718px; float:right; background:url(../Assets/images/description_bg.gif) 0 0 repeat-x; height:26px; padding:0 0 0 9px; line-height:26px; }
+.fDep .tName{font-size:16px; color:#df4018;}
+.fDep .booking{background:none!important; margin:0!important; padding:0!important;}
+
+/*########### Calender CSS start ###########*/
+.calender{width:564px; float:right;}
+.calH{background:url(../Assets/images/calender_hbg.gif) 0 0 repeat-x; height:42px; font-size:18px; line-height:42px; color:#FFF; float:left; width:564px; }
+.calender .sel{width:auto; margin:9px 0 0 0;}
+.calM{border:#BF3411 solid 1px; border-top:none!important; float:left; width:561px; padding:1px 0 0 1px; height:329px;}
+.cal ul{list-style:none;}
+.cal ul li{width:79px; height:53px; line-height:53px;float:left;background:url(../Assets/images/cal_grad.gif) top left repeat-x; border-right:1px solid #ffffff; border-bottom:1px solid #ffffff; text-align:center; color:#df411a; position:relative; font-size:14px;}
+.cdate ul{list-style:none;}
+.cdate ul li{width:79px; height:54px; line-height:54px;float:left;background:url(../Assets/images/date_grad.gif) top left repeat-x; border-right:1px solid #ffffff; border-bottom:1px solid #ffffff; text-align:center; color:#df411a; position:relative; font-size:14px;}
+.cdate ul li.hL{background:url(../Assets/images/date_hbg.gif) 0 0 repeat-x;}
+.cdate ul li a{float:left;font-size:14px; color:#333; width:79px; font-weight:bold; line-height:normal!important; padding:16px 0 0 0!important; height:38px!important;}
+.cdate ul li a span{font-size:10px; color:#d93e18;}
+.cdate ul li a:hover span, .cdate ul li.selected a span{font-size:10px; color:#fff;}
+.cdate ul li:hover a, .cdate ul li.selected a{color:#FFF; background:url(../Assets/images/date_hgrad.gif) 0 0 repeat-x; text-decoration:none;}
+/*########### Calender CSS End ###########*/
+
+.pC{width:345px; float:left; border:#BF3411 solid 1px; padding:8px 4px 7px 4px; height:190px;}
+.pCM{width:321px; float:left; padding:2px 0 18px 24px; line-height:20px;}
+.pC .col1{width:120px; float:left; }
+.pC .col2{width:120px!important; float:left!important; padding-left:38px!important;}
+.pC a{color:#333; text-decoration:underline;}
+.pC a:hover{text-decoration:underline; color:#DF411A;}
+.pC .LH14{line-height:14px;}
+.paxBox{width:561px; float:right; border:#BF3411 solid 1px; padding:1px 1px 0 1px; }
+.paxBox .row{width:561px; float:left; border-bottom:#fff solid 1px; height:33px!important;  }
+.paxBox .col1, .paxBox .col2, .paxBox .col3, .paxBox .col4, .paxBox .col5, .paxBox .col6{width:154px; float:left; border-right:#fff solid 1px;  padding:0 8px; color:#000; line-height:33px; height:33px;}
+.paxBox .col2{width:41px;}
+.paxBox .col3{width:67px;}
+.paxBox .col4{width:77px;}
+.paxBox .col5{width:63px;}
+.paxBox .col6{width:58px; border:none; text-align:right;}
+.paxBox .nL{padding:0 8px!important; line-height:normal!important; height:33px;}
+.paxBox .inp{ border:1px solid #ABADB3; color:#6D6D6D; font-size:11px;  margin:0; padding:2px; width:42px;}
+.paxBox .blank{width:407px; float:left; height:33px;}
+
+.avail{border:#BF3411 solid 1px; width:909px; padding:20px; margin:10px 0;}
+.status{width:463px; padding:0 244px;}
+.bookingS{width:154px; float:left;}
+
+.tourD{margin:0px!important;}
+.tourD .col, .tourD .col2, .tourD .col3, .tourD .col4{width:170px; float:left; border-right:#fff solid 1px; padding:6px;}
+.tourD .col2{width:566px;}
+.tourD .col3{width:86px;}
+.tourD .col4{width:74px; border:0;}
+
+.bDetails, .tourD {width:947px; border:#BF3411 solid 1px; padding:0 1px 1px 1px; margin-top:18px; float:left;}
+.bDetails .row{border-top:#fff solid 1px;}
+.bDetails .col, .bDetails .col2, .bDetails .col3, .bDetails .col4, .bDetails .col5, .bDetails .col6, .bDetails .col7, .bDetails .col8, .bDetails .col9, .bDetails .col10, .bDetails .col11, .bDetails .col12, .bDetails .col13, .bDetails .col14{width:306px; float:left; border-right:#fff solid 1px; height:34px; line-height:34px; padding:0 6px;}
+.bDetails .col2{width:305px; text-align:center;}
+.bDetails .col3{width:298px; text-align:right; border-right:0;}
+.bDetails .col4{width:176px;}
+.bDetails .col5{width:95px;}
+.bDetails .col6{width:96px;}
+.bDetails .col7{width:624px; text-align:right;}
+.bDetails .col8{width:297px;}
+.bDetails .col9{width:461px;}
+.bDetails .col10{width:460px;}
+.bDetails .col11{width:273px;}
+.bDetails .col12{width:648px; text-align:right;}
+.bDetails .col13{width:461px; text-align:center;}
+.bDetails .col14{width:460px; text-align:center;}
+.bDetails .col15{width:321px; float:left; text-align:left; line-height:normal;}
+.bDetails .col16{ width:140px; float:right;}
+.bDetails .col17{ width:229px; float:left; line-height:normal;}
+.bDetails .col18{ width:229px; float:right; line-height:normal;}
+.bDetails .pCode{text-align:left; line-height:normal;}
+.bDetails .pO{text-align:left;}
+.bDetails .pOR{vertical-align:-1px;}
+.bDetails .tc{width:461px; float:left; text-align:left;}
+
+.fDepP .col3{width:632px; float:left; height:144px; background:#d7f2ff;}
+.fDepP .col4{width:288px; float:right;}
+/*########### Fixed Departure page CSS End ###########*/
+
+/*########### Holiday Package page CSS start ###########*/
+.hPP{padding-top:25px; float:left; width:100%;}
+.hPP .heading{font-size:24px; color:#DF411A;}
+.hPP .tcode{font-size:17px;}
+.hPP .cost{float:right; font-size:16px; color:#636363;}
+.hPP .col{width:467px; float:left; border:#BF3411 solid 1px; padding:1px 0 0 1px;}
+.hPP .col2{width:465px; float:right;}
+.hPP .col3, .hPP .col4, .hPP .col5, .hPP .col7, .hPP .col8, .hPP .col9{width:207px; float:left; border-right:#fff solid 1px; padding:0 8px; line-height:61px;}
+.hPP .col4{width:242px; float:right; padding:0;}
+.hPP .col5{width:125px; float:left; height:61px; border-bottom:#fff solid 1px;}
+.hPP .col6{width:325px; float:right;}
+.hPP .col7{width:65px; line-height:30px; float:left; text-align:left; height:30px; }
+.hPP .col8{width:242px; line-height:30px; float:left; padding:0;}
+.hPP .col9{width:125px; line-height:30px; float:left; height:30px; border-bottom:#fff solid 1px;}
+.hPP .iRow{ line-height:30px; text-align:center; padding:0; float:left; width:100%; border-bottom:#fff solid 1px;}
+.hPP .brdB{border-bottom:#fff solid 1px;}
+
+.hPP .tPD{width:947px; float:left; border:#BF3411 solid 1px; padding:1px 1px 0 1px; margin-top:28px; line-height:30px;}
+.hPP .inp{border:1px solid #abadb3; padding:3px; margin:4px 0 0 0; color:#6d6d6d; font-size:11px; width:288px; height:16px;  line-height:16px; float:left;}
+.hPP .sel{border:1px solid #abadb3; padding:3px; margin:0; color:#6d6d6d; font-size:11px; width:300px; margin:3px 0 0 0;}
+.hPP .tPD .row{width:100%; float:left; border-bottom:#fff solid 1px;}
+.hPP .tD{width:460px; float:left; border-right:#fff solid 1px; padding:0 6px; }
+.hPP .pickUp{width:472px; float:left; border-right:#fff solid 1px; padding:0;}
+.hPP .dropM{width:474px; float:right; border-left:#fff solid 1px; margin-left:-1px;}
+.hPP .drop{width:474px; float:left;}
+.hPP .pickUp .inner{width:472px; float:left; border-top:#fff solid 1px; }
+.hPP .pickUp .inner .col18{width:153px; float:left; border-right:#fff solid 1px; height:31px; padding:0 0 0 6px;}
+.hPP .pickUp .inner .col19{width:306px; float:left; padding:0 0 0 6px;}
+.hPP .tD2{width:472px; float:left; border-right:#fff solid 1px; }
+.hPP .tD2 .irow{padding:0 6px; border-bottom:#fff solid 1px; float:left; width:460px;}
+.hPP .tD .col12 ,.hPP .tD2 .irow .col12{width:153px; float:left; border-right:#fff solid 1px; height:31px;}
+.hPP .tD .col13,.hPP .tD2 .irow .col13{width:300px; float:right; padding:0 0 0 6px;}
+.hPP .fare{width:935px; line-height:17px; padding:8px 6px 0 6px;}
+.hPP .pD{width:462px; float:right;  padding:0 6px;}
+.hPP .pD .col10, .pD .col11{width:159px; float:left; border-right:#fff solid 1px; height:31px;}
+.hPP .pD .col11{width:296px; padding:0 0 0 6px; border:0px;}
+.hPP .pD .bN{padding-top:12px; float:right; line-height:17px;}
+.hPP .PO{width:947px; padding:1px; border:#BF3411 solid 1px; float:left; line-height:35px; height:144px;}
+.hPP .PO .col10{width:658px; float:left; height:144px; overflow:hidden;}
+.hPP .PO .col10 .row{width:646px;  border-bottom:#fff solid 1px; padding:0 6px;}
+.hPP .PO .col10 .row .col12{width:74px; float:left;}
+.hPP .PO .col10 .row .col13{width:572px; float:left; padding:2px 0 0 0;}
+.hPP .PO .col10 .row .submit{padding:6px 0; float:right;}
+.hPP .col11{width:288px; float:right;}
+.hPP .col15{width:297px; float:left; padding-left:28px;}
+.hPP .col16{width:300px; float:right;}
+
+.whether{width:298px; float:left;  background:url(../Assets/images/whether_bg.jpg) 0 0 no-repeat; height:215px; padding:12px 0;}
+/*########### Holiday Package page CSS End ###########*/
+
+/*########### Itinerary page CSS End ###########*/
+.itinerary{padding:20px 0 0 0; float:left; width:100%;}
+.itinerary .col{width:595px; float:left;}
+.itinerary .col2{width:325px; float:right;}
+.itinerary .pC{width:347px; float:left; padding:8px 4px 7px 4px; border:0; height:auto; }
+.itinerary .tD{width:231px; float:right; padding:1px 1px 0 1px; border:#BF3411 solid 1px;}
+.itinerary .tDM{width:571px!important;}
+.itinerary .tD .col, .tD .col2, .tD .col3{width:67px; float:left; padding:4px; border-right:#fff solid 1px; border-bottom:#fff solid 1px;}
+.itinerary .tD .col2{width:147px; border-right:0;}
+.itinerary .tD .col3{width:331px; border-left:#fff solid 1px; border-right:0;}
+.itinerary .detail{width:947px; float:left; border:#BF3411 solid 1px; padding:1px 1px 0 1px}
+.itinerary .detail .row{width:947px; float:left; border-bottom:#fff solid 1px;}
+.itinerary .detail .col, .detail .col2, .detail .col3, .detail .col4,.detail .col5, .detail .col6{width:45px; float:left; border-right:#fff solid 1px; padding:9px 0 9px 12px;}
+.itinerary .detail .col2{width:111px; padding:9px 0 9px 97px;}
+.itinerary .detail .col3{width:463px; padding:9px 6px 9px 69px;}
+.itinerary .detail .col4{width:107px; padding:9px 0 9px 33px; border:0;}
+.itinerary .detail .col5{width:460px;}
+.itinerary .detail .col6{width:462px; border:0;}
+.itinerary .col3{width:325px; float:left;}
+.itinerary .col4{width:595px; float:right;}
+.itinerary .col4 .place{width:573px; float:left; border:#BF3411 solid 1px; padding:10px; margin-bottom:20px;}
+.itinerary .col4 .place .tpic{width:104px; height:104px; float:left;}
+.itinerary .col4 .place .tdetails{width:459px; float:right; height:104px; line-height:17px;}
+
+.testimonials, .testimonials .feedback{width:88%; float:left; background:#f6f6f6; margin-top:20px; padding:3% 6%;}
+/*.feedback{width:94%!important;  padding:1% 3%;!important;}*/
+.feedback{}
+.testimonials .jdate{color:#7b7b7b;}
+.testimonials .pBox{width:92%; float:left; padding:3% 4%; background:#e9e9e9; margin-bottom:18px;}
+.testimonials .pBox .cphoto{width:35px; height:35px; float:left; border:#bfbfbf solid 2px;}
+.testimonials .pBox .cphoto .inner{width:33px; height:33px; float:left; border:#fff solid 1px;}
+.testimonials .pBox .cname{font-size:14px; font-weight:bold; margin:0 0 0 49px;}
+.testimonials .pBox .cname .cdate{font-size:12px; display:block; padding:2px 0 0 0; color:#7b7b7b; float:left; font-weight:normal;}
+.testimonials .comment{width:100%; float:left; line-height:22px; padding-bottom:20px;}
+/*########### Itinerary page CSS start ###########*/
+
+/*########### Grid CSS Start ###########*/
+.gridvwborder{width:949px; float:left; border:#BF3411 solid 1px; }
+.gridvw{width:947px; float:left; padding:1px 1px 0 1px;}
+.gridvw td{ border:#fff solid 1px;padding:9px 1px 9px 9px; border-collapse:separate;}
+/*########### Grid CSS End ###########*/
+
+/*########### Forms CSS start ###########*/
+.sel{border:1px solid #abadb3; padding:3px; margin:0; color:#6d6d6d; font-size:11px; width:247px;}
+.inpt{border:1px solid #abadb3; padding:3px; margin:0; color:#6d6d6d; font-size:11px; width:238px; height:16px;  line-height:16px;}
+.date{display:inline-block; border:1px solid #abadb3; padding:3px; color:#6d6d6d; font-size:11px;}
+.date .inpt{border:none; padding:0; height:14px;}
+.submit{padding:5px 0!important; text-align:center;}
+.submit input{margin:0 3px;}
+.RB{vertical-align:-1px; margin:0;}
+.RB2 input{vertical-align:-1px; margin:0 3px 0 0;}
+.CB{vertical-align:-2px; margin:0;}
+
+.btnred{display:block; width:20px; position:relative; white-space:nowrap;}
+.btnred .brWrap{display:block; width:200px; position:absolute; right:0; top:0;}
+.btnred .btnLeft{float:right; width:7px;}
+.btnred .btnRight{float:right; background:url(../Assets/images/btnRed_r.png) 100% 0 no-repeat; width:100px; height:21px;}
+.btnred .btnRight .txt{visibility:hidden;}
+/*########### Forms CSS End ###########*/
+
+/*########### Paddings and Margins CSS start ###########*/
+.bannerT30{float:left; padding-top:30px;}
+.bannerB30{float:left; padding-bottom:30px;}
+.bannerB301{float:right; padding-bottom:30px;}
+.bannerTR30{float:left; padding:0px 30px 0 0;}
+
+.btm25{padding-bottom:25px;}
+.btm15{padding-bottom:15px;}
+.btm10{padding-bottom:10px;}
+.tb10{padding-top:10px; padding-bottom:10px;}
+.top5{padding-top:5px;}
+.right25{padding-right:25px;}
+.top15{padding-top:15px;}
+.top25{padding-top:25px;}
+.bottom0{padding-bottom:0px;}
+.top0{margin:0!important; padding:0!important;}
+.tR{padding:5px 3px 0 0;}
+.mR5{margin-right:5px;}
+/*########### Paddings and Margins CSS End ###########*/
+
+/*########### Fonts CSS start ###########*/
+.orange24{font-size:24px; color:#df411a; font-weight:normal;}
+.orange14{font-size:14px; color:#df411a;}
+.orange16{font-size:16px; color:#df411a;}
+.orange{color:#df411a!important;}
+.size11{font-size:11px;}
+.gray{color:#999999;}
+.gray12{color:#999999; font-size:12px;}
+.lgrey{color:#abadb3;}
+.size14{font-size:14px;}
+.size12{font-size:12px;}
+.rupee{font-family:'RupeeForadian';}
+/*########### Fonts CSS End ###########*/
+
+/*########### Backgrounds and Borders CSS start ###########*/
+.bdrBtm1{border-bottom:1px solid #abadb3;}
+.bdrBtm2{border-bottom:1px solid #abadb3; width:77%;}
+/*########### Backgrounds and Borders CSS End ###########*/
+
+/*########### Extra CSS start ###########*/
+.even{background:#C7EDFF!important;}
+.odd{background:#DEF5FF!important;}
+.peven{background:#e4d7ff;}
+.podd{background:#d1bcff;}
+.brdRN{border-right:0!important;}
+.bdr {border-left:1px solid #DE4118; border-top:1px solid #DE4118;}
+table.feedback td {border-bottom: 1px solid #DE4118; border-right: 1px solid #DE4118;padding: 10px 0 5px 10px;}
+.brdN{border:none!important;}
+.LHN{line-height:normal;}
+.LH20{line-height:20px;}
+/*########### Extra CSS End ###########*/
+
+/*########### Passenger list CSS start ###########*/
+.pList{width:947px; float:left; border:#BF3411 solid 1px; padding:1px 1px 0 1px;}
+.pList .row{width:100%; float:left; border-bottom:#fff solid 1px; line-height:36px;}
+.pList .booked{height:28px; padding:4px 6px; line-height:normal; width:927px;}/*Extra From Designer's*/
+.pList .pD{padding:0 0 0 6px; width:941px; float:left;}
+.pList .col1, .pList .col2, .pList .col3, .pList .col4{width:141px; border-right:#fff solid 1px; float:left; padding:0 0 0 6px;}
+.pList .col2{width:400px;}
+.pList .col3{width:139px;}
+.pList .col4{width:240px; border:0;}
+/*########### Passenger list CSS start ###########*/
+
+/*########### Calender page CSS start ###########*/
+.tblcalender{width:564px; float:right;}
+.tblcalH{background:url(../Assets/images/calender_hbg.gif) 0 0 repeat-x; height:42px; font-size:18px; line-height:42px; color:#FFF; float:left; width:564px; }
+.tblcalender .sel{width:auto; margin:9px 0 0 0;}
+.tblcalM{border:#BF3411 solid 1px; border-top:none!important; float:left; width:561px; padding:1px 0 0 1px; }
+.tblcal tr{list-style:none;}
+.tblcal tr th{width:77px; height:51px; line-height:51px;float:left;background:url(../Assets/images/cal_grad.gif) top left repeat-x; border-right:1px solid #ffffff; border-bottom:1px solid #ffffff; text-align:center; color:#df411a; position:relative; font-size:14px;}
+.tblcdate tr{list-style:none;}
+.tblcdate tr td{width:77px; height:51px; line-height:51px;float:left;background:url(../Assets/images/date_grad.gif) top left repeat-x; border-right:1px solid #ffffff; border-bottom:1px solid #ffffff; text-align:center; color:#333; position:relative; font-size:14px;}
+.tblcdate tr td.hL{background:url(../Assets/images/date_hbg.gif) 0 0 repeat-x;}
+.tblcdate tr td a{float:left;font-size:14px; color:#333; width:77px; font-weight:bold; line-height:normal!important; padding:16px 0 0 0!important; height:38px!important;}
+.tblcdate tr td a span{font-size:10px; color:#d93e18;}
+.tblcdate tr td a:hover span, .tblcdate tr td.selected a span{font-size:10px; color:#fff;}
+.tblcdate tr td:hover a, .tblcdate tr td.selected a{color:#FFF; background:url(../Assets/images/date_hgrad.gif) 0 0 repeat-x; text-decoration:none;}
+
+/*########### Calender page CSS End ###########*/
+/*########### Hotels India CSS start ###########*/
+.hBox{width:929px; float:left; border:#ccc solid 1px; padding:10px;}
+.hBox .col, .hBox .col2{width:653px; float:left;}
+.hBox .col2{width:276px;}
+.hBox .pic{width:104px; height:104px; float:left;}
+.hBox .heading{font-size:16px; color:#DF411A;}
+.hBox .description{width:529px; float:right; padding:0 10px;}
+.hBox .LT{text-decoration:line-through;}
+
+.cDM{width:929px; float:left; border:#ccc solid 1px; background:url(../Assets/images/check_detail_bg.gif) 0 0 repeat-x #e7e9ec; padding:10px 10px;}
+.check_Details{border-bottom:#ccc solid 1px; width:100%; float:left;}
+.check_Details .col{width:144px; float:left;}
+
+.paging{white-space:nowrap; float:right; vertical-align:middle;}
+.paging a{display:inline-block; padding:0 2px; color:#333; text-decoration:underline;}
+.paging a:hover{text-decoration:none;}
+.paging strong{display:inline-block; padding:0 2px; color:#DF411A;}
+/*########### Hotels India CSS End ###########*/
+
+/*########### International CSS start ###########*/
+.international{width:591px; float:left; border:#BF3411 solid 1px; padding:1px 1px 0 1px;}
+.international .inner{width:579px; float:left; background:url(../Assets/images/iibg.gif) 0 0 repeat; line-height:35px; padding:0 6px;}
+
+.bullz {list-style:none; margin:0; padding:0px;}
+.bullz li {color: #333; line-height:35px; padding-left:10px; background:url(../Assets/images/bull.png) 0 16px no-repeat;}
+/*########### International CSS End ###########*/
+
+/*########### LFC and LTC Tour CSS start ###########*/
+.tourB{width:222px; float:left; padding:30px 30px;}
+.yellow{background:#feb913;}
+.green{background:#8fcd44;}
+.wbrd{border:#fff solid 1px;}
+.tourB .heading{font-size:22px; font-weight:normal; padding-bottom:12px;}
+/*########### LFC and LTC Tour CSS End ###########*/
+
+/*########### Balance Clear CSS start ###########*/
+.bc, .cR{width:695px; float:left; border:#BF3411 solid 1px; padding:1px 1px 0 1px; margin-top:20px;}
+.cR{width:591px;}
+.cR .col, .cR .col2, .cR .col3{width:283px; float:left; border-right:#fff solid 1px; padding:0 6px;}
+.cR .col2{border:0;}
+.cR .col3{width:141px; padding:0;}
+.cR .col4, .cR .col5, .cR .col6{float:left; padding:0 0 0 6px; width:135px;}
+.cR .col5{width:80px;}
+.cR .col6{width:499px;}
+.cR .inpt2{width:127px!important;}
+.cR .inner{width:579px!important;}
+.bc .row, .iRow, .cR .row, .cR .inner, .cR .inner2{width:100%; float:left; line-height:30px; border-bottom:#fff solid 1px;}
+.bc .iRow{width:683px; padding:0 6px;}
+.bc .col, .bc .col3, .bc .col4, .bc .pBox, .cR .pBox{width:335px; float:left; border-right:#fff solid 1px; padding:0 6px;}
+.bc .col3{width:149px; padding:0;}
+.bc .col4{width:179px; border:0; padding:0 0 0 6px;}
+.bc .col4 .inpt, .bc .col4 .inpt2, .cR .inpt2{border:#ABADB3 solid 1px; padding:3px; margin:3px 0 0 0; font-size:11px; width:171px; height:16px;  line-height:16px; float:left; color:#333;}
+.bc .col4 .inpt2{background:#fff!important; height:18px!important; border:0;}
+.bc .pBox, .cR .pBox{width:347px; padding:0;}
+.cR .pBox{width:295px;}
+.cR .inner2{width:283px!important;}
+.bc .inner, .cR .inner, .cR .inner2{width:335px; padding:0 6px;}
+/*########### Balance Clear CSS End ###########*/
+
+/*########### Car Coach Rental CSS start ###########*/
+.ccrM{width:595px; float:left; padding:24px 0 0 0;}
+.ccrM .col, .ccrM .col2{width:104px; float:left; margin-right:18px;}
+.ccrM .col2{width:473px; margin:0;}
+.ccrM .col img{padding-bottom:30px;}
+.tours {list-style:none; margin:0!important; padding:0px; width:100%!important;}
+.tours td{line-height:20px;/* padding-left:18px;*/ font-size:12px;}
+.tours td a{color:#333333;} .tours td a:hover{color:#DF411A;}
+
+.tours.ftours td { float:none!important; height:auto!important; padding:0!important; width: auto!important;}
+.tours.ftours td  a{color:#333333; font-weight:normal!important; text-decoration:none!important;}
+.tours.ftours td  a:hover{text-decoration:underline!important; color:#DF411A;}
+
+.tours.ftours li{ float:none!important; height:auto!important; padding:0!important; width: auto!important;}
+.tours.ftours li a{color:#333333; font-weight:normal!important; text-decoration:none!important;}
+.tours.ftours li a:hover{text-decoration:underline!important; color:#DF411A;}
+.quote{width:100%; float:left; line-height:18px; background:url(../Assets/images/quote_right.gif) right 100% no-repeat;}
+/*########### Car Coach Rental CSS End ###########*/
+
+/*########### Login CSS start ###########*/
+.login .col, .login .col2{width:280px; float:left; border-right:#abadb3 solid 1px; padding:0 16px 0 0;}
+.login .col2{padding:0 0 0 16px; width:282px}
+.login .col3, .login .col4{width:58px; float:left; padding:5px 0 0 0;}
+.login .col4{width:222px; padding:0;}
+/*########### Login CSS End ###########*/
+
+/*########### Social Responsibility CSS start ###########*/
+.sr{padding:4px; border:#dfe8f0 solid 1px; margin-right:11px;}
+.right0{margin:0;}
+.size18{color:#333; font-size:18px;}
+/*########### Social Responsibility CSS End ###########*/
+
+/*########### Faq CSS start ###########*/
+.faq{margin:0; padding:0 0 0 0 px;}
+.faq li{line-height:20px; margin-left:20px;}
+.faq li a{color:#333; text-decoration:underline;}
+.faq li a:hover{color:#DF411A; text-decoration:none;}
+.QAspn{ text-align:left; margin-left:8px;}
+.spn{ text-align:justify; margin-left:0px; line-height:20px;}
+/*########### Faq CSS End ###########*/
+
+/*########### Customer Login CSS start ###########*/
+.cL .left{width:221px; float:left;}
+.cL .right{width:699px; float:right;}
+/*########### Customer Login CSS End ###########*/
+
+.zoom_boxes_wrap div {float: left; height: 68px; margin: 0 24px 0 0; padding: 0;width: 68px; outline:none;}
+.zoom_boxes_wrap img{display:block;}
+.display_image {height:260px; position:relative; width:345px; float:left; padding-bottom:24px;}
+.display_box {float:right; width:345px;}
+
+.sitemap{width:100%; float:left; padding:10px 0;}
+.sitemap ul{padding-bottom:10px;}
+.sitemap ul li{display:block; list-style:none; line-height:15px; padding-bottom:5px;}
+.sitemap ul li ul{padding:5px 0 0 8px;}
+.sitemap ul li a{color:#333333;}
+.sitemap ul li a:hover{color:#df411a;}
+
+.Rss_fdr { background:#fff; border-bottom:#7f7f7f solid 1px; padding:15px;}
+.rss_fdimg {width:18px; position:relative; float:left;}
+
+.rss_fdimg div.show ul { display:block; width:150px;  position:absolute; left:0px; top:17px; list-style:none; margin:0px; padding:1px!important; background:#fff!important; border:solid 5px #7f7f7f; height:auto!important; -webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px;} 
+.rss_fdimg div.show ul li { padding:0!important;}
+.rss_fdimg div.show ul li a { font-size:12px; color:#00638b; text-decoration:none; display:block; padding:5px 8px; }
+.rss_fdimg div.show ul li a:hover { background:#f2f2f2; color:#333333!important; }
+.rss_fdimg div.hide ul { display:none;}
+
+.gallery, .gallery2{position:relative; height:166px;float:left;}
+.gallery li, .gallery2 li {list-style:none;}
+.gallery li a, .gallery2 li a {float:left;position:absolute;}
+.gallery li a img, .gallery2 li a img  {border:none;}
+.gallery li a.show, .gallery2 li a.show{z-index:500}
+
+.hSBox{width:323px; float:left; border:#f5821f solid 1px; position:relative;}
+.sGBox{width:323px; float:left; border:#771d8c solid 1px; position:relative;}
+.hplace{position:absolute; right:-7px; top:-1px;}
+
+.hSBox .logo, .sGBox .logo{width:89px; float:left; padding:0 0 0 10px;}
+.hSBox .copy, .sGBox .copy{width:204px; padding:14px 10px 0 10px; float:right;}
+
+.yellowC{color:#f5821f;}
+table.wbrdRB td{border-bottom:#fff solid 1px; border-right:#fff solid 1px;}
+.purple{color:#771d8c;}
+
+.shdowPS{background-position:center 415px !important; height:400px !important;}
+.quots{float:left; width:85%; padding:24px 0px 0px 91px; line-height:18px; background:url(../Assets/images/bg_quote1.gif) 0 -18px no-repeat; height:260px;}
+
+.top24{padding-top:24px;}
+
+/* Back to top button */
+#back-top {position:fixed; bottom:30px; margin-right:20px; z-index:2; right:0;}
+#back-top a {width:58px; height:50px; display:block;  -webkit-transition: 1s; -moz-transition:1s; transition:1s; background:url(../Assets/images/back-top.png) 0 98% no-repeat; text-indent:-9999px;  }
+/* Back to top button */
+/*###########  Corporate CSS start ###########*/
+
+
+#nbooking{float:left; width:595px; background:url(../Assets/images/bg_ta bBoxShad.gif) center 100% no-repeat; padding-bottom:23px; margin-bottom:7px; font-family:Tahoma, "Trebuchet MS", Arial, Helvetica, sans-serif;}
+#nbooking ul{float:left; width:595px; background:url(../Assets/images/right_tab_bg.jpg) no-repeat left top;}
+#nbooking ul li{float:left; list-style:none; background:url(../Assets/images/bg_tabSep.gif) 0 0 no-repeat; padding-left:2px;}
+#nbooking ul li.nfd{background:none; padding:0;}
+#nbooking ul li.nfd a{width:63px;}
+#nbooking ul li.nfd a{background:url(../Assets/images/bg_tab.gif) 0px 0 no-repeat;}
+#nbooking ul li.nfd a.active, #nbooking ul li.nfd a:hover{background:url(../Assets/images/bg_tab.gif) 0px 100% no-repeat;}
+#nbooking ul li.nhp a{width:58px;}
+#nbooking ul li.ncr a{width:46px;}
+#nbooking ul li.nhotels a{width:39px;}
+#nbooking ul li.nflights a{width:41px;}
+#nbooking ul li.nflights a{background:url(../Assets/images/bg_tab.gif) 100% 0 no-repeat;}
+#nbooking ul li.nflights a.active, #nbooking ul li.nflights a:hover{background:url(../Assets/images/bg_tab.gif) 100% 100% no-repeat;}
+#nbooking ul li a{float:left; background:url(../Assets/images/bg_tab.gif) -20px 0 no-repeat; height:37px; color:#FFF; padding:5px 15px 0; line-height:30px;}
+#nbooking ul li a.active, #nbooking ul li a:hover{background:url(../Assets/images/bg_tab.gif) -20px 100% no-repeat; color:#333333; text-decoration:none;}
+#nbookContent{float:left; width:593px; border:1px solid #bf3411; border-top:none;min-height:330px; }
+#nbookContent .t6, #nbookContent .t7, #nbookContent .t8, #nbookContent .t4, #nbookContent .t5{display:none; float:left; padding:20px; width:283px;}
+#nbookContent .left_ico{float:left; width:30px; padding-right:6px;}
+#nbookContent .rhtForm{float:left; width:247px; }
+#nbookContent .rhtForm .head{color:#df411a; padding-bottom:2px; font-size:14px;}
+#nbookContent .rhtForm .subHead, #bookContent .field{padding:5px 0 2px;}
+
+#nbookContent .nhotels{display:none; float:left; padding:10px; width:303px;}
+
+#nbookContent .nsubTab{float:left; width:303px;}
+#nbookContent .nsubTab .nsTab{float:left; width:303px;}
+#nbookContent .nsubTab .nsTab li{float:left; list-style:none; background:none; padding:0; height:30px; position:relative;}
+#nbookContent .nsubTab .nsTab li a{float:left; height:30px; line-height:29px; font-size:12px; color:#333; text-decoration:none; padding:0 0 0 12px; background:none;}
+#nbookContent .nsubTab .snTab li a span{float:left; height:30px; padding:0 12px 0 0;}
+#nbookContent .nsubTab .nsTab li a.nsubact, #nbookContent .nsubTab .nsTab li a.nsubact span{height:31px;}
+#nbookContent .nsubTab .nsTab .nsubTab1 a{background:url(../Assets/images/bg_subTab.gif) 0 -31px no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab1 a span{background:url(../Assets/images/bg_subTab.gif) 100% -31px no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab1 a.nsubact{background:url(../Assets/images/bg_subTab.gif) 0 0 no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab1 a.nsubact span{background:url(../Assets/images/bg_subTab.gif) 100% 0 no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab2 a{background:url(../Assets/images/bg_subTab.gif) 0 -62px no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab2 a span{background:url(../Assets/images/bg_subTab.gif) 100% -62px no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab2 a.nsubact{background:url(../Assets/images/bg_subTab.gif) 0 -93px no-repeat;}
+#nbookContent .nsubTab .nsTab .nsubTab2 a.nsubact span{background:url(../Assets/images/bg_subTab.gif) 100% -93px no-repeat;}
+
+#nbookContent .nsubTab .nsubcontent{float:left; padding:10px; min-height:200px; width:283px; background:url(../Assets/images/bg_subContent.gif) 0 0 no-repeat; display:none;}
+#nbookContent .nsubTab .nsubcontent2{background:url(../Assets/images/bg_subContent2.gif) 0 0 no-repeat; }
+#nbookContent .col, #nbookContent .col2, #nbookContent .col3{width:92px; float:left;}
+#nbookContent .col2{width:191px;} #nbookContent .col3{width:141px;}
+
+
+
+
+.corporate_main{ margin:0px; padding:0px; background:#FFFFFF; width:555px;}
+.corpo_txt{ font:24px Trebuchet MS; color:#df411a;}
+.corporate_main_add{ margin:0px; padding-top:20px; padding-bottom:20px; }
+.corporate_main_add1{ line-height:22px; margin-right:20px; color:#333333; width:275px; float:left; background:url(../Assets/images/add_right_bg.jpg) no-repeat right top;}
+.corporate_main_add2{ line-height:22px; margin-right:0px; color:#333333; width:250px; float:left;}
+
+.toll_free{ font:18px Trebuchet MS; color:#df411a; padding-bottom:10px;}
+.map_box_main{ margin:0px; padding-bottom:10px; background:url(../Assets/images/map_bottom_bg.jpg) no-repeat left bottom; }
+.map_box{ margin:0px; padding:0px; height:160px; border:solid 1px #c33815;}
+.map_box_main a{ margin:0px; padding:0px; font:12px Trebuchet MS; color:#df411a; float:right; line-height:30px; text-decoration:underline;}
+.enquiry_form{ margin-top:18px; padding:0px;}
+.enquiry_form_main{ margin:0px; padding:0px;}
+.enquiry_form_txt{ margin:0px; padding:0px; font:12px Trebuchet MS; line-height:20px; color:#333;}
+.enquiry_form_main_inner{ margin-bottom:10px; padding:0px;}
+.enquiry_form_main_inner_label{ margin:0px; padding:0px; font:12px Trebuchet MS; line-height:20px; color:#333; width:125px; float:left; line-height:22px!important; height:22px !important; }
+.enquiry_form_main_inner_input{ margin:0px; padding:0px 10px; font:12px Trebuchet MS; line-height:20px; color:#333; font:12px Trebuchet MS;  line-height:20px!important; height:20px !important; width:400px; border:solid 1px #9c9595;}
+.enquiry_form_main_inner_textarea{ margin:0px; padding:0px 10px; font:12px Trebuchet MS;  line-height:20px!important; height:130px !important; width:400px; border:solid 1px #9c9595;}
+.enquiry_form_main_inner_send{ margin-left:125px; padding:0px;}
+
+.branch_office{ margin:0px; padding:0px; background:#FFFFFF; width:555px;}
+.branch_office_add{ height:200px; background:url(../Assets/images/map_bottom_bg.jpg) no-repeat left bottom; padding-bottom:30px; margin-bottom:30px;}
+.branch_office_add1{ line-height:22px; margin-right:20px; color:#333333; width:275px; float:left; background:url(../Assets/images/add_right_bg.jpg) no-repeat right 40px;}
+.branch_office_add2{ line-height:22px; margin-right:0px; color:#333333; width:256px; float:left;}
+.branch_icon_1{ width:30px; float:left; padding-top:4px;}
+
+.prefferd_office{ margin:0px; padding:0px; background:#FFFFFF; width:555px;}
+
+
+
+ #vtab1 {
+            margin: 0px;
+            width: 553px;
+            height: 100%;
+        }
+        #vtab1 > ul > li {
+            width: 123px;
+            background-color: #fff !important;
+            list-style-type: none;
+            display: block;
+            text-align: center;
+            margin: 0px;
+             border: 1px solid #ddd;
+            position: relative;
+            border-bottom: none;
+			
+			background-image:none;
+           
+           
+        }
+		
+		 #vtab1 > ul > li > a { margin:0px; padding-left:5px; color:#322e2d; font:13px Trebuchet MS; background-image:none; line-height:28px!important; height:33px!important; text-align:left; width:110px;  
+        }
+		 #vtab1 > ul > li > a:hover{ background:none; display:block;}
+		
+		
+       #vtab > ul > li.home {
+            background: url(../Assets/images/home.png) no-repeat center center;
+        }
+        #vtab > ul > li.login {
+            background: url(../Assets/images/login.png) no-repeat center center;
+        }
+        #vtab > ul > li.support {
+            background: url(../Assets/images/support.png) no-repeat center center;
+        }
+		
+		
+		
+        #vtab1 > ul > li > a.selected {
+             border-right: none; color:#c93410;
+            z-index: 10;
+            background-color: #fafafa !important;
+            position: relative;
+			width:113px;
+			text-align:left;
+        }
+        #vtab1 > ul {
+            float: left;
+            width: 123px;
+            text-align: left;
+            display: block;
+            margin: auto 0;
+            padding: 0;
+            position: relative;
+            top:0px;
+        }
+        #vtab1 > div { color:#322e2d; font:13px Trebuchet MS;
+            background-color: #fafafa;
+            margin-left: 123px;
+            border: 1px solid #ddd;
+            min-height: 500px;
+            padding: 12px;
+            position: relative;
+            z-index: 9;
+            -moz-border-radius: 20px;
+        }
+        #vtab1 > div > h4 {
+            color: #800;
+            font-size: 1.2em;
+            border-bottom: 1px dotted #800;
+            padding-top: 5px;
+            margin-top: 0;
+        }
+      
+
+
+.hyd_office{ margin:0px; padding:0px;  width:405px;}
+.hyd_office_add{ background:url(../Assets/images/map_bottom_bg.jpg) no-repeat left bottom; padding-bottom:30px; margin-bottom:30px; height:185px;}
+.hyd_office_add1{ line-height:22px; margin-right:20px; color:#333333; width:190px; float:left; background:url(../Assets/images/add_right_bg.jpg) no-repeat right 40px;}
+.hyd_office_add2{ line-height:22px; margin-right:0px; color:#333333; width:190px; float:left;}
+
+
+
+/*###########  Corporate CSS close ###########*/
+
+.pRightH{float:right; width:595px;}
+.pRightH .col{width:461px; float:left;}
+.pRightH .col2{width:114px; float:right;}
+.pRightH .col .tourBg, .pRightH .col .tourBg2{width:429px; float:left; background:url(../Assets/images/tour_bg.gif) 0 0 no-repeat; padding:16px;}
+.pRightH .col .tourBg2{width:194px; background:url(../Assets/images/tour_bg2.gif) 0 0 no-repeat;}
+.pRightH .col .tourH, .pRightH .col .tourH2{width:429px; background:url(../Assets/images/tourH_Bg.gif) 0 0 repeat-x; height:33px; position:relative; line-height:33px; color:#fff; font-size:14px; padding:0 16px;}
+.pRightH .col .tourH2{width:194px;}
+.pRightH .col .tourH_LC{width:9px; height:33px; background:url(../Assets/images/tourH_LC.gif) 0 0 no-repeat;  position:absolute; left:0; top:0;}
+.pRightH .col .tourH_RC{width:9px; height:33px; background:url(../Assets/images/tourH_RC.gif) 0 0 no-repeat; position:absolute; right:0; top:0;}
+.pRightH .col .tpackages td, .pRightH .col .tpackages2 li{width:38%; float:left; line-height:17px; list-style:none; padding:0 3%; background:url(../Assets/images/tour_bullet.gif) 0 7px no-repeat; margin:0 3%;}
+.pRightH .col .tpackages2 li{width:84%; padding:0 5%;}
+.pRightH .col .tpackages li a, .pRightH .col .tpackages2 li a{color:#333;}
+.pRightH .col .tpackages li.first, .pRightH .col .tpackages2 li.first{width:94%; background:none; margin:0; padding:0 3%;}
+.pRightH .col .col3{width:226px; float:left; position:relative;}
+.pRightH .mh172{min-height:172px;}
+.pRightH .mh133{min-height:133px;}
+.pRightH .col .tpackages li{list-style:none;}
+.pm0{margin:0!important; padding:0 3%!important; width:94%!important;}
+.pWhiteAnchor { color:White; text-decoration:none;}
+#UcSPLModifySearch1_DivSTSlide, #UcModifySearch1_DivFDSlide{overflow:visible!important;}
+#sidebar { position: absolute; right: 0; top: 110px; width: 182px; }
+.ebrochure{padding:6px 0 0 0; margin-left:5px;}
+		.ContractTextExtraSmall
+        {
+        	font-size : 10px !important;        	
+        }
+        .ContractTextSmall
+        {
+        	font-size : 11px !important;
+        }
+        
+.ebrochurelink{ position: relative}
+.ddmenu{position: absolute; right: 0; top: 25px; z-index: 999; list-style: none; padding: 0; margin: 0; display: none; border: 1px solid #20a5e4;}
+.ddmenu li{ background: #fff; padding: 3px 15px; color: #666; border-bottom: 1px solid #20a5e4; text-align: left!important}
+a.ebrochurelink:hover .ddmenu{ display: block}
+.ddmenu li:hover{ background: url(../Assets/images/bg_subnav.gif) 0 100% repeat-x}
+.ddmenu li a, .ddmenu li a:hover{ text-decoration: none}

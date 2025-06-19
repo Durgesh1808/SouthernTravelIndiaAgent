@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Untitled Page</title>
-    <link href="../Assets/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="/Assets/css/style.css" rel="stylesheet" type="text/css" />
 
    
     <script language="javascript" type="text/javascript">
@@ -66,12 +66,18 @@
             for(var i=1; i<=4;i++)
             {
                if(parseInt(i) <= parseInt(val)){
-               
-                    document.getElementById('r'+ rowId +'c'+ i).style.display = 'block'; 
+                   var cell = document.getElementById('r' + rowId + 'c' + i);
+                   if (cell) {
+                       cell.style.display = 'block';
+                   }
                }
                else
                {
-                    document.getElementById('r'+ rowId + 'c'+ i).style.display = 'none'; 
+                   var cell = document.getElementById('r' + rowId + 'c' + i);
+                   if (cell) {
+                       cell.style.display = 'none';
+                   }
+
                }
             }
             

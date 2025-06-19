@@ -1,15 +1,15 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AgentHotelSearch.aspx.cs" Inherits="SouthernTravelIndiaAgent.AgentHotelSearch" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-<%@ Register TagPrefix="uc1" TagName="AgentHeader" Src="UserControl/AgentHeader.ascx" %>
-<%@ Register TagPrefix="uc1" TagName="AgentFooter" Src="UserControl/Agentfooter.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="AgentHeader" Src="UserControls/UcAgentHeader.ascx" %>
+<%@ Register TagPrefix="uc1" TagName="AgentFooter" Src="UserControls/UcAgentfooter.ascx" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Hotel Search reults</title>
-    <link href="../StyleSheets/main.css" rel="stylesheet" />
-    <link href="../StyleSheets/style.css" rel="stylesheet" />
-    <link href="../StyleSheets/stylesheet.css" rel="stylesheet" />
+    <link href="../Assets/css//main.css" rel="stylesheet" />
+    <link href="../Assets/css//style.css" rel="stylesheet" />
+    <link href="../Assets/css//stylesheet.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="chrome://firebug/content/highlighter.css" />
 
     <script language="javascript" type="text/javascript">
@@ -152,15 +152,15 @@
                                                 <tbody>
                                                     <tr>
                                                         <td width="6" valign="top" align="left">
-                                                            <img  loading="lazy" alt="board1" width="6" height="5" border="0" src="images/board1.gif" />
+                                                            <img  loading="lazy" alt="board1" width="6" height="5" border="0" src="Assets/images/board1.gif" />
                                                         </td>
-                                                        <td valign="top" background="images/board_top.gif" align="left" />
+                                                        <td valign="top" background="Assets/images/board_top.gif" align="left" />
                                                         <td>
-                                                            <img  loading="lazy" alt="board2" width="5" height="5" border="0" src="images/board2.gif" />
+                                                            <img  loading="lazy" alt="board2" width="5" height="5" border="0" src="Assets/images/board2.gif" />
                                                         </td>
                                                     </tr>
                                                     <tr>
-                                                        <td valign="top" background="images/board_lft.gif" align="left" />
+                                                        <td valign="top" background="Assets/images/board_lft.gif" align="left" />
                                                         <td width="98%" valign="top" align="center">
                                                             <br />
                                                             <center>
@@ -215,7 +215,7 @@
                                                                                                             <table width="99%" cellspacing="1" border="0" class="table1-border">
                                                                                                                 <tbody>
                                                                                                                     <tr>
-                                                                                                                        <td width="65%" class="table1-heading-bg" style="background-image: url('hotel-images/yl-bg.gif');"
+                                                                                                                        <td width="65%" class="table1-heading-bg" style="background-image: url('hotel-Assets/images/yl-bg.gif');"
                                                                                                                             align="left">
                                                                                                                             <span id="imgRating" runat="server"></span>
                                                                                                                             <%# DataBinder.Eval(Container.DataItem, "hotelName") %>
@@ -444,17 +444,17 @@
                                                             </div>
                                                             <br />
                                                         </td>
-                                                        <td height="113" background="images/board_rt.gif">
+                                                        <td height="113" background="Assets/images/board_rt.gif">
                                                             <img  loading="lazy" alt="board_rt" width="5" height="1" border="0" src="Assets/images/board_rt.gif" />
                                                         </td>
                                                     </tr>
                                                     <tr>
                                                         <td width="6" height="5">
-                                                            <img  loading="lazy" alt="board3" width="6" height="5" border="0" src="images/board3.gif" />
+                                                            <img  loading="lazy" alt="board3" width="6" height="5" border="0" src="Assets/images/board3.gif" />
                                                         </td>
-                                                        <td width="6" height="5" background="images/board_bot.gif" />
+                                                        <td width="6" height="5" background="Assets/images/board_bot.gif" />
                                                         <td height="5">
-                                                            <img  loading="lazy" alt="board4" width="5" height="5" border="0" src="images/board4.gif" />
+                                                            <img  loading="lazy" alt="board4" width="5" height="5" border="0" src="Assets/images/board4.gif" />
                                                         </td>
                                                     </tr>
                                                 </tbody>

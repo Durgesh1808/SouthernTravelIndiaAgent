@@ -596,7 +596,7 @@
          }
      }
      function approve() {
-         window.open('../frmterms.aspx?', 'pops', 'width=418,height=249,scrollbars=yes');
+         window.open('frmterms.aspx?', 'pops', 'width=418,height=249,scrollbars=yes');
      }
      function fnhideQualis() {
          /*if(document.getElementById('txtCar12pxHiddenSt').value==0 && document.getElementById('txtCar12pxHiddenDl').value==0)

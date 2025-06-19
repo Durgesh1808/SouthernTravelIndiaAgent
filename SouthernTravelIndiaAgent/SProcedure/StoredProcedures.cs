@@ -212,5 +212,7 @@ namespace SouthernTravelIndiaAgent.SProcedure
         public const string InsertPGResponseAndRequest_SP = "InsertPGResponseAndRequest_SP";
         public const string Get_PgResponse_SP = "Get_PgResponse_SP";
         public const string LogError_sp = "LogError_sp";
+        public const string GetCompanyTermsCondition_sp= "GetCompanyTermsCondition_sp";
+        public const string GetFbDetail_sp = "GetFbDetail_sp";
     }
 }
