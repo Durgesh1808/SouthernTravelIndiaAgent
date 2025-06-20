@@ -95,7 +95,7 @@ namespace SouthernTravelIndiaAgent
                 ifconform();
             else
             {
-                ClientScript.RegisterStartupScript(typeof(string), "strValidate", "<script>alert('Invalid Username or Password!');</script>");
+                ClsCommon.ShowAlert("Invalid Username or Password!");
                 txtagentid.Text = "";
             }
         }

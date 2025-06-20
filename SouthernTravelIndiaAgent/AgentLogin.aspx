@@ -12,18 +12,29 @@
 
     <script language="javascript" src="../Assets/js/MyScript.js" type="text/Assets/js"></script>
     <script language="javascript" src="../Assets/js/md5.js" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script language="javascript" type="text/javascript">
 		function validate()
         {
             debugger;
             if (document.getElementById("txtagentid").value.trim() === "") {
-                alert("Please enter your User Name");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please enter your User Name.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.form1.txtagentid.focus();
                 return false;
             }
  
             if (document.getElementById("txtPassword").value.trim() === "") {
-                alert("Please enter your Password");
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Oops...',
+                    text: 'Please enter your Password.',
+                    confirmButtonColor: '#f2572b'
+                });
                 document.form1.txtPassword.focus();
                 return false;
             }
