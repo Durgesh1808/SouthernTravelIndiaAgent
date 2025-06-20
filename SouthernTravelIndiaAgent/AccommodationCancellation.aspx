@@ -194,13 +194,13 @@ function go(whichFrame)
                                 <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
                                     <tr>
                                         <td align="left">
-                                            <img src="Assets/images/left_corner.gif" width="8" height="8" alt="" />
+                                            <img loading="lazy" src="Assets/images/left_corner.gif" width="8" height="8" alt="" />
                                         </td>
                                         <td bgcolor="#E7E7E7">
-                                            <img src="Assets/images/trans.gif" height="1" alt="" />
+                                            <img loading="lazy" src="Assets/images/trans.gif" height="1" alt="" />
                                         </td>
                                         <td align="right">
-                                            <img src="Assets/images/rgt_corner.gif" width="8" height="8" alt="" />
+                                            <img loading="lazy" src="Assets/images/rgt_corner.gif" width="8" height="8" alt="" />
                                         </td>
                                     </tr>
                                     <tr>
@@ -215,13 +215,13 @@ function go(whichFrame)
                                                         <table width="220" border="0" cellspacing="0" cellpadding="0">
                                                             <tr>
                                                                 <td width="13">
-                                                                    <img src="Assets/images/left_.gif" width="13" height="42" />
+                                                                    <img loading="lazy" src="Assets/images/left_.gif" width="13" height="42" />
                                                                 </td>
                                                                 <td align="center" background="Assets/images/bg1.gif" class="verdana14w">
                                                                     Accommodation Cancellation
                                                                 </td>
                                                                 <td width="13">
-                                                                    <img src="Assets/images/right_.gif" width="13" height="42" />
+                                                                    <img loading="lazy" src="Assets/images/right_.gif" width="13" height="42" />
                                                                 </td>
                                                             </tr>
                                                         </table>
@@ -229,7 +229,7 @@ function go(whichFrame)
                                                 </tr>
                                                 <tr>
                                                     <td align="right">
-                                                        <img src="Assets/images/trans.gif" width="1" height="1" />
+                                                        <img loading="lazy" src="Assets/images/trans.gif" width="1" height="1" />
                                                     </td>
                                                 </tr>
                                                 <tr>
@@ -272,7 +272,7 @@ function go(whichFrame)
                                                                     Checkin date:&nbsp;<input id="txtCheckindate" name="txtCheckindate" type="text" runat="server"
                                                                         size="9" onfocus="objCal('DepartIcon','txtCheckindate','360','160'); " /><a title="Checkin date"
                                                                             href="javascript:void(null)" onclick="objCal('DepartIcon','txtCheckindate','360','160');"
-                                                                            hidefocus=""><img id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0"
+                                                                            hidefocus=""><img loading="lazy" id="DepartIcon" tabindex="-1" src="Assets/images/calendar.gif" border="0"
                                                                                 style="visibility: visible; padding-bottom: 0px;" /></a>
                                                                 </td>
                                                                 <td style="height: 15px" colspan="2" align="left" sty>
@@ -528,13 +528,13 @@ function go(whichFrame)
                                     </tr>
                                     <tr>
                                         <td align="left">
-                                            <img src="Assets/images/left_d_corner.gif" width="8" height="8" alt="" />
+                                            <img loading="lazy" src="Assets/images/left_d_corner.gif" width="8" height="8" alt="" />
                                         </td>
                                         <td bgcolor="#E7E7E7">
-                                            <img src="Assets/images/trans.gif" width="1" height="1" alt="" />
+                                            <img loading="lazy" src="Assets/images/trans.gif" width="1" height="1" alt="" />
                                         </td>
                                         <td align="right">
-                                            <img src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="" />
+                                            <img loading="lazy" src="Assets/images/rgt_d_corner.gif" width="8" height="8" alt="" />
                                         </td>
                                     </tr>
                                 </table>

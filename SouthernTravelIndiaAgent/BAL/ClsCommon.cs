@@ -264,6 +264,11 @@ namespace SouthernTravelIndiaAgent.BAL
                 ScriptManager.RegisterStartupScript(page, page.GetType(), "swal_alert", script, true);
             }
         }
+
+        /// <summary>
+        /// /// Show success alert message on the current page using ScriptManager
+        /// </summary>
+        /// <param name="msg"></param>
         public static void SuccessShowAlert(string msg)
         {
             string title = "Success!";
@@ -455,7 +460,7 @@ namespace SouthernTravelIndiaAgent.BAL
             // Ensure TLS 1.2 is used
             System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             MailStatus statusEnum = MailStatus.Sent; // or MailStatus.Failed if caught in catch
-            MailRequestFrom requestFromEnum = MailRequestFrom.Website;
+            MailRequestFrom requestFromEnum = MailRequestFrom.Agent;
             string errorMessage = "";
             try
             {
@@ -555,7 +560,7 @@ namespace SouthernTravelIndiaAgent.BAL
         public static void AuthMail(string pTO, string pBCC, string pCC, string pFrom, string pSubject, string pBody, string pFromName, string pFileName = null)
         {
             MailStatus statusEnum = MailStatus.Sent; // or MailStatus.Failed if caught in catch
-            MailRequestFrom requestFromEnum = MailRequestFrom.Website;
+            MailRequestFrom requestFromEnum = MailRequestFrom.Agent;
             string errorMessage = "";
             try
             {
@@ -607,7 +612,7 @@ namespace SouthernTravelIndiaAgent.BAL
             System.Net.Mail.MailMessage mail = null;
             SmtpClient smtp = null;
             MailStatus statusEnum = MailStatus.Sent; // or MailStatus.Failed if caught in catch
-            MailRequestFrom requestFromEnum = MailRequestFrom.Website;
+            MailRequestFrom requestFromEnum = MailRequestFrom.Agent;
             string errorMessage = "";
             try
             {
